@@ -1,0 +1,1 @@
+define(["exports"],function(_exports){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.isTabOpenableWhenNotSopCertified=_exports.default_language=void 0;const default_language="es";_exports.default_language=default_language;const isTabOpenableWhenNotSopCertified=!1;_exports.isTabOpenableWhenNotSopCertified=isTabOpenableWhenNotSopCertified});
