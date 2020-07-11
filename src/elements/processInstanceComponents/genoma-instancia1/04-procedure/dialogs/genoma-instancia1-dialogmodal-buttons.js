@@ -41,7 +41,7 @@ class GenomaInstancia1DialogmodalButtons extends FieldsMethods(connect(store)(Po
         `;
     }
     clickedCancel(){
-        console.log('clickedCancel');
+        // console.log('clickedCancel');
         this.dispatchEvent(new CustomEvent('dialog-cancelbutton-clicked', {
           bubbles: true,
           composed: true,
@@ -49,7 +49,7 @@ class GenomaInstancia1DialogmodalButtons extends FieldsMethods(connect(store)(Po
         }));            
     }
     clickedClose(){
-        console.log('clickedClose');
+        //console.log('clickedClose');
         this.dispatchEvent(new CustomEvent('dialog-closebutton-clicked', {
           bubbles: true,
           composed: true,
@@ -57,7 +57,7 @@ class GenomaInstancia1DialogmodalButtons extends FieldsMethods(connect(store)(Po
         }));            
     }
     clickedConfirm(){
-        console.log('clickedConfirm');
+        // console.log('clickedConfirm');
         this.dispatchEvent(new CustomEvent('dialog-confirmbutton-clicked', {
           bubbles: true,
           composed: true,

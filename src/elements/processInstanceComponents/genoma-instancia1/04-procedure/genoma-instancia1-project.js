@@ -157,10 +157,12 @@ class GenomaInstancia1Project extends FieldsMethods(TabsMethods((FrontendEndpoin
     }
     refreshWindow() {
         this.getProjects();
+        this.getVariablesAndVariablesSet();
     }
     ready() {
         super.ready();
         this.getProjects();
+        this.getVariablesAndVariablesSet();
     }
 }
 customElements.define('genoma-instancia1-project', GenomaInstancia1Project);

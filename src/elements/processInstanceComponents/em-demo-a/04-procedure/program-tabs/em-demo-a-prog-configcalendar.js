@@ -2,7 +2,7 @@ import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import { connect } from 'pwa-helpers/connect-mixin';
 import { store } from '../../../../../store.js';
 import {FieldsMethods} from '../../../../../platform-mixins/functions/fields-methods';
-//import '@mpachnis/mp-calendar/mp-calendar.js';
+import '@mpachnis/mp-calendar/mp-calendar.js';
 import '../../../../internalComponents/Grids/vaadingrid-lit-singleselect';
 import '../../03config/Programs/em-demo-a-progtab-calendar-settings';
 import {programProgConfigCalendar_progConfigCalendarTableHeaderFields } from '../../03config/Programs/em-demo-a-progtab-calendar-settings';
@@ -44,12 +44,11 @@ class EmDemoAProgConfigcalendar extends FieldsMethods(connect(store)(PolymerElem
                 --today-boxshadow-color: #4caf5066;
             }
         </style>     
-        config-calendar    
-<!--        <template is="dom-if" if="[[displayCalendar]]">     
+        <template is="dom-if" if="[[displayCalendar]]">     
             <mp-calendar id="Jan" show-days-in-month="42" first-day-of-week="[[startDayNumber]]" day-labels="[[daysLabels]]" month-labels="[[monthsLabels]]" 
                 disable-prev-days="true" disable-next-days="true" theme="light-blue" disabled-days="[[weekDaysDisabled]]" events-object="[[selectedProgram.config_scheduled_calendar]]"></mp-calendar> 
         </template>
--->        
+        
         <template is="dom-if" if="[[displayTable]]">     
             <div>
                 <p class="tableTitle">{{labelValue(selectedLanguage, tableTitle)}} {{selectedProgram.name}}</p>

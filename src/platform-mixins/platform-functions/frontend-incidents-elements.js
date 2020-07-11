@@ -71,6 +71,7 @@ class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(s
         <confirmuser-dialog></confirmuser-dialog>
 
         <paper-dialog id="incidentActionBrowser">
+        adasa
             <simple-modal-dialog style="width:410px;" dialog adhoc-form-fields="{{incidentDialogFormFields}}" list-header="" list-rows="" 
             on-dialog-button-clicked="dialogClosedincidentActionBrowser" action-name="{{actionName}}"> </simple-modal-dialog>
         </paper-dialog>   
@@ -144,8 +145,7 @@ class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(s
             datas.paramsUrl="actionName="+actionName;
             datas.paramsUrl=datas.paramsUrl+"&incidentTitle="+backEndData.incidentTitle;
             datas.paramsUrl=datas.paramsUrl+"&incidentDetail="+backEndData.incidentDetail;
-            this.incidentsEndPoint(datas);            
-            console.log('NEW INCIDENT TRIGGERED!');
+            this.incidentsEndPoint(datas);                        
             return;
         case 'CONFIRM_INCIDENT':
         case 'ADD_NOTE_INCIDENT':

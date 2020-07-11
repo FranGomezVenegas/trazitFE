@@ -1,5 +1,6 @@
 import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/paper-button/paper-button';
+import '../dialogmodal-buttons';
 //import './../../../config/styles/div-style.js'; 
 //import '../../03config/css/Theme01/modal-dialogs.js';
 /**
@@ -13,6 +14,10 @@ import '@polymer/paper-button/paper-button';
 class SimpleModalDialog extends PolymerElement {
     static get properties() {
         return {
+            displayCancelButton: {type: Boolean, notify: true},
+            displayConfirmButton: {type: Boolean, notify: true},            
+            displayCloseButton:  {type: Boolean, notify: true},
+
             formFields: {type: Array},
         }
     }
@@ -54,11 +59,13 @@ class SimpleModalDialog extends PolymerElement {
         }          
         </style>
         <div class="modal-content bgimg">
+        <dialogmodal-buttons display-close-button={{displayCloseButton}} display-cancel-button={{displayCancelButton}} display-confirm-button={{displayConfirmButton}}
+            on-dialog-closebutton-clicked="dialogClosed" on-dialog-cancelbutton-clicked="dialogCanceled" on-dialog-confirmbutton-clicked="dialogConfirmed"
+        ></dialogmodal-buttons> 
+
         <template is="dom-repeat" items="{{formFields}}" as="currentfield">       
             <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClicked" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
         </template>      
-        <paper-button name="cancel" dialog-dismiss on-click="dialogCanceled">Cancel</paper-button>
-        <paper-button name="confirm" dialog-confirm autofocus on-click="dialogConfirmed">Accept</paper-button>
       </div>
       
         `;
@@ -71,7 +78,7 @@ class SimpleModalDialog extends PolymerElement {
         }   
     }  
     dialogConfirmed(){
-        //console.log('clicked', this.value);
+        //console.log('dialogConfirmed', this.value);
         this.value='confirmed';
         this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
             bubbles: true,
@@ -79,12 +86,15 @@ class SimpleModalDialog extends PolymerElement {
             detail: {
             'buttonName': this.name,
             'value': this.value,
-            'dialogState': 'confirmed'
+            'dialogState': 'confirmed',
+            'formElements':this.formElements,
+            'selectedItems': this.$.simplemodaldialoggrid.selectedObject 
             }
-        }));    
+        }));   
+        //this.resetValue; 
     }        
     dialogCanceled(){
-        //console.log('clicked', this.value);
+        //console.log('dialogCanceled', this.value);
         this.value='confirmed';
         this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
             bubbles: true,
@@ -94,8 +104,49 @@ class SimpleModalDialog extends PolymerElement {
             'value': this.value,
             'dialogState': 'canceled'
             }
-        }));    
-    }        
+        }));
+        //this.resetValue;    
+    } 
+    dialogClosed(){
+        //console.log('dialogCanceled', this.value);
+        this.value='confirmed';
+        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
+            bubbles: true,
+            composed: true,
+            detail: {
+            'buttonName': this.name,
+            'value': this.value,
+            'dialogState': 'closed'
+            }
+        }));
+        //this.resetValue;    
+    }      
+    // dialogConfirmed(){
+    //     //console.log('clicked', this.value);
+    //     this.value='confirmed';
+    //     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
+    //         bubbles: true,
+    //         composed: true,
+    //         detail: {
+    //         'buttonName': this.name,
+    //         'value': this.value,
+    //         'dialogState': 'confirmed'
+    //         }
+    //     }));    
+    // }        
+    // dialogCanceled(){
+    //     //console.log('clicked', this.value);
+    //     this.value='confirmed';
+    //     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
+    //         bubbles: true,
+    //         composed: true,
+    //         detail: {
+    //         'buttonName': this.name,
+    //         'value': this.value,
+    //         'dialogState': 'canceled'
+    //         }
+    //     }));    
+    // }        
 }
 
 customElements.define('simple-modal-dialog', SimpleModalDialog);

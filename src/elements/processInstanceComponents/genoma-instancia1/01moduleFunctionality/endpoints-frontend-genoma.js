@@ -5,7 +5,8 @@ import {tokenMixin} from '../../../../platform-mixins/store/token-mixin';
 import {ToastMethods} from '../../../../platform-mixins/functions/toast-methods';
 import {schema_name} from '../03config/config-process';
 import {GenomaModuleDefinition} from './0module-backendfunctionality-available';
-import { activeProjects as activeProjects_genoma_instancia1, setSelectedStudy as setSelectedStudy_genoma_instancia1
+import { activeVariablesAndVariablesSet as activeVariablesAndVariablesSet_genoma_instancia1, 
+    activeProjects as activeProjects_genoma_instancia1, setSelectedStudy as setSelectedStudy_genoma_instancia1
 } from '../02Redux/genoma-instancia1_actions';
 
 export const FrontendEndpointsModuleGenoma = (superClass) => class extends GenomaModuleDefinition(ApiSettings(ToastMethods(tokenMixin(superClass)))) {
@@ -15,6 +16,11 @@ export const FrontendEndpointsModuleGenoma = (superClass) => class extends Genom
         var data=[];
         this.callEndpoint(data, 'ALL_ACTIVE_PROJECTS');
         //this.getActiveProductionLotsList();
+    }
+    getVariablesAndVariablesSet(){
+        this.callBackRefreshWindow = this.refreshWindow.bind(this);
+        var data=[];
+        this.callEndpoint(data, 'ALL_ACTIVE_VARIABLES_AND_VARIABLES_SET');
     }
     refreshSelectedStudyOnGetProjects(projects){
         var state=store.getState();
@@ -47,7 +53,7 @@ export const FrontendEndpointsModuleGenoma = (superClass) => class extends Genom
             return;
         } 
         if (endpointDefinition.apiCallDiscarded!=undefined && endpointDefinition.apiCallDiscarded==true){
-            store.dispatch(activeProjects(data, endpointName));
+            //store.dispatch(activeProjects(data, endpointName));
             return;
         }
         var apiUrl=endpointDefinition.apiurl;//backendUrl+frontEndGenomaStudyUrl; 
@@ -79,12 +85,18 @@ export const FrontendEndpointsModuleGenoma = (superClass) => class extends Genom
             })
         .then( response => {
             if(response.status == 200) {
-                //console.log(response.data);
-                store.dispatch(activeProjects_genoma_instancia1(response.data));
-                this.refreshSelectedStudyOnGetProjects(response.data);
-                //store.dispatch(activeProjects_genoma_instancia1(response.data, endpointName));
-                if (data && data.callBackFunction){data.callBackFunction();}
-                return;
+                //console.log('endpointName', endpointName, response.data);
+                switch(endpointName){
+                case 'ALL_ACTIVE_VARIABLES_AND_VARIABLES_SET': 
+                    store.dispatch(activeVariablesAndVariablesSet_genoma_instancia1(response.data));
+                    return;
+                case 'ALL_ACTIVE_PROJECTS':
+                    store.dispatch(activeProjects_genoma_instancia1(response.data));
+                    this.refreshSelectedStudyOnGetProjects(response.data);
+                    //store.dispatch(activeProjects_genoma_instancia1(response.data, endpointName));
+                    if (data && data.callBackFunction){data.callBackFunction();}
+                    return;
+                }
             }
             if (data && data.callBackFunctionError){data.callBackFunctionError();}
         })

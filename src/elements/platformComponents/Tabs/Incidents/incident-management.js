@@ -9,7 +9,7 @@ import {FrontendIncidents} from '../../../../platform-mixins/platform-functions/
 import '../../../../platform-mixins/platform-functions/frontend-incidents-elements.js';
 import {ApiIncidents} from '../../../../platform-mixins/apis/api-incidents';
 import {TabsMethods} from '../../../../platform-mixins/platform-functions/tabs-functions';
-
+import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog';
 import '../../../internalComponents/Grids/vaadingrid-lit-singleselect';
 
 /**
@@ -43,12 +43,11 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
     static get template() {
         return html`
         <style include="incident-management-style"></style>
-        <div class="mainDiv"">        
-            <div id="newIncidentForm">
-                <template is="dom-repeat" items="{{formFields}}" as="currentfield">    
-                <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClickedForIncidents" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
-                </template>       
-            </div>
+        <div class="mainDiv"">
+            <paper-dialog class="roundbox boxshadow" id="newIncidentDialog" >        
+                    <simple-modal-dialog id="newIncidentDialog2" action-name="" display-close-button form-fields="{{formFields}}" 
+                    on-dialog-button-clicked="fieldButtonClickedForIncidents"> </simple-modal-dialog>
+            </paper-dialog>
             <div class="myIncidentsTable">
                 <frontend-incidents-elements id="myElements" call-back-function-incident-elem="{{onFinalTokenFilled}}" selected-incident="{{selectedObject}}"></frontend-incidents-elements>
                 <vaadin-button on-click="callBackRefreshWindow"><iron-icon icon="refresh"></iron-icon></vaadin-button> 
@@ -59,21 +58,15 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
                         </field-controller>
                     </template>  
                 </div>    
-<!-- Necesario pero aun no hay tablas!
-                <vaadingrid-singleselect class="vaadin-grid" id="mygridid" on-selected-item-changed="incidentSelected" selected-object="{{selectedObject}}"
-                    headerfields="{{userOpenIncidentsieldToDisplay}}" rowcontainer="{{userOpenIncidents}}">
-                </vaadingrid-singleselect>
--->
-<vaadingrid-lit-singleselect headerfields="{{userOpenIncidentsieldToDisplay}}" rowcontainer="{{userOpenIncidents}}" on-selected-object-changed="incidentSelected"
-></vaadingrid-lit-singleselect>
-
-<!-- Borrado por refactoring            <div name="selectedBatchButtonGroup" style="width: 622px; display: inline-flex;"></div> -->
+                <vaadingrid-lit-singleselect headerfields="{{userOpenIncidentsieldToDisplay}}" rowcontainer="{{userOpenIncidents}}" on-selected-object-changed="incidentSelected"
+                ></vaadingrid-lit-singleselect>
             </div>
             <div id="selectedIncident">
                 <p><b>{{selectedUserIncidentDetail.0.incident_id}}</p>                
                 <template is="dom-repeat" items="{{selectedUserIncidentDetail}}" as="currentfield"> 
-                    <div class="cardMySops"> 
-                        {{currentfield.date}} - {{currentfield.note}} 
+                    <div class="incidentEventCard"> 
+                       <p> {{currentfield.action_name}} - {{currentfield.date}} </p>
+                       {{currentfield.note}} 
                     </div>
                 </template>
             </div> 

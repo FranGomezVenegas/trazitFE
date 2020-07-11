@@ -84,31 +84,59 @@ export const elementTableSamplesSet={
       "type": "icon-button",
       "icon_name": "icons:add-box",
       "read_only": false,
+    },             
+  ],
+  tableHdrFlds:[
+    {name: 'name', label_en:'Name', label_es: 'Nombre', sort:false, filter:true, is_icon:false, width:"20%"},
+    {name: 'description', label_en:'Description', label_es: 'Descripción', sort:false, filter:true, is_icon:false, width:"20%"},
+    {name: 'type', label_en:'Type', label_es: 'Tipo', sort:false, filter:true, is_icon:false, width:"20%"},
+    {name: 'active', label_en:'Active', label_es: 'Activo', sort:false, filter:true, is_icon:false, width:"20%"},
+    {name: 'created_on', label_en:'Creation Date', label_es: 'F.Creación', sort:true, filter:false, is_icon:false, width:"20%"},
+  ],
+}
+
+
+export const elementTableConfigVariablesSet={
+  tableTitle:{
+    display:true,
+    label:{label_en:'Variables Set', label_es:'Variables Set'}
+  },
+  displayRefreshButton:true,
+  displayButtons: true,
+  buttons:[          
+    {
+      "name": "STUDY_CREATE_FAMILY",
+      "requires_selected_object":false,
+      "label_en": "Create new family", "label_es": "Crear Familia",
+      "type": "icon-button",
+      "requires_selected_object":false,
+      "icon_name": "icons:add-box",
+      "read_only": false,
     },  
     {
-      "name": "STUDY_SAMPLES_SET_ACTIVATE",
-      "label_en": "Activate Sample Set", "label_es": "Activar Agrupación Muestras",
+      "name": "STUDY_FAMILY_ACTIVATE",
+      "label_en": "Activate Family", "label_es": "Activar Familia",
       "type": "icon-button",
       "icon_name": "icons:alarm-add",
       "read_only": false,
     },  
     {
-      "name": "STUDY_SAMPLES_SET_DEACTIVATE",
-      "label_en": "Deactivate Sample Set", "label_es": "Desactivar Agrupación Muestras",
+      "name": "STUDY_FAMILY_DEACTIVATE",
+      "label_en": "Deactivate Family", "label_es": "Desactivar Familia",
       "type": "icon-button",
       "icon_name": "alarm-off",
       "read_only": false,
     }, 
     {
-      "name": "STUDY_SAMPLES_SET_ADD_SAMPLE",
-      "label_en": "Add Sample", "label_es": "Añadir Muestra",
+      "name": "STUDY_FAMILY_ADD_INDIVIDUAL",
+      "label_en": "Add individual to family", "label_es": "Añadir invididuo a familia",
       "type": "icon-button",
       "icon_name": "icons:add-box",
       "read_only": false,
     },  
     {
-      "name": "STUDY_SAMPLES_SET_REMOVE_SAMPLE",
-      "label_en": "Remove Sample", "label_es": "Quitar Muestra",
+      "name": "STUDY_FAMILY_REMOVE_INDIVIDUAL",
+      "label_en": "Remove Individual from Family", "label_es": "Quitar individuo de familia",
       "type": "icon-button",
       "icon_name": "icons:remove",
       "read_only": false,
@@ -120,7 +148,8 @@ export const elementTableSamplesSet={
     {name: 'active', label_en:'Active', label_es: 'Activo', sort:false, filter:true, is_icon:false, width:"20%"},
     {name: 'created_on', label_en:'Creation Date', label_es: 'F.Creación', sort:true, filter:false, is_icon:false, width:"20%"},
   ],
-}
+};
+
 export const elementTableFamily={
   tableTitle:{
     display:true,
@@ -236,6 +265,20 @@ export const elementTableIndividual={
     {name: 'created_on', label_en:'Creation', label_es: 'Creado El', sort:false, filter:true, is_icon:false, width:"20%"},
   ],  
 };
+export const elementTableFamilyIndividual={
+  tableTitle:{
+    display:true,
+    label:{label_en:'All Family and Individuals', label_es:'Todas las familias e individuos'}
+  },
+  displayRefreshButton:true,
+  displayButtons: true,
+  buttons:[  
+  ],
+  tableHdrFlds:[
+    {name: 'family_name', label_en:'Family', label_es: 'Familia', sort:false, filter:true, is_icon:false, width:"50%"},
+    {name: 'linked_on', label_en:'Creation', label_es: 'Creado El', sort:false, filter:true, is_icon:false, width:"50%"},
+  ],  
+};
 export const elementTableSample={
   tableTitle:{
     display:true,
@@ -282,6 +325,15 @@ export const elementTableSample={
       "icon_name": "icons:add-box",
       "read_only": false,
     },  
+    {
+      "name": "ADD_VARIABLE_SET_TO_STUDY_OBJECT",
+      "requires_selected_object":false,
+      "label_en": "Add Variables Set", "label_es": "Añadir Conjunto de Variables",
+      "type": "icon-button",
+      "icon_name": "icons:add-box",
+      "read_only": false,
+      "ownerTable":'study_individual_sample'
+    },  
   ],
   tableHdrFlds:[
     {name: 'sample_id', label_en:'Id', label_es: 'Id', sort:false, filter:true, is_icon:false, width:"20%"},
@@ -298,14 +350,6 @@ export const elementTableSampleVariable={
   displayRefreshButton:true,
   displayButtons: true,
   buttons:[          
-    {
-      "name": "ADD_VARIABLE_SET_TO_STUDY_OBJECT",
-      "requires_selected_object":false,
-      "label_en": "Add Variables Set", "label_es": "Añadir Conjunto de Variables",
-      "type": "icon-button",
-      "icon_name": "icons:add-box",
-      "read_only": false,
-    },  
     {
       "name": "STUDY_OBJECT_SET_VARIABLE_VALUE",
       "label_en": "Enter Variable Value", "label_es": "Entrar Valor a Variable",

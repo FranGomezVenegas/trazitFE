@@ -312,7 +312,11 @@ export const ModuleFunctionsGenoma = (superClass) => class extends GenomaModuleD
 console.log('dialogClosedFamilyList');            
             datas=e.currentTarget.selectedObject;
             datas.familyName=e.detail.selectedItems.name;
+            if (datas.name==undefined){
+                datas.name=e.detail.selectedItems.family_name;
+            }
             datas.individualsList=e.currentTarget.selectedObject.individual_id;
+            datas.indivId=e.currentTarget.selectedObject.individual_id;
             //datas.newStudyName=this.dialogStudyFamilyUpdate[0].value;
             var fieldsNames="";
             var fieldsValues="";
@@ -350,6 +354,7 @@ console.log('dialogClosedFamilyList');
             var datas = [];
             datas=e.currentTarget.selectedObject;
             datas.individualsList=e.detail.selectedItems.individual_id;
+            datas.indivId=e.detail.selectedItems.individual_id;             
             datas.familyName=e.currentTarget.selectedObject.name;
             //datas.newStudyName=this.dialogStudyFamilyUpdate[0].value;
             var fieldsNames="";
@@ -368,6 +373,54 @@ console.log('dialogClosedFamilyList');
             }
             datas.newStudyFieldsNames=fieldsNames;
             datas.newStudyFieldsValues=fieldsValues;
+            this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, functionalArea, actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+        }
+        var elem=this.shadowRoot.getElementById("myProjectElements");//(actionDefinition.dialogInfo.webComponentName); 
+        if (elem){
+            elem.closeDialog(actionDefinition.dialogInfo.dialogName);
+        }else{
+            this.$.updateStudyFamily.close();
+        }
+    }
+    
+    dialogClosedSamplesSetList(e){
+        var buttonDefName=this.buttonDefinition.name;
+        var functionalArea=this.getFunctionalArea("STUDY_SAMPLES_SET");
+        var actionDefinition = this.genomaModuleStudyActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        if (e.detail.dialogState=='confirmed'){
+            var datas = [];
+//console.log('dialogClosedSamplesSetList');            
+            datas=e.currentTarget.selectedObject;
+            datas.samplesSetName=e.detail.selectedItems.name;
+            if (datas.name==undefined){
+                datas.name=e.detail.selectedItems.name;
+            }
+            datas.sampleId=e.currentTarget.selectedObject.sample_id;
+            //datas.newStudyName=this.dialogStudyFamilyUpdate[0].value;
+            this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, functionalArea, actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+        }
+        var elem=this.shadowRoot.getElementById("myProjectElements");//(actionDefinition.dialogInfo.webComponentName); 
+        if (elem){
+            elem.closeDialog(actionDefinition.dialogInfo.dialogName);
+        }else{
+            this.$.updateStudyFamily.close();
+        }
+    }
+
+    dialogClosedSamplesList(e){
+        var buttonDefName=this.buttonDefinition.name;
+        var functionalArea=this.getFunctionalArea("STUDY_INDIVIDUAL_SAMPLES");
+        var actionDefinition = this.genomaModuleStudyActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        if (e.detail.dialogState=='confirmed'){
+            var datas = [];
+            datas=e.currentTarget.selectedObject;
+            datas.sampleId=e.detail.selectedItems.sample_id;
+            datas.samplesSetName=e.currentTarget.selectedObject.name;
+            //datas.newStudyName=this.dialogStudyFamilyUpdate[0].value;
             this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, functionalArea, actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
         }
         var elem=this.shadowRoot.getElementById("myProjectElements");//(actionDefinition.dialogInfo.webComponentName); 
@@ -475,5 +528,40 @@ console.log('dialogClosedFamilyList');
             this.$.createNewStudy.close();
         }
     } 
+
+    dialogClosedVariablesSetListAddToObject(e){
+        var buttonDefName=this.buttonDefinition.name;
+        var functionalArea=this.getFunctionalArea("STUDY_INDIVIDUAL_SAMPLE_VARIABLES");
+        var actionDefinition = this.genomaModuleStudyActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        if (e.detail.dialogState=='confirmed'){
+            var datas = [];
+            datas=e.currentTarget.selectedObject;            
+            if (this.buttonDefinition.ownerTable==undefined){
+                console.log("The action for adding Variables Set to study Objects requires the attribute called OwnerTable in the BUTTON definition to know for which object type it should be added")
+                return;
+            }
+            switch(this.buttonDefinition.ownerTable){
+                case 'study_individual_sample':
+                    datas.ownerId=e.currentTarget.selectedObject.sample_id;
+                    break;
+                default:
+                    console.log("The ownerTable "+ownerTable+" is not recognized in the list of objects type where variables set can be added");
+                    return;
+            }
+            datas.ownerTable=this.buttonDefinition.ownerTable;
+            datas.variableSetName=e.detail.selectedItems.name;
+            //datas.newStudyName=this.dialogStudyFamilyUpdate[0].value;
+            this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, functionalArea, actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+        }
+        var elem=this.shadowRoot.getElementById("myProjectElements");//(actionDefinition.dialogInfo.webComponentName); 
+        if (elem){
+            elem.closeDialog(actionDefinition.dialogInfo.dialogName);
+        }else{
+            this.$.updateStudyFamily.close();
+        }
+    }    
+    
 
 }    

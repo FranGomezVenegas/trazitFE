@@ -15,9 +15,17 @@ fieldButtonClickedForIncidents(e) {
         //console.log('optionPressed', e.detail.buttonName, 'selectedObject', this.selectedObject);                
         var datas = [];
         var paramsUrl="";
+        if (e.detail.buttonName==undefined){return;}
         var actionName= e.detail.buttonName.toUpperCase();  
         //var schemaPrefix=e.target.value.procedure;
-        switch (actionName) {        
+        switch (actionName) {   
+        case 'OPEN_NEW_INCIDENT_DIALOG':     
+            var dialogName='newIncidentDialog';
+            var elem=this.shadowRoot.getElementById(dialogName);
+            if (elem){elem.open();}
+            else{
+            console.log('field-controller.resetValue', 'no field with name ', dialogName);
+            }            
         case 'NEW_INCIDENT':
             //console.log('NEW_INCIDENT');
             paramsUrl=paramsUrl+"&actionName="+e.detail.buttonName.toUpperCase();

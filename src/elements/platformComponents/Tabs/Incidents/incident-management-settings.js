@@ -34,6 +34,14 @@ export const incidents_userOpenIncidentsFieldToDisplay=[
 , {name: 'item_title', label_en:'Title', label_es: 'Título', sort:false, filter:true, width:'20%'}
 , {name: 'item_detail', label_en:'Detail', label_es: 'Detalle', sort:false, filter:true, width:'30%'}];
 export const incidents_userOpenIncidentsButtons=[
+  
+  {
+    "name": "OPEN_NEW_INCIDENT_DIALOG",
+    "label_en": "New", "label_es": "Crear",
+    "type": "button",
+    "icon_name": "icons:assignment-return",
+    "read_only": false,
+  },
   {
     "name": "CONFIRM_INCIDENT",
     "label_en": "Confirm", "label_es": "Confirmar",

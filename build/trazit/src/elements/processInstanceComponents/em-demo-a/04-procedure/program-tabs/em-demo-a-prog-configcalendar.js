@@ -1,5 +1,4 @@
-import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../../store.js";import{FieldsMethods}from"../../../../../platform-mixins/functions/fields-methods.js";//import '@mpachnis/mp-calendar/mp-calendar.js';
-import"../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js";import"../../03config/Programs/em-demo-a-progtab-calendar-settings.js";import{programProgConfigCalendar_progConfigCalendarTableHeaderFields}from"../../03config/Programs/em-demo-a-progtab-calendar-settings.js";class EmDemoAProgConfigcalendar extends FieldsMethods(connect(store)(PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA.selectedProgram){//this.selectedProgram=state.emDemoA.selectedProgram;
+import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../../store.js";import{FieldsMethods}from"../../../../../platform-mixins/functions/fields-methods.js";import"../../../../../../node_modules/@mpachnis/mp-calendar/mp-calendar.js";import"../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js";import"../../03config/Programs/em-demo-a-progtab-calendar-settings.js";import{programProgConfigCalendar_progConfigCalendarTableHeaderFields}from"../../03config/Programs/em-demo-a-progtab-calendar-settings.js";class EmDemoAProgConfigcalendar extends FieldsMethods(connect(store)(PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA.selectedProgram){//this.selectedProgram=state.emDemoA.selectedProgram;
 //console.log('state.emDemoA.selectedProgram.config_scheduled_calendar',state.emDemoA.selectedProgram.config_scheduled_calendar);
 //this.events=state.emDemoA.selectedProgram.config_scheduled_calendar;
 }}static get properties(){return{selectedLanguage:{type:String,observer:"labelsLang"},monthsLabels:{type:Array},daysLabels:{type:Array},startDayNumber:{type:String},// events: {type: Object, value:
@@ -16,12 +15,12 @@ progConfigCalendarTableHeaderFields:{type:Object,value:programProgConfigCalendar
                 --today-boxshadow-color: #4caf5066;
             }
         </style>     
-        config-calendar    
-<!--        <template is="dom-if" if="[[displayCalendar]]">     
+        config-calendar 2   
+        <template is="dom-if" if="[[displayCalendar]]">     
             <mp-calendar id="Jan" show-days-in-month="42" first-day-of-week="[[startDayNumber]]" day-labels="[[daysLabels]]" month-labels="[[monthsLabels]]" 
                 disable-prev-days="true" disable-next-days="true" theme="light-blue" disabled-days="[[weekDaysDisabled]]" events-object="[[selectedProgram.config_scheduled_calendar]]"></mp-calendar> 
         </template>
--->        
+        
         <template is="dom-if" if="[[displayTable]]">     
             <div>
                 <p class="tableTitle">{{labelValue(selectedLanguage, tableTitle)}} {{selectedProgram.name}}</p>

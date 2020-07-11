@@ -81,14 +81,9 @@ class EmDemoAWebcomponentEnvMonitSamples extends  FunctionsEnvMonitSamples(conne
         `;
     }
     addSampleMicroorgOpenedChangedListener(){
-        
         const elem=this.shadowRoot.getElementById('addSampleMicroorgDialog');
         const grid=elem.shadowRoot.getElementById('simplemodaldialoggrid');
-        console.log('addSampleMicroorgOpenedChangedListener', grid.selectedItems);
         grid.resetTableSelection();
-//        grid.clearCache();
-        console.log('addSampleMicroorgOpenedChangedListener', grid.selectedItems);
-        //this.selectedItems=[];
     }
     AddCommentOpenedChangedListener(e){
         const modalwindow=this.shadowRoot.getElementById('addCommentDialog');

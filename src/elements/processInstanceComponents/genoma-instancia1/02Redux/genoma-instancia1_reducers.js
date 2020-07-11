@@ -1,6 +1,7 @@
-import {ALL_ACTIVE_PROJECTS, SELECTED_PROJECT, SELECTED_STUDY} from './genoma-instancia1_actions.js';
+import {ALL_ACTIVE_VARIABLES_AND_VARIABLES_SET, ALL_ACTIVE_PROJECTS, SELECTED_PROJECT, SELECTED_STUDY} from './genoma-instancia1_actions.js';
 
 const INITIAL_STATE = {
+    configActiveVariablesAndVariablesSet: [],
     activeProjects: [],
     selectedProject: [],
     selectedStudy: [],
@@ -18,6 +19,11 @@ const INITIAL_STATE = {
 const Genoma1Reducer = (state = INITIAL_STATE, action) => {
     //console.log('genoma-1_reducers.SAVE_DATA_IN_STORE', action);
     switch(action.type) {
+        case ALL_ACTIVE_VARIABLES_AND_VARIABLES_SET:
+            return {
+                ...state,        
+                configActiveVariablesAndVariablesSet: action.DATA,
+            }                       
         case ALL_ACTIVE_PROJECTS:
             return {
                 ...state,        
