@@ -20,8 +20,8 @@ class FieldIconButton extends FieldsMethods(connect(store)(PolymerElement)) {
     return html`  
     <style>
       paper-icon-button{
-        height:8vw;
-        width:8vw;
+        height:6vh;
+        width:6vw;
       }
     </style>
     <paper-icon-button style="{{styleDefinition()}}" icon="{{field.icon_name}}" title="{{labelValue(selectedLanguage, field)}}"
@@ -30,8 +30,8 @@ class FieldIconButton extends FieldsMethods(connect(store)(PolymerElement)) {
   }  
 
   styleDefinition(){
-    if (this.field.read_only){return 'color:var(--lumo-disabled-text-color); height:2vw;'}
-    return !this.field.icon_color ? 'color:cornflowerblue;': 'color:'+this.field.icon_color+'; height:2vw;'; 
+    if (this.field.read_only){return 'color:var(--lumo-disabled-text-color); '}
+    return !this.field.icon_color ? 'color:cornflowerblue;': 'color:'+this.field.icon_color+'; '; 
   }
   clicked(){
     var proc=[];

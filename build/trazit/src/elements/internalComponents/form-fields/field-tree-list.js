@@ -17,12 +17,14 @@ class FieldTreeList extends FieldsMethods(connect(store)(PolymerElement)){static
                     height: 2.28vw;                
                 }                 
                 div.level2 {
+                    padding-top: 0.4vw;
                     position: relative;
                     left: 1.3vw;
                     width: 9.76vw;
                     height: 1.627vw;                
                 } 
                 div.level3 {
+                    padding-top: 0.4vw;
                     position: relative;
                     left: 2.6vw;
                     width: 9.76vw;
@@ -36,10 +38,12 @@ class FieldTreeList extends FieldsMethods(connect(store)(PolymerElement)){static
                 }  
                 .level1{       
                     height: 0.97vw         
-                    text-shadow: 0.13vw 0.19vw #42f4f4;                    
+                    text-shadow: 0.13vw 0.19vw #42f4f4;    
+                    padding: 0.35vw;                                    
                 }  
                 .level2{  
                     height: 0.97vw
+                    padding: 0.2vw;                                    
                 }                           
                 .red{  
                     height: 0.97vw                  

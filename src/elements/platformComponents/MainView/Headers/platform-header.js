@@ -19,11 +19,13 @@ class PlatformHeader extends (connect(store)(PolymerElement)) {
     static get template() {
         return html`
             <style include="platform-header-style"></style>
+        <div class="wapper">
             <template is="dom-if" if="[[platformHeaderFields.ribbonDisplay]]"> 
                 <ribbon-element field="[[platformHeaderFields.ribbonField]]"></ribbon-element>
             </template>
+        
             <template is="dom-if" if="[[platformHeaderFields.fieldsLeftDisplay]]">
-                <div class="platformHeaderLeftIcon"> 
+                <div class="platformHeaderLeftArea"> 
                     <template is="dom-repeat" items="{{platformHeaderFields.fieldsLeft}}" as="currentfield">                
                         <field-controller  field="{{currentfield}}"></field-controller>
                     </template>
@@ -31,19 +33,20 @@ class PlatformHeader extends (connect(store)(PolymerElement)) {
             </template> 
            
             <template is="dom-if" if="[[platformHeaderFields.fieldsCenterDisplay]]">
-                <div class="platformHeaderCenter" id="sessionInfo">
+                <div class="platformHeaderCenterArea" id="sessionInfo">
                     <template is="dom-repeat" id="fcenter" items="{{platformHeaderFields.fieldsCenter}}" as="currentfield">
                         <field-controller style="color: #4285f4;" field="{{currentfield}}"></field-controller>
                     </template>                            
                 </div>       
             </template>
             <template is="dom-if" if="[[platformHeaderFields.fieldsRightDisplay]]">            
-                <div class="platformHeaderSplit platformHeaderRight">
+                <div class="platformHeaderRightArea">
                     <template is="dom-repeat" items="{{platformHeaderFields.fieldsRight}}" as="currentfield">
                         <field-controller field="{{currentfield}}" on-field-button-clicked="doLogout" on-avatar-item-clicked="platformHeaderRightClicked"></field-controller>
                     </template>                            
                 </div>
-            </template>           
+            </template>  
+        </div>
         `;
     }
     platformHeaderRightClicked(e){

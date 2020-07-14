@@ -13,7 +13,7 @@ documentContainerCenterTabsStyle.innerHTML = `
         align-items: center;
         display: flex;
         width: 100%;
-        height: 3.4vw;
+        height: 3.4vh;
         font-size: 2vw;
         font-weight: 500;
         overflow-x: hidden;

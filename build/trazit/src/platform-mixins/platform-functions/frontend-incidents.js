@@ -2,8 +2,8 @@ import{backendUrl,frontEndIncidentsUrl}from"../../config/platform/logic/api-conf
  * @mixinFunction
  * @polymer
  */export const FrontendIncidents=superClass=>class extends ApiSettings(ToastMethods(tokenMixin(superClass))){fieldButtonClickedForIncidents(e){//console.log('optionPressed', e.detail.buttonName, 'selectedObject', this.selectedObject);                
-var datas=[],paramsUrl="",actionName=e.detail.buttonName.toUpperCase();//var schemaPrefix=e.target.value.procedure;
-switch(actionName){case"NEW_INCIDENT"://console.log('NEW_INCIDENT');
+var datas=[],paramsUrl="";if(e.detail.buttonName==void 0){return}var actionName=e.detail.buttonName.toUpperCase();//var schemaPrefix=e.target.value.procedure;
+switch(actionName){case"OPEN_NEW_INCIDENT_DIALOG":var dialogName="newIncidentDialog",elem=this.shadowRoot.getElementById(dialogName);if(elem){elem.open()}else{console.log("field-controller.resetValue","no field with name ",dialogName)}case"NEW_INCIDENT"://console.log('NEW_INCIDENT');
 paramsUrl=paramsUrl+"&actionName="+e.detail.buttonName.toUpperCase();paramsUrl=paramsUrl+"&incidentTitle="+this.formFields[0].value;paramsUrl=paramsUrl+"&incidentDetail="+this.formFields[1].value;var storeCurrentState=JSON.stringify(store.getState());datas.storeCurrentState=storeCurrentState;datas.incidentTitle=this.formFields[0].value;datas.incidentDetail=this.formFields[1].value;this.$.myElements.actionTrigger(e.detail.buttonName,datas,e.detail.buttonDefinition);//paramsUrl=paramsUrl+"&sessionInfo="+storeCurrentState;
 return;case"CONFIRM_INCIDENT":case"ADD_NOTE_INCIDENT":case"CLOSE_INCIDENT":case"REOPEN_INCIDENT":if(null==this.selectedObject){var objectNotSelected=this.objectNotSelected();this.toastErrorMessage(objectNotSelected);//this.dispatchEvent(new CustomEvent('toast-error', {bubbles: true, composed: true,
 //    detail: 'Please select one incident first'}));    

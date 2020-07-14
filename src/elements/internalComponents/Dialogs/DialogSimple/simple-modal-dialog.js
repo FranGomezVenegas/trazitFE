@@ -80,16 +80,21 @@ class SimpleModalDialog extends PolymerElement {
     dialogConfirmed(){
         //console.log('dialogConfirmed', this.value);
         this.value='confirmed';
+        var butDetail={'buttonName':this.name, dialogState:'confirmed'};
+        if (this.value){butDetail.value=this.value};
+        if (this.formElements){butDetail.formElements=this.formElements};
+        if (this.$.simplemodaldialoggrid && this.$.simplemodaldialoggrid.selectedObject){butDetail.selectedItems=this.$.simplemodaldialoggrid.selectedObject};
         this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
             bubbles: true,
             composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'confirmed',
-            'formElements':this.formElements,
-            'selectedItems': this.$.simplemodaldialoggrid.selectedObject 
-            }
+            detail: butDetail
+            // {
+            // 'buttonName': this.name,
+            // 'value': this.value,
+            // 'dialogState': 'confirmed',
+            // 'formElements':this.formElements,
+            // 'selectedItems': this.$.simplemodaldialoggrid.selectedObject 
+            // }
         }));   
         //this.resetValue; 
     }        
@@ -108,7 +113,7 @@ class SimpleModalDialog extends PolymerElement {
         //this.resetValue;    
     } 
     dialogClosed(){
-        //console.log('dialogCanceled', this.value);
+        //console.log('dialogClosed', this.value);
         this.value='confirmed';
         this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
             bubbles: true,

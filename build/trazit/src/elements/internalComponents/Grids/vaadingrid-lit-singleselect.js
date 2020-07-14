@@ -34,7 +34,7 @@ render(){return html`
       </style>
       ${this.headerfields?html` 
 
-      <vaadin-grid id="gridLevel1" .items="${this.rowcontainer}" .rowDetailsRenderer="${this.rowDetailsRenderer}" 
+      <vaadin-grid id="gridLevel1" column-reordering-allowed .items="${this.rowcontainer}" .rowDetailsRenderer="${this.rowDetailsRenderer}" 
         @active-item-changed=${this.itemSelected}         
       >
       ${this.rowcontainer==void 0||0==this.rowcontainer.length?html`
@@ -43,10 +43,10 @@ render(){return html`
         ${this.rowcontainer[0].is_error?html`
         <vaadin-grid-column path="NO DATA" header="NO DATA"></vaadin-grid-column>
         `:html`            
-          <vaadin-grid-selection-column disable auto-select></vaadin-grid-selection-column>       
+          <vaadin-grid-selection-column custom-allow-multi-select=${this.allowMultiSelect} @selected-items-changed=${this.itemSelected}  frozen auto-select></vaadin-grid-selection-column>       
           ${this.headerfields.map(item=>html` 
               ${item.is_icon?html`    
-              <vaadin-grid-column path="${item.name}" header="${item.label_es}"></vaadin-grid-column>
+              <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column>
               <!--  <vaadin-grid-column width="50px" flex-grow="0"> 
                   <template class="header">${item.status}</template>
                   <template>
@@ -55,13 +55,13 @@ render(){return html`
                 </vaadin-grid-column>    -->
               `:html`
                 ${item.sort?html`          
-                  <vaadin-grid-sort-column path="${item.name}" header="${item.label_es}"></vaadin-grid-sort-column>`:html``}  
+                  <vaadin-grid-sort-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-sort-column>`:html``}  
                 ${item.filter?html`
-                  <vaadin-grid-filter-column path="${item.name}" header="${item.label_es}"></vaadin-grid-filter-column> 
-                  <!-- <vaadin-grid-column path="${item.name}" header="${item.label_es}"></vaadin-grid-column> -->
+                  <vaadin-grid-filter-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-filter-column> 
+                  <!-- <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column> -->
                   `:html``}  
                 ${!item.sort&&!item.filter?html`
-                  <vaadin-grid-column path="${item.name}" header="${item.label_es}"></vaadin-grid-column>`:html``}  
+                  <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column>`:html``}  
               `}
                       <!--        <vaadin-grid-column width="50px" flex-grow="0" header="#" .renderer="${this.indexRenderer}"></vaadin-grid-column>
                       <vaadin-grid-filter-column path="firstName" header="First name"></vaadin-grid-filter-column>
@@ -77,7 +77,7 @@ render(){return html`
       
     `}getIconPath(){var rowIndex=this.grid._focusedItemIndex;console.log("getIconPath","hdrFld","hdrFld","rowIndex",rowIndex)}refreshTable(){if(this.refreshFunction){this.refreshFunction()}}resetTableSelection(){//e.clearCache();
 var gridName="gridLevel1";//this.id;
-const grid=this.shadowRoot.getElementById(gridName);grid.selectedItems=[];this.selectedItems=[]}itemSelected(e){if(this.allowMultiSelect==void 0||this.allowMultiSelect!=void 0&&!1==this.allowMultiSelect){//console.log('itemSelected NOT allowMultiSelect');
+const grid=this.shadowRoot.getElementById(gridName);grid.selectedItems=[];this.selectedItems=[]}itemSelected(e){console.log("itemSelected",this.allowMultiSelect);if(this.allowMultiSelect==void 0||this.allowMultiSelect!=void 0&&!1==this.allowMultiSelect){//console.log('itemSelected NOT allowMultiSelect');
 this.selectedObject=e.detail.value;if(null==this.selectedObject){return}e.target.selectedObject=this.selectedObject;let myEvent=new CustomEvent("selected-object-changed",{detail:this.selectedObject,bubbles:!0,composed:!0});this.dispatchEvent(myEvent);e.target.selectedItems=[]}else{//console.log('itemSelected allowed MultiSelect');      
 this.selectedItems=e.target.selectedItems;if(1==this.selectedItems.length){this.selectedObject=e.detail.value}else{this.selectedObject=""}}}get grid(){return this.shadowRoot.querySelector("vaadin-grid")}// _toggleDetails(value, item) {
 //   if (value) {

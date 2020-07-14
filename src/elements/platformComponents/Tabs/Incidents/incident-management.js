@@ -44,7 +44,7 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
         return html`
         <style include="incident-management-style"></style>
         <div class="mainDiv"">
-            <paper-dialog class="roundbox boxshadow" id="newIncidentDialog" >        
+            <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="newIncidentDialog" >        
                     <simple-modal-dialog id="newIncidentDialog2" action-name="" display-close-button form-fields="{{formFields}}" 
                     on-dialog-button-clicked="fieldButtonClickedForIncidents"> </simple-modal-dialog>
             </paper-dialog>
@@ -76,7 +76,7 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
     keyPressed(){}
     incidentSelected(e) {
         this.selectedObject=e.detail;
-        console.log('incidentSelected', 'this.selectedObject', this.selectedObject);
+        //console.log('incidentSelected', 'this.selectedObject', this.selectedObject);
         this.getSelectedUserIncidentDetail({incidentId: this.selectedObject.id});
         return;
     }    
@@ -85,7 +85,7 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
     }
     
     onFinalTokenFilled(){
-        console.log('onFinalTokenFilled', this.thisTabName);
+        //console.log('onFinalTokenFilled', this.thisTabName);
         if (!this.thisTabName){return;}
         //if (this.isThisTabOpen(this.appOpenTabs, this.thisTabName)){
         if (this.isThisTabOpen(this.thisTabName)){

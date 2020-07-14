@@ -8,9 +8,9 @@ documentContainerSopIconAndBadgeStyle.innerHTML = `
         :host{
             display: flex;
             position: relative;
-            --image-max-h:5vw;
+            --image-max-h:5vh;
             --image-max-w:5vw;
-            --image-min-h:3vw;
+            --image-min-h:3vh;
             --image-min-w:3vw;
         }
         div.mainDiv{ 
@@ -29,27 +29,27 @@ documentContainerSopIconAndBadgeStyle.innerHTML = `
         paper-badge.pendingSop{
             top:  2vw;
             left: 5vw;
-            min-height: 0.5vw;
+            min-height: 0.5vh;
             min-width: 0.5vw;
-            max-height: 2vw;
+            max-height: 2vh;
             max-width: 2vw;
             --paper-badge-background: var(--google-red-500);
-            --paper-badge-height: 2vw;
+            --paper-badge-height: 2vh;
             --paper-badge-width: 2vw;
         }
         paper-badge.allUserSop{
             top:  4vw;
             left: 5vw;
-            height: 2vw;
+            height: 2vh;
             width: 2vw;
             --paper-badge-background: var(--google-blue-700);
-            --paper-badge-height: 2vw;
-            --paper-badge-width: 2vw;
+            --paper-badge-height: 2vh;
+            --paper-badge-width: 2vh;
         } 
         div.badge{
-          height:2vw;
+          height:2vh;
           width:2vw;
-          //min-height:1vw;
+          //min-height:1vh;
           //min-width:1vw;
         }        
       </style>

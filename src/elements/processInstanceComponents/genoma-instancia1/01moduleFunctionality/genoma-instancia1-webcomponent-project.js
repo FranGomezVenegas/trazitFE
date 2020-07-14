@@ -86,108 +86,108 @@ class GenomaInstancia1WebcomponentProject extends ModuleFunctionsGenoma(connect(
         // </style> -->
         <!-- focus-in-field="{{fieldsDialogAddComment.0.name}}" -->
 
-        <paper-dialog class="roundbox boxshadow" id="variablesSetListAddToObject" on-opened-changed="variablesSetListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="variablesSetListAddToObject" on-opened-changed="variablesSetListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="variablesSetListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" on-dialog-button-clicked="dialogClosedVariablesSetListAddToObject"
                 list-rows="{{selectedVariablesSet}}" list-header="{{dialogConfigVariablesSetList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="createNewStudy" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="createNewStudy" on-opened-changed="studyNewOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="createNewStudyDialog" action-name="" display-confirm-button display-cancel-button 
             selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyNew}}" on-dialog-button-clicked="dialogClosedStudyNew"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="updateStudy" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="updateStudy" on-opened-changed="studyNewOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="updateStudyDialog" action-name="" display-confirm-button display-cancel-button 
              selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyUpdate}}" on-dialog-button-clicked="dialogClosedStudyUpdate"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="createNewStudyIndividual" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="createNewStudyIndividual" on-opened-changed="studyNewOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="createNewStudyIndividualDialog" action-name="" display-confirm-button display-cancel-button 
             selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyIndividualNew}}" on-dialog-button-clicked="dialogClosedStudyIndividualNew"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="updateStudyIndividual" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="updateStudyIndividual" on-opened-changed="studyNewOpenedChangedListener">
         {{selectedObject.study}} aaa
             <genoma-instancia1-simple-modal-dialog id="updateStudyIndividualDialog" action-name="" display-confirm-button display-cancel-button 
             selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyIndividualUpdate}}" on-dialog-button-clicked="dialogClosedStudyIndividualUpdate"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="createNewStudyFamily" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="createNewStudyFamily" on-opened-changed="studyNewOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="createNewStudyFamilyDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyFamilyNew}}" on-dialog-button-clicked="dialogClosedStudyFamilyNew"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="updateStudyFamily" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="updateStudyFamily" on-opened-changed="studyNewOpenedChangedListener">
         {{selectedObject.study}} aaa
             <genoma-instancia1-simple-modal-dialog id="updateStudyFamilyDialog" action-name="" display-confirm-button display-cancel-button 
             selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudyFamilyUpdate}}" on-dialog-button-clicked="dialogClosedStudyFamilyUpdate"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="createNewStudySamplesSet" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="createNewStudySamplesSet" on-opened-changed="studyNewOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="createNewStudySamplesSetDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudySamplesSetNew}}" on-dialog-button-clicked="dialogClosedStudySamplesSetNew"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="updateStudySamplesSet" on-opened-changed="studyNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="updateStudySamplesSet" on-opened-changed="studyNewOpenedChangedListener">
         {{selectedObject.study}} aaa
             <genoma-instancia1-simple-modal-dialog id="updateStudySamplesSetDialog" action-name="" display-confirm-button display-cancel-button 
             selected-study-name="{{selectedStudyName}}" selected-object="{{selectedObject}}" form-elements="{{dialogStudySamplesSetUpdate}}" on-dialog-button-clicked="dialogClosedStudySamplesSetUpdate"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="updateProject" on-opened-changed="productionLotNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="updateProject" on-opened-changed="updateProjectOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="updateProjectDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-study-name="{{selectedStudyName}}" form-elements="{{dialogProductionLotNew}}" on-dialog-button-clicked="dialogClosedProductionLotNew"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="enterVariableValue" on-opened-changed="enterVariableValueOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="enterVariableValue" on-opened-changed="enterVariableValueOpenedChangedListener">
             <genoma-instancia1-enter-variable-value-dialog id="enterVariableValueDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-study-name="{{selectedStudyName}}"  selected-object="{{selectedObject}}" form-elements="{{dialogStudyNew}}" on-dialog-button-clicked="dialogClosedEnterVariableValue"></genoma-instancia1-enter-variable-value-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="familyList" on-opened-changed="familyListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="familyList" on-opened-changed="familyListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="familyListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedFamilyList"
                 list-rows="{{selectedStudyFamily}}" list-header="{{dialogStudyFamilyList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="familyListRemove" on-opened-changed="familyListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="familyListRemove" on-opened-changed="familyListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="familyListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedFamilyList"
                 list-rows="{{selectedObject.study_family_individual}}" list-header="{{dialogStudyFamilyIndividualList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="individualList" on-opened-changed="individualListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="individualList" on-opened-changed="individualListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="individualListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedIndividualList"
                 list-rows="{{selectedStudyIndividual}}" list-header="{{dialogStudyIndividualList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="individualListRemove" on-opened-changed="individualListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="individualListRemove" on-opened-changed="individualListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="individualListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedIndividualList"
                 list-rows="{{selectedObject.study_individual}}" list-header="{{dialogStudyIndividualList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
         
-        <paper-dialog class="roundbox boxshadow" id="samplesSetList" on-opened-changed="samplesSetListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="samplesSetList" on-opened-changed="samplesSetListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="samplesSetListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedSamplesSetList"
                 list-rows="{{selectedStudySamplesSet}}" list-header="{{dialogStudySamplesSetList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="samplesSetListRemove" on-opened-changed="samplesSetListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="samplesSetListRemove" on-opened-changed="samplesSetListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="samplesSetListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedSamplesSetList"
                 list-rows="{{selectedObject.study_samples_set}}" list-header="{{dialogStudySamplesSetList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="samplesList" on-opened-changed="samplesListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="samplesList" on-opened-changed="samplesListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="samplesListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedSamplesList"
                 list-rows="{{selectedStudySamples}}" list-header="{{dialogStudySamplesList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="samplesListRemove" on-opened-changed="samplesListOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="samplesListRemove" on-opened-changed="samplesListOpenedChangedListener">
             <genoma-instancia1-simple-modal-dialog id="samplesListDialog" action-name="" display-confirm-button display-cancel-button 
                 selected-object="{{selectedObject}}" selected-study-name="{{selectedStudyName}}" on-dialog-button-clicked="dialogClosedSamplesList"
                 list-rows="{{selectedObject.samples}}" list-header="{{dialogStudySamplesList.tableHdrFlds}}"></genoma-instancia1-simple-modal-dialog>
@@ -206,7 +206,7 @@ class GenomaInstancia1WebcomponentProject extends ModuleFunctionsGenoma(connect(
     
     // AddCommentOpenedChangedListener(){
     //     const modalwindow=this.shadowRoot.getElementById('addCommentDialog');
-    //     if (modalwindow){
+    //     if (modalwindow && modalwindow.parentElement.opened){
     //         if (modalwindow.resetValue){
     //             modalwindow.resetValue();
     //             //modalwindow.setFocusInField();
@@ -217,7 +217,7 @@ class GenomaInstancia1WebcomponentProject extends ModuleFunctionsGenoma(connect(
     studyNewOpenedChangedListener(){}
     incubBatchNewOpenedChangedListener(){
         const modalwindow=this.shadowRoot.getElementById('incubBatchNewDialog');
-        if (modalwindow){
+        if (modalwindow && modalwindow.parentElement.opened){
             if (modalwindow.resetValue){
                 modalwindow.resetValue();
                 //modalwindow.setFocusInField();
@@ -226,16 +226,16 @@ class GenomaInstancia1WebcomponentProject extends ModuleFunctionsGenoma(connect(
     }
     productionLotActivateOpenedChangedListener(){
         const modalwindow=this.shadowRoot.getElementById('productionLotActivateDialog');
-        if (modalwindow){
+        if (modalwindow && modalwindow.parentElement.opened){
             if (modalwindow.resetValue){
                 modalwindow.resetValue();
                 //modalwindow.setFocusInField();
             }
         }
     }       
-    productionLotNewOpenedChangedListener(){
+    updateProjectOpenedChangedListener(){
         const modalwindow=this.shadowRoot.getElementById('productionLotNewDialog');
-        if (modalwindow){
+        if (modalwindow && modalwindow.parentElement.opened){
             if (modalwindow.resetValue){
                 modalwindow.resetValue();
                 //modalwindow.setFocusInField();

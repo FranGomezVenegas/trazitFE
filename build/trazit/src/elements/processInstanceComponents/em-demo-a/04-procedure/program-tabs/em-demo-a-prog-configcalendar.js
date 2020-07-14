@@ -15,7 +15,6 @@ progConfigCalendarTableHeaderFields:{type:Object,value:programProgConfigCalendar
                 --today-boxshadow-color: #4caf5066;
             }
         </style>     
-        config-calendar 2   
         <template is="dom-if" if="[[displayCalendar]]">     
             <mp-calendar id="Jan" show-days-in-month="42" first-day-of-week="[[startDayNumber]]" day-labels="[[daysLabels]]" month-labels="[[monthsLabels]]" 
                 disable-prev-days="true" disable-next-days="true" theme="light-blue" disabled-days="[[weekDaysDisabled]]" events-object="[[selectedProgram.config_scheduled_calendar]]"></mp-calendar> 

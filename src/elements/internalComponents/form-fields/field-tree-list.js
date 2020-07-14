@@ -33,21 +33,21 @@ class FieldTreeList extends FieldsMethods(connect(store)(PolymerElement)) {
                     left: auto;
                     text-shadow: 3px 2px #42f4f4;
                     width: 3.25vw;
-                    height: 2.28vw;                
+                    height: 2.28vh;                
                 }                 
                 div.level2 {
                     padding-top: 0.4vw;
                     position: relative;
                     left: 1.3vw;
                     width: 9.76vw;
-                    height: 1.627vw;                
+                    height: 1.627vh;                
                 } 
                 div.level3 {
                     padding-top: 0.4vw;
                     position: relative;
                     left: 2.6vw;
                     width: 9.76vw;
-                    height: 1.627vw;               
+                    height: 1.627vh;               
                 }
                 div.vaadin-button-container{       
                     justify-content: left;

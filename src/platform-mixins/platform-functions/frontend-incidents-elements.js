@@ -6,7 +6,7 @@ import '../../elements/internalComponents/Dialogs/DialogEsign/dialog-esign.js';
 import '../../elements/internalComponents/Dialogs/DialogConfirmUser/dialog-confirmuser';
 import {ApiIncidents} from '../apis/api-incidents';
 import {AuthenticationApi} from '../apis/api-authentication';
-//import '../../elements/internalComponents/Dialogs/DialogSimple/simple-modal-dialog';
+import '../../elements/internalComponents/Dialogs/DialogSimple/simple-modal-dialog';
 
 import {openEsignDialog} from '../../elements/platformComponents/Redux/actions/esign-actions.js';
 import {openConfirmUserDialog} from '../../elements/platformComponents/Redux/actions/confirmuser-actions.js';
@@ -70,9 +70,9 @@ class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(s
         <esign-dialog></esign-dialog>
         <confirmuser-dialog></confirmuser-dialog>
 
-        <paper-dialog id="incidentActionBrowser">
-        adasa
-            <simple-modal-dialog style="width:410px;" dialog adhoc-form-fields="{{incidentDialogFormFields}}" list-header="" list-rows="" 
+        <paper-dialog id="incidentActionBrowser">        
+            <simple-modal-dialog style="width:410px;" dialog form-fields="{{incidentDialogFormFields}}" 
+            display-cancel-button display-confirm-button
             on-dialog-button-clicked="dialogClosedincidentActionBrowser" action-name="{{actionName}}"> </simple-modal-dialog>
         </paper-dialog>   
         `;
@@ -168,7 +168,7 @@ class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(s
         return;            
     }    
     dialogClosedincidentActionBrowser(e){
-//        console.log("dialogClosedincidentActionBrowser triggered", e.detail, e.detail.value);
+        console.log("dialogClosedincidentActionBrowser triggered", e.detail, e.detail.value);
         if (e.detail.dialogState=='confirmed'){
             var datas = [];
             datas.paramUrl='';

@@ -20,28 +20,28 @@ dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLot
         <!-- focus-in-field="{{fieldsDialogAddComment.0.name}}" -->
 
 
-        <paper-dialog class="roundbox boxshadow" id="productionLotNew" on-opened-changed="productionLotNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="productionLotNew" on-opened-changed="productionLotNewOpenedChangedListener">
             <em-demo-a-simple-modal-dialog id="productionLotNewDialog" action-name="" display-confirm-button display-cancel-button 
                 form-elements="{{dialogProductionLotNew}}" on-dialog-button-clicked="dialogClosedProductionLotNew"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="productionLotActivate" on-opened-changed="productionLotActivateOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="productionLotActivate" on-opened-changed="productionLotActivateOpenedChangedListener">
             <em-demo-a-simple-modal-dialog id="productionLotActivateDialog" action-name="" display-confirm-button display-cancel-button 
                 form-elements="{{dialogProductionLotActivate}}" on-dialog-button-clicked="dialogClosedProductionLotActivate"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="incubBatchNew" on-opened-changed="incubBatchNewOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="incubBatchNew" on-opened-changed="incubBatchNewOpenedChangedListener">
             <em-demo-a-simple-modal-dialog id="incubBatchNewDialog" action-name="" display-confirm-button display-cancel-button 
                 form-elements="{{dialogincubBatchNew}}" on-dialog-button-clicked="dialogClosedincubBatchNew"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
 
-        <paper-dialog class="roundbox boxshadow" id="incubBatchAssignIncubator" on-opened-changed="incubBatchAssignIncubatorOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="incubBatchAssignIncubator" on-opened-changed="incubBatchAssignIncubatorOpenedChangedListener">
             <em-demo-a-simple-modal-dialog id="incubBatchAssignIncubatorDialog" action-name="" display-confirm-button display-cancel-button 
                 list-header="[[activeIncubatorsListHeader]]" list-rows="{{activeIncubatorsListRows}}"            
                 on-dialog-button-clicked="dialogClosedincubBatchAssignIncubator"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
         
-        <paper-dialog class="roundbox boxshadow" id="incubatorAddTempReading" on-opened-changed="incubatorAddTempReadingOpenedChangedListener">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="incubatorAddTempReading" on-opened-changed="incubatorAddTempReadingOpenedChangedListener">
             <em-demo-a-simple-modal-dialog id="incubatorAddTempReadingDialog" action-name="" display-confirm-button display-cancel-button 
                 form-elements="{{dialogincubAddTmpReading}}"          
                 on-dialog-button-clicked="dialogClosedIncubatorAddTempReading"></em-demo-a-simple-modal-dialog>
@@ -54,16 +54,16 @@ dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLot
 -->        
         `}// AddCommentOpenedChangedListener(){
 //     const modalwindow=this.shadowRoot.getElementById('addCommentDialog');
-//     if (modalwindow){
+//     if (modalwindow && modalwindow.parentElement.opened){
 //         if (modalwindow.resetValue){
 //             modalwindow.resetValue();
 //             //modalwindow.setFocusInField();
 //         }
 //     }
 // }
-incubatorAddTempReadingOpenedChangedListener(){}incubBatchAssignIncubatorOpenedChangedListener(){}incubBatchNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("incubBatchNewDialog");if(modalwindow){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotActivateOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("productionLotActivateDialog");if(modalwindow){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("productionLotNewDialog");if(modalwindow){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+incubatorAddTempReadingOpenedChangedListener(){}incubBatchAssignIncubatorOpenedChangedListener(){}incubBatchNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("incubBatchNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+}}}productionLotActivateOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("productionLotActivateDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+}}}productionLotNewOpenedChangedListener(){console.log("productionLotNewOpenedChangedListener");const modalwindow=this.shadowRoot.getElementById("productionLotNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
 }}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);// if (dialogName=="addComment"){
 //     elem.actionName=actionName;
 // }

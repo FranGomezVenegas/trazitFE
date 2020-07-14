@@ -19,7 +19,7 @@ documentContainerNotificationsPaneStyle.innerHTML = `
         } 
         iron-icon{
             color:cornflowerblue;
-            height:2vw;
+            height:2vh;
         }               
         div.title{
             display:flex;

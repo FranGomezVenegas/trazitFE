@@ -57,8 +57,8 @@ class DialogmodalButtons extends FieldsMethods(connect(store)(PolymerElement))  
         }));            
     }
     clickedConfirm(){
-        //console.log('clickedConfirm');
-        this.dispatchEvent(new CustomEvent('dialog-confirmedbutton-clicked', {
+        console.log('clickedConfirm');
+        this.dispatchEvent(new CustomEvent('dialog-confirmbutton-clicked', {
           bubbles: true,
           composed: true,
           detail: {'buttonName': this.confirmDialogButton.name,'value': this.value, 'buttonDefinition': this.confirmDialogButton}

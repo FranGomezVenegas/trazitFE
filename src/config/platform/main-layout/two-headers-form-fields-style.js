@@ -7,8 +7,10 @@ documentContainerFormFields.innerHTML = `
       <style>
         .formFieldAvatar{
           vertical-align: middle;
-          width: 25px;
-          height: 20px; 
+          min-height: 3vh;
+          min-width: 4vw;
+          max-height: 5vh;
+          max-width: 6vw;
           border-radius: 50%;
         }
         .formFieldBoolean{
@@ -25,9 +27,9 @@ documentContainerFormFields.innerHTML = `
           margin-bottom: 0px !important;          
         }
         .formFieldLogoCircle{
-          min-height:3vw;
+          min-height:3vh;
           min-width:4vw;
-          max-height:5vw;
+          max-height:5vh;
           max-width:6vw;
           border-radius: 50%;
         }

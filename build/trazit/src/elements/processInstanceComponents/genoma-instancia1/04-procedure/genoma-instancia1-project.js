@@ -47,4 +47,4 @@ this.currentTab=curTab;return}static get properties(){return{selectedLanguage:St
             </iron-pages>
         </div>
         
-        `}refreshWindow(){this.getProjects()}ready(){super.ready();this.getProjects()}}customElements.define("genoma-instancia1-project",GenomaInstancia1Project);
+        `}refreshWindow(){this.getProjects();this.getVariablesAndVariablesSet()}ready(){super.ready();this.getProjects();this.getVariablesAndVariablesSet()}}customElements.define("genoma-instancia1-project",GenomaInstancia1Project);

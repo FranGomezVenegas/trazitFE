@@ -23,7 +23,7 @@ class languageSelectortwoflags extends connect(store)(PolymerElement) {
         <style>
             paper-icon-button{
                 width: 2.6vw;
-                height: 2.6vw;     
+                height: 2.6vh;     
             }
             paper-icon-button.flag{
                 --iron-icon-width: 100%;

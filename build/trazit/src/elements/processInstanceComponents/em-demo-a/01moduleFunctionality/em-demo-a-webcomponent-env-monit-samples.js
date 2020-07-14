@@ -22,33 +22,30 @@ class EmDemoAWebcomponentEnvMonitSamples extends FunctionsEnvMonitSamples(connec
         </style>
         <!-- focus-in-field="{{fieldsDialogAddComment.0.name}}" --> <!-- on-opened-changed="AddCommentOpenedChangedListener">-->
         
-        <paper-dialog class="roundbox boxshadow" id="addComment" >
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="addComment" >
             <em-demo-a-simple-modal-dialog id="addCommentDialog" action-name="" display-confirm-button display-cancel-button form-elements="{{fieldsDialogAddComment}}" 
             on-dialog-button-clicked="dialogClosedAddComment"> </em-demo-a-simple-modal-dialog>
         </paper-dialog>
 
         <!-- modal entry-animation="scale-up-animation" exit-animation="fade-out-animation" -->
-        <paper-dialog  class="roundbox boxshadow" id="sampleAudit" >
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="sampleAudit" >
           <em-demo-a-list-modal-sample-audit id="sampleAuditDialog" 
             sample-id={{selectedObject.sample_id}}></em-demo-a-list-modal-sample-audit>
         </paper-dialog>
         
-        <paper-dialog class="roundbox boxshadow" id="enterResults">
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="enterResults">
           <em-demo-a-list-modal-enterresults id="enterResultsDialog" 
             sample-id={{selectedObject.sample_id}}></em-demo-a-list-modal-enterresults>
         </paper-dialog> <!--on-opened-changed="addSampleMicroorgOpenedChangedListener"-->
         
-        <paper-dialog class="roundbox boxshadow" id="addSampleMicroorg" >
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="addSampleMicroorg" >
             <em-demo-a-simple-modal-dialog id="addSampleMicroorgDialog" display-close-button allow-multi-select
                 list-header="[[microorgListHeader]]" list-rows="{{microorgListRows}}"  form-elements="{{dialogMicroorgListAdhocMicroorg}}"           
                 callBack-function="[[callBackFunction]]" callBack-function-error="[[callBackFunctionError]]" call-back-refresh-window="{{refreshWindow}}"
                 selected-object="{{selectedObject}}" selected-items="{{selectedItems}}"
                 sample-id={{selectedObject.sample_id}} on-dialog-button-clicked="dialogClosedaddSampleMicroorg"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
-        `}addSampleMicroorgOpenedChangedListener(){const elem=this.shadowRoot.getElementById("addSampleMicroorgDialog"),grid=elem.shadowRoot.getElementById("simplemodaldialoggrid");console.log("addSampleMicroorgOpenedChangedListener",grid.selectedItems);grid.resetTableSelection();//        grid.clearCache();
-console.log("addSampleMicroorgOpenedChangedListener",grid.selectedItems);//this.selectedItems=[];
-}AddCommentOpenedChangedListener(e){const modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+        `}addSampleMicroorgOpenedChangedListener(){console.log("addSampleMicroorgOpenedChangedListener");var modalwindow=this.shadowRoot.getElementById("addSampleMicroorgDialog");if(modalwindow&&modalwindow.parentElement.opened){const grid=modalwindow.shadowRoot.getElementById("simplemodaldialoggrid");grid.resetTableSelection()}}AddCommentOpenedChangedListener(e){var modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
 }}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);if("addComment"==dialogName){elem.actionName=actionName;this.AddCommentOpenedChangedListener()}if("addSampleMicroorg"==dialogName){this.addSampleMicroorgOpenedChangedListener()}if("sampleAudit"==dialogName||"enterResults"==dialogName){var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");elemDialog.loadData()}elem.open()}closeDialog(dialogName){var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.

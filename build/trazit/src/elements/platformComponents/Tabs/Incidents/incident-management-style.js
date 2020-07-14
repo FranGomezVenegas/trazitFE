@@ -4,6 +4,8 @@ const documentContainerIncidentManagement=document.createElement("incident-manag
         <style>
             div.mainDiv{
               display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
             }
             div.myIncidentsTable{
               width: 622px; 
@@ -12,6 +14,19 @@ const documentContainerIncidentManagement=document.createElement("incident-manag
             div.buttonGroup{
               width: 222px; 
               display: inline-flex;
+            }
+            div.selectedIncident{
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;              
+            }
+            div.incidentEventCard{
+              background-color: #bbdef2;
+              width:200px;
+              height:100px;
+              padding: 2px;
+              font-size: 40 px;
+              flex: 1 1 auto;
             }
         </style>
     </template>

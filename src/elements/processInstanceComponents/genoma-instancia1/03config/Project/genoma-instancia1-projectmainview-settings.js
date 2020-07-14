@@ -412,7 +412,7 @@ documentContainerGenomaInstancia1ProjectmainviewStyle.innerHTML = `
           /* max-width:112px; */
       }  
       paper-tabs{
-        height: 3vw;
+        height: 3vh;
         font-size: 2vw;
       }                               
     </style>

@@ -169,8 +169,9 @@ this.set('formFields.4.read_only', false); // roleList
         //return;      
         this.userName="labplanet";   
         this.dbUserPassword="vale";
-        //this.userName="marc";   
-        //this.dbUserPassword="aulin";
+        this.userRole="edit";
+        this.userName="marc";   
+        this.dbUserPassword="aulin";
         this.userRole="coordinator";
         this.formFields[1].value=this.userName;
         this.formFields[2].value=this.dbUserPassword;
