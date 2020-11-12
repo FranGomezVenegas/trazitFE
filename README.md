@@ -18,7 +18,8 @@ npm i
 
 ## Install the Polymer-CLI
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. 
+First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed.
+If you have some problem, you can type npm install -g polymer-cli with the flag --unsafe-perm (Remember that it work with SUDO)
 
 ## Viewing the Application
 
