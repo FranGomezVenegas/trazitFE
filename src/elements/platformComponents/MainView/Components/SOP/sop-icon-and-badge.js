@@ -101,4 +101,3 @@ class SopIconAndBadge extends connect(store)(PolymerElement) {
     store.dispatch(setCurrentTab(SOP_userMySOPTab));
   }
 }
-customElements.define("sop-icon-and-badge", SopIconAndBadge);
