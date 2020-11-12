@@ -11,9 +11,9 @@ import {FunctionsEnvMonitSamples} from '../01moduleFunctionality/functions-env-m
 // import '@polymer/neon-animation/animations/fade-out-animation.js';
 
 //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-import '../04-procedure/dialogs/em-demo-a-simple-modal-dialog';
-import '../04-procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
-import '../04-procedure/dialogs/em-demo-a-list-modal-enterresults';
+import '../04procedure/dialogs/em-demo-a-simple-modal-dialog';
+import '../04procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
+import '../04procedure/dialogs/em-demo-a-list-modal-enterresults';
  /* `em-demo-a-webcomponent-env-monit-samples` Description
  *
  * @customElement
@@ -47,7 +47,7 @@ class EmDemoAWebcomponentEnvMonitSamples extends  FunctionsEnvMonitSamples(conne
         return html`
         <style>
             paper-dialog{
-                top:100px; left:80px; height:0px; width:0px; z-index: 98;  position: fixed;  
+                top:13.85vh; left:1vw; height:0px; width:0px; z-index: 98;  position: fixed;  
                 /* height: 100vh; */
                 width: 100vw;
                 -webkit-transition: opacity 0.3s ease-in;
@@ -82,12 +82,13 @@ class EmDemoAWebcomponentEnvMonitSamples extends  FunctionsEnvMonitSamples(conne
     }
 
     addSampleMicroorgOpenedChangedListener(){
-        console.log('addSampleMicroorgOpenedChangedListener');
+        //console.log('addSampleMicroorgOpenedChangedListener');
         var modalwindow=this.shadowRoot.getElementById('addSampleMicroorgDialog');
-        if (modalwindow && modalwindow.parentElement.opened){
+        if (modalwindow){ //modalwindow.parentElement.opened no necesario pq la accion es un botón , no al confirmar dialogo
             const grid=modalwindow.shadowRoot.getElementById('simplemodaldialoggrid');
             grid.resetTableSelection();
         }
+        //console.log('addSampleMicroorgOpenedChangedListener');
     }
     AddCommentOpenedChangedListener(e){
         var modalwindow=this.shadowRoot.getElementById('addCommentDialog');

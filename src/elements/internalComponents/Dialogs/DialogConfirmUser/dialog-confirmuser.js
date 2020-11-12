@@ -10,15 +10,16 @@ import {CloseOnEscPressed} from '../close-dialog-on-esc-pressed-mixin';
 
 import {closeConfirmUserDialog, resetAndCloseConfirmUserDialog, confirmUserSuccess, confirmUserFailure} from '../../../platformComponents/Redux/actions/confirmuser-actions.js';
 import {dialog_buttons} from '../dialogmodal-buttons-settings';
-import {platformConfirmUser_formFields, platformConfirmUser_notCorrectMessage} from './dialog-confirmuser-settings';
+import {platformConfirmUser_windowTitle, platformConfirmUser_formFields, platformConfirmUser_notCorrectMessage} from './dialog-confirmuser-settings';
 import './dialog-confirmuser-style';
+import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
 
 let acceptedHandler = null;
 let canceledHandler = null;
 let numConfirmations = null;
 import '../dialogmodal-buttons.js';
 
-class ConfirmUserDialog extends CloseOnEscPressed(AuthenticationApi(connect(store)(PolymerElement))){
+class ConfirmUserDialog extends FieldsMethods(CloseOnEscPressed(AuthenticationApi(connect(store)(PolymerElement)))){
   static get properties() {
     return {
       dialogButtons: { type: Array, value: dialog_buttons},
@@ -29,13 +30,17 @@ class ConfirmUserDialog extends CloseOnEscPressed(AuthenticationApi(connect(stor
       classModal: {type: String, computed: 'changeClass(opened)'},
       formFields: {type: Array, notify: true, bubble: true, value: platformConfirmUser_formFields},      
       validationNotCorrectMessage: {type: Object, value: platformConfirmUser_notCorrectMessage},
-      selectedLanguage:{ type: String},      
+      selectedLanguage:{ type: String}, 
+      platformConfirmUser_windowTitle:{type: Object, value: platformConfirmUser_windowTitle},     
     }
   }
 
   changeAttemptsPhrase(){
-    this.attemptsPhrase='*** Attempts:'+this.numAttempts+' of '+this.maximumFailures; 
-    return;
+    if (this.selectedLanguage=="en"){
+      this.attemptsPhrase='*** Attempts:'+this.numAttempts+' of '+this.maximumFailures;}
+    if (this.selectedLanguage=="en"){
+      this.attemptsPhrase='*** Intentos:'+this.numAttempts+' de '+this.maximumFailures;}
+      return;
   }
   changeClass(opened) {
     if(opened) {
@@ -48,8 +53,10 @@ class ConfirmUserDialog extends CloseOnEscPressed(AuthenticationApi(connect(stor
     return html`
     <style include="dialog-confirmuser-style"></style>      
       <div class$="{{classModal}}">
-        <div class="confirmUserDialogModalMain"></div>
+        <div class="confirmUserDialogModalMain">        </div>
         <div class="confirmUserDialogModalDialog" >
+        {{labelValue(selectedLanguage, platformConfirmUser_windowTitle)}}
+
           <template is="dom-repeat" items="{{formFields}}" as="currentfield">       
             <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClicked" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
           </template>          

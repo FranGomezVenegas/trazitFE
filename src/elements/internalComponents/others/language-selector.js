@@ -22,8 +22,8 @@ class languageSelector extends connect(store)(PolymerElement) {
         return html`   
             <style>
             paper-icon-button{
-                width: 40px;
-                height: 40px;                 
+                width: 2vmax;
+                height: 2vmax;                 
                 }
             }
             </style>             
@@ -36,7 +36,7 @@ class languageSelector extends connect(store)(PolymerElement) {
             </mwc-formfield>    
             
             <paper-icon-button id="english" on-click="langSwitch" 
-                src="http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png" 
+                src="./images/flags/england.jpg"
                 value="en" alt="English" title="English"></paper-icon-button> -->
         `;
     }
@@ -58,10 +58,10 @@ class languageSelector extends connect(store)(PolymerElement) {
     }
     getCheckerValue(){
         if (this.selectedLanguage=="es"){
-            this.flagUrl='https://banner2.kisspng.com/20180320/hde/kisspng-flag-of-spain-flag-of-the-united-states-national-f-spain-flags-icon-png-5ab0b60cb326e6.1242812115215303807338.jpg';
+            this.flagUrl="./images/flags/spain.jpg"; //'https://banner2.kisspng.com/20180320/hde/kisspng-flag-of-spain-flag-of-the-united-states-national-f-spain-flags-icon-png-5ab0b60cb326e6.1242812115215303807338.jpg';
             this.flagTitle="Castellano";
         return;}
-        this.flagUrl='http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png';
+        this.flagUrl="./images/flags/england.jpg"; //'http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png';
         this.flagTitle='English';
     }
 }

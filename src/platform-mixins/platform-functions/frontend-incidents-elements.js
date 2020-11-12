@@ -11,7 +11,9 @@ import '../../elements/internalComponents/Dialogs/DialogSimple/simple-modal-dial
 import {openEsignDialog} from '../../elements/platformComponents/Redux/actions/esign-actions.js';
 import {openConfirmUserDialog} from '../../elements/platformComponents/Redux/actions/confirmuser-actions.js';
 
-class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(store)(PolymerElement))) {
+import {FrontendIncidents} from './frontend-incidents'
+
+class FrontendIncidentsElements extends FrontendIncidents(ApiIncidents(AuthenticationApi(connect(store)(PolymerElement)))) {
     static get properties() {
         return {            
             callBackFunctionIncidentElem: Object,
@@ -70,6 +72,10 @@ class FrontendIncidentsElements extends ApiIncidents(AuthenticationApi(connect(s
         <esign-dialog></esign-dialog>
         <confirmuser-dialog></confirmuser-dialog>
 
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="newIncidentDialog" >        
+                <simple-modal-dialog id="newIncidentDialog2" action-name="" display-close-button form-fields="{{formFields}}" 
+                field-button-clicked="{{fieldButtonClickedForIncidents}}" on-dialog-button-clicked="fieldButtonClickedForIncidents"> </simple-modal-dialog>
+        </paper-dialog>
         <paper-dialog id="incidentActionBrowser">        
             <simple-modal-dialog style="width:410px;" dialog form-fields="{{incidentDialogFormFields}}" 
             display-cancel-button display-confirm-button

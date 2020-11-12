@@ -15,10 +15,10 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
         }
     } 
     
-    fieldButtonClickedForPrograms(e) {
+    fieldButtonClickedForInvestigations(e) {
         var buttonDefinition=e.detail.buttonDefinition;
-        // console.log('frontend-env-monit-sample >> fieldButtonClicked ', 
-        //     'e.detail.buttonDefinition', e.detail.buttonDefinition, 'this.selectedObject', this.selectedObject);
+         console.log('functions-env-monit >> fieldButtonClickedForInvestigations ', 
+             'e.detail.buttonDefinition', e.detail.buttonDefinition, 'this.selectedObject', this.selectedObject);
         if (this.selectedObjectIsMandatory(buttonDefinition) && this.selectedObject==null){
             this.toastErrorMessage(this.objectNotSelected());
             return;
@@ -27,7 +27,10 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
         datas.selectedObject=this.selectedObject;
         if (this.refreshWindow){
             datas.callBackFunction=this.refreshWindow.bind(this); }
-        this.moduleActionTrigger(buttonDefinition, datas, "PROGRAMS");
+        if (buttonDefinition.actionName=="CORRECTIVE_ACTION_COMPLETE"){
+            this.moduleActionTrigger(buttonDefinition, datas, "PROGRAMS");           
+        }else{
+        this.moduleActionTrigger(buttonDefinition, datas, "INVESTIGATION");}
     } 
     fieldButtonClickedForProductionLots(e) {
         var buttonDefinition=e.detail.buttonDefinition;
@@ -45,8 +48,8 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
     } 
     fieldButtonClickedForIncubBatch(e) {
         var buttonDefinition=e.detail.buttonDefinition;
-        // console.log('frontend-env-monit-sample >> fieldButtonClicked ', 
-        //     'e.detail.buttonDefinition', e.detail.buttonDefinition, 'this.selectedObject', this.selectedObject);
+        console.log('frontend-env-monit-sample >> fieldButtonClicked ', 
+             'e.detail.buttonDefinition', e.detail.buttonDefinition, 'this.selectedObject', this.selectedObject);
         if (this.selectedObjectIsMandatory(buttonDefinition) && this.selectedObject==null){
             this.toastErrorMessage(this.objectNotSelected());
             return;
@@ -56,8 +59,21 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
         if (this.refreshWindow){
             datas.callBackFunction=this.refreshWindow.bind(this); }
         this.moduleActionTrigger(buttonDefinition, datas, "INCUB_BATCH");
-    }         
-    
+    } 
+    fieldButtonClickedForSavedQueries(e) {
+        var buttonDefinition=e.detail.buttonDefinition;
+        console.log('frontend-env-monit-sample >> fieldButtonClickedForSavedQueries ', 
+             'e.detail.buttonDefinition', e.detail.buttonDefinition, 'this.selectedObject', this.selectedObject);
+        if (this.selectedObjectIsMandatory(buttonDefinition) && this.selectedObject==null){
+            this.toastErrorMessage(this.objectNotSelected());
+            return;
+        }    
+        var datas = [];
+        datas.selectedObject=this.selectedObject;
+        if (this.refreshWindow){
+            datas.callBackFunction=this.refreshWindow.bind(this); }
+        this.moduleActionTrigger(buttonDefinition, datas, "SAVED_QUERIES");
+    }             
     dialogClosedProductionLotNew(e){ 
         var buttonDefName=this.buttonDefinition.name;
         var actionDefinition = this.productionLotsActions().find(function(tab) {
@@ -75,7 +91,6 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
             this.$.productionLotNew.close();
         }
     }   
-
     dialogClosedProductionLotActivate(e){ 
         var buttonDefName=this.buttonDefinition.name;
         var actionDefinition = this.productionLotsActions().find(function(tab) {
@@ -128,7 +143,6 @@ export const FunctionsEnvMonit = (superClass) => class extends EnvMonitModuleDef
             this.$.incubBatchNew.close();
         }
     }  
-
     dialogClosedIncubatorAddTempReading(e){ 
         var buttonDefName=this.buttonDefinition.name;
         var moduleArea=this.getFunctionalArea("INCUBATOR");
@@ -181,5 +195,64 @@ console.log('dialogClosedIncubatorAddTempReading');
             //var elem=this.shadowRoot.getElementById("myelements");
             this.moduleActionTrigger(e.detail.buttonDefinition, datas, "INCUBATOR");  
             //this.$.myelements.moduleActionTrigger(e.detail.buttonDefinition, datas, "INCUBATOR");  
-    }           
+    } 
+    investigationNewNoDialog(){ 
+        console.log('investigationNewNoDialog');
+        var functionalArea="INVESTIGATION";
+        var buttonDefName=this.buttonDefinition.name;
+        var actionDefinition = this.investigationActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        var datas = []; 
+        datas=this.selectedObject;
+        datas.objectsToAdd="sample_analysis_result*"+this.selectedObject.result_id;
+        datas.fieldName="description";
+        datas.fieldValue="Investigation for "+this.selectedObject.result_id+"*String";
+        this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, this.getFunctionalArea(functionalArea), actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+    } 
+    dialogClosedInvestigationAddObject(e){
+        console.log('dialogClosedInvestigationAddObject');
+        //return;
+        var functionalArea="INVESTIGATION";
+        var buttonDefName=this.buttonDefinition.name;
+        var actionDefinition = this.investigationActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        var datas = [];         
+        datas=this.selectedObject;
+        datas.objectsToAdd="sample_analysis_result*"+this.selectedObject.result_id;
+        datas.investigationId=e.target.simpleModalSelectedObject.id;
+        //datas.fieldValue="Investigation for "+this.selectedObject.result_id+"*String";
+        //datas.fieldName="description";
+        this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, this.getFunctionalArea(functionalArea), actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+        var elem=this.shadowRoot.getElementById("myelements");//(actionDefinition.dialogInfo.webComponentName); 
+        if (elem){
+            elem.closeDialog(actionDefinition.dialogInfo.dialogName);
+        }else{
+            this.$.investigationAddObject.close();
+        }
+    }                   
+    dialogClosedInvestigationDecision(e){
+        console.log('dialogClosedInvestigationDecision');
+        return;
+        var functionalArea="INVESTIGATION";
+        var buttonDefName=this.buttonDefinition.name;
+        var actionDefinition = this.investigationActions().find(function(tab) {
+            return tab.actionName.toUpperCase() == buttonDefName.toUpperCase();
+        }); 
+        var datas = [];         
+        datas=this.selectedObject;
+        datas.objectsToAdd="sample_analysis_result*"+this.selectedObject.result_id;
+        datas.investigationId=e.target.simpleModalSelectedObject.id;
+        //datas.fieldValue="Investigation for "+this.selectedObject.result_id+"*String";
+        //datas.fieldName="description";
+        this.moduleActionTriggerAPI(this.buttonDefinition.name, this.buttonDefinition, datas, this.getFunctionalArea(functionalArea), actionDefinition, this.callBackFunction, this.callBackFunctionError, this.refreshWindowMethod);                      
+        var elem=this.shadowRoot.getElementById("myelements");//(actionDefinition.dialogInfo.webComponentName); 
+        if (elem){
+            elem.closeDialog(actionDefinition.dialogInfo.dialogName);
+        }else{
+            this.$.investigationAddObject.close();
+        }
+    }   
+
 }    

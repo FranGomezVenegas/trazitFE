@@ -9,14 +9,14 @@ import {CloseOnEscPressed} from '../close-dialog-on-esc-pressed-mixin';
 import {closeEsignDialog, resetAndCloseEsignDialog, esignSuccess, esignFailure} from '../../../platformComponents/Redux/actions/esign-actions.js';
 import './dialog-esign-style';
 import {dialog_buttons} from '../dialogmodal-buttons-settings';
-import {platformEsign_notCorrectMessage} from './dialog-esign-settings';
-
+import {platformEsign_windowTitle, platformEsign_notCorrectMessage} from './dialog-esign-settings';
+import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
 import '../dialogmodal-buttons.js';
 
 let acceptedHandler = null;
 let canceledHandler = null;
 
-class EsignDialog extends CloseOnEscPressed(AuthenticationApi(connect(store)(PolymerElement))) {
+class EsignDialog extends FieldsMethods(CloseOnEscPressed(AuthenticationApi(connect(store)(PolymerElement)))) {
   static get properties() {
     return {
       dialogButtons: { type: Array, value: dialog_buttons},
@@ -28,12 +28,16 @@ class EsignDialog extends CloseOnEscPressed(AuthenticationApi(connect(store)(Pol
       classModal: {type: String, computed: 'changeClass(opened)'},
       //formFields: {type: Array, notify: true, bubble: true, value: platformsign_formFields},
       validationNotCorrectMessage: {type: Object, value: platformEsign_notCorrectMessage},
-      selectedLanguage:{ type: String},      
+      selectedLanguage:{type: String},  
+      platformEsign_windowTitle:{type: Object, value: platformEsign_windowTitle},      
     }
   }
 
   changeAttemptsPhrase(){
-    this.attemptsPhrase='*** Attempts:'+this.numAttempts+' of '+this.maximumFailures; 
+    if (this.selectedLanguage=="en"){
+      this.attemptsPhrase='*** Attempts:'+this.numAttempts+' of '+this.maximumFailures;}
+    if (this.selectedLanguage=="es"){
+      this.attemptsPhrase='*** Intentos:'+this.numAttempts+' de '+this.maximumFailures;}
     return;
   }
   changeClass(opened) {
@@ -48,8 +52,9 @@ class EsignDialog extends CloseOnEscPressed(AuthenticationApi(connect(store)(Pol
      <style include="dialog-esign-style"></style> 
       
       <div class$="{{classModal}}">
-        <div class="esignDialogModalMain"></div>
-        <div class="esignDialogModalDialog">
+        <div class="esignDialogModalMain">     </div>
+        <div class="esignDialogModalDialog">   
+          <p> {{labelValue(selectedLanguage, platformEsign_windowTitle)}} </p>    
           <input type="password" id="esign" value="" on-keydown="keyPressed">
           <div>
             <dialogmodal-buttons 

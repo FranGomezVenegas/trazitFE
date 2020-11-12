@@ -1,6 +1,6 @@
 export const appLogin_logoOnTop={
   display:true,
-  url:'./images/platform-login/labplanet.png',
+  url:'./images/header/trazit-removebg.png',
   };
 export const appLogin_authenticationMessage={
   "connectedSuccess_singleRole":{
@@ -23,10 +23,11 @@ export const appLogin_ribbon={
 export const appLogin_formFields=[
     {
       "name": "title",
-      "label_en": "TRAZit ! Welcome to the new Planet", "label_es": "TRAZit ! Bienvenido al nuevo Planeta",
+      "label_en": "Trace it !!!", "label_es": "¡¡ TRÁZALO !!",
       "type": "title",
       "size": 'h3',
-      "style": "color: var(--paper-light-blue-50);",
+      /* "style": "color: var(--paper-light-blue-50);", */ 
+      "color": "#1676f3",
       "read_only": true
     },             
     {
@@ -63,7 +64,17 @@ export const appLogin_formFields=[
         "keyName":"Analyst",                        
         "keyValue_en":"Analyst", "keyValue_es":"valor1"              
       }]
-    },                        
+    },
+    {
+      "name": "video",
+      "label_en": "Access", "label_es": "Entrar",
+      "type": "icon-button",              
+      "icon_name": "icons:camera-enhance", //"icons:settings-input-svideo", //"notification:ondemand-video",
+      "value": "",
+      "read_only": false
+    },            
+
+                        
   ];
 export const appLogOut_logOutMessage={
 "closedSession":{

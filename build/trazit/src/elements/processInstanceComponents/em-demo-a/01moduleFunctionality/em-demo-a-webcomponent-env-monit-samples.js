@@ -4,7 +4,7 @@ import{PolymerElement,html}from"../../../../../node_modules/@polymer/polymer/pol
 // import '@polymer/neon-animation/animations/scale-up-animation.js';
 // import '@polymer/neon-animation/animations/fade-out-animation.js';
 //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-import"../04-procedure/dialogs/em-demo-a-simple-modal-dialog.js";import"../04-procedure/dialogs/em-demo-a-list-modal-sample-audit.js";import"../04-procedure/dialogs/em-demo-a-list-modal-enterresults.js";/* `em-demo-a-webcomponent-env-monit-samples` Description
+import"../04procedure/dialogs/em-demo-a-simple-modal-dialog.js";import"../04procedure/dialogs/em-demo-a-list-modal-sample-audit.js";import"../04procedure/dialogs/em-demo-a-list-modal-enterresults.js";/* `em-demo-a-webcomponent-env-monit-samples` Description
  *
  * @customElement
  * @polymer
@@ -14,7 +14,7 @@ import"../04-procedure/dialogs/em-demo-a-simple-modal-dialog.js";import"../04-pr
 class EmDemoAWebcomponentEnvMonitSamples extends FunctionsEnvMonitSamples(connect(store)(PolymerElement)){static get properties(){return{selectedObject:{type:Object},selectedItems:{type:Array},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},fieldsDialogAddComment:{type:Array,notify:!0,bubble:!0,value:dialogAddComment},microorgListHeader:{type:Array,value:dialogMicroorgListTableHeader},microorgListRows:{type:Array},dialogMicroorgListAdhocMicroorg:{type:Array,value:dialogMicroorgListAdhocMicroorg}}}stateChanged(state){if(null!=state.emDemoA){this.microorgListRows=state.emDemoA.microorganismList}}static get template(){return html`
         <style>
             paper-dialog{
-                top:100px; left:80px; height:0px; width:0px; z-index: 98;  position: fixed;  
+                top:13.85vh; left:1vw; height:0px; width:0px; z-index: 98;  position: fixed;  
                 /* height: 100vh; */
                 width: 100vw;
                 -webkit-transition: opacity 0.3s ease-in;
@@ -45,7 +45,10 @@ class EmDemoAWebcomponentEnvMonitSamples extends FunctionsEnvMonitSamples(connec
                 selected-object="{{selectedObject}}" selected-items="{{selectedItems}}"
                 sample-id={{selectedObject.sample_id}} on-dialog-button-clicked="dialogClosedaddSampleMicroorg"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
-        `}addSampleMicroorgOpenedChangedListener(){console.log("addSampleMicroorgOpenedChangedListener");var modalwindow=this.shadowRoot.getElementById("addSampleMicroorgDialog");if(modalwindow&&modalwindow.parentElement.opened){const grid=modalwindow.shadowRoot.getElementById("simplemodaldialoggrid");grid.resetTableSelection()}}AddCommentOpenedChangedListener(e){var modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+        `}addSampleMicroorgOpenedChangedListener(){//console.log('addSampleMicroorgOpenedChangedListener');
+var modalwindow=this.shadowRoot.getElementById("addSampleMicroorgDialog");if(modalwindow){//modalwindow.parentElement.opened no necesario pq la accion es un botón , no al confirmar dialogo
+const grid=modalwindow.shadowRoot.getElementById("simplemodaldialoggrid");grid.resetTableSelection()}//console.log('addSampleMicroorgOpenedChangedListener');
+}AddCommentOpenedChangedListener(e){var modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
 }}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);if("addComment"==dialogName){elem.actionName=actionName;this.AddCommentOpenedChangedListener()}if("addSampleMicroorg"==dialogName){this.addSampleMicroorgOpenedChangedListener()}if("sampleAudit"==dialogName||"enterResults"==dialogName){var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");elemDialog.loadData()}elem.open()}closeDialog(dialogName){var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.

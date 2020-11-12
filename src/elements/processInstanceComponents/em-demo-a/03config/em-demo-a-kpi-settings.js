@@ -19,7 +19,7 @@ export const moduleKPIs={
     whereFieldsValue:'program_smp_template|-|-|-',
     fieldsToRetrieveOrGrouping:'raw_value as original_value|TO_NUMBER(raw_value, \'9999\') as numeric_value|area|sample_id|sampling_date|program_name|spec_code|analysis',
     dataGrouped: false,
-    },
+    }, 
     {objGroupName:'programs',
     tableCategory:'data',
     tableName:'program',

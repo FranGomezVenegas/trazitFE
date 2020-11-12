@@ -5,14 +5,17 @@ import{userOpenIncidents, selectedUserIncidentDetail} from '../../elements/platf
 import {tokenMixin} from '../store/token-mixin';
 import {ToastMethods} from '../functions/toast-methods';
 import {ApiSettings} from '../apis/api-settings';
+
 /**
  * @mixinFunction
  * @polymer
  */
 export const FrontendIncidents = (superClass) => class extends ApiSettings(ToastMethods(tokenMixin(superClass))) {
-    
+fieldButtonClicked(e){
+    this.fieldButtonClickedForIncidents(e);
+}    
 fieldButtonClickedForIncidents(e) {
-        //console.log('optionPressed', e.detail.buttonName, 'selectedObject', this.selectedObject);                
+        console.log('fieldButtonClickedForIncidents', e.detail.buttonName, 'selectedObject', this.selectedObject);                
         var datas = [];
         var paramsUrl="";
         if (e.detail.buttonName==undefined){return;}
@@ -20,12 +23,16 @@ fieldButtonClickedForIncidents(e) {
         //var schemaPrefix=e.target.value.procedure;
         switch (actionName) {   
         case 'OPEN_NEW_INCIDENT_DIALOG':     
-            var dialogName='newIncidentDialog';
+            var dialogName='myelements';
             var elem=this.shadowRoot.getElementById(dialogName);
-            if (elem){elem.open();}
+            //if (elem){elem.open();}
+            var dialogName='newIncidentDialog';
+            var elem2=elem.shadowRoot.getElementById(dialogName);
+            if (elem2){elem2.open();}
             else{
             console.log('field-controller.resetValue', 'no field with name ', dialogName);
-            }            
+            }       
+            break;     
         case 'NEW_INCIDENT':
             //console.log('NEW_INCIDENT');
             paramsUrl=paramsUrl+"&actionName="+e.detail.buttonName.toUpperCase();
@@ -35,7 +42,7 @@ fieldButtonClickedForIncidents(e) {
             datas.storeCurrentState=storeCurrentState;
             datas.incidentTitle=this.formFields[0].value;
             datas.incidentDetail=this.formFields[1].value;
-            this.$.myElements.actionTrigger(e.detail.buttonName, datas, e.detail.buttonDefinition);   
+            this.$.myelements.actionTrigger(e.detail.buttonName, datas, e.detail.buttonDefinition);   
             //paramsUrl=paramsUrl+"&sessionInfo="+storeCurrentState;
             return;
         case 'CONFIRM_INCIDENT':
@@ -49,7 +56,7 @@ fieldButtonClickedForIncidents(e) {
                 //    detail: 'Please select one incident first'}));    
                 return;
             }          
-            this.$.myElements.actionTrigger(e.detail.buttonName, this.selectedObject, e.detail.buttonDefinition);                      
+            this.$.myelements.actionTrigger(e.detail.buttonName, this.selectedObject, e.detail.buttonDefinition);                      
             return;            
         default:
             var msgObj=this.actionNameNotRecognized(actionName, 'frontend-incidents');

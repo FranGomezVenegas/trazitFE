@@ -1,14 +1,14 @@
 import{PolymerElement,html}from"../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../store.js";import{FunctionsEnvMonit}from"./functions-env-monit.js";//import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-import"../04-procedure/dialogs/em-demo-a-simple-modal-dialog.js";//import '../04-procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
-//import '../04-procedure/dialogs/em-demo-a-list-modal-enterresults';
+import"../04procedure/dialogs/em-demo-a-simple-modal-dialog.js";//import '../04procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
+//import '../04procedure/dialogs/em-demo-a-list-modal-enterresults';
 /* `em-demo-a-webcomponent-env-monit` Description
  *
  * @customElement
  * @polymer
  * @demo
  * 
- */import{dialogProductionLotNew,dialogProductionLotActivate,dialogincubBatchNew,dialogincubAddTmpReading,dialogIncubatorsListTableHeader}from"../03config/Dialogs/em-demo-a-dialogmodal-settings.js";class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(PolymerElement)){static get properties(){return{selectedObject:{type:Object},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},//fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
-dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLotNew},dialogProductionLotActivate:{type:Array,notify:!0,bubble:!0,value:dialogProductionLotActivate},dialogincubBatchNew:{type:Array,notify:!0,bubble:!0,value:dialogincubBatchNew},dialogincubAddTmpReading:{type:Array,notify:!0,bubble:!0,value:dialogincubAddTmpReading},activeIncubatorsListHeader:{type:Array,value:dialogIncubatorsListTableHeader},activeIncubatorsListRows:{type:Array}}}stateChanged(state){if(null!=state.emDemoA){this.activeIncubatorsListRows=state.emDemoA.allIncubators}}static get template(){return html`
+ */import{dialogProductionLotNew,dialogProductionLotActivate,dialogincubBatchNew,dialogincubAddTmpReading,dialogIncubatorsListTableHeader,dialogInvestigationsListTableHeader,dialogInvestDecision}from"../03config/Dialogs/em-demo-a-dialogmodal-settings.js";class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(PolymerElement)){static get properties(){return{selectedObject:{type:Object},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},//fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
+dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLotNew},dialogProductionLotActivate:{type:Array,notify:!0,bubble:!0,value:dialogProductionLotActivate},dialogincubBatchNew:{type:Array,notify:!0,bubble:!0,value:dialogincubBatchNew},dialogincubAddTmpReading:{type:Array,notify:!0,bubble:!0,value:dialogincubAddTmpReading},activeIncubatorsListHeader:{type:Array,value:dialogIncubatorsListTableHeader},activeIncubatorsListRows:{type:Array},openInvestigationsListHeader:{type:Array,value:dialogInvestigationsListTableHeader},openInvestigationsListRows:{type:Array},dialogInvestDecision:{type:Array,notify:!0,bubble:!0,value:dialogInvestDecision}}}stateChanged(state){if(null!=state.emDemoA){this.activeIncubatorsListRows=state.emDemoA.allIncubators;this.openInvestigationsListRows=state.emDemoA.openInvestigations}}static get template(){return html`
         <!-- <style>
         //     paper-dialog{
         //         top:100px; left:80px; height:0px; width:0px; z-index: 100;  position: fixed;  
@@ -46,12 +46,19 @@ dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLot
                 form-elements="{{dialogincubAddTmpReading}}"          
                 on-dialog-button-clicked="dialogClosedIncubatorAddTempReading"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
-<!--
-        <paper-dialog id="incubatorAddTempReading">
-            <em-demo-a-list-modal-prodlotbrowser list-header="{{incubatorsListFieldsToDisplay}}" list-rows="{{activeIncubatorsList}}" 
-            on-dialog-button-clicked="dialogClosedIncubatorAddTempReading" action-name="{{actionName}}"> </em-demo-a-list-modal-prodlotbrowser>
-        </paper-dialog>  
--->        
+
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="investigationAddObject" on-opened-changed="incubBatchAssignIncubatorOpenedChangedListener">
+            <em-demo-a-simple-modal-dialog id="investigationAddObjectDialog" action-name="" display-confirm-button display-cancel-button 
+                list-header="[[openInvestigationsListHeader]]" list-rows="{{openInvestigationsListRows}}"            
+                on-dialog-button-clicked="dialogClosedInvestigationAddObject"></em-demo-a-simple-modal-dialog>
+        </paper-dialog>
+
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="investigationDecision" >
+            <em-demo-a-simple-modal-dialog id="investigationDecisionDialog" action-name="" 
+                display-confirm-button display-cancel-button form-elements="{{dialogInvestDecision}}"            
+                on-dialog-button-clicked="dialogClosedInvestigationDecision"></em-demo-a-simple-modal-dialog>
+        </paper-dialog>
+
         `}// AddCommentOpenedChangedListener(){
 //     const modalwindow=this.shadowRoot.getElementById('addCommentDialog');
 //     if (modalwindow && modalwindow.parentElement.opened){
@@ -63,15 +70,16 @@ dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:dialogProductionLot
 // }
 incubatorAddTempReadingOpenedChangedListener(){}incubBatchAssignIncubatorOpenedChangedListener(){}incubBatchNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("incubBatchNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
 }}}productionLotActivateOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("productionLotActivateDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotNewOpenedChangedListener(){console.log("productionLotNewOpenedChangedListener");const modalwindow=this.shadowRoot.getElementById("productionLotNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);// if (dialogName=="addComment"){
+}}}productionLotNewOpenedChangedListener(){//console.log('productionLotNewOpenedChangedListener');        
+const modalwindow=this.shadowRoot.getElementById("productionLotNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+}}}openDialog(dialogName,actionName){if("investigationNew"==dialogName){console.log("openDialog >> investigationNew");this.investigationNewNoDialog(this.buttonDefinition);return}var elem=this.shadowRoot.getElementById(dialogName);// if (dialogName=="addComment"){
 //     elem.actionName=actionName;
 // }
 // if (dialogName=="sampleAudit" || dialogName=="enterResults"){
 //     var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");
 //     elemDialog.loadData();
 // }
-elem.open()}closeDialog(dialogName){var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
+elem.open()}closeDialog(dialogName){console.log("closeDialog");var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.
      * @constructor

@@ -21,14 +21,16 @@ documentContainerDialogConfirmUser.innerHTML = `
                     -webkit-transition: opacity 0.3s ease-in;
                 }
                 div.confirmUserDialogModalDialog {
+                    color: #464dbb;
+                    font-weight: bold;
                     position: fixed;
                     top: 50%;
                     left: 50%;
-                    padding: 25px;
+                    padding: 1.627vw;
                     transform: translate(-50%, -50%);
-                    width: var(--modal-width, 500px);
+                    // width: var(--modal-width, 26.04vw);
                     max-width: var(--modal-max-width, 80%);
-                    height: var(--modal-height, 300px);
+                    // height: var(--modal-height, 16.276vw);
                     max-height: 100%;
                     z-index: 1001;
                     background-color: #fff;
@@ -36,8 +38,9 @@ documentContainerDialogConfirmUser.innerHTML = `
                     -webkit-transition: opacity 0.3s ease-in;
                     box-shadow: 6px 6px 16px #000;
                     border-radius: var(--modal-border-radius, 10px);
-                    background-image: url('./images/platform-login/login-hexagon-background.png');
-                    width: 400px; 
+                    background-image: url('./images/platform-login/abstract.jpg');
+                    background-size: cover;
+                    // width: 26.04vw; 
                 }                
             </style>
         </template>

@@ -78,7 +78,7 @@ class FieldController extends PolymerElement {
       <field-date id="{{field.name}}" field="[[field]]" value="{{field.value}}" ></field-date>
       </template>
       <template is="dom-if" if="{{iAm.list}}">   
-        <field-list id="{{field.name}}"  field="[[field]]" value="{{field.value}}" ></field-list>
+        <field-list id="{{field.name}}"  field="[[field]]" value="{{field.value}}" value_no_index="{{field.value_no_index}}" ></field-list>
       </template>
       <template is="dom-if" if="{{iAm.text}}">
         <field-text id="{{field.name}}" "type="{{field.type}}" field="{{field}}" value="{{field.value}}" ></field-text>
@@ -122,13 +122,14 @@ class FieldController extends PolymerElement {
       </div>
     `;
   }
-  listChange(newList) {
-    this.field-list
-  }
+  // listChange(newList) {
+  //   this.field-list
+  // }
   fieldChange(newField) {
     this.resetIAms();
 //if (this.id=='proceduresList'){    
-//  console.log('field-controller', newField.name, this.id);}
+//  console.log('field-controller', newField.name, this.id);
+//}
     switch(newField.type) {
       case 'boolean':
         this.set('iAm.boolean', true);

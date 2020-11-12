@@ -20,8 +20,8 @@ class FieldIconButton extends FieldsMethods(connect(store)(PolymerElement)) {
     return html`  
     <style>
       paper-icon-button{
-        height:6vh;
-        width:6vw;
+        height:4vmax;
+        width:4vmax;
       }
     </style>
     <paper-icon-button style="{{styleDefinition()}}" icon="{{field.icon_name}}" title="{{labelValue(selectedLanguage, field)}}"

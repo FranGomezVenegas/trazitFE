@@ -6,7 +6,7 @@ export const windowContent={
     "label_en": "Sample", "label_es": "Muestra",
     "type": "text",
     "password": "false",
-    "value": "273",
+    "value": "979",
     "read_only": false
     },    
     {

@@ -33,21 +33,21 @@ class FieldTreeList extends FieldsMethods(connect(store)(PolymerElement)) {
                     left: auto;
                     text-shadow: 3px 2px #42f4f4;
                     width: 3.25vw;
-                    height: 2.28vh;                
+                    height: 2.2vh;                
                 }                 
                 div.level2 {
                     padding-top: 0.4vw;
                     position: relative;
                     left: 1.3vw;
                     width: 9.76vw;
-                    height: 1.627vh;                
+                    height: 2vh;                
                 } 
                 div.level3 {
                     padding-top: 0.4vw;
                     position: relative;
                     left: 2.6vw;
                     width: 9.76vw;
-                    height: 1.627vh;               
+                    height: 2vh;               
                 }
                 div.vaadin-button-container{       
                     justify-content: left;
@@ -56,16 +56,16 @@ class FieldTreeList extends FieldsMethods(connect(store)(PolymerElement)) {
                     padding: 0px;              
                 }  
                 .level1{       
-                    height: 0.97vw         
+                    height: 0.97vh;         
                     text-shadow: 0.13vw 0.19vw #42f4f4;    
                     padding: 0.35vw;                                    
                 }  
                 .level2{  
-                    height: 0.97vw
+                    height: 0.97vh;
                     padding: 0.2vw;                                    
                 }                           
                 .red{  
-                    height: 0.97vw                  
+                    height: 0.97vh;                  
                     color: red;
                     align:left;
                 } 

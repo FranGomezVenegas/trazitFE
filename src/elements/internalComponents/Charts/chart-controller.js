@@ -71,6 +71,7 @@ class ChartController extends FieldsMethods(connect(store)(PolymerElement)) {
         }
     }
     dataForPieAndLine(){
+        //console.log('dataForPieAndLine');
         if (this.dataObject==undefined){
             //console.log('chart-controller', 'dataForPieAndLine', 'dataObject is empty');
             return;}
@@ -110,7 +111,7 @@ class ChartController extends FieldsMethods(connect(store)(PolymerElement)) {
                         }
                     }
                 }
-                
+                //console.log('chartData', chartData);
                 this.chartData=chartData;
             }
         }

@@ -22,8 +22,8 @@ class languageSelectortwoflags extends connect(store)(PolymerElement) {
         return html`
         <style>
             paper-icon-button{
-                width: 2.6vw;
-                height: 2.6vh;     
+                width: 4vmax;
+                height: 4vmax;     
             }
             paper-icon-button.flag{
                 --iron-icon-width: 100%;
@@ -31,7 +31,7 @@ class languageSelectortwoflags extends connect(store)(PolymerElement) {
             }
             </style>             
         <paper-icon-button class="flag" id="spanish" on-click="pressed" 
-            src="https://banner2.kisspng.com/20180320/hde/kisspng-flag-of-spain-flag-of-the-united-states-national-f-spain-flags-icon-png-5ab0b60cb326e6.1242812115215303807338.jpg" 
+            src="./images/flags/spain.jpg"
             value="es" alt="Castellano" title="Castellano"></paper-icon-button>
         
         <mwc-formfield id="switch" label="" name="langSwitch" >
@@ -39,7 +39,7 @@ class languageSelectortwoflags extends connect(store)(PolymerElement) {
         </mwc-formfield>    
         
         <paper-icon-button class="flag" id="english" on-click="pressed" 
-            src="http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png" 
+            src="./images/flags/england.jpg"
             value="en" alt="English" title="English"></paper-icon-button>
         `;
     }    

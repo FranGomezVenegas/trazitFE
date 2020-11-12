@@ -74,8 +74,8 @@ documentContainerFormFields.innerHTML = `
           align:left;
         }
         paper-tabs{
-          height: 3vw;
-          font-size: 2vw;
+          height: 3.5vh;
+          font-size: 2vh;
         } 
       </style>
     </template>

@@ -15,6 +15,7 @@ import '../../../internalComponents/others/language-selectortwoflags';
 import '../Components/Notifications/notifications-pane';
 import '../Components/ProceduresList/procedures-list-pane.js';
 import '../Components/SOP/sop-icon-and-badge';
+import '@thuoe/mp4-video-player';
 /**
  * `platform-center-tabs` Description
  *
@@ -31,11 +32,34 @@ class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(Polyme
             layoutSettings:{type: String, value: center_layout},
             currentTab: Array,
             tabIndex: Number,
+            videoUrl:{type: String, value:
+                'http://51.75.202.142:8888/myvideos/LP.mp4'},
         }
     }
     static get template() {
         return html`
         <style include="platform-center-tabs-style"></style>
+        <style>
+        mp4-video-player {
+                width: 80%;
+                height: 80%;
+                background: rgba(0, 0, 0, 0.12);
+            }
+        </style>
+<!--            <paper-dialog always-on-top no-cancel-on-outside-click  id="videowindowdialog" >    
+            <div style="display:flex" style="width:50%; height:50%;">
+                <div style="display:block; padding-right:10px;" >
+                <nav>
+                <ul>Plataforma
+                <li>Cabecera</li>
+                <li>Pestañas</li>
+                </ul>
+                </nav>            
+                </div> 
+                <mp4-video-player src="{{videoUrl}}" ></mp4-video-player>   
+            </div>
+        </paper-dialog>  
+-->
         <platform-elements id="platformelements"></platform-elements>
             <template is="dom-if" if="[[layoutSettings.display_second_header]]">
                 <div class="secondHeader">
@@ -71,6 +95,7 @@ class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(Polyme
                     <user-profile tab-index="{{tabIndex}}" name="user-profile"> </user-profile>
                     <incident-management tab-index="{{tabIndex}}" name="incident-management"> </incident-management>
                     <procedure-management tab-index="{{tabIndex}}" name="procedure-management"> </procedure-management>
+                    <videotutorial-tab tab-index="{{tabIndex}}" name="videotutorial-tab"> </videotutorial-tab>
 
                     <process-us-home tab-index="{{tabIndex}}" name="process-us-home"></process-us-home>            
                     <process-us-sample-login tab-index="{{tabIndex}}" name="process-us-sample-login"></process-us-sample-login>
@@ -106,11 +131,24 @@ class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(Polyme
                     <em-demo-a-person-microorganism tab-index="{{tabIndex}}" name="em-demo-a-person-microorganism"></em-demo-a-person-microorganism>
                     <em-demo-a-sample-browser tab-index="{{tabIndex}}" name="em-demo-a-sample-browser"></em-demo-a-sample-browser>
                     <em-demo-a-browser tab-index="{{tabIndex}}" name="em-demo-a-browser"></em-demo-a-browser>
+                    <em-demo-a-result-deviation tab-index="{{tabIndex}}" name="em-demo-a-result-deviation"></em-demo-a-result-deviation>           
 
                     <em-demo-b-home tab-index="{{tabIndex}}" name="em-demo-b-home"></em-demo-b-home>  
 
                     <genoma-instancia1-home tab-index="{{tabIndex}}" name="genoma-instancia1-home"></genoma-instancia1-home>      
                     <genoma-instancia1-project tab-index="{{tabIndex}}" name="genoma-instancia1-project"></genoma-instancia1-project>           
+
+                    <proc-deploy-home tab-index="{{tabIndex}}" name="proc-deploy-home"></proc-deploy-home>  
+                    <proc-deploy-sample-fq tab-index="{{tabIndex}}" name="proc-deploy-sample-fq"></proc-deploy-sample-fq>  
+                    <proc-deploy-sample-mb tab-index="{{tabIndex}}" name="proc-deploy-sample-mb"></proc-deploy-sample-mb>  
+                    <proc-deploy-sample-reviewsampletestinggroupfq tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsampletestinggroupfq"></proc-deploy-sample-reviewsampletestinggroupfq>  
+                    <proc-deploy-sample-reviewsampletestinggroupmb tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsampletestinggroupmb"></proc-deploy-sample-reviewsampletestinggroupmb>  
+                    
+                    <proc-deploy-sample-reviewtestingfq tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewtestingfq"></proc-deploy-sample-reviewtestingfq>  
+                    <proc-deploy-sample-reviewtestingmb tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewtestingmb"></proc-deploy-sample-reviewtestingmb>  
+                    <proc-deploy-sample-reviewsample tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsample"></proc-deploy-sample-reviewsample>  
+                    <proc-deploy-programs tab-index="{{tabIndex}}" name="proc-deploy-programs"></proc-deploy-programs>  
+
                 </iron-pages>
             </template>        
         `;
@@ -129,6 +167,12 @@ class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(Polyme
         //console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
         store.dispatch(setCurrentTab(e.currentTarget.name));  
         return;
+    }
+    ready() {
+        super.ready();
+        var elem=this.shadowRoot.getElementById("videowindowdialog");
+        if (elem){elem.open();}
+        //this.$.videowindowdialog.open();    
     }
 }
 

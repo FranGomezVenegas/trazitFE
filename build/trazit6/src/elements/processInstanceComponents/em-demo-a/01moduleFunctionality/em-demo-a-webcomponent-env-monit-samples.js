@@ -1,4 +1,4 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","./functions-env-monit-samples.js","../04-procedure/dialogs/em-demo-a-simple-modal-dialog.js","../04-procedure/dialogs/em-demo-a-list-modal-sample-audit.js","../04-procedure/dialogs/em-demo-a-list-modal-enterresults.js","../03config/Dialogs/em-demo-a-dialogmodal-settings.js"],function(_polymerElement,_connectMixin,_store,_functionsEnvMonitSamples,_emDemoASimpleModalDialog,_emDemoAListModalSampleAudit,_emDemoAListModalEnterresults,_emDemoADialogmodalSettings){"use strict";//import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
+define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","./functions-env-monit-samples.js","../04procedure/dialogs/em-demo-a-simple-modal-dialog.js","../04procedure/dialogs/em-demo-a-list-modal-sample-audit.js","../04procedure/dialogs/em-demo-a-list-modal-enterresults.js","../03config/Dialogs/em-demo-a-dialogmodal-settings.js"],function(_polymerElement,_connectMixin,_store,_functionsEnvMonitSamples,_emDemoASimpleModalDialog,_emDemoAListModalSampleAudit,_emDemoAListModalEnterresults,_emDemoADialogmodalSettings){"use strict";//import {mixinBehaviors} from '@polymer/polymer/lib/legacy/class.js';
 // import {NeonAnimationRunnerBehavior} from '@polymer/neon-animation/neon-animation-runner-behavior.js';
 // import '@polymer/neon-animation/animations/scale-down-animation.js';
 // import '@polymer/neon-animation/animations/scale-up-animation.js';
@@ -14,7 +14,7 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
 class EmDemoAWebcomponentEnvMonitSamples extends(0,_functionsEnvMonitSamples.FunctionsEnvMonitSamples)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{selectedObject:{type:Object},selectedItems:{type:Array},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},fieldsDialogAddComment:{type:Array,notify:!0,bubble:!0,value:_emDemoADialogmodalSettings.dialogAddComment},microorgListHeader:{type:Array,value:_emDemoADialogmodalSettings.dialogMicroorgListTableHeader},microorgListRows:{type:Array},dialogMicroorgListAdhocMicroorg:{type:Array,value:_emDemoADialogmodalSettings.dialogMicroorgListAdhocMicroorg}}}stateChanged(state){if(null!=state.emDemoA){this.microorgListRows=state.emDemoA.microorganismList}}static get template(){return _polymerElement.html`
         <style>
             paper-dialog{
-                top:100px; left:80px; height:0px; width:0px; z-index: 98;  position: fixed;  
+                top:13.85vh; left:1vw; height:0px; width:0px; z-index: 98;  position: fixed;  
                 /* height: 100vh; */
                 width: 100vw;
                 -webkit-transition: opacity 0.3s ease-in;
@@ -45,7 +45,10 @@ class EmDemoAWebcomponentEnvMonitSamples extends(0,_functionsEnvMonitSamples.Fun
                 selected-object="{{selectedObject}}" selected-items="{{selectedItems}}"
                 sample-id={{selectedObject.sample_id}} on-dialog-button-clicked="dialogClosedaddSampleMicroorg"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
-        `}addSampleMicroorgOpenedChangedListener(){console.log("addSampleMicroorgOpenedChangedListener");var modalwindow=this.shadowRoot.getElementById("addSampleMicroorgDialog");if(modalwindow&&modalwindow.parentElement.opened){const grid=modalwindow.shadowRoot.getElementById("simplemodaldialoggrid");grid.resetTableSelection()}}AddCommentOpenedChangedListener(e){var modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
+        `}addSampleMicroorgOpenedChangedListener(){//console.log('addSampleMicroorgOpenedChangedListener');
+var modalwindow=this.shadowRoot.getElementById("addSampleMicroorgDialog");if(modalwindow){//modalwindow.parentElement.opened no necesario pq la accion es un botón , no al confirmar dialogo
+const grid=modalwindow.shadowRoot.getElementById("simplemodaldialoggrid");grid.resetTableSelection()}//console.log('addSampleMicroorgOpenedChangedListener');
+}AddCommentOpenedChangedListener(e){var modalwindow=this.shadowRoot.getElementById("addCommentDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
 }}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);if("addComment"==dialogName){elem.actionName=actionName;this.AddCommentOpenedChangedListener()}if("addSampleMicroorg"==dialogName){this.addSampleMicroorgOpenedChangedListener()}if("sampleAudit"==dialogName||"enterResults"==dialogName){var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");elemDialog.loadData()}elem.open()}closeDialog(dialogName){var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.

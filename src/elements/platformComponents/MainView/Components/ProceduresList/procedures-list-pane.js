@@ -74,7 +74,8 @@ class ProceduresListPane extends ToastMethods(FieldsMethods(connect(store)(Polym
         `;
     }
     crearTab(e) {
-        if (!isTabOpenableWhenNotSopCertified){
+        if (!isTabOpenableWhenNotSopCertified(e.detail.procedure)){
+            console.log('isTabOpenableWhenNotSopCertified', isTabOpenableWhenNotSopCertified());
             if ((e.detail.procEvent.sops_passed==null) || (e.detail.procEvent.sops_passed==false)){
                 this.toastSuccessMessage(this.tabNotOpenableByCertification);
                 return;

@@ -40,9 +40,51 @@ export const dialogincubAddTmpReading=[{
   "read_only": false  
 }];
 
+export const dialogInvestDecision=[
+  {"name": "external_system_name",
+  "label_en": "System Name", "label_es": "Nombre Sistema",
+  "type": "text",
+  "password": "false",
+  "value": "Trackwise",
+  "read_only": false
+  },
+  {"name": "external_system_id",
+  "label_en": "System Id", "label_es": "Id Sistema",
+  "type": "text",
+  "password": "false",
+  "value": "",
+  "read_only": false
+  },
+  {"name": "capa_required",
+  "label_en": "CAPA Required", "label_es": "¿Requiere CAPA?",
+  "type": "boolean",
+  "password": "false",
+  "value": "",
+  "read_only": false
+  },
+  {"name": "capa_external_system_name",
+  "label_en": "CAPA System Name", "label_es": "Nombre Sistema CAPA",
+  "type": "text",
+  "password": "false",
+  "value": "Trackwise",
+  "read_only": false
+  },
+  {"name": "capa_external_system_id",
+  "label_en": "CAPA Id", "label_es": "Id CAPA",
+  "type": "text",
+  "password": "false",
+  "value": "",
+  "read_only": false
+  },  
+];
+
 export const dialogIncubatorsListTableHeader=[
   {name: 'name', label_en:'Name', label_es: 'Nombre', sort:true, filter:false}
 , {name: 'description', label_en:'description', label_es: 'descripción', sort:false, filter:true}
+];
+export const dialogInvestigationsListTableHeader=[
+  {name: 'id', label_en:'Id', label_es: 'Id', sort:true, filter:false}
+, {name: 'created_on', label_en:'Creation', label_es: 'Creación', sort:false, filter:true}
 ];
 export const dialogMicroorgListTableHeader=[
   {name: 'name', label_en:'Name', label_es: 'Nombre', sort:true, filter:false}

@@ -41,7 +41,7 @@ export const ToastMethods = (superClass) => class extends superClass {
         }));             
     }
     toastErrorMessageWithApiResponse(msgObj, apiResponse){ 
-        //console.log('call to toastErrorMessage');          
+        console.log('call to toastErrorMessageWithApiResponse');          
         var state=store.getState();  
         var lang=state.app.user.appLanguage;
         var message=''; 

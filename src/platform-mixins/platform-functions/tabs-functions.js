@@ -28,7 +28,8 @@ export const TabsMethods = (superClass) => class extends tokenMixin(ApiPlatform(
       if (tabsInfo[i].systemTab!=undefined && tabsInfo[i].systemTab){
         tabsString=tabsString+'tabType:'+'systab'+'*';
       }else{
-        tabsString=tabsString+'procedure:'+tabsInfo[i].procedure.name+'*';
+        if (tabsInfo[i].procedure){
+          tabsString=tabsString+'procedure:'+tabsInfo[i].procedure.name+'*';}
         tabsString=tabsString+'tabType:'+'tab'+'*';
       }
       tabsString=tabsString+'tabEsignRequired:'+tabsInfo[i].tabEsignRequired+'*';

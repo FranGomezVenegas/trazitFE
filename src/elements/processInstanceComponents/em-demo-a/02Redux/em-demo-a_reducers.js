@@ -1,5 +1,5 @@
 import {
-    PROGRAMS, SELECTED_PROGRAM, SELECTED_SAMPLING_POINT, SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST,
+    PROGRAMS, SELECTED_PROGRAM, SELECTED_SAMPLING_POINT, SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST,
     MICROORGANISM_LIST, GET_SAMPLE_AUDIT, ACTIVE_PRODUCTION_LOTS,
     
     ALL_SAMPLES_STAGE_SAMPLING, ALL_SAMPLES_STAGE_INCUBATION1, ALL_SAMPLES_STAGE_INCUBATION2, 
@@ -14,7 +14,9 @@ import {
     , FOR_RESULTS_SAMPLES_CUSTODIAN_LIST, FOR_RESULTS_SAMPLES_CANDIDATE_LIST, COC_SAMPLE_HISTORY, COC_USERS_LIST
 
     , OBJECT_BROWSER_ADD, SELECT_BROWSER_SAMPLE_OBJECT, SELECT_BROWSER_INCUBATOR_OBJECT, SELECT_BROWSER_BATCH_OBJECT, SELECT_BROWSER_PRODLOT_OBJECT
-    , KPIS, SAMPLE_STATS_COUNTER_BY_STAGE , SAMPLE_STATS_LAST_N_RESULTS
+    , KPIS, DATAMINING_QUERY_OUTPUT, SAMPLE_STATS_COUNTER_BY_STAGE , SAMPLE_STATS_LAST_N_RESULTS
+    , OPEN_INVESTIGATIONS, INVESTIGATION_RESULTS_PENDING_DECISION
+    , ALL_SAVED_QUERIES
 } from './em-demo-a_actions.js';
 
 const INITIAL_STATE = {
@@ -30,7 +32,10 @@ const INITIAL_STATE = {
     , allProgramsUnreceivedSamples: []
     , microorganismList: []
     , activeProductionLots:[]
-
+    , openInvestigations:[]
+    , investigationResultsPendingDecision:[]
+    , allSavedQueries:[]
+    
     , allSamplesStageSampling: []
     , allSamplesStageIncubation1: []
     , allSamplesStageIncubation2: []
@@ -60,7 +65,7 @@ const INITIAL_STATE = {
     , browserSelectedIncubator:[]
     , browserSelectedBatch:[]
     , browserSelectedProdLot:[]
-
+    , dataminingQueryOutput:[]
     , kpis:[]
 
     , sampleStatsCounterByStage:[]
@@ -125,8 +130,8 @@ const EmDemoAReducer = (state = INITIAL_STATE, action) => {
             ...state,        
             selectedBatch: action.DATA,
         } 
-    case SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST:
-        //console.log('em-demo-a_reducers.SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST', action);
+    case SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST:
+        //console.log('em-demo-a_reducers.SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST', action);
         return {
             ...state,        
             selectedProgramCorrectiveActions: action.DATA,
@@ -135,7 +140,22 @@ const EmDemoAReducer = (state = INITIAL_STATE, action) => {
         return {
             ...state,        
             activeProductionLots: action.DATA,
-        }   
+        }                       
+    case OPEN_INVESTIGATIONS:
+        return {
+            ...state,        
+            openInvestigations: action.DATA,
+        } 
+    case INVESTIGATION_RESULTS_PENDING_DECISION:
+        return {
+            ...state,        
+            investigationResultsPendingDecision: action.DATA,
+        } 
+    case ALL_SAVED_QUERIES:
+        return {
+            ...state,        
+            allSavedQueries: action.DATA,
+        } 
     case ALL_PROGRAMS_UNRECEIVED_SAMPLES:
         //console.log('em-demo-a_reducers.programs', action);
         return {
@@ -324,7 +344,13 @@ const EmDemoAReducer = (state = INITIAL_STATE, action) => {
         return {
             ...state,        
             sampleStatsLastNresults: action.DATA
-        }       
+        } 
+    case DATAMINING_QUERY_OUTPUT:
+        //    console.log('process-us_reducers.COC_SAMPLE_HISTORY', action);
+        return {
+            ...state,        
+            dataminingQueryOutput: action.DATA
+        } 
     case KPIS:
         //    console.log('process-us_reducers.COC_SAMPLE_HISTORY', action);
         return {

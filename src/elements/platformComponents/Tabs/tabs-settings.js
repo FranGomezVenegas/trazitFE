@@ -34,8 +34,17 @@ export const User_UserProfileTab={
   tabEsignRequired: false, tabConfirmUserRequired: true ,
   systemTab: true,     
 }
+export const User_VideoTutorialTab={
+  lp_frontend_page_name: '../Tabs/VideoTutorial/videotutorial-tab.js',        
+  tabName: 'videotutorial-tab',
+  tabLabel_en: 'Video Tutorial',
+  tabLabel_es: 'Tutorial en Video',
+  procedure:'videotutorial',
+  tabEsignRequired: false, tabConfirmUserRequired: true ,
+  systemTab: true,     
+}
 export const Procedures_ProcedureManagement={
-  lp_frontend_page_name: '../../platformComponents/ProceduresManagement/04-procedure/procedure-management.js',        
+  lp_frontend_page_name: '../../platformComponents/ProceduresManagement/04procedure/procedure-management.js',        
   tabName: 'procedure-management',
   tabLabel_en: 'Procedure Management',
   tabLabel_es: 'Gestión de Proceso',

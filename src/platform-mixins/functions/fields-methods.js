@@ -18,6 +18,27 @@ export const FieldsMethods = (superClass) => class extends superClass {
     
         return [year, month, day].join('-');
     }
+    fieldValue(langApp, field, fieldName){
+        console.log("field-methods.js", "fieldValue", " langApp="+langApp, ' field=', field, ' fieldName=', fieldName);
+        if (!langApp || !field){
+            //console.log("methods.js", "labelValue with no langApp or field recognized", 'field=', field, 'langApp=', langApp ); 
+            return '';
+        }
+        if (langApp=="en"){
+            if (field.label_en){return field[fieldName+"_en"];}
+            if (field.message_en){return field.message_en;}
+            console.log("methods.js", "labelValue with no label_en recognized", 'field=', field, 'langApp=', langApp );            
+            return '';
+        }
+        if (langApp=="es"){
+            if (field.label_es){return field[fieldName+"_es"];}
+            if (field.message_es){return field.message_es;}
+            console.log("methods.js", "labelValue with no label_es recognized", 'field=', field, 'langApp=', langApp );            
+            return '';
+        } 
+        return field.label_en;
+    }  
+    
     labelValue(langApp, field) {  
         //console.log("field-methods.js", "labelValue", "langApp="+langApp, 'field=', field);
         if (!langApp || !field){

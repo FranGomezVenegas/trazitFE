@@ -88,6 +88,16 @@ export const platformHeaderFields={
   fieldsRightDisplay: true,    
   fieldsRight:[
     {
+      "name": "doLogout",
+      "source": "./images/header/procedure-management.png",
+      "aligned": "center",
+      "label_en": "Procedure", "label_es": "Proceso",
+      "type": "avatar",
+      "password": "False",
+      "value": "",
+      "read_only": false,      
+    } ,      
+    {
       "name": "procedure-management",
       "source": "./images/header/procedure-management.png",
       "aligned": "center",
@@ -96,7 +106,10 @@ export const platformHeaderFields={
       "password": "False",
       "value": "",
       "read_only": false,
-      "tab": Procedures_ProcedureManagement
+      "tab": Procedures_ProcedureManagement,
+      "procedure":{
+        name:"procedure-management"
+      }
     } ,  
     {
       "name": "incidents",
@@ -106,8 +119,11 @@ export const platformHeaderFields={
       "type": "avatar",
       "password": "False",
       "value": "",
-      "read_only": true,
-      "tab": Incidents_ManagementTab
+      "read_only": false,
+      "tab": Incidents_ManagementTab,
+      "procedure":{
+        name:"Incidents"
+      }      
     } ,  
     {
     "name": "user_avatar",
@@ -117,8 +133,11 @@ export const platformHeaderFields={
     "type": "avatar",
     "password": "False",
     "value": "",
-    "read_only": true,
-    "tab": User_UserProfileTab
+    "read_only": false,
+    "tab": User_UserProfileTab,
+    "procedure":{
+      name:"User"
+    }      
     } ,
     {
       "name": "doLogout",

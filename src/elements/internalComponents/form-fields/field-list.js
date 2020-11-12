@@ -12,14 +12,14 @@ import {FieldsMethods} from '../../../platform-mixins/functions/fields-methods';
 class FieldList extends FieldsMethods(connect(store)(PolymerElement)) {
   static get observers() {
     return [
-      'changeListValueObserver(field.value)'
+      'changeListValueObserver(field.value)',
+      //'changeListValueObserver(field.value_no_index)'
     ];
   }
   stateChanged(state) {    
     this.selectedLanguage = state.app.user.appLanguage;        
   }     
-  changeListValueObserver(newVal) {
-    
+  changeListValueObserver(newVal) {    
     var findSeparator = newVal.search("-");
     //console.log('changeListValueObserver', 'newVal', newVal, 'this.field', this.field, 'findSeparator', findSeparator);
     if (findSeparator>-1){
@@ -31,8 +31,8 @@ class FieldList extends FieldsMethods(connect(store)(PolymerElement)) {
       var newValStr=newVal;
       var newValInt = -1;
     }
-    var newValNoIndex="spec";
-    //console.log('changeListValueObserver', 'newValStr', newValStr, 'newValInt', newValInt, 'indexVal', indexVal);    
+    var newValNoIndex="";
+    console.log('changeListValueObserver', 'newValStr', newValStr, 'newValInt', newValInt, 'indexVal', indexVal);    
     this.dispatchEvent(new CustomEvent('field-list-value-changed', {
       bubbles: true,
       composed: true,
@@ -45,11 +45,13 @@ class FieldList extends FieldsMethods(connect(store)(PolymerElement)) {
       }
     }));
     this.value=newVal;
+    this.value_no_index=newValStr;
   }
   static get properties() {
     return {
       field: {        type: Object,        notify: true      },
       value: {        type: String,        notify: true      },
+      value_no_index: {        type: String,        notify: true      },
       index: Number, fieldIndex: Number      
     }
   }

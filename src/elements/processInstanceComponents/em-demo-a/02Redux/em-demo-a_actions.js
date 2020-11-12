@@ -4,7 +4,7 @@ var schemaName=schema_name.replace('-','_');
 export const PROGRAMS = 'PROGRAMS'+schemaName;
 export const SELECTED_PROGRAM = 'SELECTED_PROGRAM'+schemaName;
 export const SELECTED_SAMPLING_POINT = 'SELECTED_SAMPLING_POINT'+schemaName;
-export const SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST = 'SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST'+schemaName;
+export const SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST = 'SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST'+schemaName;
 
 export const GET_ALL_INCUBATORS = 'GET_ALL_INCUBATORS'+schemaName;
 export const SET_SELECTED_INCUBATOR = 'SET_SELECTED_INCUBATOR'+schemaName;
@@ -14,6 +14,9 @@ export const SET_SELECTED_BATCH = 'SET_SELECTED_BATCH'+schemaName;
 
 export const ALL_PROGRAMS_UNRECEIVED_SAMPLES = 'ALL_PROGRAMS_UNRECEIVED_SAMPLES'+schemaName;
 export const ACTIVE_PRODUCTION_LOTS = 'ACTIVE_PRODUCTION_LOTS'+schemaName;
+
+export const OPEN_INVESTIGATIONS = 'OPEN_INVESTIGATIONS'+schemaName;
+export const INVESTIGATION_RESULTS_PENDING_DECISION = 'INVESTIGATION_RESULTS_PENDING_DECISION'+schemaName;
 
 export const SAMPLE_STATS_COUNTER_BY_STAGE = 'SAMPLE_STATS_COUNTER_BY_STAGE'+schemaName;
 export const SAMPLE_STATS_LAST_N_RESULTS = 'SAMPLE_STATS_LAST_N_RESULTS'+schemaName;
@@ -37,6 +40,10 @@ export const SELECT_BROWSER_SAMPLE_OBJECT = 'SELECT_BROWSER_SAMPLE_OBJECT'+schem
 export const SELECT_BROWSER_INCUBATOR_OBJECT = 'SELECT_BROWSER_INCUBATOR_OBJECT'+schemaName;
 export const SELECT_BROWSER_BATCH_OBJECT = 'SELECT_BROWSER_BATCH_OBJECT'+schemaName;
 export const SELECT_BROWSER_PRODLOT_OBJECT = 'SELECT_BROWSER_PRODLOT_OBJECT'+schemaName;
+export const DATAMINING_QUERY_OUTPUT = 'DATAMINING_QUERY_OUTPUT'+schemaName;
+
+export const ALL_SAVED_QUERIES = 'ALL_SAVED_QUERIES'+schemaName;
+
 export const KPIS = 'KPIS'+schemaName;
 
 export function getSampleAudit(data) {
@@ -92,7 +99,7 @@ export function setSelectedBatch(data) {
 export function selectedProgramCorrectiveActionList(data) {
   //console.log('em-demo-a_actions.selectedProgramCorrectiveActionList', data);
   return {
-    type: SELECTED_PROGRAM_CORRECTIVE_ACTION_LIST,
+    type: SELECTED_PROGRAMS_CORRECTIVE_ACTION_LIST,
     DATA: data
   }
 }
@@ -112,6 +119,27 @@ export function getActiveProductionLots(data) {
   }  
 }
 
+export function getOpenInvestigations(data) {
+  //console.log('proc-deploy_actions.getAllProgramsUnreceivedSamples', data);
+  return {
+    type: OPEN_INVESTIGATIONS,
+    DATA: data
+  }  
+}
+export function getInvestigationResultsPendingDecision(data) {
+  //console.log('proc-deploy_actions.getAllProgramsUnreceivedSamples', data);
+  return {
+    type: INVESTIGATION_RESULTS_PENDING_DECISION,
+    DATA: data
+  }  
+}
+export function getAllSavedQueries(data) {
+  //console.log('em-demo-a_actions.getAllSavedQueries', data);
+  return {
+    type: ALL_SAVED_QUERIES,
+    DATA: data
+  }  
+}
 export function getAllProgramsUnreceivedSamples(data) {
   //console.log('em-demo-a_actions.getAllProgramsUnreceivedSamples', data);
   return {
@@ -211,6 +239,22 @@ export function getBrowserProdLotData(data) {
     DATA: data
   }  
 }  
+
+export function setDataMiningQueryOutput(data) {
+  //console.log('em-demo-a_actions.getBrowserProdLotData', data);
+  return {
+    type: DATAMINING_QUERY_OUTPUT,
+    DATA: data
+  }  
+} 
+
+export function setAllSavedQueries(data) {
+  //console.log('em-demo-a_actions.getBrowserProdLotData', data);
+  return {
+    type: ALL_SAVED_QUERIES,
+    DATA: data
+  }  
+}
 export function setKPIs(data) {
   //console.log('em-demo-a_actions.getBrowserProdLotData', data);
   return {

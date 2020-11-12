@@ -11,7 +11,7 @@
 // in app-center-tabs
 // <my-pending-sops tab-index="{{tabIndex}}" name="sop-myPendingSops"> </my-pending-sops>
 
-import {ADD_TAB, ADD_SYSTEM_TAB, CLOSE_TAB, SET_CURRENT_TAB, DO_LOGOUT_TAB} from '../actions/tabs_actions.js';
+import {ADD_TAB, ADD_SYSTEM_TAB, CLOSE_TAB, SET_CURRENT_TAB, SET_CURRENT_TAB_SEL_OBJECT, DO_LOGOUT_TAB, addSystemTab} from '../actions/tabs_actions.js';
 import {systemTabContentUrl, tabContentUrl} from '../../../../config/platform/logic/api-config';
 
   const InitialTabState = {
@@ -19,6 +19,7 @@ import {systemTabContentUrl, tabContentUrl} from '../../../../config/platform/lo
     tabIndex:0, 
     currentTabName:'',
     currentTab:[],
+    currentTabSelObject:[],
     currentTabProcedure: [],
     currentTabSops: [],
   };
@@ -63,7 +64,7 @@ import {systemTabContentUrl, tabContentUrl} from '../../../../config/platform/lo
         var tabUrl = tabContentUrl;
         tabUrl = tabUrl.replace('#ModuleName', action.tab.procedure.name);        
         tabUrl = tabUrl.replace('#PageName', action.tab.tabName);
-        import(tabUrl);
+        import(tabUrl);                
         var found = state.tabs.find(function(tab) {
           return tab.tabName == action.tab.tabName;
         });      
@@ -140,24 +141,29 @@ import {systemTabContentUrl, tabContentUrl} from '../../../../config/platform/lo
           }
         }
       case SET_CURRENT_TAB:
-      foundTabInfo = state.tabs.find(function(tab) { 
-        if (tab.tabName == action.tabName){return tab;}
-      });      
-      if (foundTabInfo == undefined){
+        foundTabInfo = state.tabs.find(function(tab) { 
+          if (tab.tabName == action.tabName){return tab;}
+        });      
+        if (foundTabInfo == undefined){
+          return {
+            ...state,
+          }
+        }else{
+          var tabPosic = state.tabs.indexOf(foundTabInfo);
+          return {
+            ...state,
+            tabIndex: tabPosic,
+            currentTab: foundTabInfo,
+            currentTabName: foundTabInfo.tabName,
+            currentTabSops: foundTabInfo.currentTabSops,
+            currentTabProcedure: foundTabInfo.currentTabProcedure,
+          }
+        }
+      case SET_CURRENT_TAB_SEL_OBJECT:
         return {
           ...state,
+          currentTabSelObject: action.selObject
         }
-      }else{
-        var tabPosic = state.tabs.indexOf(foundTabInfo);
-        return {
-          ...state,
-          tabIndex: tabPosic,
-          currentTab: foundTabInfo,
-          currentTabName: foundTabInfo.tabName,
-          currentTabSops: foundTabInfo.currentTabSops,
-          currentTabProcedure: foundTabInfo.currentTabProcedure,
-        }
-      }
       case DO_LOGOUT_TAB:
         return {
           tabs: [],

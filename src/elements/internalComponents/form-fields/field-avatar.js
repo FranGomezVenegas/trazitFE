@@ -1,7 +1,11 @@
 import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import './../../../config/platform/main-layout/two-headers-form-fields-style';
+import { connect } from 'pwa-helpers/connect-mixin';
+import { store } from '../../../store';
 
-class FieldAvatar extends PolymerElement {
+import './../../../config/platform/main-layout/two-headers-form-fields-style';
+import {FieldsMethods} from '../../../platform-mixins/functions/fields-methods';
+
+class FieldAvatar extends FieldsMethods(connect(store)(PolymerElement)) {
     static get properties() {
         return {
           field: {        type: Object,        notify: true      },
@@ -20,9 +24,17 @@ class FieldAvatar extends PolymerElement {
             </style>
             <!-- <vaadin-button on-click="clicked"  class="button" value="{{field.name}}"> -->
               <img class="formFieldAvatar"  on-click="clicked" src="{{field.source}}" aligned="center"  height="50" width="50"> 
+              <template is="dom-if" if="[[field.display_label]]"> 
+                <a on-click="clicked"  value="{{field.name}}" disabled="{{field.read_only}}">
+                  {{labelValue(selectedLanguage, field)}}
+                </a>              
+              </template>
               <!-- </vaadin-button> -->
         `;
     }
+    stateChanged(state) {
+      this.selectedLanguage=state.app.user.appLanguage;
+    }     
     clicked(){        
         this.dispatchEvent(new CustomEvent('avatar-item-clicked', {
           bubbles: true,

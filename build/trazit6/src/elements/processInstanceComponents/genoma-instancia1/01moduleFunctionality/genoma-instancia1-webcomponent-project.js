@@ -1,7 +1,7 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","./0module-functions-genoma.js","../03config/Project/genoma-instancia1-projectmainview-settings.js","../04-procedure/dialogs/genoma-instancia1-simple-modal-dialog.js","../04-procedure/dialogs/genoma-instancia1-enter-variable-value-dialog.js","../03config/Dialogs/genoma-instancia1-dialogmodal-settings.js"],function(_polymerElement,_connectMixin,_store,_moduleFunctionsGenoma,_genomaInstancia1ProjectmainviewSettings,_genomaInstancia1SimpleModalDialog,_genomaInstancia1EnterVariableValueDialog,_genomaInstancia1DialogmodalSettings){"use strict";//, elementTableIndividual, elementTableSample, elementTableSampleVariable
+define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","./0module-functions-genoma.js","../03config/Project/genoma-instancia1-projectmainview-settings.js","../04procedure/dialogs/genoma-instancia1-simple-modal-dialog.js","../04procedure/dialogs/genoma-instancia1-enter-variable-value-dialog.js","../03config/Dialogs/genoma-instancia1-dialogmodal-settings.js"],function(_polymerElement,_connectMixin,_store,_moduleFunctionsGenoma,_genomaInstancia1ProjectmainviewSettings,_genomaInstancia1SimpleModalDialog,_genomaInstancia1EnterVariableValueDialog,_genomaInstancia1DialogmodalSettings){"use strict";//, elementTableIndividual, elementTableSample, elementTableSampleVariable
 //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-//import '../04-procedure/dialogs/genoma-instancia1-list-modal-sample-audit.js'
-//import '../04-procedure/dialogs/genoma-instancia1-list-modal-enterresults';
+//import '../04procedure/dialogs/genoma-instancia1-list-modal-sample-audit.js'
+//import '../04procedure/dialogs/genoma-instancia1-list-modal-enterresults';
 /* `genoma-instancia1-webcomponent-project` Description
  *
  * @customElement
@@ -10,15 +10,18 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
  * 
  */class GenomaInstancia1WebcomponentProject extends(0,_moduleFunctionsGenoma.ModuleFunctionsGenoma)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{selectedObject:{type:Object},selectedStudy:{type:Object},selectedStudyName:{type:String},selectedStudyFamily:{type:Object},selectedStudyIndividual:{type:Object},selectedStudySamplesSet:{type:Object},selectedStudySamples:{type:Object},selectedVariablesSet:{type:Object},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},//fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
 dialogStudyNew:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyNew},dialogStudyUpdate:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyUpdate},dialogStudyIndividualNew:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyIndividualNew},dialogStudyIndividualUpdate:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyIndividualUpdate},dialogStudyFamilyNew:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyFamilyNew},dialogStudyFamilyUpdate:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudyFamilyUpdate},dialogStudySamplesSetNew:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudySamplesSetNew},dialogStudySamplesSetUpdate:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1DialogmodalSettings.dialogStudySamplesSetUpdate},activeIncubatorsListRows:{type:Array},dialogStudyFamilyList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableFamily},dialogStudyFamilyIndividualList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableFamilyIndividual},dialogStudyIndividualList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableIndividual},dialogStudySamplesSetList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableSamplesSet},dialogStudySamplesList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableSample},dialogConfigVariablesSetList:{type:Array,notify:!0,bubble:!0,value:_genomaInstancia1ProjectmainviewSettings.elementTableConfigVariablesSet}}}stateChanged(state){if(null!=state.genomaInstancia1){this.selectedVariablesSet=state.genomaInstancia1.configActiveVariablesAndVariablesSet.variables_set;this.selectedStudy=state.genomaInstancia1.selectedStudy;//console.log('genoma-instancia1-webcomponent-project, selectedStudy',this.selectedStudy);
-this.selectedStudyName=this.selectedStudy.name;this.selectedStudyFamily=this.selectedStudy.study_family;this.selectedStudyIndividual=this.selectedStudy.study_individual;this.selectedStudySamplesSet=this.selectedStudy.study_samples_set;this.selectedStudySamples=this.selectedStudy.study_individual_sample}}static get template(){return _polymerElement.html`
-        <!-- <style>
-        //     paper-dialog{
-        //         top:100px; left:80px; height:0px; width:0px; z-index: 100;  position: fixed;  
-        //         /* height: 100vh; */
-        //         width: 100vw;
-        //         -webkit-transition: opacity 0.3s ease-in;
-        //     }
-        // </style> -->
+// this.selectedStudyName=this.selectedStudy.name;
+// this.selectedStudyFamily=this.selectedStudy.study_family;
+// this.selectedStudyIndividual=this.selectedStudy.study_individual;
+// this.selectedStudySamplesSet=this.selectedStudy.study_samples_set;
+// this.selectedStudySamples=this.selectedStudy.study_individual_sample;            
+}}static get template(){return _polymerElement.html`
+        <style>
+             paper-dialog{
+                 top:100px; left:1vw; height:0px; width:0px; z-index: 100;  position: fixed;  
+                 -webkit-transition: opacity 0.3s ease-in;
+             }
+         </style> 
         <!-- focus-in-field="{{fieldsDialogAddComment.0.name}}" -->
 
         <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="variablesSetListAddToObject" on-opened-changed="variablesSetListOpenedChangedListener">

@@ -3,6 +3,15 @@ export const em_browser_tabs=[
   {procedure: schema_name
     ,tabConfirmUserRequired: false
     ,tabEsignRequired: false
+    ,tabLabel_en: "Data Mining"
+    ,tabLabel_es: "Minería Datos"
+    ,name:"datamining"
+    ,tabName: schema_name+"-datamining"  
+    ,tabIndex:1
+  } ,
+  {procedure: schema_name
+    ,tabConfirmUserRequired: false
+    ,tabEsignRequired: false
     ,tabLabel_en: "Sample"
     ,tabLabel_es: "Muestra"
     ,name:"sample"
@@ -37,7 +46,7 @@ export const em_browser_tabs=[
     ,tabIndex:1
   } ,    
 ]
-export const browserHome_defaultTab = "sample";
+export const browserHome_defaultTab = "datamining";
 
 const documentContainerEmDemoABrowserStyle = document.createElement('em-demo-a-browser-style');
 documentContainerEmDemoABrowserStyle.setAttribute('style', 'display: none;');

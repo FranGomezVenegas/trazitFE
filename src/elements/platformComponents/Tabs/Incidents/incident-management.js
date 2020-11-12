@@ -44,12 +44,8 @@ class IncidentManagement extends TabsMethods(ApiIncidents(FrontendIncidents(conn
         return html`
         <style include="incident-management-style"></style>
         <div class="mainDiv"">
-            <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="newIncidentDialog" >        
-                    <simple-modal-dialog id="newIncidentDialog2" action-name="" display-close-button form-fields="{{formFields}}" 
-                    on-dialog-button-clicked="fieldButtonClickedForIncidents"> </simple-modal-dialog>
-            </paper-dialog>
             <div class="myIncidentsTable">
-                <frontend-incidents-elements id="myElements" call-back-function-incident-elem="{{onFinalTokenFilled}}" selected-incident="{{selectedObject}}"></frontend-incidents-elements>
+                <frontend-incidents-elements id="myelements" call-back-function-incident-elem="{{onFinalTokenFilled}}" selected-incident="{{selectedObject}}"></frontend-incidents-elements>
                 <vaadin-button on-click="callBackRefreshWindow"><iron-icon icon="refresh"></iron-icon></vaadin-button> 
                 <div name="buttonGroup" class="buttonGroup">
                     <template is="dom-repeat" items="{{userOpenIncidentsuttons}}" as="currentfield">       

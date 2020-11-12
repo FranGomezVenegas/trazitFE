@@ -6,9 +6,9 @@ import {FunctionsEnvMonit} from './functions-env-monit';
 
 
 //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-import '../04-procedure/dialogs/em-demo-a-simple-modal-dialog';
-//import '../04-procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
-//import '../04-procedure/dialogs/em-demo-a-list-modal-enterresults';
+import '../04procedure/dialogs/em-demo-a-simple-modal-dialog';
+//import '../04procedure/dialogs/em-demo-a-list-modal-sample-audit.js'
+//import '../04procedure/dialogs/em-demo-a-list-modal-enterresults';
  /* `em-demo-a-webcomponent-env-monit` Description
  *
  * @customElement
@@ -16,8 +16,8 @@ import '../04-procedure/dialogs/em-demo-a-simple-modal-dialog';
  * @demo
  * 
  */
-import {dialogProductionLotNew, dialogProductionLotActivate, dialogincubBatchNew, dialogincubAddTmpReading, dialogIncubatorsListTableHeader} 
-    from '../03config/Dialogs/em-demo-a-dialogmodal-settings';
+import {dialogProductionLotNew, dialogProductionLotActivate, dialogincubBatchNew, dialogincubAddTmpReading, dialogIncubatorsListTableHeader, dialogInvestigationsListTableHeader,
+    dialogInvestDecision} from '../03config/Dialogs/em-demo-a-dialogmodal-settings';
 class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(PolymerElement)) {
     static get properties() {
         return {
@@ -32,11 +32,15 @@ class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(Polym
             dialogincubAddTmpReading:{type: Array, notify: true, bubble: true, value:dialogincubAddTmpReading},
             activeIncubatorsListHeader:{type: Array, value:dialogIncubatorsListTableHeader},
             activeIncubatorsListRows:{type: Array},
+            openInvestigationsListHeader:{type: Array, value:dialogInvestigationsListTableHeader},
+            openInvestigationsListRows:{type: Array},
+            dialogInvestDecision:{type: Array, notify: true, bubble: true, value:dialogInvestDecision},
         }
     }
     stateChanged(state) {
         if (state.emDemoA!=null){   
             this.activeIncubatorsListRows=state.emDemoA.allIncubators;
+            this.openInvestigationsListRows=state.emDemoA.openInvestigations;
         }
     }
     static get template() {
@@ -78,12 +82,19 @@ class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(Polym
                 form-elements="{{dialogincubAddTmpReading}}"          
                 on-dialog-button-clicked="dialogClosedIncubatorAddTempReading"></em-demo-a-simple-modal-dialog>
         </paper-dialog>
-<!--
-        <paper-dialog id="incubatorAddTempReading">
-            <em-demo-a-list-modal-prodlotbrowser list-header="{{incubatorsListFieldsToDisplay}}" list-rows="{{activeIncubatorsList}}" 
-            on-dialog-button-clicked="dialogClosedIncubatorAddTempReading" action-name="{{actionName}}"> </em-demo-a-list-modal-prodlotbrowser>
-        </paper-dialog>  
--->        
+
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="investigationAddObject" on-opened-changed="incubBatchAssignIncubatorOpenedChangedListener">
+            <em-demo-a-simple-modal-dialog id="investigationAddObjectDialog" action-name="" display-confirm-button display-cancel-button 
+                list-header="[[openInvestigationsListHeader]]" list-rows="{{openInvestigationsListRows}}"            
+                on-dialog-button-clicked="dialogClosedInvestigationAddObject"></em-demo-a-simple-modal-dialog>
+        </paper-dialog>
+
+        <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="investigationDecision" >
+            <em-demo-a-simple-modal-dialog id="investigationDecisionDialog" action-name="" 
+                display-confirm-button display-cancel-button form-elements="{{dialogInvestDecision}}"            
+                on-dialog-button-clicked="dialogClosedInvestigationDecision"></em-demo-a-simple-modal-dialog>
+        </paper-dialog>
+
         `;
     }
     // AddCommentOpenedChangedListener(){
@@ -118,7 +129,7 @@ class EmDemoAWebcomponentEnvMonit extends FunctionsEnvMonit(connect(store)(Polym
         }
     }       
     productionLotNewOpenedChangedListener(){
-console.log('productionLotNewOpenedChangedListener');        
+//console.log('productionLotNewOpenedChangedListener');        
         const modalwindow=this.shadowRoot.getElementById('productionLotNewDialog');
         if (modalwindow && modalwindow.parentElement.opened){
             if (modalwindow.resetValue){
@@ -127,7 +138,12 @@ console.log('productionLotNewOpenedChangedListener');
             }
         }
     }       
-    openDialog(dialogName, actionName){                                
+    openDialog(dialogName, actionName){           
+        if (dialogName=="investigationNew"){
+            console.log('openDialog >> investigationNew');
+            this.investigationNewNoDialog(this.buttonDefinition);
+            return;
+        }                     
         var elem=this.shadowRoot.getElementById(dialogName);
         // if (dialogName=="addComment"){
         //     elem.actionName=actionName;
@@ -138,7 +154,8 @@ console.log('productionLotNewOpenedChangedListener');
         // }
         elem.open();
     }
-    closeDialog(dialogName){        
+    closeDialog(dialogName){ 
+        console.log('closeDialog');       
         var elem=this.shadowRoot.getElementById(dialogName);
         elem.close();
     }

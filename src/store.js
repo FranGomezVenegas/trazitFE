@@ -43,6 +43,11 @@ export const store = createStore(
     store.addReducers({
     incidents: incidentsReducer
   });
+  import videoTutorialsReducer from './elements/platformComponents/Redux/reducers/videotutorials_reducers';
+    store.addReducers({
+    videoTutorials: videoTutorialsReducer
+  });
+  
   import procedureManagementReducer from './elements/platformComponents/ProceduresManagement/02Redux/procedures_reducers';
       store.addReducers({
         sateliteProcedures: procedureManagementReducer
@@ -60,4 +65,7 @@ import genomaInstancia1Reducer from './elements/processInstanceComponents/genoma
   genomaInstancia1: genomaInstancia1Reducer
 });  
 
-// Redux de procesos de la instancia. Fin 
+import procDeployReducer from './elements/processInstanceComponents/proc-deploy/02Redux/proc-deploy_reducers.js';
+  store.addReducers({
+  procDeploy: procDeployReducer
+});  

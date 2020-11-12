@@ -18,13 +18,14 @@ import {GenomaModuleDefinition} from './0module-backendfunctionality-available';
 export const EndpointsActionsGenomaModule = (superClass) => class extends userConfirmationMixin(GenomaModuleDefinition(ApiSettings(ToastMethods(tokenMixin(superClass))))) {
 
     moduleActionTrigger(buttonDefinition, backEndData, moduleAreaName){
+        console.log('moduleActionTrigger', 'buttonDefinition', buttonDefinition, 'backEndData', backEndData, 'moduleAreaName', moduleAreaName);
         var moduleArea=this.getFunctionalArea(moduleAreaName)
         if (moduleArea==undefined){
             this.toastErrorMessage(this.moduleAreaNotRecognized(moduleAreaName));
             console.log('module area not recognized');
             return;
         }
-    //    console.log('moduleActionTrigger', 'buttonDefinition', buttonDefinition, 'backEndData', backEndData);
+        console.log('moduleActionTrigger', 'buttonDefinition', buttonDefinition, 'backEndData', backEndData);
         if (buttonDefinition && buttonDefinition.esign_required){    
             store.dispatch(openEsignDialog(
             this.moduleActionTriggerNext.bind(this, buttonDefinition, backEndData, moduleArea),

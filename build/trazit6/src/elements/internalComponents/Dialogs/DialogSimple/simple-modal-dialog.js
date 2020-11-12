@@ -49,7 +49,8 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
         ></dialogmodal-buttons> 
 
         <template is="dom-repeat" items="{{formFields}}" as="currentfield">       
-            <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClicked" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
+            <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClicked" 
+            on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
         </template>      
       </div>
       

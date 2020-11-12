@@ -1,7 +1,7 @@
 import{PolymerElement,html}from"../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../store.js";import{ModuleFunctionsGenoma}from"./0module-functions-genoma.js";import{elementTableConfigVariablesSet,elementTableFamily,elementTableFamilyIndividual,elementTableIndividual,elementTableSamplesSet,elementTableSample}from"../03config/Project/genoma-instancia1-projectmainview-settings.js";//, elementTableIndividual, elementTableSample, elementTableSampleVariable
 //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-import"../04-procedure/dialogs/genoma-instancia1-simple-modal-dialog.js";import"../04-procedure/dialogs/genoma-instancia1-enter-variable-value-dialog.js";//import '../04-procedure/dialogs/genoma-instancia1-list-modal-sample-audit.js'
-//import '../04-procedure/dialogs/genoma-instancia1-list-modal-enterresults';
+import"../04procedure/dialogs/genoma-instancia1-simple-modal-dialog.js";import"../04procedure/dialogs/genoma-instancia1-enter-variable-value-dialog.js";//import '../04procedure/dialogs/genoma-instancia1-list-modal-sample-audit.js'
+//import '../04procedure/dialogs/genoma-instancia1-list-modal-enterresults';
 /* `genoma-instancia1-webcomponent-project` Description
  *
  * @customElement
@@ -10,15 +10,18 @@ import"../04-procedure/dialogs/genoma-instancia1-simple-modal-dialog.js";import"
  * 
  */import{dialogStudyNew,dialogStudyUpdate,dialogStudyIndividualNew,dialogStudyIndividualUpdate,dialogStudySamplesSetNew,dialogStudySamplesSetUpdate,dialogStudyFamilyNew,dialogStudyFamilyUpdate}from"../03config/Dialogs/genoma-instancia1-dialogmodal-settings.js";class GenomaInstancia1WebcomponentProject extends ModuleFunctionsGenoma(connect(store)(PolymerElement)){static get properties(){return{selectedObject:{type:Object},selectedStudy:{type:Object},selectedStudyName:{type:String},selectedStudyFamily:{type:Object},selectedStudyIndividual:{type:Object},selectedStudySamplesSet:{type:Object},selectedStudySamples:{type:Object},selectedVariablesSet:{type:Object},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},//fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
 dialogStudyNew:{type:Array,notify:!0,bubble:!0,value:dialogStudyNew},dialogStudyUpdate:{type:Array,notify:!0,bubble:!0,value:dialogStudyUpdate},dialogStudyIndividualNew:{type:Array,notify:!0,bubble:!0,value:dialogStudyIndividualNew},dialogStudyIndividualUpdate:{type:Array,notify:!0,bubble:!0,value:dialogStudyIndividualUpdate},dialogStudyFamilyNew:{type:Array,notify:!0,bubble:!0,value:dialogStudyFamilyNew},dialogStudyFamilyUpdate:{type:Array,notify:!0,bubble:!0,value:dialogStudyFamilyUpdate},dialogStudySamplesSetNew:{type:Array,notify:!0,bubble:!0,value:dialogStudySamplesSetNew},dialogStudySamplesSetUpdate:{type:Array,notify:!0,bubble:!0,value:dialogStudySamplesSetUpdate},activeIncubatorsListRows:{type:Array},dialogStudyFamilyList:{type:Array,notify:!0,bubble:!0,value:elementTableFamily},dialogStudyFamilyIndividualList:{type:Array,notify:!0,bubble:!0,value:elementTableFamilyIndividual},dialogStudyIndividualList:{type:Array,notify:!0,bubble:!0,value:elementTableIndividual},dialogStudySamplesSetList:{type:Array,notify:!0,bubble:!0,value:elementTableSamplesSet},dialogStudySamplesList:{type:Array,notify:!0,bubble:!0,value:elementTableSample},dialogConfigVariablesSetList:{type:Array,notify:!0,bubble:!0,value:elementTableConfigVariablesSet}}}stateChanged(state){if(null!=state.genomaInstancia1){this.selectedVariablesSet=state.genomaInstancia1.configActiveVariablesAndVariablesSet.variables_set;this.selectedStudy=state.genomaInstancia1.selectedStudy;//console.log('genoma-instancia1-webcomponent-project, selectedStudy',this.selectedStudy);
-this.selectedStudyName=this.selectedStudy.name;this.selectedStudyFamily=this.selectedStudy.study_family;this.selectedStudyIndividual=this.selectedStudy.study_individual;this.selectedStudySamplesSet=this.selectedStudy.study_samples_set;this.selectedStudySamples=this.selectedStudy.study_individual_sample}}static get template(){return html`
-        <!-- <style>
-        //     paper-dialog{
-        //         top:100px; left:80px; height:0px; width:0px; z-index: 100;  position: fixed;  
-        //         /* height: 100vh; */
-        //         width: 100vw;
-        //         -webkit-transition: opacity 0.3s ease-in;
-        //     }
-        // </style> -->
+// this.selectedStudyName=this.selectedStudy.name;
+// this.selectedStudyFamily=this.selectedStudy.study_family;
+// this.selectedStudyIndividual=this.selectedStudy.study_individual;
+// this.selectedStudySamplesSet=this.selectedStudy.study_samples_set;
+// this.selectedStudySamples=this.selectedStudy.study_individual_sample;            
+}}static get template(){return html`
+        <style>
+             paper-dialog{
+                 top:100px; left:1vw; height:0px; width:0px; z-index: 100;  position: fixed;  
+                 -webkit-transition: opacity 0.3s ease-in;
+             }
+         </style> 
         <!-- focus-in-field="{{fieldsDialogAddComment.0.name}}" -->
 
         <paper-dialog  always-on-top no-cancel-on-outside-click class="roundbox boxshadow" id="variablesSetListAddToObject" on-opened-changed="variablesSetListOpenedChangedListener">

@@ -2,8 +2,8 @@ define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../..
 this.selectedLanguage=state.app.user.appLanguage}static get template(){return _polymerElement.html`   
             <style>
             paper-icon-button{
-                width: 40px;
-                height: 40px;                 
+                width: 2vmax;
+                height: 2vmax;                 
                 }
             }
             </style>             
@@ -16,6 +16,8 @@ this.selectedLanguage=state.app.user.appLanguage}static get template(){return _p
             </mwc-formfield>    
             
             <paper-icon-button id="english" on-click="langSwitch" 
-                src="http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png" 
+                src="./images/flags/england.jpg"
                 value="en" alt="English" title="English"></paper-icon-button> -->
-        `}switchLanguage(){if("en"==this.selectedLanguage){this.selectedLanguage="es";return}if("es"==this.selectedLanguage){this.selectedLanguage="en";return}this.setDefaultLanguage();return}setDefaultLanguage(){_store.store.dispatch((0,_app_actions.setAppLanguage)(this.selectedLanguage));this.getCheckerValue()}getCheckerValue(){if("es"==this.selectedLanguage){this.flagUrl="https://banner2.kisspng.com/20180320/hde/kisspng-flag-of-spain-flag-of-the-united-states-national-f-spain-flags-icon-png-5ab0b60cb326e6.1242812115215303807338.jpg";this.flagTitle="Castellano";return}this.flagUrl="http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png";this.flagTitle="English"}}customElements.define("language-selector",languageSelector)});
+        `}switchLanguage(){if("en"==this.selectedLanguage){this.selectedLanguage="es";return}if("es"==this.selectedLanguage){this.selectedLanguage="en";return}this.setDefaultLanguage();return}setDefaultLanguage(){_store.store.dispatch((0,_app_actions.setAppLanguage)(this.selectedLanguage));this.getCheckerValue()}getCheckerValue(){if("es"==this.selectedLanguage){this.flagUrl="./images/flags/spain.jpg";//'https://banner2.kisspng.com/20180320/hde/kisspng-flag-of-spain-flag-of-the-united-states-national-f-spain-flags-icon-png-5ab0b60cb326e6.1242812115215303807338.jpg';
+this.flagTitle="Castellano";return}this.flagUrl="./images/flags/england.jpg";//'http://www.johnsonmackenzie.ltd.uk/wp-content/uploads/2015/01/united_kingdom_640.png';
+this.flagTitle="English"}}customElements.define("language-selector",languageSelector)});

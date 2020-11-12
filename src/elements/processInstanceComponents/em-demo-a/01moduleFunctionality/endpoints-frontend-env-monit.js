@@ -1,4 +1,5 @@
-import {backendUrl, frontEndEnvMonitIncubationUrl, frontEndEnvMonitIncubBatchUrl, frontEndEnvMonitUrl} from '../../../../config/platform/logic/api-config';
+import {backendUrl, frontEndEnvMonitIncubationUrl, frontEndEnvMonitIncubBatchUrl, frontEndEnvMonitUrl,
+    frontEndInvestigationUrl} from '../../../../config/platform/logic/api-config';
 import {store} from '../../../../store';
 import {ApiSettings} from '../../../../platform-mixins/apis/api-settings';
 import {tokenMixin} from '../../../../platform-mixins/store/token-mixin';
@@ -7,6 +8,8 @@ import {schema_name} from '../03config/config-process';
 import { getActiveProductionLots as getActiveProductionLots_em_demo_a} from '../02Redux/em-demo-a_actions';
 import { getActiveBatches as getActiveBatches_em_demo_a, getAllIncubators as getAllIncubators_em_demo_a} from '../02Redux/em-demo-a_actions';
 import { getPrograms as getPrograms_em_demo_a, selectedProgramCorrectiveActionList as selectedProgramCorrectiveActionList_em_demo_a} from '../02Redux/em-demo-a_actions';
+import {getOpenInvestigations as getOpenInvestigations_em_demo_a,
+    getInvestigationResultsPendingDecision as getInvestigationResultsPendingDecision_em_demo_a} from '../02Redux/em-demo-a_actions';
 
 
 export const FrontendEndpointsEnvMonitForPrograms = (superClass) => class extends (ApiSettings(ToastMethods(tokenMixin(superClass)))) {
@@ -45,7 +48,7 @@ export const FrontendEndpointsEnvMonitForPrograms = (superClass) => class extend
         if (!schema_name){return;}
         axios.get(apiUrl, {        
             params: {
-                'schemaPrefix':schema_name, 'actionName':'PROGRAM_CORRECTIVE_ACTION_LIST',
+                'schemaPrefix':schema_name, 'actionName':'PROGRAMS_CORRECTIVE_ACTION_LIST',
                 'finalToken':this.getFinalToken(), 'programName':data.programName, 
             }
         })
@@ -158,4 +161,63 @@ export const FrontendEndpointsEnvMonitForProductionLot = (superClass) => class e
     }
 
 
+}   
+
+export const FrontendEndpointsEnvMonitForInvestigation = (superClass) => class extends (ApiSettings(ToastMethods(tokenMixin(superClass)))) {
+    getOpenInvestigationsList(data) {
+        var apiUrl=backendUrl+frontEndInvestigationUrl; 
+        //console.log('getOpenInvestigationsList', apiUrl, data);
+        if (!this.getFinalToken()){return;}
+        if (!schema_name){return;}
+        axios.get(apiUrl, {        
+            params: {
+                'schemaPrefix':schema_name, 'actionName':'OPEN_INVESTIGATIONS',
+                'finalToken':this.getFinalToken(), 
+            }
+        })
+        .then( response => {
+            if(response.status == 200) {
+                //console.log(response.data);
+                store.dispatch(getOpenInvestigations_em_demo_a(response.data));
+                if (data && data.callBackFunction){data.callBackFunction();}
+                return;
+            }
+            if (data && data.callBackFunctionError){data.callBackFunctionError();}
+        })
+        .catch(function (error) {
+            this.toastErrorMessageWithApiResponse(endpoints_returningError.response_error, error);
+            if (data && data.callBackFunctionError){data.callBackFunctionError();}
+            console.log(error.message);
+        })
+        .then(function () {
+            });
+    }
+    getInvestigationResultsPendingDecision(data) {
+        var apiUrl=backendUrl+frontEndInvestigationUrl; 
+        //console.log('getInvestigationResultsPendingDecision', apiUrl, data);
+        if (!this.getFinalToken()){return;}
+        if (!schema_name){return;}
+        axios.get(apiUrl, {        
+            params: {
+                'schemaPrefix':schema_name, 'actionName':'INVESTIGATION_RESULTS_PENDING_DECISION',
+                'finalToken':this.getFinalToken(), 
+            }
+        })
+        .then( response => {
+            if(response.status == 200) {
+                //console.log(response.data);
+                store.dispatch(getInvestigationResultsPendingDecision_em_demo_a(response.data));
+                if (data && data.callBackFunction){data.callBackFunction();}
+                return;
+            }
+            if (data && data.callBackFunctionError){data.callBackFunctionError();}
+        })
+        .catch(function (error) {
+            this.toastErrorMessageWithApiResponse(endpoints_returningError.response_error, error);
+            if (data && data.callBackFunctionError){data.callBackFunctionError();}
+            console.log(error.message);
+        })
+        .then(function () {
+            });
+    }
 }   

@@ -28,6 +28,10 @@ const documentContainerIncidentManagement=document.createElement("incident-manag
               font-size: 40 px;
               flex: 1 1 auto;
             }
+            textarea{
+              font: caption;
+              ont-size: x-large;
+            }
         </style>
     </template>
   </dom-module>`;document.head.appendChild(documentContainerIncidentManagement);

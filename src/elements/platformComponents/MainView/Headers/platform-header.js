@@ -50,11 +50,13 @@ class PlatformHeader extends (connect(store)(PolymerElement)) {
         `;
     }
     platformHeaderRightClicked(e){
-            if (e.detail.avatarDefinition.tab){
-                store.dispatch(addSystemTab(e.detail.avatarDefinition.tab));    
-                store.dispatch(setCurrentTab(e.detail.avatarDefinition.tab)); 
-            }
-            return;                     
+        if (e.detail.avatarDefinition.tab){
+            store.dispatch(addSystemTab(e.detail.avatarDefinition.tab));    
+            store.dispatch(setCurrentTab(e.detail.avatarDefinition.tab)); 
+        }else{
+            this.doLogout();
+        }
+        return;                     
     }
         
     doLogout() {

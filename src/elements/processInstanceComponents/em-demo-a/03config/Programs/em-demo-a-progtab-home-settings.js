@@ -5,6 +5,41 @@ export const programHome_sampleSummaryPieOptions={"title": "Samples Progress"};
 export const programHome_lastResults_infoGrouped={
   'grouped':true,
 }
+import {schema_name} from '../config-process';
+export const programHome_defaultTab="hometab_"+"area";
+export const em_home_tab_subTabs=[
+  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
+    ,tabLabel_en: "Home", tabLabel_es: "Inicio"
+    ,tabName: "hometab_"+"home", tabIndex:1
+  } ,
+  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
+    ,tabLabel_en: "Area", tabLabel_es: "Área"
+    ,tabName: "hometab_"+"area", tabIndex:1
+  } ,
+];
+export const hometab_area={
+  windowTitle:{label_en:'Area KPIs ', label_es:'KPI sobre áreas'},
+  charts:[
+    {
+      display_chart: true,
+      chart_type:'pie',
+      chart_name:'samples_summary_by_area',
+      chart_title:{label_en:'Samples Percentage ', label_es:'Porcentaje de'},
+      counter_field_name:'COUNTER',
+      counterLimits:{
+        // min_allowed: 3,
+        // min_allowed_included:3,
+        // max_allowed:100,
+        // max_allowed_included:100,
+        // value:0,
+      },
+      grouper_field_name:'current_area',
+      grouper_exclude_items:[],
+      label_item:{label_en:'Area', label_es:'Area'},
+      label_value:{label_en:'#', label_es:'#'},
+    },
+  ],
+};  
 
 export const windowDefinition={
   windowTitle:{label_en:'Home page for the program ', label_es:'Página de inicio para el programa'},
@@ -14,6 +49,24 @@ export const windowDefinition={
       chart_type:'pie',
       chart_name:'samples_summary_by_stage',
       chart_title:{label_en:'In-Progress Sample Percentage ', label_es:'Porcentaje en Muestras En-Progreso'},
+      counter_field_name:'COUNTER',
+      counterLimits:{
+        // min_allowed: 3,
+        // min_allowed_included:3,
+        // max_allowed:100,
+        // max_allowed_included:100,
+        // value:0,
+      },
+      grouper_field_name:'current_stage',
+      grouper_exclude_items:['Samplingzz','Incubationzz','PlateReadingzz','MicroorganismIdentificationzz','zz','END'],
+      label_item:{label_en:'Statussss', label_es:'Estado'},
+      label_value:{label_en:'#', label_es:'#'},
+    },
+    {
+      display_chart: true,
+      chart_type:'pie',
+      chart_name:'person_samples_summary_by_stage',
+      chart_title:{label_en:'In-Progress Personnel Percentage ', label_es:'Porcentaje en Persona En-Progreso'},
       counter_field_name:'COUNTER',
       counterLimits:{
         // min_allowed: 3,
@@ -104,6 +157,10 @@ documentContainerEmDemoAProgtabHomeStyle.innerHTML = `
       }  
       div.main{
         width:95%;
+      }
+      div.mainHomeTabChart{
+        width:95%;
+        display:flex;
       }
     </style>
     </template>

@@ -8,8 +8,11 @@ import '../../../config/platform/platform-login/platform-login-style';
 import {AuthenticationApi} from '../../../platform-mixins/apis/api-authentication';
 import {startLoading, setAppLanguage} from '../Redux/actions/app_actions';
 
-import './../../internalComponents/others/language-selectortwoflags.js';
-
+//import './../../internalComponents/others/language-selectortwoflags.js';
+import './../../internalComponents/others/language-selector.js';
+import('@polymer/paper-dialog/paper-dialog');
+//import '@thuoe/mp4-video-player';
+import '../../internalComponents/Dialogs/DialogVideoPlayer/dialog-videoplayer';
 /**
  * `platform-login` Description
  *
@@ -29,9 +32,14 @@ class PlatformLogin extends AuthenticationApi(connect(store)(PolymerElement)) { 
             axiosMessage: {type: String, value:appLogin_authenticationMessage},
             userRoles: Array, 
             selectedLanguage: String, 
+            rolesList: {type: Array, value:[]},
+            //videoUrl:{type: String, value:'http://51.75.202.142:8888/myvideos/LP.mp4'},
+            videoToc:{type: Array, value:[{id: 1, label_en:'chapter 1', label_es:'tema 1', src:'http://51.75.202.142:8888/myvideos/LP.mp4'},
+            {id: 2, label_en:'Chapter 2', label_es:'tema 2', src:'http://51.75.202.142:8888/myvideos/LP.mp4'}]}
         }
     }
     stateChanged(state){
+      //console.log('soy platform-login y hago stateChanged');
       this.selectedLanguage = state.app.user.appLanguage;
       if (state.app.user.loggedIn==false){
           this.notLoggedIn();
@@ -43,22 +51,78 @@ class PlatformLogin extends AuthenticationApi(connect(store)(PolymerElement)) { 
         this.set('formFields.4.read_only', true); // roleList          
         return;
     }
+    openVideoWindow(){
+      //alert('ooooopening');
+//      this.$.videowindowdialog.open();
+      var elem=this.shadowRoot.getElementById("videowindowdialog");
+      if (elem){elem.open();}
+//      this.$.videoPlayerDiv.style.visibility=visible;
+    }    
+    VideoWindowVisibility(status){
+      return "visibility:"+status+";"
+    }
+    // closeVideoWindow(){
+    //   var elem=this.shadowRoot.getElementById("videowindowdialog");
+    //   if (elem){elem.close();}
+    //   var elem2=this.shadowRoot.getElementById("videoplayer");
+    //   if (elem2){elem2.stop();}
+    // }
     static get template() {
         return html`
         <style include="platform-login-style"></style>
+        <style>
+        // div {
+        //   display: inline-flex;
+        //   width: 200px;
+        //   height: 200px;
+        //   justify-content: center;
+        //   align-items: center;
+        //   background-color: #e9a9c7;
+        //   color: #39464e;
+        //   cursor: pointer;
+        // }
+        
+        // @media print {
+        //   body.print-element *:not(.print) {
+        //     display: none;
+        //   }
+        // }
+        </style>
         <div class="login">
-            <img src="[[appLogin_logoOnTop.url]]" class="appLoginLogoOnTop"> 
           <div class="appLoginForm" >
-            <language-selectortwoflags></language-selectortwoflags>
+            <img src="[[appLogin_logoOnTop.url]]" class="appLoginLogoOnTop"> 
+            <div id="language-selector">
+              <!-- <language-selectortwoflags></language-selectortwoflags> -->
+              <language-selector></language-selector>
+            </div>
             <ribbon-element field="{{appLoginRibbonField.0}}"></ribbon-element>
           
-            <paper-spinner-lite alt="Authenticating user and password" width="6px" active="[[loading]]"></paper-spinner-lite>
+            <paper-spinner-lite alt="Authenticating user and password"  width="6px" active="[[loading]]"></paper-spinner-lite>
             <form id="form">
               <template is="dom-repeat" items="{{formFields}}" as="currentfield">       
                 <field-controller on-keydown="keyPressed" on-field-button-clicked="fieldButtonClicked" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
               </template>       
             </form>
+<!--            <input type="button" on-click="openVideoWindow">video</input>
+            <vaadin-button id="triggerSOP" on-click="openVideoWindow" </vaadin-button> -->
+          </div>
+<!--          <div on-click="{{print_this(this)}}">Print 1</div>
+          <div>Print 2</div> -->
+          <paper-dialog always-on-top no-cancel-on-outside-click top="4px" id="videowindowdialog" >    
+            <dialog-videoplayer index-content="{{videoToc}}" selected-language="{{selectedLanguage}}"></dialog-videoplayer>
+          </paper-dialog>          
+
         `;
+    }
+    printme(e){
+      console.log('printme', e);
+    }
+    print_this(elem) {
+      document.body.classList.add('print-element')
+      elem.classList.add('print')
+      window.print()
+      document.body.classList.remove('print-element')
+      elem.classList.remove('print')
     }
     keyPressed(e){      
         if(e.key=="Enter") {
@@ -71,9 +135,12 @@ class PlatformLogin extends AuthenticationApi(connect(store)(PolymerElement)) { 
         }   
     }  
     fieldButtonClicked(e) {        
-        if (e.detail.buttonName=="buttonAccess"){                      
-          this.login();
-        }
+      if (e.detail.buttonName=="buttonAccess"){                      
+        this.login();
+      }
+      if (e.detail.buttonName=="video"){                      
+        this.openVideoWindow();
+      }
     }    
     onListChange(e) {    
       if (e.detail.name=="userRole"){ 
@@ -164,15 +231,19 @@ this.set('formFields.4.read_only', false); // roleList
             detail: {}
         }));    
       }
-      constructor() {        
+      constructor(){
         super();
-        //return;      
+        //return;
         this.userName="labplanet";   
         this.dbUserPassword="vale";
         this.userRole="edit";
         this.userName="marc";   
         this.dbUserPassword="aulin";
         this.userRole="coordinator";
+        // this.userName="wiamag"; //"marc";   
+        // this.dbUserPassword="lola"; //"aulin";
+        // this.userRole="defensa"; //"coordinator";
+
         this.formFields[1].value=this.userName;
         this.formFields[2].value=this.dbUserPassword;
         this.formFields[3].value=this.userRole;

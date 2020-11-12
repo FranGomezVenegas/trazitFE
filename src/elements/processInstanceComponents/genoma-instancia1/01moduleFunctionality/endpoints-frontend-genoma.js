@@ -17,12 +17,13 @@ export const FrontendEndpointsModuleGenoma = (superClass) => class extends Genom
         this.callEndpoint(data, 'ALL_ACTIVE_PROJECTS');
         //this.getActiveProductionLotsList();
     }
-    getVariablesAndVariablesSet(){
+    getConfigVariablesAndVariablesSet(){
         this.callBackRefreshWindow = this.refreshWindow.bind(this);
         var data=[];
         this.callEndpoint(data, 'ALL_ACTIVE_VARIABLES_AND_VARIABLES_SET');
     }
     refreshSelectedStudyOnGetProjects(projects){
+        //console.log('refreshSelectedStudyOnGetProjects '); 
         var state=store.getState();
         if (state.genomaInstancia1.selectedStudy.name!=undefined){
             var selStudyName=state.genomaInstancia1.selectedStudy.name;
@@ -39,8 +40,7 @@ export const FrontendEndpointsModuleGenoma = (superClass) => class extends Genom
             console.log('setSelectedStudy fired by getProjects');  
         }
     }
-    callEndpoint(data, endpointName) {
-        
+    callEndpoint(data, endpointName) {        
         var endpoints_returningError=this.endpoints_returningError();
         //console.log('callEndpoint', 'data', data, 'endpointName', endpointName);
         var moduleEndpoints=[];

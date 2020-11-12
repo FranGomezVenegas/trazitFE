@@ -10,7 +10,6 @@ export const windowDefinition={
   elementTable1: elementTableSamplesSet,
   elementTable2:elementTableSample,
   elementTable3:elementTableSampleVariable,
-
   zcharts:[
     {
       display_chart: true,

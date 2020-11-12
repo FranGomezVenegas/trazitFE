@@ -21,6 +21,20 @@ export const progTabCorrectiveActions={
     displayButtons: true,
     buttons:[
       {
+        "name": "NEW_INVESTIGATION",
+        "label_en": "Create Investigation", "label_es": "Crear Investigación",
+        "type": "button",
+        "read_only": false,
+        "esign_required": false,
+      }, 
+      {
+        "name": "ADD_INVEST_OBJECTS",
+        "label_en": "Add to Investigation", "label_es": "Añadir a Investigación",
+        "type": "button",
+        "read_only": false,
+        "esign_required": false,
+      }, 
+      {
         "name": "CORRECTIVE_ACTION_COMPLETE",
         "label_en": "Complete", "label_es": "Concluir",
         "type": "button",

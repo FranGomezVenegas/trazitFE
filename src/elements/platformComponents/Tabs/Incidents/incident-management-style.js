@@ -31,6 +31,10 @@ documentContainerIncidentManagement.innerHTML = `
               font-size: 40 px;
               flex: 1 1 auto;
             }
+            textarea{
+              font: caption;
+              ont-size: x-large;
+            }
         </style>
     </template>
   </dom-module>`;

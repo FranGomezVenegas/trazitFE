@@ -14,7 +14,7 @@
 //       "read_only": false
 //     }, 	
 // ];
-export const platformEsign_notCorrectMessage={now:{message_en:"Validation not completed, action aborted",message_es:"Validaci\xF3n no completada, acci\xF3n abortada"},dialog_cancelled:{message_en:"dialog canceled, action aborted",message_es:"Di\xE1logo cancelado, acci\xF3n abortada"},attempts_consumed:{message_en:"All attempts consumed, action aborted",message_es:"Todos los intentos consumidos, acci\xF3n abortada"}// export const appConfirmUser_formFields=[
+export const platformEsign_windowTitle={label_en:"Please enter your eSign",label_es:"Por favor entra tu frase de Firma Electr\xF3nica"};export const platformEsign_notCorrectMessage={now:{message_en:"Validation not completed, action aborted",message_es:"Validaci\xF3n no completada, acci\xF3n abortada"},dialog_cancelled:{message_en:"dialog canceled, action aborted",message_es:"Di\xE1logo cancelado, acci\xF3n abortada"},attempts_consumed:{message_en:"All attempts consumed, action aborted",message_es:"Todos los intentos consumidos, acci\xF3n abortada"}// export const appConfirmUser_formFields=[
 //     {
 //       "name": "userToCheck",
 //       "label_en": "User", "label_es": "Usuario",

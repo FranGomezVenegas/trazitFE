@@ -18,7 +18,7 @@ incidentsEndPoint(data) {
     if (data.paramsUrl){
         apiUrl=apiUrl+"&"+data.paramsUrl; }
     axios({method:'post', url:apiUrl
-        , //data:JSON.stringify({firstName: 'Finn', lastName: 'Williams' })
+        , data:JSON.stringify({firstName: 'Finn', lastName: 'Williams' })
         })
     .then( response => {
         if(response.status == 200) {

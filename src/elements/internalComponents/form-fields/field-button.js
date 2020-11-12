@@ -17,9 +17,9 @@ class FieldButton extends FieldsMethods(connect(store)(PolymerElement)) {
   }   
   static get template() {
     return html`    
-    <vaadin-button on-click="clicked"  class="button" value="{{field.name}}" disabled="{{field.read_only}}">
+    <vaadin-button on-click="clicked"  value="{{field.name}}" disabled="{{field.read_only}}">
       {{labelValue(selectedLanguage, field)}}
-    </vaadin-button>        
+    </vaadin-button>
     `;
   }  
   clicked(){

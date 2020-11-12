@@ -1,3 +1,7 @@
+export const platformConfirmUser_windowTitle={
+  label_en:"Please confirm your credentials (user & password)",
+  label_es:"Por favor confirma tu identidad (usuario y contraseña)"
+}
 export const platformConfirmUser_notCorrectMessage={
     "now":{
     "message_en":"Validation not completed, action aborted",

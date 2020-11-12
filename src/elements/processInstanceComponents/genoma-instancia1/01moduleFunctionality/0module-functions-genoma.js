@@ -17,7 +17,7 @@ export const ModuleFunctionsGenoma = (superClass) => class extends GenomaModuleD
     fieldButtonClickedForProjects(e) {
         var buttonDefinition=e.detail.buttonDefinition;
         var selObject=e.target.selectedObject;
-        
+        if (selObject==undefined){var selObject=e.target.selectedobject;}
         // var elemAttributes=[];
         // elemAttributes=e.target.attributes;
         // var moduleAreaAttr = elemAttributes.find(function(tab) {

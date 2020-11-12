@@ -8,7 +8,7 @@ import{PolymerElement,html}from"../../../../node_modules/@polymer/polymer/polyme
       <field-date id="{{field.name}}" field="[[field]]" value="{{field.value}}" ></field-date>
       </template>
       <template is="dom-if" if="{{iAm.list}}">   
-        <field-list id="{{field.name}}"  field="[[field]]" value="{{field.value}}" ></field-list>
+        <field-list id="{{field.name}}"  field="[[field]]" value="{{field.value}}" value_no_index="{{field.value_no_index}}" ></field-list>
       </template>
       <template is="dom-if" if="{{iAm.text}}">
         <field-text id="{{field.name}}" "type="{{field.type}}" field="{{field}}" value="{{field.value}}" ></field-text>
@@ -50,7 +50,11 @@ import{PolymerElement,html}from"../../../../node_modules/@polymer/polymer/polyme
         <field-icon-button procedure="[[procedure]]" type="{{field.type}}" id="{{field.name}}" field="{{field}}" value="{{field.value}}" ></field-icon-button>
       </template>
       </div>
-    `}listChange(newList){this.field-list}fieldChange(newField){this.resetIAms();//if (this.id=='proceduresList'){    
-//  console.log('field-controller', newField.name, this.id);}
+    `}// listChange(newList) {
+//   this.field-list
+// }
+fieldChange(newField){this.resetIAms();//if (this.id=='proceduresList'){    
+//  console.log('field-controller', newField.name, this.id);
+//}
 switch(newField.type){case"boolean":this.set("iAm.boolean",!0);break;case"list":this.set("iAm.list",!0);//this.set('iAm.text', false);
 break;case"date":this.set("iAm.date",!0);break;case"text":this.set("iAm.text",!0);break;case"text-area":this.set("iAm.textArea",!0);break;case"password":this.set("iAm.text",!0);break;case"logo-circle":this.set("iAm.logoCircle",!0);break;case"avatar":this.set("iAm.avatar",!0);break;case"google-fonts":this.set("iAm.googleFonts",!0);break;case"tree-list":this.set("iAm.treeList",!0);break;case"button":this.set("iAm.button",!0);break;case"title":this.set("iAm.title",!0);break;case"button-group":this.set("iAm.buttonGroup",!0);break;case"integer":this.set("iAm.integer",!0);break;case"badge":this.set("iAm.badge",!0);break;case"textconfirmuser":this.set("iAm.textconfirmuser",!0);break;case"icon-button":this.set("iAm.iconButton",!0);break;}}}customElements.define("field-controller",FieldController);

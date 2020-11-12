@@ -14,6 +14,16 @@ export const sampleIncubBatchPendingIncub1={
     addSampleAnalysisResultFieldToRetrieve:'',
     sampleFieldToSort:'sample_id desc',
     sampleFieldToDisplay:[
+      {name: 'add_batch', label_en:'', label_es: '',is_button:true, 
+      button:[      {
+        "name": "SAMPLE_AUDIT",
+        "label_en": "Sample Audit", "label_es": "Auditoría",
+        "type": "button",
+        "icon_name": "icons:next-week",
+        "read_only": false,
+      }, ],
+      sort:false, filter:true, min_width:'20%', width:'20%'},
+      {name: 'iconCol', label_en:'', label_es: '',is_icon:true, sort:false, filter:true, min_width:'20%', width:'20%'},
       {name: 'sample_id', label_en:'Sample ID', label_es: 'ID Muestra', sort:false, filter:true, min_width:'20%', width:'20%'}
       , {name: 'incubation_batch', label_en:'Batch', label_es: 'Tanda', sort:true, filter:false, min_width:'20%', width:'30%'}
       , {name: 'sampling_date', label_en:'sampling Date', label_es: 'ID Fecha de Muestreo', sort:false, filter:true, min_width:'20%', width:'30%'}
@@ -23,7 +33,7 @@ export const sampleIncubBatchPendingIncub1={
     autorefreshWindow: false,
     tableTitle:{
       display: true,
-      label:{label_en:'Samples Pending 1st Incubation', label_es:'Muestras pendientes de la 1ª incubación'}
+      label:{label_en:'Samples Pending 1st Incubation', label_es:'Pendientes de 1ª incubación'}
     },
     displayButtons: true,
     buttons:[          
@@ -71,7 +81,7 @@ export const sampleIncubBatchPendingIncub2={
   autorefreshWindow: false,
   tableTitle:{
     display: true,
-    label:{label_en:'Samples Pending 2nd Incubation', label_es:'Muestras pendientes de la 2ª incubación'}
+    label:{label_en:'Samples Pending 2nd Incubation', label_es:'Pendientes de 2ª incubación'}
   },
   displayButtons: true,
   buttons:[          

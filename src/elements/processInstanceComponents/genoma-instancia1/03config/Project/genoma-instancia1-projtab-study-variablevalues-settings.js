@@ -63,6 +63,15 @@ export const windowDefinition={
     {name: 'individual', label_en:'Individual', label_es: 'Individuo', sort:false, filter:true, is_icon:false, width:"20%"},
     {name: 'family', label_en:'Family', label_es: 'Familia', sort:true, filter:false, is_icon:false, width:"20%"},    
   ],
+  tableSectionWhenHidden:{
+    displaySelectedObjectData: true,
+    selectedObjectData:[
+      {name: 'id', label_en:'Id', label_es: 'Id', sort:false, filter:true, is_icon:false, width:"20%"},
+      {name: 'owner_table', label_en:'Owner', label_es: 'Dueño', sort:false, filter:true, is_icon:false, width:"20%"},
+      {name: 'name', label_en:'Name', label_es: 'Nombre', sort:false, filter:true, is_icon:false, width:"20%"},
+      {name: 'value', label_en:'Value', label_es: 'Valor', sort:false, filter:true, is_icon:false, width:"20%"},
+    ]
+  },  
   zcharts:[
     {
       display_chart: true,

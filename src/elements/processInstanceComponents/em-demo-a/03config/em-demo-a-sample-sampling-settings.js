@@ -49,7 +49,8 @@ export const sampleSampling={
           "type": "icon-button",
           "icon_name": "icons:date-range",
           "read_only": false,
-          "confirmuser_required": true,    
+          "confirmuser_required": true,   
+          "esign_required": false,    
         }, 
         {
           "name": "SAMPLINGCOMMENTADD",

@@ -1,4 +1,4 @@
-import {backendUrl, frontEndEnvMonitSampleUrl} from '../../../../config/platform/logic/api-config';
+import {backendUrl, frontEndEnvMonitSampleUrl, ApiEnvMonitStatsUrl} from '../../../../config/platform/logic/api-config';
 import {store} from '../../../../store';
 import {ApiSettings} from '../../../../platform-mixins/apis/api-settings';
 import {tokenMixin} from '../../../../platform-mixins/store/token-mixin';
@@ -8,7 +8,8 @@ import {
     getBrowserSampleData as getBrowserSampleData_em_demo_a, 
     getBrowserIncubatorData as getBrowserIncubatorData_em_demo_a,
     getBrowserBatchData as getBrowserBatchData_em_demo_a,
-    getBrowserProdLotData as getBrowserProdLotData_em_demo_a} from '../02Redux/em-demo-a_actions';   
+    getBrowserProdLotData as getBrowserProdLotData_em_demo_a,
+    setDataMiningQueryOutput as setDataMiningQueryOutput_em_demo_a} from '../02Redux/em-demo-a_actions';   
 /**
  * @mixinFunction
  * @polymer
@@ -139,5 +140,36 @@ export const FrontendEndpointsEnvMonitBrowser = (superClass) => class extends (A
         })
         .then(function () {
             });
-    }      
+    }   
+    getDataMiningQueryOutput(data, url) {
+        var apiUrl=backendUrl+ApiEnvMonitStatsUrl+'?'+url; 
+        //console.log('getGivenSampleAnalysisResultEntry', apiUrl, data);
+        if (!this.getFinalToken()){return;}
+        if (!schema_name){return;}
+        axios.get(apiUrl, {        
+            params: {
+                'schemaPrefix':schema_name, 'actionName':data.actionName, 'finalToken':this.getFinalToken(), 
+            }
+        })
+        .then( response => {
+            if(response.status == 200) {
+                //console.log(response.data);
+                store.dispatch(setDataMiningQueryOutput_em_demo_a(response.data));
+                if (data && data.callBackFunction){data.callBackFunction();}
+                return;
+            }
+            this.toastErrorMessageWithApiResponse(endpoints_returningError.response_not_status_200, response);
+            if (data && data.callBackFunctionError){data.callBackFunctionError()};
+            return;
+        })
+        .catch(function (error) {
+            this.toastErrorMessageWithApiResponse(endpoints_returningError.response_error, error);
+            if (data && data.callBackFunctionError){data.callBackFunctionError();}
+            console.log(error.message);
+        })
+        .then(function () {
+            });
+    }   
+    
+        
 }

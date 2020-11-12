@@ -18,13 +18,13 @@ class FieldInteger extends FieldsMethods(connect(store)(PolymerElement)) {
     return html`    
     <paper-input class="inputBlue" type="number" id="{{field.name}}" name="{{field.name}}" readonly="{{field.read_only}}" required label="{{labelValue(selectedLanguage, field)}}" value="{{value}}" auto-validate="{{field.required}}" ></paper-input>
     <!-- <h3>{{labelValue(selectedLanguage, field)}} {{value}} </h3>      -->
-        
+<!--        
     <template is="dom-if" if="{{!field.read_only}}">
       <p>
         <vaadin-button on-click="decrementar"><iron-icon icon="remove"></iron-icon></vaadin-button>
         <vaadin-button on-click="incrementar"><iron-icon icon="add"></iron-icon></vaadin-button>
       </p>
-    </template>
+    </template>-->
     `;
   }  
   incrementar() {

@@ -6,11 +6,11 @@ export const appProcedureListFake=[
     "value": "",
     "read_only": false,
     "items" : [
-      {"keyName":"em__demo__a",                        
+      {"keyName":"em_demo_a",                        
       "keyValue_en":"Demo-A", "keyValue_es":"Demo-A"},
-      {"keyName":"process__us",                        
+      {"keyName":"process/us",                        
       "keyValue_en":"US Process", "keyValue_es":"Proceso EEUU"},
-      {"keyName":"process__eu",                        
+      {"keyName":"process/eu",                        
       "keyValue_en":"EU Process", "keyValue_es":"Proceso EU"},
     ],
   }

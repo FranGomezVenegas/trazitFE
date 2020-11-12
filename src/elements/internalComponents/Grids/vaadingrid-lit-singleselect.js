@@ -1,15 +1,25 @@
 import {LitElement, html} from 'lit-element';
+import {repeat} from 'lit-html/directives/repeat.js';
 import {render} from 'lit-html';
 
+import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@vaadin/vaadin-grid/vaadin-grid-selection-column';
+        // import('@vaadin/vaadin-grid');
+        // import('@vaadin/vaadin-grid/vaadin-grid-column');
+        import('@vaadin/vaadin-grid/vaadin-grid-sort-column');        
+         import('@vaadin/vaadin-grid/vaadin-grid-filter'); 
+         import('@vaadin/vaadin-grid/vaadin-grid-filter-column'); 
+         import('@vaadin/vaadin-grid/vaadin-grid-column-group');
+         import('@vaadin/vaadin-grid/vaadin-grid-tree-toggle');
+         import('@vaadin/vaadin-grid/vaadin-grid-sorter');
+         import('@vaadin/vaadin-grid/vaadin-grid-selection-column');
 // import custom theme for the grid
 //import './grid-custom-theme.js';
 
-//import {SampleIcons} from '../../../elements/processInstanceComponents/em-demo-a/03config/config-icons';
+import {SampleIcons} from '../../../elements/processInstanceComponents/em-demo-a/03config/config-icons';
 import '@vaadin/vaadin-grid/vaadin-grid.js';
-import '@vaadin/vaadin-grid/vaadin-grid-selection-column';
 
-//SampleIcons
-class vaadingridLitSingleSelect extends (LitElement) {
+class vaadingridLitSingleSelect extends SampleIcons(LitElement) {
 
   static get properties() {
     return {
@@ -21,24 +31,23 @@ class vaadingridLitSingleSelect extends (LitElement) {
       selectedObject: {type: Object, notify: true},
       selectedItems: {type: Array, notify: true},
       allowMultiSelect:{type: Boolean},
-      _focusedItemIndex:{type: Number}
     }
   }
   
   constructor() {
     super();
-    //this._boundToggleDetailsRenderer = this.toggleDetailsRenderer.bind(this); // need this to invoke class methods in renderers
+    this._boundToggleDetailsRenderer = this.toggleDetailsRenderer.bind(this); // need this to invoke class methods in renderers
   }
   
-  // firstUpdated() {
-  //   super.firstUpdated();
+  firstUpdated() {
+    super.firstUpdated();
     
-  //   // fetch('https://demo.vaadin.com/demo-data/1.0/people?count=200')
-  //   //   .then(r => r.json())
-  //   //   .then(data => {
-  //   //     this.rowcontainer = data.result;
-  //   //   });
-  // }
+    // fetch('https://demo.vaadin.com/demo-data/1.0/people?count=200')
+    //   .then(r => r.json())
+    //   .then(data => {
+    //     this.rowcontainer = data.result;
+    //   });
+  }
 
   render() {
     return html`
@@ -47,8 +56,7 @@ class vaadingridLitSingleSelect extends (LitElement) {
           white-space: normal;
         }
         vaadin-grid{
-          background-color: #49cce633; //#9eaeef30; //#ffffff5c;
-          height:50vh;
+          background-color: #c2f2ff; //#49cce633; //#9eaeef30; //#ffffff5c;
         }
         vaadin-grid-filter {
           display: flex;
@@ -62,8 +70,7 @@ class vaadingridLitSingleSelect extends (LitElement) {
         }
       </style>
       ${this.headerfields ? html` 
-
-      <vaadin-grid id="gridLevel1" column-reordering-allowed .items="${this.rowcontainer}" .rowDetailsRenderer="${this.rowDetailsRenderer}" 
+      <vaadin-grid id="gridLevel1" .items="${this.rowcontainer}" .rowDetailsRenderer="${this.rowDetailsRenderer}" 
         @active-item-changed=${this.itemSelected}         
       >
       ${this.rowcontainer==undefined || this.rowcontainer.length==0 ? html`
@@ -72,25 +79,25 @@ class vaadingridLitSingleSelect extends (LitElement) {
         ${this.rowcontainer[0].is_error ? html`
         <vaadin-grid-column path="NO DATA" header="NO DATA"></vaadin-grid-column>
         `:html`            
-          <vaadin-grid-selection-column custom-allow-multi-select=${this.allowMultiSelect} @selected-items-changed=${this.itemSelected}  frozen auto-select></vaadin-grid-selection-column>       
+          <vaadin-grid-selection-column disable auto-select></vaadin-grid-selection-column>       
           ${this.headerfields.map(item => html` 
+<!--              $repeat(this.headerfields, (currhdrfld)  -->
               ${item.is_icon ? html`    
-               <!-- <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column> -->
-                <vaadin-grid-column width="50px" flex-grow="0" .renderer="${this.indexRenderer}"> 
+                <vaadin-grid-column width="50px" flex-grow="0"> 
                   <template class="header">${item.status}</template>
                   <template>
-                  <img item="{{item}}" rowindex="{{index}}" style="height:24px; width: 24px;" src="${this.getIconPath(this.indexRenderer)}">  <!-- {{getSampleStatusIcon(item.status)}} -->
+                  <img style="height:24px; width: 24px;" src="${this.getIconPath()}">  <!-- {{getSampleStatusIcon(item.status)}} -->
                   </template>  
                 </vaadin-grid-column>    
               `: html`
                 ${item.sort ? html`          
-                  <vaadin-grid-sort-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-sort-column>`:html``}  
+                  <vaadin-grid-sort-column path="${item.name}" header="${item.label_es}"></vaadin-grid-sort-column>`:html``}  
                 ${item.filter ? html`
-                  <vaadin-grid-filter-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-filter-column> 
-                  <!-- <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column> -->
+                  <vaadin-grid-filter-column path="${item.name}" header="${item.label_es}"></vaadin-grid-filter-column> 
+                  <!-- <vaadin-grid-column path="${item.name}" header="${item.label_es}"></vaadin-grid-column> -->
                   `:html``}  
                 ${!item.sort && !item.filter ? html`
-                  <vaadin-grid-column width="${item.width}" resizable path="${item.name}" header="${item.label_es}"></vaadin-grid-column>`:html``}  
+                  <vaadin-grid-column path="${item.name}" header="${item.label_es}"></vaadin-grid-column>`:html``}  
               `}
                       <!--        <vaadin-grid-column width="50px" flex-grow="0" header="#" .renderer="${this.indexRenderer}"></vaadin-grid-column>
                       <vaadin-grid-filter-column path="firstName" header="First name"></vaadin-grid-filter-column>
@@ -103,39 +110,33 @@ class vaadingridLitSingleSelect extends (LitElement) {
       `}
       </vaadin-grid>
       `:html``}
-      
     `;
   }
-
-
-  /**
-   * Use for one-time configuration of your component after local
-   * DOM is initialized.
-   */
-  ready() {
-      super.ready();
-      const grid = document.querySelector('vaadin-grid');
-      const columns = document.querySelectorAll('vaadin-grid-column');
-      console.log('super')
+  selectItem(itm){
+    //alert('Anem a pams ... '+itm);
+    console.log('vaadingrid-lit > selectItem', 'itm', itm);
+    var elem=this.shadowRoot.getElementById("gridLevel1");
+    if (elem){
+      var found=this.rowcontainer.find((e) => e.sample_id === Number(itm));
+      if (found!=undefined){
+        alert(found);
+        elem.selectItem(found);
+        //this.selectedObject=found;
+        //this.selectedObject=found;
+        var mye={'target':{selectedObject:found}, detail: {'value': found}};    
+        //this.itemSelected(mye);
+      }
+    }
   }
-
-  getIconPath(ee){
+  getIconPath(){
     var rowIndex=this.grid._focusedItemIndex;
-    if (this.grid.items==undefined || this.grid.items.length==0){return;}
-    console.log('getIconPath', 'hdrFld', 'hdrFld', 'rowIndex', rowIndex, this.grid.items[rowIndex].current_stage);
+    console.log('getIconPath', 'hdrFld', 'hdrFld', 'rowIndex', rowIndex);
   }
   refreshTable(){
     if (this.refreshFunction){this.refreshFunction();}
   }
-  resetTableSelection(){
-    //e.clearCache();
-    var gridName="gridLevel1"; //this.id;
-    const grid=this.shadowRoot.getElementById(gridName);
-    grid.selectedItems=[];
-    this.selectedItems=[];
-  }
   itemSelected(e){
-    //console.log('itemSelected', this.allowMultiSelect);
+    return;
     if ( (this.allowMultiSelect==undefined) || (this.allowMultiSelect!=undefined && this.allowMultiSelect==false) ){
       //console.log('itemSelected NOT allowMultiSelect');
       this.selectedObject=e.detail.value; 
@@ -160,35 +161,33 @@ class vaadingridLitSingleSelect extends (LitElement) {
   get grid() {
     return this.shadowRoot.querySelector('vaadin-grid');
   }
-
-
   
-  // _toggleDetails(value, item) {
-  //   if (value) {
-  //     this.grid.openItemDetails(item);
-  //   } else {
-  //     this.grid.closeItemDetails(item);
-  //   }
-  // }
+  _toggleDetails(value, item) {
+    if (value) {
+      this.grid.openItemDetails(item);
+    } else {
+      this.grid.closeItemDetails(item);
+    }
+  }
   
-  // toggleDetailsRenderer(root, column, rowData) {
-  //   // only render the checkbox once, to avoid re-creating during subsequent calls
-  //   if (!root.firstElementChild) {
-  //     render(
-  //       html`
-  //         <vaadin-checkbox 
-  //           @checked-changed="${e => this._toggleDetails(e.detail.value, root.item)}"
-  //         >
-  //           Show Details
-  //         </vaadin-checkbox>
-  //       `, 
-  //       root
-  //     );
-  //   }
-  //   // store the item to avoid grid virtual scrolling reusing DOM nodes to mess it up
-  //   root.item = rowData.item;
-  //   root.firstElementChild.checked = this.grid.detailsOpenedItems.indexOf(root.item) > -1;
-  // }
+  toggleDetailsRenderer(root, column, rowData) {
+    // only render the checkbox once, to avoid re-creating during subsequent calls
+    if (!root.firstElementChild) {
+      render(
+        html`
+          <vaadin-checkbox 
+            @checked-changed="${e => this._toggleDetails(e.detail.value, root.item)}"
+          >
+            Show Details
+          </vaadin-checkbox>
+        `, 
+        root
+      );
+    }
+    // store the item to avoid grid virtual scrolling reusing DOM nodes to mess it up
+    root.item = rowData.item;
+    root.firstElementChild.checked = this.grid.detailsOpenedItems.indexOf(root.item) > -1;
+  }
   
   rowDetailsRenderer(root, column, rowData) {
     render(

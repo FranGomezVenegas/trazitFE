@@ -29,10 +29,8 @@ documentContainerSopIconAndBadgeStyle.innerHTML = `
         paper-badge.pendingSop{
             top:  2vw;
             left: 5vw;
-            min-height: 0.5vh;
-            min-width: 0.5vw;
-            max-height: 2vh;
-            max-width: 2vw;
+            height: 2vh;
+            width: 2vw;
             --paper-badge-background: var(--google-red-500);
             --paper-badge-height: 2vh;
             --paper-badge-width: 2vw;

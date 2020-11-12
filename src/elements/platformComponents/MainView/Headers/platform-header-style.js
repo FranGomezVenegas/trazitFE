@@ -64,6 +64,7 @@ documentContainerAppHeaderStyle.innerHTML = `
           height:24px;
           viewBox:0 0 24 24
         }
+
       </style>
     </template>
   </dom-module>`;

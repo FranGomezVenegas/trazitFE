@@ -1,5 +1,5 @@
 import {schema_name} from '../../03config/config-process';
-export const programHome_defaultTab = schema_name+"-sampling-points";
+export const programHome_defaultTab = schema_name+"-home";
 export const shifts=[
   {keyName:"M1", keyValue_en:"M1", keyValue_es:"M1"},
   {keyName:"M2", keyValue_en:"M2", keyValue_es:"M2"}
@@ -142,7 +142,13 @@ documentContainerEmDemoAProgrammainviewStyle.innerHTML = `
           /* margin: 1em; */
           max-height: 300px;
           min-height: 150px;
+          height: 3.5vh;
+          font-size: 2vh;          
       } 
+      paper-tabs{
+        height: 3.5vh;
+        font-size: 2vh;
+      }       
       paper-tab.tabItem {
           color: var(--paper-light-blue-50);
           background-color: var(--paper-light-blue-500);

@@ -2,6 +2,7 @@ export const ADD_TAB = 'ADD_TAB';
 export const ADD_SYSTEM_TAB = 'ADD_SYSTEM_TAB';
 export const CLOSE_TAB = 'CLOSE_TAB';
 export const SET_CURRENT_TAB = 'SET_CURRENT_TAB';
+export const SET_CURRENT_TAB_SEL_OBJECT = 'SET_CURRENT_TAB_SEL_OBJECT';
 export const DO_LOGOUT_TAB = 'DO_LOGOUT_TAB';
 
 
@@ -44,7 +45,12 @@ export function setCurrentTab(tabName) {
     tabName,    
   }
 }
-
+export function setCurrentTabSelObject(selObject) {
+  return {
+    type: SET_CURRENT_TAB_SEL_OBJECT,
+    selObject,    
+  }
+}
 export function doLogoutTab() {
   //console.log('DoLogout');
   return {

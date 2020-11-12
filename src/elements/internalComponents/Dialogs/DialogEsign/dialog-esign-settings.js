@@ -14,10 +14,14 @@
 //       "read_only": false
 //     }, 	
 // ];
+export const platformEsign_windowTitle={
+  label_en:"Please enter your eSign",
+  label_es:"Por favor entra tu frase de Firma Electrónica"
+}
 export const platformEsign_notCorrectMessage={
     "now":{
-    "message_en":"Validation not completed, action aborted",
-    "message_es":"Validación no completada, acción abortada",},
+      "message_en":"Validation not completed, action aborted",
+      "message_es":"Validación no completada, acción abortada",},
     "dialog_cancelled":{
       "message_en":"dialog canceled, action aborted",
       "message_es":"Diálogo cancelado, acción abortada",},

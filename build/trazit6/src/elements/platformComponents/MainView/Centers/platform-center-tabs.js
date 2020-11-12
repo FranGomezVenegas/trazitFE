@@ -1,12 +1,33 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","../../../../config/platform/main-layout/two-headers-settings.js","../../../../config/platform/main-layout/two-headers.js","../../Redux/actions/tabs_actions.js","../../../../platform-mixins/functions/fields-methods.js","../../../../platform-mixins/platform-functions/tabs-functions.js","../../../../platform-mixins/platform-functions/platform-elements.js","./platform-center-tabs-settings.js","./platform-center-tabs-style.js","../../../internalComponents/others/store-consola.js","../../../internalComponents/others/language-selectortwoflags.js","../Components/Notifications/notifications-pane.js","../Components/ProceduresList/procedures-list-pane.js","../Components/SOP/sop-icon-and-badge.js"],function(_polymerElement,_connectMixin,_store,_twoHeadersSettings,_twoHeaders,_tabs_actions,_fieldsMethods,_tabsFunctions,_platformElements,_platformCenterTabsSettings,_platformCenterTabsStyle,_storeConsola,_languageSelectortwoflags,_notificationsPane,_proceduresListPane,_sopIconAndBadge){"use strict";/**
+define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","../../../../config/platform/main-layout/two-headers-settings.js","../../../../config/platform/main-layout/two-headers.js","../../Redux/actions/tabs_actions.js","../../../../platform-mixins/functions/fields-methods.js","../../../../platform-mixins/platform-functions/tabs-functions.js","../../../../platform-mixins/platform-functions/platform-elements.js","./platform-center-tabs-settings.js","./platform-center-tabs-style.js","../../../internalComponents/others/store-consola.js","../../../internalComponents/others/language-selectortwoflags.js","../Components/Notifications/notifications-pane.js","../Components/ProceduresList/procedures-list-pane.js","../Components/SOP/sop-icon-and-badge.js","../../../../../node_modules/@thuoe/mp4-video-player/mp4-video-player.js"],function(_polymerElement,_connectMixin,_store,_twoHeadersSettings,_twoHeaders,_tabs_actions,_fieldsMethods,_tabsFunctions,_platformElements,_platformCenterTabsSettings,_platformCenterTabsStyle,_storeConsola,_languageSelectortwoflags,_notificationsPane,_proceduresListPane,_sopIconAndBadge,_mp4VideoPlayer){"use strict";/**
  * `platform-center-tabs` Description
  *
  * @customElement
  * @polymer
  * @demo
  * 
- */class PlatformCenterTabs extends(0,_tabsFunctions.TabsMethods)((0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement))){static get properties(){return{selectedLanguage:String,tabs:Array,layoutSettings:{type:String,value:_twoHeadersSettings.center_layout},currentTab:Array,tabIndex:Number}}static get template(){return _polymerElement.html`
+ */class PlatformCenterTabs extends(0,_tabsFunctions.TabsMethods)((0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement))){static get properties(){return{selectedLanguage:String,tabs:Array,layoutSettings:{type:String,value:_twoHeadersSettings.center_layout},currentTab:Array,tabIndex:Number,videoUrl:{type:String,value:"http://51.75.202.142:8888/myvideos/LP.mp4"}}}static get template(){return _polymerElement.html`
         <style include="platform-center-tabs-style"></style>
+        <style>
+        mp4-video-player {
+                width: 80%;
+                height: 80%;
+                background: rgba(0, 0, 0, 0.12);
+            }
+        </style>
+<!--            <paper-dialog always-on-top no-cancel-on-outside-click  id="videowindowdialog" >    
+            <div style="display:flex" style="width:50%; height:50%;">
+                <div style="display:block; padding-right:10px;" >
+                <nav>
+                <ul>Plataforma
+                <li>Cabecera</li>
+                <li>Pestañas</li>
+                </ul>
+                </nav>            
+                </div> 
+                <mp4-video-player src="{{videoUrl}}" ></mp4-video-player>  <!-- auto-play -->       
+            </div>
+        </paper-dialog>  
+-->
         <platform-elements id="platformelements"></platform-elements>
             <template is="dom-if" if="[[layoutSettings.display_second_header]]">
                 <div class="secondHeader">
@@ -42,6 +63,7 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
                     <user-profile tab-index="{{tabIndex}}" name="user-profile"> </user-profile>
                     <incident-management tab-index="{{tabIndex}}" name="incident-management"> </incident-management>
                     <procedure-management tab-index="{{tabIndex}}" name="procedure-management"> </procedure-management>
+                    <videotutorial-tab tab-index="{{tabIndex}}" name="videotutorial-tab"> </videotutorial-tab>
 
                     <process-us-home tab-index="{{tabIndex}}" name="process-us-home"></process-us-home>            
                     <process-us-sample-login tab-index="{{tabIndex}}" name="process-us-sample-login"></process-us-sample-login>
@@ -77,14 +99,28 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
                     <em-demo-a-person-microorganism tab-index="{{tabIndex}}" name="em-demo-a-person-microorganism"></em-demo-a-person-microorganism>
                     <em-demo-a-sample-browser tab-index="{{tabIndex}}" name="em-demo-a-sample-browser"></em-demo-a-sample-browser>
                     <em-demo-a-browser tab-index="{{tabIndex}}" name="em-demo-a-browser"></em-demo-a-browser>
+                    <em-demo-a-result-deviation tab-index="{{tabIndex}}" name="em-demo-a-result-deviation"></em-demo-a-result-deviation>           
 
                     <em-demo-b-home tab-index="{{tabIndex}}" name="em-demo-b-home"></em-demo-b-home>  
 
                     <genoma-instancia1-home tab-index="{{tabIndex}}" name="genoma-instancia1-home"></genoma-instancia1-home>      
                     <genoma-instancia1-project tab-index="{{tabIndex}}" name="genoma-instancia1-project"></genoma-instancia1-project>           
+
+                    <proc-deploy-home tab-index="{{tabIndex}}" name="proc-deploy-home"></proc-deploy-home>  
+                    <proc-deploy-sample-fq tab-index="{{tabIndex}}" name="proc-deploy-sample-fq"></proc-deploy-sample-fq>  
+                    <proc-deploy-sample-mb tab-index="{{tabIndex}}" name="proc-deploy-sample-mb"></proc-deploy-sample-mb>  
+                    <proc-deploy-sample-reviewsampletestinggroupfq tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsampletestinggroupfq"></proc-deploy-sample-reviewsampletestinggroupfq>  
+                    <proc-deploy-sample-reviewsampletestinggroupmb tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsampletestinggroupmb"></proc-deploy-sample-reviewsampletestinggroupmb>  
+                    
+                    <proc-deploy-sample-reviewtestingfq tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewtestingfq"></proc-deploy-sample-reviewtestingfq>  
+                    <proc-deploy-sample-reviewtestingmb tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewtestingmb"></proc-deploy-sample-reviewtestingmb>  
+                    <proc-deploy-sample-reviewsample tab-index="{{tabIndex}}" name="proc-deploy-sample-reviewsample"></proc-deploy-sample-reviewsample>  
+                    <proc-deploy-programs tab-index="{{tabIndex}}" name="proc-deploy-programs"></proc-deploy-programs>  
+
                 </iron-pages>
             </template>        
         `}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;this.tabs=state.tabs.tabs;this.currentTab=state.tabs.currentTab;//console.log('tabs', this.tabs,'currentTab', this.currentTab);      
 }closeTab(e){//console.log('platform-center-tabs', 'closeTab', this.currentTab);
 _store.store.dispatch((0,_tabs_actions.closeTab)(this.currentTab))}tabSelected(e){//console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
-_store.store.dispatch((0,_tabs_actions.setCurrentTab)(e.currentTarget.name));return}}customElements.define("platform-center-tabs",PlatformCenterTabs)});
+_store.store.dispatch((0,_tabs_actions.setCurrentTab)(e.currentTarget.name));return}ready(){super.ready();var elem=this.shadowRoot.getElementById("videowindowdialog");if(elem){elem.open()}//this.$.videowindowdialog.open();    
+}}customElements.define("platform-center-tabs",PlatformCenterTabs)});

@@ -3,6 +3,7 @@ import { connect } from 'pwa-helpers/connect-mixin';
 import { store } from '../../../store';
 import {FieldsMethods} from '../../../platform-mixins/functions/fields-methods';
 import './../../../config/platform/main-layout/two-headers-form-fields-style';
+import '@polymer/paper-checkbox/paper-checkbox';
 class FieldBoolean extends FieldsMethods(connect(store)(PolymerElement)) {
   static get properties() {
     return {

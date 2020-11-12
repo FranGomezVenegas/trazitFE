@@ -5,8 +5,8 @@ export const incubActiveBatches={fieldToDisplay:[{name:"name",label_en:"Name",la
   <dom-module id="em-demo-a-batches-style">
     <template>
     <style>
-    vaadin-grid {
-      width:95%;
+    vaadingrid-lit-singleselect {
+      width:55%;
     }
     p.tableTitle{
       margin-top: 0px;
@@ -15,11 +15,30 @@ export const incubActiveBatches={fieldToDisplay:[{name:"name",label_en:"Name",la
       font-size:30px;
     }         
     div.main{
+      //display:flex;
       width:95%;
     }         
     div.buttonGroup {
       display: flex
-    }      
+    } 
+    div.batchContent{
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    } 
+    div.cardMySops{      
+      flex-basis: 10%;
+      height: 5vh;
+      width: auto;
+      font-size:3vh;
+    }    
+    @media (min-width:900px){
+      div.batchContent{
+        flex-wrap: wrap;
+        display:flex;
+        justify-content: space-between;
+      }
+    }
     </style>
     </template>
   </dom-module>`;document.head.appendChild(documentContainerEmDemoABatchesStyle);

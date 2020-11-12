@@ -4,8 +4,10 @@ const documentContainerFormFields=document.createElement("form-fields");document
       <style>
         .formFieldAvatar{
           vertical-align: middle;
-          width: 25px;
-          height: 20px; 
+          min-height: 3vh;
+          min-width: 4vw;
+          max-height: 5vh;
+          max-width: 6vw;
           border-radius: 50%;
         }
         .formFieldBoolean{
@@ -22,9 +24,9 @@ const documentContainerFormFields=document.createElement("form-fields");document
           margin-bottom: 0px !important;          
         }
         .formFieldLogoCircle{
-          min-height:3vw;
+          min-height:3vh;
           min-width:4vw;
-          max-height:5vw;
+          max-height:5vh;
           max-width:6vw;
           border-radius: 50%;
         }
@@ -69,8 +71,8 @@ const documentContainerFormFields=document.createElement("form-fields");document
           align:left;
         }
         paper-tabs{
-          height: 3vw;
-          font-size: 2vw;
+          height: 3.5vh;
+          font-size: 2vh;
         } 
       </style>
     </template>

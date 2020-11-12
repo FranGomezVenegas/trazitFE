@@ -21,7 +21,7 @@ export const progTabPoints={
     autorefreshWindow: false,
     tableTitle:{
       display: true,
-      label:{label_en:'Program Active Corrective Actions', label_es:'Acciones correctivas aún activas del programa'}
+      label:{label_en:'Program Sampling Points', label_es:'Puntos de muestro del programa'}
     },
     displayButtons: true,
     dialogButtons:[

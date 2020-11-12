@@ -1,4 +1,4 @@
-import {ApiEnvMonitSampleUrl, ApiEnvMonitProdLotUrl, ApiEnvMonitUrl, ApiEnvMonitIncubationUrl, ApiEnvMonitIncubBatchUrl} from '../../../../config/platform/logic/api-config';
+import {ApiEnvMonitSampleUrl, ApiEnvMonitProdLotUrl, ApiEnvMonitUrl, ApiEnvMonitIncubationUrl, ApiEnvMonitIncubBatchUrl, ApiInvestigationUrl, ApiSavedQueriesUrl} from '../../../../config/platform/logic/api-config';
 export const EnvMonitModuleDefinition = (superClass) => class extends superClass {  
 moduleDefinition(){
     return{
@@ -10,6 +10,8 @@ moduleDefinition(){
             {name: 'PRODUCTION_LOTS', apiUrlForActions: ApiEnvMonitProdLotUrl},
             {name: 'INCUB_BATCH', apiUrlForActions: ApiEnvMonitUrl},
             {name: 'INCUBATOR', apiUrlForActions: ApiEnvMonitIncubationUrl},
+            {name: 'INVESTIGATION', apiUrlForActions: ApiInvestigationUrl},
+            {name: 'SAVED_QUERIES', apiUrlForActions: ApiSavedQueriesUrl},            
         ],
     }
 }
@@ -112,6 +114,12 @@ programActions(){
         apiParams:[{paramName:'programName', dataArrName:'program_name', isMandatory:true}, 
                 {paramName:'programCorrectiveActionId', dataArrName:'id', isMandatory: true}],
     },
+    // {actionName:'NEW_INVESTIGATION', 
+    //     dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationNew', dialogArgument:''},
+    //     apiParams:[{paramName:'fieldName', dataArrName:'fieldName', defaultValue:'', isMandatory: false},
+    //             {paramName:'fieldValue', dataArrName:'fieldValue', defaultValue:'', isMandatory: false},
+    //             {paramName:'objectsToAdd', dataArrName:'objectsToAdd', defaultValue:'', isMandatory: true}],
+    // },    
     ]
 };
 productionLotsActions(){
@@ -170,6 +178,53 @@ incubatorActions(){
         apiParams:[{paramName:'incubatorName', dataArrName:'name', isMandatory:true}, 
                 {paramName:'temperature', dataArrName:'tempValue', isMandatory: true}],
     },
+    ]
+};
+investigationActions(){
+    return [
+    {actionName:'NEW_INVESTIGATION', 
+        dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationNew', dialogArgument:''},
+        apiParams:[{paramName:'fieldName', dataArrName:'fieldName', defaultValue:'', isMandatory: true},
+                {paramName:'fieldValue', dataArrName:'fieldValue', defaultValue:'', isMandatory: true},
+                {paramName:'objectsToAdd', dataArrName:'objectsToAdd', defaultValue:'', isMandatory: false}],
+    },
+    {actionName:'ADD_INVEST_OBJECTS', 
+        dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationAddObject', dialogArgument:''},
+        apiParams:[{paramName:'investigationId', dataArrName:'investigationId', isMandatory:true},
+                {paramName:'objectsToAdd', dataArrName:'objectsToAdd', isMandatory:true}],
+    },
+    {actionName:'CLOSE_INVESTIGATION', 
+        dialogInfo:{requiresDialog:false},
+        apiParams:[{paramName:'investigationId', dataArrName:'id', isMandatory:true}],
+    },
+    {actionName:'UPDATE_INVESTIGATION', 
+        dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationDecision'},
+        apiParams:[{paramName:'investigationId', dataArrName:'id', isMandatory:true}],
+    },    
+    
+    ]
+};
+savedQueriesActions(){
+    return [
+    {actionName:'CREATE_SAVED_QUERY', 
+        dialogInfo:{requiresDialog:false, webComponentName:'myelements', dialogName:'investigationNew', dialogArgument:''},
+        apiParams:[{paramName:'name', dataArrName:'name', defaultValue:'', isMandatory: true},
+                {paramName:'definition', dataArrName:'definition', defaultValue:'', isMandatory: true},
+                {paramName:'private', dataArrName:'objectsToAdd', defaultValue:'', isMandatory: false}],
+    },
+    {actionName:'ADD_INVEST_OBJECTS', 
+        dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationAddObject', dialogArgument:''},
+        apiParams:[{paramName:'investigationId', dataArrName:'investigationId', isMandatory:true},
+                {paramName:'objectsToAdd', dataArrName:'objectsToAdd', isMandatory:true}],
+    },
+    {actionName:'CLOSE_INVESTIGATION', 
+        dialogInfo:{requiresDialog:false},
+        apiParams:[{paramName:'investigationId', dataArrName:'id', isMandatory:true}],
+    },
+    {actionName:'UPDATE_INVESTIGATION', 
+        dialogInfo:{requiresDialog:true, webComponentName:'myelements', dialogName:'investigationDecision'},
+        apiParams:[{paramName:'investigationId', dataArrName:'id', isMandatory:true}],
+    },        
     ]
 };
 }

@@ -6,42 +6,51 @@ const documentContainerAppHeaderStyle=document.createElement("platform-header-st
           --platform-background-image:'./images/hexagon-white-blue-light.jpg';
           --header-right-width:120px;
         }
-        div.platformHeaderSplit {
-          height: 100%;
-          width: 30%; 80%; 
-          position: fixed;
-          z-index: 1;
-          top: 0px;
-          overflow-x: hidden;
-          padding-top: 0px;            
-        }      
-        div.platformHeaderLeft {
+        div.wapper {
           display: flex;
-          z-index: 1;
+        }
+        div.platformHeaderSplit {
+//          height: 100%;
+ //         width: 30%; 80%; 
+//          position: fixed;
+//          z-index: 1;
+//          top: 0px;
+//          overflow-x: hidden;
+//          padding-top: 0px;            
+        }      
+        div.platformHeaderLeftArea {
+          z-index: 12;
+          flex: 1;
+          display: flex;
+//          z-index: 1;
           top: 0%;
-          left: 10px;
-          position:relative;
+          //left: 10px;
+//          position:relative;
         }  
         div.platformHeaderLeftIcon{
           display: flex;
-          z-index: 1;
+//          z-index: 1;
           top: 0%;
           left: 2px;
-          position:relative;
+//          position:relative;
         }        
-        div.platformHeaderCenter {
+        div.platformHeaderCenterArea {
+          z-index: 12;
+          flex: 5;
           top: 0%;
           left: 22%; 
           width: 50%;
           height: 100%;   
-          position: fixed; 
+//          position: fixed; 
         }
-        div.platformHeaderRight {
+        div.platformHeaderRightArea {
+          flex: 1;
           top: 0%;
           left: calc(99% - var(--header-right-width)); // calc(99% - 120px); //67%; //65%; 
           width: 100%;
           height: 100%; 
           display: flex; 
+          z-index: 12;
         }  
         vaadin-button.logout{
           width:12px;

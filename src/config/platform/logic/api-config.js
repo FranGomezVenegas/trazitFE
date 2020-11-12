@@ -1,4 +1,4 @@
-export const backendUrllocal='http://localhost:8080/LabPLANET-API'; //rR6ICitv
+export const backendUrlLocal='http://localhost:8080/LabPLANET-API'; //rR6ICitv
 export const backendUrl='http://51.75.202.142:8888/LabPLANET-API';
 
 export const appProcedureListApiUrl='/frontend/AppProcedureListAPI';
@@ -9,9 +9,18 @@ export const ApiSopUserUrl='/app/SopUserAPI';
 export const frontEndSopUrl='/frontend/SopUserAPIfrontend';
 export const ApiIncidentsUrl='/app/IncidentAPI';
 export const frontEndIncidentsUrl='/frontend/IncidentAPIfrontend';
+export const frontEndVideoTutorialsUrl='/frontend/VideoTutorialAPIfrontend';
+export const ApiInvestigationUrl='/app/InvestigationAPI';
+export const frontEndInvestigationUrl='/frontend/InvestigationAPIfrontend';
+export const ApiSavedQueriesUrl='/app/SavedQueriesAPI';
+export const frontEndSavedQueriesUrl='/frontend/SavedQueriesAPIfrontend';
+
+export const ApiProcedureDefinition='/app/ProcedureDefinitionAPI';
+export const frontEndProcedureDefinition='/frontend/ProcedureDefinitionfrontend';
 
 export const ApiSampleUrl='/modulesample/SampleAPI';
 export const frontEndSampleUrl='/frontend/SampleAPIfrontEnd';
+export const ApiModulesConfigMasterDataUrl='/modules/ConfigMasterData';
 
 export const ApiEnvMonitUrl='/moduleenvmon/EnvMonAPI';
 export const ApiEnvMonitStatsUrl='/moduleenvmon/EnvMonAPIstats';
@@ -31,4 +40,4 @@ export const ApiGenomaStudyObjectsVariablesUrl='/modulegenoma/GenomaStudyObjects
 
 
 export const systemTabContentUrl='../../01-main-views/';
-export const tabContentUrl='../../../../elements/processInstanceComponents/#ModuleName/04-procedure/#PageName.js';
+export const tabContentUrl='../../../../elements/processInstanceComponents/#ModuleName/04procedure/#PageName.js';
