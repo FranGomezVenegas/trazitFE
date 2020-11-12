@@ -19,7 +19,7 @@
 // export const sopMySops_cardContent={
 //   display_pdf_link: true,
 //   display_certification_status_icon: true,
-//   sopFieldsToDisplay:['procedure', 'sop_name', 'brief_summary'],  
+//   sopFieldsToDisplay:['procedure', 'sop_name', 'brief_summary'],
 // };
 
 // export const sopMyPendingSops_buttons=[
@@ -35,7 +35,7 @@
 // export const sopMyPendingSops_cardContent={
 //   display_pdf_link: true,
 //   display_certification_status_icon: true,
-//   sopFieldsToDisplay:['procedure', 'sop_name', 'brief_summary'],  
+//   sopFieldsToDisplay:['procedure', 'sop_name', 'brief_summary'],
 // }
 
 // export const appConfirmUserOrEsign_notCorrectMessage={
@@ -49,26 +49,26 @@
 //         "message_en":"All attempts consumed, action aborted",
 //         "message_es":"Todos los intentos consumidos, acción abortada",},
 //     }
-export const appLogOut_logOutMessage={
-  "closedSession":{
-    "message_en":"Session closed",
-    "message_es":"Sesión cerrada",
+export const appLogOut_logOutMessage = {
+  closedSession: {
+    message_en: "Session closed",
+    message_es: "Sesión cerrada",
   },
-}
-export const appLogin_authenticationMessage={
-  "connectedSuccess_singleRole":{
-    "message_en":"Valid user, Starting session ... please wait",
-    "message_es":"Usuario válido, iniciando sesión ... por favor espere",
+};
+export const appLogin_authenticationMessage = {
+  connectedSuccess_singleRole: {
+    message_en: "Valid user, Starting session ... please wait",
+    message_es: "Usuario válido, iniciando sesión ... por favor espere",
   },
-  "connectedSuccess":{
-    "message_en":"Valid user, please proceed selecting the role",
-    "message_es":"Usuario válido, por favor escoja rol",
+  connectedSuccess: {
+    message_en: "Valid user, please proceed selecting the role",
+    message_es: "Usuario válido, por favor escoja rol",
   },
-  "connectedFails":{
-    "message_en":"I guess there is no user with those credentials",
-    "message_es":"Me temo que el usuario o la contraseña no son correctos.",    
-  }
-}
+  connectedFails: {
+    message_en: "I guess there is no user with those credentials",
+    message_es: "Me temo que el usuario o la contraseña no son correctos.",
+  },
+};
 // export const appLogin_ribbonField=[{"label_en": "Draft", "label_es": "Provisional",}];
 // export const appLogin_formFields=[
 //     {
@@ -78,7 +78,7 @@ export const appLogin_authenticationMessage={
 //       "size": 'h2',
 //       "style": "color: var(--paper-light-blue-50);",
 //       "read_only": true
-//     },             
+//     },
 //     {
 //       "name": "User",
 //       "label_en": "User", "label_es": "Usuario",
@@ -86,7 +86,7 @@ export const appLogin_authenticationMessage={
 //       "password": "false",
 //       "value": "",
 //       "read_only": false
-//     },    
+//     },
 //     {
 //       "name": "password",
 //       "label_en": "Password", "label_es": "Contraseña",
@@ -99,10 +99,10 @@ export const appLogin_authenticationMessage={
 //     {
 //       "name": "buttonAccess",
 //       "label_en": "Access", "label_es": "Entrar",
-//       "type": "button",              
+//       "type": "button",
 //       "value": "",
 //       "read_only": false
-//     },            
+//     },
 //     {
 //       "name": "userRole",
 //       "label_en": "Role", "label_es": "Rol",
@@ -110,26 +110,26 @@ export const appLogin_authenticationMessage={
 //       "value": "Admin",
 //       "read_only": true,
 //       "items" : [{
-//         "keyName":"Analyst",                        
-//         "keyValue_en":"Analyst", "keyValue_es":"valor1"              
+//         "keyName":"Analyst",
+//         "keyValue_en":"Analyst", "keyValue_es":"valor1"
 //       }]
-//     },                        
+//     },
 //   ];
 // export const appEsign_formFields=[
 //     {
 //       "name": "buttonAccept",
 //       "label_en": "Validate", "label_es": "Validar",
-//       "type": "button",              
+//       "type": "button",
 //       "value": "",
 //       "read_only": false
-//     }, 
+//     },
 //     {
 //       "name": "buttonCancel",
 //       "label_en": "Cancel", "label_es": "Cancelar",
-//       "type": "button",              
+//       "type": "button",
 //       "value": "",
 //       "read_only": false
-//     }, 	
+//     },
 // ];
 // export const appConfirmUser_formFields=[
 //     {
@@ -139,7 +139,7 @@ export const appLogin_authenticationMessage={
 //       "password": "false",
 //       "value": "labplanet",
 //       "read_only": false
-//     },    
+//     },
 //     {
 //       "name": "pwToCheck",
 //       "label_en": "Current Password", "label_es": "Contraseña Actual",
@@ -196,7 +196,7 @@ export const appLogin_authenticationMessage={
 //   "type": "icon-button",
 //   "icon_name": "icons:restore-page", "icon_color": "aqua",
 //   "esign_required": true,
-//   "read_only": false,  
+//   "read_only": false,
 // }];
 // export const saveOpenTabsForm=[
 //   {
@@ -205,8 +205,8 @@ export const appLogin_authenticationMessage={
 //     "type": "button",
 //     "icon_name": "icons:restore-page", "icon_color": "aqua",
 //     "esign_required": false,
-//     "read_only": false,  
-//   }];  
+//     "read_only": false,
+//   }];
 // export const dialog_buttons=[
 // 	{
 // 	  "name": "closeDialog",
@@ -216,9 +216,9 @@ export const appLogin_authenticationMessage={
 // 	  "esign_required": false,
 // 	  "read_only": false,
 // 	}
-// ];	
+// ];
 // export const pendingSOPTab={
-//   lp_frontend_page_name: 'sop/my-pending-sops.js',        
+//   lp_frontend_page_name: 'sop/my-pending-sops.js',
 //   tabName: 'sop-myPendingSops',
 //   tabLabel_en: 'My Pending SOPs',
 //   tabLabel_es: 'Mis PNT Pendientes',
@@ -234,7 +234,7 @@ export const appLogin_authenticationMessage={
 //   tabEsignRequired: false, tabConfirmUserRequired: false
 // }
 // export const userProfileHome={
-//   lp_frontend_page_name: 'user-profile/user-profile.js',        
+//   lp_frontend_page_name: 'user-profile/user-profile.js',
 //   tabName: 'user-profile',
 //   tabLabel_en: 'User Profile',
 //   tabLabel_es: 'Perfil de Usuario',
@@ -249,7 +249,7 @@ export const appLogin_authenticationMessage={
 //     "password": "false",
 //     "value": "",
 //     "read_only": false
-//   },    
+//   },
 //   {
 //     "name": "Detail",
 //     "label_en": "Detail", "label_es": "Detalle",
@@ -260,14 +260,14 @@ export const appLogin_authenticationMessage={
 //     "value": "Hola Soporte, Estoy teniendo un problema y me gustaría que me ayudárais",
 //     "placeholder": '',
 //     "read_only": false
-//   },    
+//   },
 //   {
 //     "name": "NEW_INCIDENT",
 //     "label_en": "Access", "label_es": "Entrar",
-//     "type": "button",              
+//     "type": "button",
 //     "value": "",
 //     "read_only": false
-//   },              
+//   },
 // ];
 // export const incidents_userOpenIncidentsFieldToDisplay=[
 //   {name: 'id', label_en:'Id', label_es: 'Id', sort:true, filter:false, width:'10%'}
@@ -304,7 +304,7 @@ export const appLogin_authenticationMessage={
 //     "type": "button",
 //     "icon_name": "icons:assignment-return",
 //     "read_only": false,
-//   },    
+//   },
 // ];
 
 // export const cancelDialogButton={
@@ -333,12 +333,12 @@ export const appLogin_authenticationMessage={
 //   {
 //     "label_en": "Notifications", "label_es": "Notificaciones",
 //     "icon_name": "vaadin:chevron-circle-up"
-//   }, 
+//   },
 //   closed:
 //   {
 //     "label_en": "Notifications", "label_es": "Notificaciones",
 //     "icon_name": "vaadin:chevron-circle-down"
-//   },   
+//   },
 //   empty:
 //   {
 //     "label_en": "Empty tray", "label_es": "Bandeja vacía",
@@ -350,10 +350,10 @@ export const appLogin_authenticationMessage={
 //   {
 //     "label_en": "Procedures", "label_es": "Procesos",
 //     "icon_name": "vaadin:chevron-circle-up"
-//   }, 
+//   },
 //   closed:
 //   {
 //     "label_en": "Procedures", "label_es": "Procesos",
 //     "icon_name": "vaadin:chevron-circle-down"
-//   },   
+//   },
 // };

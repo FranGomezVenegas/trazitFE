@@ -1,4 +1,14 @@
-export const tabsDefinition={configCalendar:{displayCalendar:!0,displayTable:!0}};const documentContainerEmDemoASampleLoginStyle=document.createElement("em-demo-a-sample-login-style");documentContainerEmDemoASampleLoginStyle.setAttribute("style","display: none;");documentContainerEmDemoASampleLoginStyle.innerHTML=`
+export const tabsDefinition = {
+  configCalendar: { displayCalendar: !0, displayTable: !0 },
+};
+const documentContainerEmDemoASampleLoginStyle = document.createElement(
+  "em-demo-a-sample-login-style"
+);
+documentContainerEmDemoASampleLoginStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerEmDemoASampleLoginStyle.innerHTML = `
   <dom-module id="em-demo-a-sample-login-style">
     <template>
     <style>
@@ -20,4 +30,5 @@ export const tabsDefinition={configCalendar:{displayCalendar:!0,displayTable:!0}
       }      
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoASampleLoginStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerEmDemoASampleLoginStyle);

@@ -2,33 +2,36 @@
 //     {
 //       "name": "buttonAccept",
 //       "label_en": "Validate", "label_es": "Validar",
-//       "type": "button",              
+//       "type": "button",
 //       "value": "",
 //       "read_only": false
-//     }, 
+//     },
 //     {
 //       "name": "buttonCancel",
 //       "label_en": "Cancel", "label_es": "Cancelar",
-//       "type": "button",              
+//       "type": "button",
 //       "value": "",
 //       "read_only": false
-//     }, 	
+//     },
 // ];
-export const platformEsign_windowTitle={
-  label_en:"Please enter your eSign",
-  label_es:"Por favor entra tu frase de Firma Electrónica"
-}
-export const platformEsign_notCorrectMessage={
-    "now":{
-      "message_en":"Validation not completed, action aborted",
-      "message_es":"Validación no completada, acción abortada",},
-    "dialog_cancelled":{
-      "message_en":"dialog canceled, action aborted",
-      "message_es":"Diálogo cancelado, acción abortada",},
-    "attempts_consumed":{
-        "message_en":"All attempts consumed, action aborted",
-        "message_es":"Todos los intentos consumidos, acción abortada",},
-    }
+export const platformEsign_windowTitle = {
+  label_en: "Please enter your eSign",
+  label_es: "Por favor entra tu frase de Firma Electrónica",
+};
+export const platformEsign_notCorrectMessage = {
+  now: {
+    message_en: "Validation not completed, action aborted",
+    message_es: "Validación no completada, acción abortada",
+  },
+  dialog_cancelled: {
+    message_en: "dialog canceled, action aborted",
+    message_es: "Diálogo cancelado, acción abortada",
+  },
+  attempts_consumed: {
+    message_en: "All attempts consumed, action aborted",
+    message_es: "Todos los intentos consumidos, acción abortada",
+  },
+};
 
 // export const appConfirmUser_formFields=[
 //     {
@@ -38,7 +41,7 @@ export const platformEsign_notCorrectMessage={
 //       "password": "false",
 //       "value": "labplanet",
 //       "read_only": false
-//     },    
+//     },
 //     {
 //       "name": "pwToCheck",
 //       "label_en": "Current Password", "label_es": "Contraseña Actual",

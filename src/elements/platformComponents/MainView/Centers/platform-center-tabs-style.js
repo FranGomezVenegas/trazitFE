@@ -1,5 +1,7 @@
-const documentContainerCenterTabsStyle = document.createElement('platform-center-tabs-style');
-documentContainerCenterTabsStyle.setAttribute('style', 'display: none;');
+const documentContainerCenterTabsStyle = document.createElement(
+  "platform-center-tabs-style"
+);
+documentContainerCenterTabsStyle.setAttribute("style", "display: none;");
 
 documentContainerCenterTabsStyle.innerHTML = `
   <dom-module id="platform-center-tabs-style">

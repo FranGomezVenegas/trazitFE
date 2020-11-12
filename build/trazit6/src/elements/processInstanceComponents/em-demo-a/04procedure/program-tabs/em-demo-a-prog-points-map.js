@@ -1,4 +1,21 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","./em-demo-a-prog-points.js"],function(_polymerElement,_connectMixin,_store,_emDemoAProgPoints){"use strict";class EmDemoAProgPointsMap extends(0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement){static get properties(){return{selectedProgram:{type:Object},selectedSamplingPoint:{type:Object}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "./em-demo-a-prog-points.js",
+], function (_polymerElement, _connectMixin, _store, _emDemoAProgPoints) {
+  "use strict";
+  class EmDemoAProgPointsMap extends (0, _connectMixin.connect)(_store.store)(
+    _polymerElement.PolymerElement
+  ) {
+    static get properties() {
+      return {
+        selectedProgram: { type: Object },
+        selectedSamplingPoint: { type: Object },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
             <div class="mainDiv">
                 <em-demo-a-prog-points id="progpoints" selected-program="{{selectedProgram}}"></em-demo-a-prog-points>
                 <div class="parentMap"  on-click="mapClick"
@@ -13,6 +30,22 @@ define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","..
                     </template>                                         
                 </div>            
             </div>            
-        `}pointClicked(e){var elem=this.shadowRoot.getElementById("progpoints"),mye={detail:e.currentTarget.givenPoint};if(elem){elem.pointClicked(mye)}}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){//this.selectedSamplingPoint = state.emDemoA.selectedSamplingPoint;
-//this.selectedProgram=state.emDemoA.selectedProgram;
-}}}customElements.define("em-demo-a-prog-points-map",EmDemoAProgPointsMap)});
+        `;
+    }
+    pointClicked(e) {
+      var elem = this.shadowRoot.getElementById("progpoints"),
+        mye = { detail: e.currentTarget.givenPoint };
+      if (elem) {
+        elem.pointClicked(mye);
+      }
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.emDemoA) {
+        //this.selectedSamplingPoint = state.emDemoA.selectedSamplingPoint;
+        //this.selectedProgram=state.emDemoA.selectedProgram;
+      }
+    }
+  }
+  customElements.define("em-demo-a-prog-points-map", EmDemoAProgPointsMap);
+});

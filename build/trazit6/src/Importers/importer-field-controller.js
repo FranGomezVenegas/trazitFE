@@ -1,1 +1,35 @@
-define(["./field-boolean","./field-list","./field-date","./field-text","./field-text-area","./field-textconfirmuser","./field-logo-circle","./field-avatar","./field-google-fonts","./field-tree-list","./field-button","./field-title","./field-button-group","./field-integer","./field-icon-button"],function(_fieldBoolean,_fieldList,_fieldDate,_fieldText,_fieldTextArea,_fieldTextconfirmuser,_fieldLogoCircle,_fieldAvatar,_fieldGoogleFonts,_fieldTreeList,_fieldButton,_fieldTitle,_fieldButtonGroup,_fieldInteger,_fieldIconButton){"use strict"});
+define([
+  "./field-boolean",
+  "./field-list",
+  "./field-date",
+  "./field-text",
+  "./field-text-area",
+  "./field-textconfirmuser",
+  "./field-logo-circle",
+  "./field-avatar",
+  "./field-google-fonts",
+  "./field-tree-list",
+  "./field-button",
+  "./field-title",
+  "./field-button-group",
+  "./field-integer",
+  "./field-icon-button",
+], function (
+  _fieldBoolean,
+  _fieldList,
+  _fieldDate,
+  _fieldText,
+  _fieldTextArea,
+  _fieldTextconfirmuser,
+  _fieldLogoCircle,
+  _fieldAvatar,
+  _fieldGoogleFonts,
+  _fieldTreeList,
+  _fieldButton,
+  _fieldTitle,
+  _fieldButtonGroup,
+  _fieldInteger,
+  _fieldIconButton
+) {
+  "use strict";
+});

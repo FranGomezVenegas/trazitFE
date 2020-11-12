@@ -1,14 +1,75 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","./functions-env-monit.js","../04procedure/dialogs/proc-deploy-simple-modal-dialog.js","../03config/Dialogs/proc-deploy-dialogmodal-settings.js"],function(_polymerElement,_connectMixin,_store,_functionsEnvMonit,_procDeploySimpleModalDialog,_procDeployDialogmodalSettings){"use strict";//import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
-//import '../04procedure/dialogs/proc-deploy-list-modal-sample-audit.js'
-//import '../04procedure/dialogs/proc-deploy-list-modal-enterresults';
-/* `proc-deploy-webcomponent-env-monit` Description
- *
- * @customElement
- * @polymer
- * @demo
- * 
- */class procDeployWebcomponentEnvMonit extends(0,_functionsEnvMonit.FunctionsEnvMonit)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{selectedObject:{type:Object},callBackFunction:{type:Object},callBackFunctionError:{type:Object},buttonDefinition:{type:Object},//fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
-dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:_procDeployDialogmodalSettings.dialogProductionLotNew},dialogProductionLotActivate:{type:Array,notify:!0,bubble:!0,value:_procDeployDialogmodalSettings.dialogProductionLotActivate},dialogincubBatchNew:{type:Array,notify:!0,bubble:!0,value:_procDeployDialogmodalSettings.dialogincubBatchNew},dialogincubAddTmpReading:{type:Array,notify:!0,bubble:!0,value:_procDeployDialogmodalSettings.dialogincubAddTmpReading},activeIncubatorsListHeader:{type:Array,value:_procDeployDialogmodalSettings.dialogIncubatorsListTableHeader},activeIncubatorsListRows:{type:Array}}}stateChanged(state){if(null!=state.procDeploy){this.activeIncubatorsListRows=state.procDeploy.allIncubators}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../store.js",
+  "./functions-env-monit.js",
+  "../04procedure/dialogs/proc-deploy-simple-modal-dialog.js",
+  "../03config/Dialogs/proc-deploy-dialogmodal-settings.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _functionsEnvMonit,
+  _procDeploySimpleModalDialog,
+  _procDeployDialogmodalSettings
+) {
+  "use strict"; //import '../../../internalComponents/Dialogs/DialogSimple/simple-modal-dialog.js'
+  //import '../04procedure/dialogs/proc-deploy-list-modal-sample-audit.js'
+  //import '../04procedure/dialogs/proc-deploy-list-modal-enterresults';
+  /* `proc-deploy-webcomponent-env-monit` Description
+   *
+   * @customElement
+   * @polymer
+   * @demo
+   *
+   */ class procDeployWebcomponentEnvMonit extends (0,
+  _functionsEnvMonit.FunctionsEnvMonit)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get properties() {
+      return {
+        selectedObject: { type: Object },
+        callBackFunction: { type: Object },
+        callBackFunctionError: { type: Object },
+        buttonDefinition: { type: Object }, //fieldsDialogAddComment:{type: Array, notify: true, bubble: true, value: dialogAddComment},
+        dialogProductionLotNew: {
+          type: Array,
+          notify: !0,
+          bubble: !0,
+          value: _procDeployDialogmodalSettings.dialogProductionLotNew,
+        },
+        dialogProductionLotActivate: {
+          type: Array,
+          notify: !0,
+          bubble: !0,
+          value: _procDeployDialogmodalSettings.dialogProductionLotActivate,
+        },
+        dialogincubBatchNew: {
+          type: Array,
+          notify: !0,
+          bubble: !0,
+          value: _procDeployDialogmodalSettings.dialogincubBatchNew,
+        },
+        dialogincubAddTmpReading: {
+          type: Array,
+          notify: !0,
+          bubble: !0,
+          value: _procDeployDialogmodalSettings.dialogincubAddTmpReading,
+        },
+        activeIncubatorsListHeader: {
+          type: Array,
+          value: _procDeployDialogmodalSettings.dialogIncubatorsListTableHeader,
+        },
+        activeIncubatorsListRows: { type: Array },
+      };
+    }
+    stateChanged(state) {
+      if (null != state.procDeploy) {
+        this.activeIncubatorsListRows = state.procDeploy.allIncubators;
+      }
+    }
+    static get template() {
+      return _polymerElement.html`
         <!-- <style>
         //     paper-dialog{
         //         top:100px; left:80px; height:0px; width:0px; z-index: 100;  position: fixed;  
@@ -52,31 +113,77 @@ dialogProductionLotNew:{type:Array,notify:!0,bubble:!0,value:_procDeployDialogmo
             on-dialog-button-clicked="dialogClosedIncubatorAddTempReading" action-name="{{actionName}}"> </proc-deploy-list-modal-prodlotbrowser>
         </paper-dialog>  
 -->        
-        `}// AddCommentOpenedChangedListener(){
-//     const modalwindow=this.shadowRoot.getElementById('addCommentDialog');
-//     if (modalwindow && modalwindow.parentElement.opened){
-//         if (modalwindow.resetValue){
-//             modalwindow.resetValue();
-//             //modalwindow.setFocusInField();
-//         }
-//     }
-// }
-incubatorAddTempReadingOpenedChangedListener(){}incubBatchAssignIncubatorOpenedChangedListener(){}incubBatchNewOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("incubBatchNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotActivateOpenedChangedListener(){const modalwindow=this.shadowRoot.getElementById("productionLotActivateDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}productionLotNewOpenedChangedListener(){//console.log('productionLotNewOpenedChangedListener');        
-const modalwindow=this.shadowRoot.getElementById("productionLotNewDialog");if(modalwindow&&modalwindow.parentElement.opened){if(modalwindow.resetValue){modalwindow.resetValue();//modalwindow.setFocusInField();
-}}}openDialog(dialogName,actionName){var elem=this.shadowRoot.getElementById(dialogName);// if (dialogName=="addComment"){
-//     elem.actionName=actionName;
-// }
-// if (dialogName=="sampleAudit" || dialogName=="enterResults"){
-//     var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");
-//     elemDialog.loadData();
-// }
-elem.open()}closeDialog(dialogName){var elem=this.shadowRoot.getElementById(dialogName);elem.close()}/**
+        `;
+    } // AddCommentOpenedChangedListener(){
+    //     const modalwindow=this.shadowRoot.getElementById('addCommentDialog');
+    //     if (modalwindow && modalwindow.parentElement.opened){
+    //         if (modalwindow.resetValue){
+    //             modalwindow.resetValue();
+    //             //modalwindow.setFocusInField();
+    //         }
+    //     }
+    // }
+    incubatorAddTempReadingOpenedChangedListener() {}
+    incubBatchAssignIncubatorOpenedChangedListener() {}
+    incubBatchNewOpenedChangedListener() {
+      const modalwindow = this.shadowRoot.getElementById("incubBatchNewDialog");
+      if (modalwindow && modalwindow.parentElement.opened) {
+        if (modalwindow.resetValue) {
+          modalwindow.resetValue(); //modalwindow.setFocusInField();
+        }
+      }
+    }
+    productionLotActivateOpenedChangedListener() {
+      const modalwindow = this.shadowRoot.getElementById(
+        "productionLotActivateDialog"
+      );
+      if (modalwindow && modalwindow.parentElement.opened) {
+        if (modalwindow.resetValue) {
+          modalwindow.resetValue(); //modalwindow.setFocusInField();
+        }
+      }
+    }
+    productionLotNewOpenedChangedListener() {
+      //console.log('productionLotNewOpenedChangedListener');
+      const modalwindow = this.shadowRoot.getElementById(
+        "productionLotNewDialog"
+      );
+      if (modalwindow && modalwindow.parentElement.opened) {
+        if (modalwindow.resetValue) {
+          modalwindow.resetValue(); //modalwindow.setFocusInField();
+        }
+      }
+    }
+    openDialog(dialogName, actionName) {
+      var elem = this.shadowRoot.getElementById(dialogName); // if (dialogName=="addComment"){
+      //     elem.actionName=actionName;
+      // }
+      // if (dialogName=="sampleAudit" || dialogName=="enterResults"){
+      //     var elemDialog=this.shadowRoot.getElementById(dialogName+"Dialog");
+      //     elemDialog.loadData();
+      // }
+      elem.open();
+    }
+    closeDialog(dialogName) {
+      var elem = this.shadowRoot.getElementById(dialogName);
+      elem.close();
+    }
+    /**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.
      * @constructor
-     */constructor(){super()}/**
+     */ constructor() {
+      super();
+    }
+    /**
      * Use for one-time configuration of your component after local
      * DOM is initialized.
-     */ready(){super.ready()}}customElements.define("proc-deploy-webcomponent-env-monit",procDeployWebcomponentEnvMonit)});
+     */ ready() {
+      super.ready();
+    }
+  }
+  customElements.define(
+    "proc-deploy-webcomponent-env-monit",
+    procDeployWebcomponentEnvMonit
+  );
+});

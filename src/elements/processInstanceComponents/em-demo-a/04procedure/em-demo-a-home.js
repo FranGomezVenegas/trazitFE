@@ -1,33 +1,37 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../store.js';
-import '../../../internalComponents/Charts/chart-controller';
-import {windowDefinition} from '../03config/em-demo-a-home-settings';
-import '../03config/em-demo-a-home-settings';
-import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
-import {FrontendEndpointsEnvMonitSamples} from '../01moduleFunctionality/endpoints-frontend-env-monit-samples';
-import './em-demo-a-kpi';
-class EmDemoAHome extends FieldsMethods(FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))) {
-    stateChanged(state) {
-        this.selectedLanguage = state.app.user.appLanguage; 
-        if (state.emDemoA!=null){
-            var kpis=[];
-            if (state.emDemoA.kpis){kpis=state.emDemoA.kpis;}            
-            kpis.sampleStatCounterByStage=state.emDemoA.sampleStatsCounterByStage;
-            kpis.sampleStatsLastNresults=state.emDemoA.sampleStatsLastNresults;          
-            console.log('kpis', kpis);
-            this.kpiData=kpis;          
-        }
-    }        
-    static get properties() {
-        return {
-            windowDefinition:{type: Object, value: windowDefinition},
-            selectedLanguage: {type:String},
-            kpiData:{type: Object},
-        }
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../store.js";
+import "../../../internalComponents/Charts/chart-controller";
+import { windowDefinition } from "../03config/em-demo-a-home-settings";
+import "../03config/em-demo-a-home-settings";
+import { FieldsMethods } from "../../../../platform-mixins/functions/fields-methods";
+import { FrontendEndpointsEnvMonitSamples } from "../01moduleFunctionality/endpoints-frontend-env-monit-samples";
+import "./em-demo-a-kpi";
+class EmDemoAHome extends FieldsMethods(
+  FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.emDemoA != null) {
+      var kpis = [];
+      if (state.emDemoA.kpis) {
+        kpis = state.emDemoA.kpis;
+      }
+      kpis.sampleStatCounterByStage = state.emDemoA.sampleStatsCounterByStage;
+      kpis.sampleStatsLastNresults = state.emDemoA.sampleStatsLastNresults;
+      console.log("kpis", kpis);
+      this.kpiData = kpis;
     }
-    static get template() {
-        return html`
+  }
+  static get properties() {
+    return {
+      windowDefinition: { type: Object, value: windowDefinition },
+      selectedLanguage: { type: String },
+      kpiData: { type: Object },
+    };
+  }
+  static get template() {
+    return html`
         <style include="em-demo-a-home-style"></style>    
         <div class="main">
             <p class="tableTitle">{{labelValue(selectedLanguage, windowDefinition.windowTitle)}}</p>
@@ -45,23 +49,26 @@ class EmDemoAHome extends FieldsMethods(FrontendEndpointsEnvMonitSamples(connect
         </div>
         <em-demo-a-kpi id="kpis"></em-demo-a-kpi>
         `;
+  }
+  refreshWindow() {
+    this.loadHomePage();
+  }
+  loadHomePage() {
+    var data = [];
+    data.stagesToInclude =
+      "Sampling|Incubation|PlateReading|MicroorganismIdentification|END"; //END not included???
+    data.stagesToExclude = "Samplingzz|PlateReading";
+    data.grouped = true;
+    this.getSampleStatsCounterByStage(data);
+    this.getSampleStatsLastNresults(data);
+    var elem = this.shadowRoot.getElementById("kpis");
+    if (elem) {
+      elem.loadKPIPage();
     }
-    refreshWindow() {
-        this.loadHomePage();
-    }
-    loadHomePage(){
-        var data=[];
-        data.stagesToInclude="Sampling|Incubation|PlateReading|MicroorganismIdentification|END"; //END not included???
-        data.stagesToExclude="Samplingzz|PlateReading";
-        data.grouped=true;
-        this.getSampleStatsCounterByStage(data);
-        this.getSampleStatsLastNresults(data);
-        var elem=this.shadowRoot.getElementById("kpis");
-        if (elem){elem.loadKPIPage();}        
-    }
-    ready() {
-        super.ready();
-        this.loadHomePage();
-    }    
+  }
+  ready() {
+    super.ready();
+    this.loadHomePage();
+  }
 }
-customElements.define('em-demo-a-home', EmDemoAHome);
+customElements.define("em-demo-a-home", EmDemoAHome);

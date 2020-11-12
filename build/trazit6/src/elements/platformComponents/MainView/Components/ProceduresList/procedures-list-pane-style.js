@@ -1,4 +1,8 @@
-const documentContainerPlaformProcedureList=document.createElement("procedures-list-pane-style");documentContainerPlaformProcedureList.setAttribute("style","display: none;");documentContainerPlaformProcedureList.innerHTML=`
+const documentContainerPlaformProcedureList = document.createElement(
+  "procedures-list-pane-style"
+);
+documentContainerPlaformProcedureList.setAttribute("style", "display: none;");
+documentContainerPlaformProcedureList.innerHTML = `
   <dom-module id="procedures-list-pane-style">
     <template>
       <style>
@@ -22,4 +26,5 @@ const documentContainerPlaformProcedureList=document.createElement("procedures-l
         }        
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerPlaformProcedureList);
+  </dom-module>`;
+document.head.appendChild(documentContainerPlaformProcedureList);

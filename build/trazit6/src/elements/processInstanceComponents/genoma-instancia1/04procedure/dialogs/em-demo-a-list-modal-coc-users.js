@@ -1,15 +1,75 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../store.js","../../../../../../node_modules/@polymer/paper-button/paper-button.js","../../03config/css/Theme01/modal-dialogs.js","../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid.js","../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-selection-column.js","../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-sort-column.js","../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter.js","../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter-column.js","../../../../internalComponents/form-fields/field-icon-button.js","../../../../internalComponents/Dialogs/dialogmodal-buttons.js","../../../../../config/app-config.js","../../03config/config-process.js","../../01moduleFunctionality/frontend-env-monit-sample"],function(_polymerElement,_connectMixin,_store,_paperButton,_modalDialogs,_vaadinGrid,_vaadinGridSelectionColumn,_vaadinGridSortColumn,_vaadinGridFilter,_vaadinGridFilterColumn,_fieldIconButton,_dialogmodalButtons,_appConfig,_configProcess,_frontendEnvMonitSample){"use strict";//import '../../../../internalComponents/grid-components/vaadingrid-singleselectrunaction';
-//import '../../../../internalComponents/grid-components/vaadingrid-singleselect.js';
-//import '../../../../internalComponents/grid-components/vaadingrid-multiselect';
-//import '../../../../app/module-functionality/sample/sample-elements.js';
-/**
- * `em-demo-a-list-modal-coc-users` Description
- *
- * @customElement
- * @polymer
- * @demo
- * 
- */class emDemoAListModalCocUsers extends(0,_frontendEnvMonitSample.FrontendEnvMonitSample)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{dialogButtons:{type:Array,value:_appConfig.dialog_buttons},listRows:{type:Array,value:[{code:"LOD",method_name:"LOD Method",method_version:1}]},listHeader:Array,schemaPrefix:{type:String,value:_configProcess.schema_name},buttons:{type:Array,value:_configProcess.sampleCustodian_cocUsersListButtons},selectedObject:{type:Object,notify:!0},selectedLanguage:{type:String}}}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../store.js",
+  "../../../../../../node_modules/@polymer/paper-button/paper-button.js",
+  "../../03config/css/Theme01/modal-dialogs.js",
+  "../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid.js",
+  "../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-selection-column.js",
+  "../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-sort-column.js",
+  "../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter.js",
+  "../../../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter-column.js",
+  "../../../../internalComponents/form-fields/field-icon-button.js",
+  "../../../../internalComponents/Dialogs/dialogmodal-buttons.js",
+  "../../../../../config/app-config.js",
+  "../../03config/config-process.js",
+  "../../01moduleFunctionality/frontend-env-monit-sample",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _paperButton,
+  _modalDialogs,
+  _vaadinGrid,
+  _vaadinGridSelectionColumn,
+  _vaadinGridSortColumn,
+  _vaadinGridFilter,
+  _vaadinGridFilterColumn,
+  _fieldIconButton,
+  _dialogmodalButtons,
+  _appConfig,
+  _configProcess,
+  _frontendEnvMonitSample
+) {
+  "use strict"; //import '../../../../internalComponents/grid-components/vaadingrid-singleselectrunaction';
+  //import '../../../../internalComponents/grid-components/vaadingrid-singleselect.js';
+  //import '../../../../internalComponents/grid-components/vaadingrid-multiselect';
+  //import '../../../../app/module-functionality/sample/sample-elements.js';
+  /**
+   * `em-demo-a-list-modal-coc-users` Description
+   *
+   * @customElement
+   * @polymer
+   * @demo
+   *
+   */ class emDemoAListModalCocUsers extends (0,
+  _frontendEnvMonitSample.FrontendEnvMonitSample)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get properties() {
+      return {
+        dialogButtons: { type: Array, value: _appConfig.dialog_buttons },
+        listRows: {
+          type: Array,
+          value: [
+            { code: "LOD", method_name: "LOD Method", method_version: 1 },
+          ],
+        },
+        listHeader: Array,
+        schemaPrefix: { type: String, value: _configProcess.schema_name },
+        buttons: {
+          type: Array,
+          value: _configProcess.sampleCustodian_cocUsersListButtons,
+        },
+        selectedObject: { type: Object, notify: !0 },
+        selectedLanguage: { type: String },
+      };
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+    static get template() {
+      return _polymerElement.html`
         <style include="modal-dialogs">
             .modal-content {
                 width: 450px;
@@ -52,7 +112,9 @@ define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","..
 -->
         </div>    
         
-        `}/*    fieldButtonClicked(e) {
+        `;
+    }
+    /*    fieldButtonClicked(e) {
         console.log('optionPressed', e.detail.buttonName, 'selectedSampleAnalysis', this.selectedObject);                
         //console.log('optionPressed', e.detail.buttonName, 'selectedSample', this.selectedObject);                
         if (this.selectedObject==null){
@@ -92,7 +154,47 @@ define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","..
         }
         return;
     }  
-*/dialogConfirmed(){console.log("dialogConfirmed","this.selectedObject",this.selectedObject);this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"confirmed",selectedItems:this.$.mygridid.selectedItems}}));this.$.mygridid.selectedItems=[]}dialogCanceled(){//console.log('clicked', this.value);
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"canceled"}}))}/*ready(){
+*/ dialogConfirmed() {
+      console.log(
+        "dialogConfirmed",
+        "this.selectedObject",
+        this.selectedObject
+      );
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "confirmed",
+            selectedItems: this.$.mygridid.selectedItems,
+          },
+        })
+      );
+      this.$.mygridid.selectedItems = [];
+    }
+    dialogCanceled() {
+      //console.log('clicked', this.value);
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "canceled",
+          },
+        })
+      );
+    } /*ready(){
         this.addEventListener('toast-error', (e) => this.toastError(e) );
-    } */}customElements.define("em-demo-a-list-modal-coc-users",emDemoAListModalCocUsers)});
+    } */
+  }
+  customElements.define(
+    "em-demo-a-list-modal-coc-users",
+    emDemoAListModalCocUsers
+  );
+});

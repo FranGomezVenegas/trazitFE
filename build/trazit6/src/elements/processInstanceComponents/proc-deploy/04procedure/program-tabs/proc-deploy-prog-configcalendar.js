@@ -1,9 +1,62 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../platform-mixins/functions/fields-methods.js","../../../../../../node_modules/@mpachnis/mp-calendar/mp-calendar.js","../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js","../../03config/Programs/proc-deploy-progtab-calendar-settings.js"],function(_polymerElement,_connectMixin,_store,_fieldsMethods,_mpCalendar,_vaadingridLitSingleselect,_procDeployProgtabCalendarSettings){"use strict";class procDeployProgConfigcalendar extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.procDeploy.selectedProgram){//this.selectedProgram=state.procDeploy.selectedProgram;
-//console.log('state.procDeploy.selectedProgram.config_scheduled_calendar',state.procDeploy.selectedProgram.config_scheduled_calendar);
-//this.events=state.procDeploy.selectedProgram.config_scheduled_calendar;
-}}static get properties(){return{selectedLanguage:{type:String,observer:"labelsLang"},monthsLabels:{type:Array},daysLabels:{type:Array},startDayNumber:{type:String},// events: {type: Object, value:
-//     [{"title":"E01","content":"Muestreo ...","date":"2020-02-20","category":"blue", "color": "#000"},]},
-progConfigCalendarTableHeaderFields:{type:Object,value:_procDeployProgtabCalendarSettings.programProgConfigCalendar_progConfigCalendarTableHeaderFields},weekDaysDisabled:{type:Object,value:["Sunday","Saturday"]},tableTitle:{type:Object,value:{label_en:"Scheduled program locations",label_es:"Tabla de ubicaciones programadas para el programa"}},selectedProgram:{type:Object,observer:"setConfigScheduledCalendar"},displayCalendar:{type:Boolean,value:!1},displayTable:{type:Boolean,value:!1}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../../../node_modules/@mpachnis/mp-calendar/mp-calendar.js",
+  "../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js",
+  "../../03config/Programs/proc-deploy-progtab-calendar-settings.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _fieldsMethods,
+  _mpCalendar,
+  _vaadingridLitSingleselect,
+  _procDeployProgtabCalendarSettings
+) {
+  "use strict";
+  class procDeployProgConfigcalendar extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.procDeploy.selectedProgram) {
+        //this.selectedProgram=state.procDeploy.selectedProgram;
+        //console.log('state.procDeploy.selectedProgram.config_scheduled_calendar',state.procDeploy.selectedProgram.config_scheduled_calendar);
+        //this.events=state.procDeploy.selectedProgram.config_scheduled_calendar;
+      }
+    }
+    static get properties() {
+      return {
+        selectedLanguage: { type: String, observer: "labelsLang" },
+        monthsLabels: { type: Array },
+        daysLabels: { type: Array },
+        startDayNumber: { type: String }, // events: {type: Object, value:
+        //     [{"title":"E01","content":"Muestreo ...","date":"2020-02-20","category":"blue", "color": "#000"},]},
+        progConfigCalendarTableHeaderFields: {
+          type: Object,
+          value:
+            _procDeployProgtabCalendarSettings.programProgConfigCalendar_progConfigCalendarTableHeaderFields,
+        },
+        weekDaysDisabled: { type: Object, value: ["Sunday", "Saturday"] },
+        tableTitle: {
+          type: Object,
+          value: {
+            label_en: "Scheduled program locations",
+            label_es: "Tabla de ubicaciones programadas para el programa",
+          },
+        },
+        selectedProgram: {
+          type: Object,
+          observer: "setConfigScheduledCalendar",
+        },
+        displayCalendar: { type: Boolean, value: !1 },
+        displayTable: { type: Boolean, value: !1 },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <style include="proc-deploy-progtab-calendar-style"></style>  
         <style>
         
@@ -37,5 +90,69 @@ progConfigCalendarTableHeaderFields:{type:Object,value:_procDeployProgtabCalenda
                    ></vaadingrid-singleselect> -->
             </div>
         </template>
-            `}pointClicked(){//This does nothing, remove if so
-}labelsLang(){if("es"==this.selectedLanguage){this.monthsLabels=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];this.daysLabels=["Domingo","Lunes","Martes","Mi\xE9rcoles","Jueves","Viernes","S\xE1bado"];this.startDayNumber="1";return}else{this.monthsLabels=["January","February","March","April","May","June","July","August","September","October","November","December"];this.daysLabels=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];this.startDayNumber="0";return}}}customElements.define("proc-deploy-prog-configcalendar",procDeployProgConfigcalendar)});
+            `;
+    }
+    pointClicked() {
+      //This does nothing, remove if so
+    }
+    labelsLang() {
+      if ("es" == this.selectedLanguage) {
+        this.monthsLabels = [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
+        ];
+        this.daysLabels = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Mi\xE9rcoles",
+          "Jueves",
+          "Viernes",
+          "S\xE1bado",
+        ];
+        this.startDayNumber = "1";
+        return;
+      } else {
+        this.monthsLabels = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        this.daysLabels = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        this.startDayNumber = "0";
+        return;
+      }
+    }
+  }
+  customElements.define(
+    "proc-deploy-prog-configcalendar",
+    procDeployProgConfigcalendar
+  );
+});

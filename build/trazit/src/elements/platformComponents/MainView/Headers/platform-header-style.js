@@ -1,4 +1,8 @@
-const documentContainerAppHeaderStyle=document.createElement("platform-header-style");documentContainerAppHeaderStyle.setAttribute("style","display: none;");documentContainerAppHeaderStyle.innerHTML=`
+const documentContainerAppHeaderStyle = document.createElement(
+  "platform-header-style"
+);
+documentContainerAppHeaderStyle.setAttribute("style", "display: none;");
+documentContainerAppHeaderStyle.innerHTML = `
   <dom-module id="platform-header-style">
     <template>
       <style>
@@ -63,4 +67,5 @@ const documentContainerAppHeaderStyle=document.createElement("platform-header-st
         }
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerAppHeaderStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerAppHeaderStyle);

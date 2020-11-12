@@ -1,8 +1,20 @@
-function isTabOpn(tabsList,tabName){var isOpen=tabsList.find(function(curTab){//console.log('tab reducer find in ', curTab.tabName, ' the value ', tabName);
-return tabName==curTab.tabName});//console.log('is open='+isOpen, 'tabName=', tabName); 
-if(!isOpen)return!1;//var isOpen= tabsList.indexOf(tabName);
-//if (isOpen==-1) return false;
-return!0}export{isTabOpn};export const schema_name="em-demo-a";export const personal_smp_template="prog_pers_template";export const prodLotActiveOnCreate="true";export const shifts=[{keyName:"M1",keyValue_en:"M1",keyValue_es:"M1"},{keyName:"M2",keyValue_en:"M2",keyValue_es:"M2"}];// export const incubationMode='SAMPLE_AND_INCUBATOR';
+function isTabOpn(tabsList, tabName) {
+  var isOpen = tabsList.find(function (curTab) {
+    //console.log('tab reducer find in ', curTab.tabName, ' the value ', tabName);
+    return tabName == curTab.tabName;
+  }); //console.log('is open='+isOpen, 'tabName=', tabName);
+  if (!isOpen) return !1; //var isOpen= tabsList.indexOf(tabName);
+  //if (isOpen==-1) return false;
+  return !0;
+}
+export { isTabOpn };
+export const schema_name = "em-demo-a";
+export const personal_smp_template = "prog_pers_template";
+export const prodLotActiveOnCreate = "true";
+export const shifts = [
+  { keyName: "M1", keyValue_en: "M1", keyValue_es: "M1" },
+  { keyName: "M2", keyValue_en: "M2", keyValue_es: "M2" },
+]; // export const incubationMode='SAMPLE_AND_INCUBATOR';
 // // SAMPLE_AND_DATE,SAMPLE_AND_INCUBATOR
 // export const sampleCustodian_cocUsersListFieldToRetrieve='user_name';
 // export const sampleCustodian_cocUsersListFieldToDisplay=[
@@ -45,13 +57,13 @@ return!0}export{isTabOpn};export const schema_name="em-demo-a";export const pers
 //       "label_en": "Custody Change", "label_es": "Cambiar Custodia",
 //       "type": "button",
 //       "read_only": false,
-//   }, 
+//   },
 //   {
 //     "name": "ChangeOfCustodyHistory",
 //     "label_en": "Custody History", "label_es": "Histórico Custodia",
 //     "type": "button",
 //     "read_only": false,
-//   },   
+//   },
 // ];
 // export const sampleCustodian_sampleFieldToRetrieveCandidate='sample_id|status|sampling_date|sampling_comment|sample_config_code';
 // export const sampleCustodian_sampleFieldToDisplayCandidate=[
@@ -69,14 +81,14 @@ return!0}export{isTabOpn};export const schema_name="em-demo-a";export const pers
 //       "label_en": "Accept CoC", "label_es": "Aceptar CoC",
 //       "type": "button",
 //       "read_only": false,
-//   }, 
+//   },
 //   {
 //     "name": "COC_ABORTCHANGE",
 //     "label_en": "Reject CoC", "label_es": "Rechazar CoC",
 //     "type": "button",
 //     "confirmuser_required": false,
 //     "read_only": false,
-//   },   
+//   },
 // ];
 // export const microorganism_allowAddNotOnTheList=true;
 // export const microorganism_allowAddNotOnTheList_formFields=[
@@ -87,21 +99,21 @@ return!0}export{isTabOpn};export const schema_name="em-demo-a";export const pers
 //     "password": "false",
 //     "value": "",
 //     "read_only": false
-//   },    
+//   },
 //   {
 //     "name": "buttonNewAdhocMicroorganism",
 //     "label_en": "Add Adhoc", "label_es": "Añadir Nuevo",
-//     "type": "button",              
+//     "type": "button",
 //     "value": "",
 //     "read_only": false
-//   },        
+//   },
 //   {
 //     "name": "buttonNewMicroorganism",
 //     "label_en": "Add", "label_es": "Añadir",
-//     "type": "button",              
+//     "type": "button",
 //     "value": "",
 //     "read_only": false
-//   },           
+//   },
 // ];
 // export const microorganismList_fieldsToDisplay=[
 //   {name: 'name', label_en:'name', label_es: 'Nombre', sort:false, filter:true, width:'85%'}

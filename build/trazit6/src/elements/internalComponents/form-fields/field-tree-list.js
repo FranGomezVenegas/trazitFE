@@ -1,5 +1,30 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../node_modules/pwa-helpers/connect-mixin.js","../../../store.js","../../../../node_modules/@polymer/iron-selector/iron-selector.js","./field-badge.js","../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_ironSelector,_fieldBadge,_fieldsMethods){"use strict";//import './../../../config/styles/form-fields-style'  
-class FieldTreeList extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{value:{type:String,notify:!0}}}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}static get template(){return _polymerElement.html`
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../store.js",
+  "../../../../node_modules/@polymer/iron-selector/iron-selector.js",
+  "./field-badge.js",
+  "../../../platform-mixins/functions/fields-methods.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _ironSelector,
+  _fieldBadge,
+  _fieldsMethods
+) {
+  "use strict"; //import './../../../config/styles/form-fields-style'
+  class FieldTreeList extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get properties() {
+      return { value: { type: String, notify: !0 } };
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+    static get template() {
+      return _polymerElement.html`
             <!-- <style include="form-fields-style"></style> -->
             <style>
                 div.element {
@@ -100,5 +125,44 @@ class FieldTreeList extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.con
                 </template> -->
                 
             </div>                                     
-        `}hasBadge(bdg){if(0<bdg){return!0}return!1}sopsPassed(s){// if field.sops_passed property is not defined then it is not relevant for Sops, considered as completed/passed.        
-if(null==s){return!0}return s}openSopsSummary(){this.dispatchEvent(new CustomEvent("toast-message",{bubbles:!0,composed:!0,detail:"openSopddd"}))}clicked(){this.dispatchEvent(new CustomEvent("field-tree-list-clicked",{bubbles:!0,composed:!0,detail:{procedure:this.procedure,tabName_en:this.procedure.label_en+"-"+this.field.label_en,procEvent:this.field,sopPassed:this.procedure.sops_passed}}))}}customElements.define("field-tree-list",FieldTreeList)});
+        `;
+    }
+    hasBadge(bdg) {
+      if (0 < bdg) {
+        return !0;
+      }
+      return !1;
+    }
+    sopsPassed(s) {
+      // if field.sops_passed property is not defined then it is not relevant for Sops, considered as completed/passed.
+      if (null == s) {
+        return !0;
+      }
+      return s;
+    }
+    openSopsSummary() {
+      this.dispatchEvent(
+        new CustomEvent("toast-message", {
+          bubbles: !0,
+          composed: !0,
+          detail: "openSopddd",
+        })
+      );
+    }
+    clicked() {
+      this.dispatchEvent(
+        new CustomEvent("field-tree-list-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            procedure: this.procedure,
+            tabName_en: this.procedure.label_en + "-" + this.field.label_en,
+            procEvent: this.field,
+            sopPassed: this.procedure.sops_passed,
+          },
+        })
+      );
+    }
+  }
+  customElements.define("field-tree-list", FieldTreeList);
+});

@@ -1,18 +1,21 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../../store.js';
-import '@polymer/iron-collapse/iron-collapse';
-import './em-demo-a-dialogmodal-buttons.js';
-import '../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../../store.js";
+import "@polymer/iron-collapse/iron-collapse";
+import "./em-demo-a-dialogmodal-buttons.js";
+import "../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";
 
-import {enterResult, resultCheckerMessages} from '../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings';
-import {FrontendEndpointsEnvMonitSamples} from  '../../01moduleFunctionality/endpoints-frontend-env-monit-samples';
-import {FunctionsEnvMonitSamples} from '../../01moduleFunctionality/functions-env-monit-samples';
-import {FieldsMethods} from '../../../../../platform-mixins/functions/fields-methods';
-import '../../../../internalComponents/form-fields/field-icon-button';
+import {
+  enterResult,
+  resultCheckerMessages,
+} from "../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";
+import { FrontendEndpointsEnvMonitSamples } from "../../01moduleFunctionality/endpoints-frontend-env-monit-samples";
+import { FunctionsEnvMonitSamples } from "../../01moduleFunctionality/functions-env-monit-samples";
+import { FieldsMethods } from "../../../../../platform-mixins/functions/fields-methods";
+import "../../../../internalComponents/form-fields/field-icon-button";
 
-import {iconsMethods} from '../../01moduleFunctionality/functions-icons';
-import {SampleIcons} from '../../03config/config-icons';
+import { iconsMethods } from "../../01moduleFunctionality/functions-icons";
+import { SampleIcons } from "../../03config/config-icons";
 
 /**
  * `em-demo-a-list-modal-enterresults` Description
@@ -20,45 +23,57 @@ import {SampleIcons} from '../../03config/config-icons';
  * @customElement
  * @polymer
  * @demo
- * 
+ *
  */
-class EmDemoAListModalEnterResults extends SampleIcons(iconsMethods(FieldsMethods(FunctionsEnvMonitSamples(FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement)))))) {
-    static get properties() {
-        return {
-            opened: {type: Boolean, value: true, reflectToAttribute: true},
-            horizontal: {type: Boolean},
+class EmDemoAListModalEnterResults extends SampleIcons(
+  iconsMethods(
+    FieldsMethods(
+      FunctionsEnvMonitSamples(
+        FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))
+      )
+    )
+  )
+) {
+  static get properties() {
+    return {
+      opened: { type: Boolean, value: true, reflectToAttribute: true },
+      horizontal: { type: Boolean },
 
-            displayCancelButton: {type: Boolean, notify: true},
-            displayConfirmButton: {type: Boolean, notify: true},            
-            displayCloseButton:  {type: Boolean, notify: true},
-            tableDefinition: {type: Object, value:enterResult},
-            resultCheckerMessages: {type: Object, value:resultCheckerMessages},
-            listRows: Array,
-            listHeader: Array,
-            sampleId: Number,
-            selectedObject: {type: Object, notify: true},  
-            selectedLanguage: {type: String},
-            detailOpenStatus: {type: Boolean, value:false},
-        }
+      displayCancelButton: { type: Boolean, notify: true },
+      displayConfirmButton: { type: Boolean, notify: true },
+      displayCloseButton: { type: Boolean, notify: true },
+      tableDefinition: { type: Object, value: enterResult },
+      resultCheckerMessages: { type: Object, value: resultCheckerMessages },
+      listRows: Array,
+      listHeader: Array,
+      sampleId: Number,
+      selectedObject: { type: Object, notify: true },
+      selectedLanguage: { type: String },
+      detailOpenStatus: { type: Boolean, value: false },
+    };
+  }
+  toggle() {
+    this.$.collapse.toggle();
+  }
+  getSpecRule(item) {
+    return item.spec_eval_detail;
+  }
+  getItemValue(flddetail, item) {
+    if (flddetail.name == "locking_reason") {
+      if (this.selectedLanguage == "en") {
+        return item.locking_reason.message_en;
+      }
+      if (this.selectedLanguage == "es") {
+        return item.locking_reason.message_es;
+      }
     }
-    toggle() {
-        this.$.collapse.toggle();
-    }   
-    getSpecRule(item){
-        return item.spec_eval_detail;
+    if (flddetail.name == "spec_rule") {
+      return this.getSpecRule(item);
     }
-    getItemValue(flddetail, item){    
-        if (flddetail.name=='locking_reason'){
-            if (this.selectedLanguage=="en"){return item.locking_reason.message_en;}
-            if (this.selectedLanguage=="es"){return item.locking_reason.message_es;}
-        }    
-        if (flddetail.name=='spec_rule'){
-            return this.getSpecRule(item);
-        }
-        return item[flddetail.name];
-    }
-    static get template() {
-        return html`        
+    return item[flddetail.name];
+  }
+  static get template() {
+    return html`        
         <style include="em-demo-a-dialog-enterresults-settings""></style>      
         <div class="modal-content bgimg">
         <!-- [[tableDefinition.tableTitle.label.label_es]] -->
@@ -160,93 +175,113 @@ class EmDemoAListModalEnterResults extends SampleIcons(iconsMethods(FieldsMethod
 -->                
         </div>
         `;
-    }
+  }
 
-    detailCheckToggle(){
-        console.log('detailCheckToggle');
-        this.detailOpenStatus=!this.detailOpenStatus;
+  detailCheckToggle() {
+    console.log("detailCheckToggle");
+    this.detailOpenStatus = !this.detailOpenStatus;
+  }
+  resultClass(islocked, specEval) {
+    //console.log('resultClass', 'e', e);
+    if (islocked) {
+      return "resultLocked";
     }
-    resultClass(islocked, specEval){
-        //console.log('resultClass', 'e', e);
-        if (islocked){return 'resultLocked';}
-        if (specEval="IN"){return 'resultIn';}  
-        if (specEval.includes("OUT_SPEC")){return 'resultOutRange'}
-        return 'resultInAlarm';
+    if ((specEval = "IN")) {
+      return "resultIn";
     }
-    editableIsInteger(e){
-        //console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
-        if (fld=='INTEGER') {return true;}
-        if (fld=='FLOAT') {return true;}
-        return true;
+    if (specEval.includes("OUT_SPEC")) {
+      return "resultOutRange";
     }
-    itemSelected(e) {        
-        const item = e.detail.value;
-        this.selectedObject=item;
-        console.log(' em-demo-a-list-modal-enterresults >> itemSelected', this.selectedObject); 
-        this.$.mygridid.selectedItems =[];
-    }       
-    dialogConfirmed(){
-        //console.log('clicked', this.$.mygrid.getSelectedRows());        
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'confirmed',
-            'selectedItems': this.$.mygridid.selectedItems   
-            }
-        })); 
-        this.$.mygridid.selectedItems=[];  
-    }        
-    dialogCanceled(){
-        //console.log('clicked', this.value);
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'canceled'
-            }
-        }));    
-    }     
-    stateChanged(state) {
-        this.selectedLanguage = state.app.user.appLanguage;
-        if (state.emDemoA!=null){ 
-            this.listRows= state.emDemoA.givenSampleAnalysisResultEntryList;}
-    }        
-    refreshWindow() {
-        this.loadData();
+    return "resultInAlarm";
+  }
+  editableIsInteger(e) {
+    //console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
+    if (fld == "INTEGER") {
+      return true;
     }
-    loadData(){
-console.log('loadData', 'sampleId', this.sampleId);
-        var datas=[];
-        datas.sampleId=this.sampleId;
-        datas.fieldToRetrieve=this.tableDefinition.fieldToRetrieve;
-        datas.fieldToSort=this.tableDefinition.fieldToSort;
-        datas.tableDefinition=this.tableDefinition;
-        this.getGivenSampleAnalysisResultEntry(datas);
+    if (fld == "FLOAT") {
+      return true;
     }
-    /**
-     * Instance of the element is created/upgraded. Use: initializing state,
-     * set up event listeners, create shadow dom.
-     * @constructor
-     */
-    constructor() {
-        super();
+    return true;
+  }
+  itemSelected(e) {
+    const item = e.detail.value;
+    this.selectedObject = item;
+    console.log(
+      " em-demo-a-list-modal-enterresults >> itemSelected",
+      this.selectedObject
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogConfirmed() {
+    //console.log('clicked', this.$.mygrid.getSelectedRows());
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "confirmed",
+          selectedItems: this.$.mygridid.selectedItems,
+        },
+      })
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogCanceled() {
+    //console.log('clicked', this.value);
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "canceled",
+        },
+      })
+    );
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.emDemoA != null) {
+      this.listRows = state.emDemoA.givenSampleAnalysisResultEntryList;
     }
+  }
+  refreshWindow() {
+    this.loadData();
+  }
+  loadData() {
+    console.log("loadData", "sampleId", this.sampleId);
+    var datas = [];
+    datas.sampleId = this.sampleId;
+    datas.fieldToRetrieve = this.tableDefinition.fieldToRetrieve;
+    datas.fieldToSort = this.tableDefinition.fieldToSort;
+    datas.tableDefinition = this.tableDefinition;
+    this.getGivenSampleAnalysisResultEntry(datas);
+  }
+  /**
+   * Instance of the element is created/upgraded. Use: initializing state,
+   * set up event listeners, create shadow dom.
+   * @constructor
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Use for one-time configuration of your component after local
-     * DOM is initialized.
-     */
-    ready() {
-        super.ready();
-
-    }
+  /**
+   * Use for one-time configuration of your component after local
+   * DOM is initialized.
+   */
+  ready() {
+    super.ready();
+  }
 }
 
-customElements.define('em-demo-a-list-modal-enterresults', EmDemoAListModalEnterResults);
+customElements.define(
+  "em-demo-a-list-modal-enterresults",
+  EmDemoAListModalEnterResults
+);

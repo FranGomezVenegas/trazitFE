@@ -1,8 +1,13 @@
-import {css} from "lit-element";
-const documentContainerAppMainLayoutTwoHeaders = document.createElement('two-headers');
-documentContainerAppMainLayoutTwoHeaders.setAttribute('style', 'display: none;');
+import { css } from "lit-element";
+const documentContainerAppMainLayoutTwoHeaders = document.createElement(
+  "two-headers"
+);
+documentContainerAppMainLayoutTwoHeaders.setAttribute(
+  "style",
+  "display: none;"
+);
 
-export const appMainLayoutTwoHeadersStyle = css `
+export const appMainLayoutTwoHeadersStyle = css`
   host:{
     --action-success-background-color: #0085ffe6;
     --action-error-background-color: #a33;
@@ -81,7 +86,7 @@ platform-center-tabs.center-tab{
   opacity: .5;
   float: left;            
 }        
-`
+`;
 documentContainerAppMainLayoutTwoHeaders.innerHTML = `
   <dom-module id="two-headers">
     <template>

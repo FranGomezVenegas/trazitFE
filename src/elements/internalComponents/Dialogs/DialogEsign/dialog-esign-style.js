@@ -1,5 +1,7 @@
-const documentContainerDialogEsign = document.createElement('dialog-esign-style');
-documentContainerDialogEsign.setAttribute('style', 'display: none;');
+const documentContainerDialogEsign = document.createElement(
+  "dialog-esign-style"
+);
+documentContainerDialogEsign.setAttribute("style", "display: none;");
 
 documentContainerDialogEsign.innerHTML = `
     <dom-module id="dialog-esign-style">

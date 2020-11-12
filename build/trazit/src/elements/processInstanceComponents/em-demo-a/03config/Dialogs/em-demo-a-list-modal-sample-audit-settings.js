@@ -1,11 +1,62 @@
-export const sampleAudit={fieldToRetrieve:"",//samplesWhereFieldsName:'current_stage|sample_config_code in*',
-//samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
-//addSampleAnalysis: true,
-//addSampleAnalysisFieldToRetrieve:'',
-//addSampleAnalysisResult: true,
-//addSampleAnalysisResultFieldToRetrieve:'',
-fieldToSort:"test_id desc",fieldToDisplay:[{name:"audit_id",label_en:"ID",label_es:"ID"},{name:"action_name",label_en:"Action",label_es:"Acci\xF3n"},{name:"fields_updated",label_en:"Fields Updated",label_es:"Campos Modificados"},{name:"reviewed",label_en:"Reviewed",label_es:"Revisado"},{name:"reviewed_on",label_en:"Revision Date",label_es:"Fecha Revisi\xF3n"}],displayRefreshButton:!1,autorefreshWindow:!1,tableTitle:{display:!0,label:{label_en:"Personnel Samples Pending Microorganism Identification",label_es:"Muestras de personal pendientes de la identificaci\xF3n de microorganismos"}},dialogButtons:{displayCancelButton:!1,displayConfirmButton:!1,displayCloseButton:!0},displayButtons:!0,buttons:[{name:"SAMPLEAUDIT_SET_AUDIT_ID_REVIEWED",//"SIGNSAMPLEAUDIT",
-label_en:"Sign",label_es:"Firmar",type:"button",read_only:!1,confirmuser_required:!1,esign_required:!0}]};const documentContainerEmDemoADialogSampleAuditSettings=document.createElement("em-demo-a-dialog-sample-audit-settings");documentContainerEmDemoADialogSampleAuditSettings.setAttribute("style","display: none;");documentContainerEmDemoADialogSampleAuditSettings.innerHTML=`
+export const sampleAudit = {
+  fieldToRetrieve: "", //samplesWhereFieldsName:'current_stage|sample_config_code in*',
+  //samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
+  //addSampleAnalysis: true,
+  //addSampleAnalysisFieldToRetrieve:'',
+  //addSampleAnalysisResult: true,
+  //addSampleAnalysisResultFieldToRetrieve:'',
+  fieldToSort: "test_id desc",
+  fieldToDisplay: [
+    { name: "audit_id", label_en: "ID", label_es: "ID" },
+    { name: "action_name", label_en: "Action", label_es: "Acci\xF3n" },
+    {
+      name: "fields_updated",
+      label_en: "Fields Updated",
+      label_es: "Campos Modificados",
+    },
+    { name: "reviewed", label_en: "Reviewed", label_es: "Revisado" },
+    {
+      name: "reviewed_on",
+      label_en: "Revision Date",
+      label_es: "Fecha Revisi\xF3n",
+    },
+  ],
+  displayRefreshButton: !1,
+  autorefreshWindow: !1,
+  tableTitle: {
+    display: !0,
+    label: {
+      label_en: "Personnel Samples Pending Microorganism Identification",
+      label_es:
+        "Muestras de personal pendientes de la identificaci\xF3n de microorganismos",
+    },
+  },
+  dialogButtons: {
+    displayCancelButton: !1,
+    displayConfirmButton: !1,
+    displayCloseButton: !0,
+  },
+  displayButtons: !0,
+  buttons: [
+    {
+      name: "SAMPLEAUDIT_SET_AUDIT_ID_REVIEWED", //"SIGNSAMPLEAUDIT",
+      label_en: "Sign",
+      label_es: "Firmar",
+      type: "button",
+      read_only: !1,
+      confirmuser_required: !1,
+      esign_required: !0,
+    },
+  ],
+};
+const documentContainerEmDemoADialogSampleAuditSettings = document.createElement(
+  "em-demo-a-dialog-sample-audit-settings"
+);
+documentContainerEmDemoADialogSampleAuditSettings.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerEmDemoADialogSampleAuditSettings.innerHTML = `
   <dom-module id="em-demo-a-dialog-sample-audit-settings">
     <template>
     <style>
@@ -33,4 +84,5 @@ label_en:"Sign",label_es:"Firmar",type:"button",read_only:!1,confirmuser_require
     }          
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoADialogSampleAuditSettings);
+  </dom-module>`;
+document.head.appendChild(documentContainerEmDemoADialogSampleAuditSettings);

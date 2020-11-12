@@ -1,11 +1,99 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../../node_modules/@polymer/iron-collapse/iron-collapse.js","./proc-deploy-dialogmodal-buttons.js","../../03config/Dialogs/proc-deploy-list-modal-enterresults-settings.js","../../01moduleFunctionality/endpoints-frontend-env-monit-samples.js","../../01moduleFunctionality/functions-env-monit-samples.js","../../../../../platform-mixins/functions/fields-methods.js","../../../../internalComponents/form-fields/field-icon-button.js","../../01moduleFunctionality/functions-icons.js","../../03config/config-icons.js"],function(_polymerElement,_connectMixin,_store,_ironCollapse,_procDeployDialogmodalButtons,_procDeployListModalEnterresultsSettings,_endpointsFrontendEnvMonitSamples,_functionsEnvMonitSamples,_fieldsMethods,_fieldIconButton,_functionsIcons,_configIcons){"use strict";/**
- * `proc-deploy-list-modal-enterresults` Description
- *
- * @customElement
- * @polymer
- * @demo
- * 
- */class ProcDeployListModalEnterResults extends(0,_configIcons.SampleIcons)((0,_functionsIcons.iconsMethods)((0,_fieldsMethods.FieldsMethods)((0,_functionsEnvMonitSamples.FunctionsEnvMonitSamples)((0,_endpointsFrontendEnvMonitSamples.FrontendEndpointsEnvMonitSamples)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)))))){static get properties(){return{opened:{type:Boolean,value:!0,reflectToAttribute:!0},horizontal:{type:Boolean},displayCancelButton:{type:Boolean,notify:!0},displayConfirmButton:{type:Boolean,notify:!0},displayCloseButton:{type:Boolean,notify:!0},tableDefinition:{type:Object,value:_procDeployListModalEnterresultsSettings.enterResult},resultCheckerMessages:{type:Object,value:_procDeployListModalEnterresultsSettings.resultCheckerMessages},listRows:Array,listHeader:Array,sampleId:Number,testingGroup:String,selectedObject:{type:Object,notify:!0},selectedLanguage:{type:String},detailOpenStatus:{type:Boolean,value:!1}}}toggle(){this.$.collapse.toggle()}getSpecRule(item){return item.spec_eval_detail}getItemValue(flddetail,item){if("locking_reason"==flddetail.name){if("en"==this.selectedLanguage){return item.locking_reason.message_en}if("es"==this.selectedLanguage){return item.locking_reason.message_es}}if("spec_rule"==flddetail.name){return this.getSpecRule(item)}return item[flddetail.name]}static get template(){return _polymerElement.html`        
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../../node_modules/@polymer/iron-collapse/iron-collapse.js",
+  "./proc-deploy-dialogmodal-buttons.js",
+  "../../03config/Dialogs/proc-deploy-list-modal-enterresults-settings.js",
+  "../../01moduleFunctionality/endpoints-frontend-env-monit-samples.js",
+  "../../01moduleFunctionality/functions-env-monit-samples.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../internalComponents/form-fields/field-icon-button.js",
+  "../../01moduleFunctionality/functions-icons.js",
+  "../../03config/config-icons.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _ironCollapse,
+  _procDeployDialogmodalButtons,
+  _procDeployListModalEnterresultsSettings,
+  _endpointsFrontendEnvMonitSamples,
+  _functionsEnvMonitSamples,
+  _fieldsMethods,
+  _fieldIconButton,
+  _functionsIcons,
+  _configIcons
+) {
+  "use strict";
+  /**
+   * `proc-deploy-list-modal-enterresults` Description
+   *
+   * @customElement
+   * @polymer
+   * @demo
+   *
+   */ class ProcDeployListModalEnterResults extends (0,
+  _configIcons.SampleIcons)(
+    (0, _functionsIcons.iconsMethods)(
+      (0, _fieldsMethods.FieldsMethods)(
+        (0, _functionsEnvMonitSamples.FunctionsEnvMonitSamples)(
+          (0,
+          _endpointsFrontendEnvMonitSamples.FrontendEndpointsEnvMonitSamples)(
+            (0, _connectMixin.connect)(_store.store)(
+              _polymerElement.PolymerElement
+            )
+          )
+        )
+      )
+    )
+  ) {
+    static get properties() {
+      return {
+        opened: { type: Boolean, value: !0, reflectToAttribute: !0 },
+        horizontal: { type: Boolean },
+        displayCancelButton: { type: Boolean, notify: !0 },
+        displayConfirmButton: { type: Boolean, notify: !0 },
+        displayCloseButton: { type: Boolean, notify: !0 },
+        tableDefinition: {
+          type: Object,
+          value: _procDeployListModalEnterresultsSettings.enterResult,
+        },
+        resultCheckerMessages: {
+          type: Object,
+          value: _procDeployListModalEnterresultsSettings.resultCheckerMessages,
+        },
+        listRows: Array,
+        listHeader: Array,
+        sampleId: Number,
+        testingGroup: String,
+        selectedObject: { type: Object, notify: !0 },
+        selectedLanguage: { type: String },
+        detailOpenStatus: { type: Boolean, value: !1 },
+      };
+    }
+    toggle() {
+      this.$.collapse.toggle();
+    }
+    getSpecRule(item) {
+      return item.spec_eval_detail;
+    }
+    getItemValue(flddetail, item) {
+      if ("locking_reason" == flddetail.name) {
+        if ("en" == this.selectedLanguage) {
+          return item.locking_reason.message_en;
+        }
+        if ("es" == this.selectedLanguage) {
+          return item.locking_reason.message_es;
+        }
+      }
+      if ("spec_rule" == flddetail.name) {
+        return this.getSpecRule(item);
+      }
+      return item[flddetail.name];
+    }
+    static get template() {
+      return _polymerElement.html`        
         <style include="proc-deploy-dialog-enterresults-settings""></style>      
         <div class="modal-content bgimg">
         <!-- [[tableDefinition.tableTitle.label.label_es]] -->
@@ -106,15 +194,120 @@ define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","..
                 </template>
 -->                
         </div>
-        `}detailCheckToggle(){console.log("detailCheckToggle");this.detailOpenStatus=!this.detailOpenStatus}resultClass(islocked,specEval){//console.log('resultClass', 'e', e);
-if(islocked){return"resultLocked"}if(specEval="IN"){return"resultIn"}if(specEval.includes("OUT_SPEC")){return"resultOutRange"}return"resultInAlarm"}editableIsInteger(e){//console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
-if("INTEGER"==fld){return!0}if("FLOAT"==fld){return!0}return!0}itemSelected(e){const item=e.detail.value;this.selectedObject=item;console.log(" proc-deploy-list-modal-enterresults >> itemSelected",this.selectedObject);this.$.mygridid.selectedItems=[]}dialogConfirmed(){//console.log('clicked', this.$.mygrid.getSelectedRows());        
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"confirmed",selectedItems:this.$.mygridid.selectedItems}}));this.$.mygridid.selectedItems=[]}dialogCanceled(){//console.log('clicked', this.value);
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"canceled"}}))}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.procDeploy){this.listRows=state.procDeploy.givenSampleAnalysisResultEntryList}}refreshWindow(){this.loadData()}loadData(){console.log("loadData","sampleId",this.sampleId,"this.testingGroup",this.testingGroup);var datas=[];datas.sampleId=this.sampleId;datas.fieldToRetrieve=this.tableDefinition.fieldToRetrieve;datas.fieldToSort=this.tableDefinition.fieldToSort;datas.tableDefinition=this.tableDefinition;if(this.testingGroup){datas.sampleAnalysisWhereFieldsName="testing_group";datas.sampleAnalysisWhereFieldsValue=this.testingGroup}this.getGivenSampleAnalysisResultEntry(datas)}/**
+        `;
+    }
+    detailCheckToggle() {
+      console.log("detailCheckToggle");
+      this.detailOpenStatus = !this.detailOpenStatus;
+    }
+    resultClass(islocked, specEval) {
+      //console.log('resultClass', 'e', e);
+      if (islocked) {
+        return "resultLocked";
+      }
+      if ((specEval = "IN")) {
+        return "resultIn";
+      }
+      if (specEval.includes("OUT_SPEC")) {
+        return "resultOutRange";
+      }
+      return "resultInAlarm";
+    }
+    editableIsInteger(e) {
+      //console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
+      if ("INTEGER" == fld) {
+        return !0;
+      }
+      if ("FLOAT" == fld) {
+        return !0;
+      }
+      return !0;
+    }
+    itemSelected(e) {
+      const item = e.detail.value;
+      this.selectedObject = item;
+      console.log(
+        " proc-deploy-list-modal-enterresults >> itemSelected",
+        this.selectedObject
+      );
+      this.$.mygridid.selectedItems = [];
+    }
+    dialogConfirmed() {
+      //console.log('clicked', this.$.mygrid.getSelectedRows());
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "confirmed",
+            selectedItems: this.$.mygridid.selectedItems,
+          },
+        })
+      );
+      this.$.mygridid.selectedItems = [];
+    }
+    dialogCanceled() {
+      //console.log('clicked', this.value);
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "canceled",
+          },
+        })
+      );
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.procDeploy) {
+        this.listRows = state.procDeploy.givenSampleAnalysisResultEntryList;
+      }
+    }
+    refreshWindow() {
+      this.loadData();
+    }
+    loadData() {
+      console.log(
+        "loadData",
+        "sampleId",
+        this.sampleId,
+        "this.testingGroup",
+        this.testingGroup
+      );
+      var datas = [];
+      datas.sampleId = this.sampleId;
+      datas.fieldToRetrieve = this.tableDefinition.fieldToRetrieve;
+      datas.fieldToSort = this.tableDefinition.fieldToSort;
+      datas.tableDefinition = this.tableDefinition;
+      if (this.testingGroup) {
+        datas.sampleAnalysisWhereFieldsName = "testing_group";
+        datas.sampleAnalysisWhereFieldsValue = this.testingGroup;
+      }
+      this.getGivenSampleAnalysisResultEntry(datas);
+    }
+    /**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.
      * @constructor
-     */constructor(){super()}/**
+     */ constructor() {
+      super();
+    }
+    /**
      * Use for one-time configuration of your component after local
      * DOM is initialized.
-     */ready(){super.ready()}}customElements.define("proc-deploy-list-modal-enterresults",ProcDeployListModalEnterResults)});
+     */ ready() {
+      super.ready();
+    }
+  }
+  customElements.define(
+    "proc-deploy-list-modal-enterresults",
+    ProcDeployListModalEnterResults
+  );
+});

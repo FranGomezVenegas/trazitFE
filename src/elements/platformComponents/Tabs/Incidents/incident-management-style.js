@@ -1,5 +1,7 @@
-const documentContainerIncidentManagement = document.createElement('incident-management-style');
-documentContainerIncidentManagement.setAttribute('style', 'display: none;');
+const documentContainerIncidentManagement = document.createElement(
+  "incident-management-style"
+);
+documentContainerIncidentManagement.setAttribute("style", "display: none;");
 
 documentContainerIncidentManagement.innerHTML = `
   <dom-module id="incident-management-style">
@@ -38,4 +40,4 @@ documentContainerIncidentManagement.innerHTML = `
         </style>
     </template>
   </dom-module>`;
-  document.head.appendChild(documentContainerIncidentManagement);      
+document.head.appendChild(documentContainerIncidentManagement);

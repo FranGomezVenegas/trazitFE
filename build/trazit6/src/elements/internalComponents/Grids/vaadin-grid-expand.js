@@ -1,17 +1,36 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-selection-column.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-sort-column.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-tree-toggle.js","../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-tree-column.js"],function(_polymerElement,_vaadinGrid,_vaadinGridSelectionColumn,_vaadinGridSortColumn,_vaadinGridFilter,_vaadinGridTreeToggle,_vaadinGridTreeColumn){"use strict";//import '@polymer/paper-button/paper-button';
-//import '@polymer/paper-input/paper-input';
-//import '@vaadin/vaadin-context-menu/vaadin-context-menu.js';
-//import '@polymer/iron-icon/iron-icon';
-//import '@polymer/paper-icon-button/paper-icon-button';
-// ????? import '@polymer/paper-tree/';
-/**
- * `vaadin-grid-expand`
- * 
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */class VaadinGridExpand extends _polymerElement.PolymerElement{static get template(){return _polymerElement.html`
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-selection-column.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-sort-column.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-filter.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-tree-toggle.js",
+  "../../../../node_modules/@vaadin/vaadin-grid/vaadin-grid-tree-column.js",
+], function (
+  _polymerElement,
+  _vaadinGrid,
+  _vaadinGridSelectionColumn,
+  _vaadinGridSortColumn,
+  _vaadinGridFilter,
+  _vaadinGridTreeToggle,
+  _vaadinGridTreeColumn
+) {
+  "use strict"; //import '@polymer/paper-button/paper-button';
+  //import '@polymer/paper-input/paper-input';
+  //import '@vaadin/vaadin-context-menu/vaadin-context-menu.js';
+  //import '@polymer/iron-icon/iron-icon';
+  //import '@polymer/paper-icon-button/paper-icon-button';
+  // ????? import '@polymer/paper-tree/';
+  /**
+   * `vaadin-grid-expand`
+   *
+   *
+   * @customElement
+   * @polymer
+   * @demo demo/index.html
+   */ class VaadinGridExpand extends _polymerElement.PolymerElement {
+    static get template() {
+      return _polymerElement.html`
       <style>
         :host {
           display: block;
@@ -119,6 +138,177 @@ define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../..
       </vaadin-grid>
 -->
 
-    `}myicon(colName,rowData){if(rowData==void 0){return}console.log("colName",colName,"rowData",rowData);//alert(e + ' clicked');
-return rowData.image}_alert(e){console.log(e.model.item.name);alert(e.model.item.name+" clicked");return}columnIsPicture(fldName,itm){//console.log('columnIsPicture','fldName', fldName, 'itm', itm);
-if("image"==fldName){return!0}return!1}addLine(){console.log("addLine");this.$.mygrid.push("items",{name:"holaname",value:"Byevalue",image:this.imagePath})}enterResult(e){console.log("enterResult",e.currentTarget.value,index)}ready(){super.ready()}resetColNum(){this.colNum=0}fieldValue(index,item,e){console.log("ColNum:",this.colNum,"index:",index,"item:",item,"fldItem",e);return item[this.colNum][e]}fieldName(e){console.log("ColNum:",this.colNum);this.colNum=this.colNum+1;console.log("ColNum:",this.colNum);return e}static get properties(){return{imagePath:{type:String,value:"../images/app-login/LabPLANET_Atom54x42.png"},colNum:{type:Number,value:0},myFieldsNames:{type:Array,value:["name","image","value","colExtra"]},myTestFieldsNames:{type:Array,value:["test_id","status"]},myResultFieldsNames:{type:Array,value:["result_id","status"]},myGridData:{type:Array,value:[{name:"row 1",value:"value 1",colExtra:"colExtra in 1",image:"./images/header/personNoFace.jpg",hasChildren:!0,children:[{name:"Breaking Bad",icon:"theaters"},{name:"Game of Thrones",icon:"theaters"}],tests:[{test_id:"tst_1_1",status:"In Progress",results:[{result_id:"result_1_1_1",status:"In Progress"},{result_id:"result_1_1_2",status:"In Progress"}]},{test_id:"tst_1_2",status:"In Progress",results:[{result_id:"result_1_2_1",status:"In Progress"},{result_id:"result_1_2_2",status:"In Progress"}]}]},{name:"row 2",value:"value 2",colExtra:"colExtra in 2",image:"../images/app-login/LabPLANET.png",hasChildren:!1,tests:[{test_id:"tst_2_1",status:"In Progress"},{test_id:"tst_2_2",status:"In Progress"}]},{name:"row 3",value:"value 3",colExtra:"colExtra in 3",image:"./images/header/personNoFace.jpg",hasChildren:!0}]},myGridDataExpanded:{type:Array,value:[{sampleId:"1",sampleName:"S1",objectLevel:"SAMPLE",hasChildren:!0,expanded:!0,level:1,children:[{sampleId:"1",testId:1,testName:"S1-T1",hasChildren:!0,expanded:!1,level:2},{sampleId:"1",testId:2,testName:"S1-T2",hasChildren:!0,expanded:!1,level:2}]},{sampleId:"2",sampleName:"S2",objectLevel:"SAMPLE",hasChildren:!1,expanded:!1,level:1},{sampleId:"3",sampleName:"S3",objectLevel:"SAMPLE",hasChildren:!0,expanded:!1,level:1}]}}}}window.customElements.define("vaadin-grid-expand",VaadinGridExpand)});
+    `;
+    }
+    myicon(colName, rowData) {
+      if (rowData == void 0) {
+        return;
+      }
+      console.log("colName", colName, "rowData", rowData); //alert(e + ' clicked');
+      return rowData.image;
+    }
+    _alert(e) {
+      console.log(e.model.item.name);
+      alert(e.model.item.name + " clicked");
+      return;
+    }
+    columnIsPicture(fldName, itm) {
+      //console.log('columnIsPicture','fldName', fldName, 'itm', itm);
+      if ("image" == fldName) {
+        return !0;
+      }
+      return !1;
+    }
+    addLine() {
+      console.log("addLine");
+      this.$.mygrid.push("items", {
+        name: "holaname",
+        value: "Byevalue",
+        image: this.imagePath,
+      });
+    }
+    enterResult(e) {
+      console.log("enterResult", e.currentTarget.value, index);
+    }
+    ready() {
+      super.ready();
+    }
+    resetColNum() {
+      this.colNum = 0;
+    }
+    fieldValue(index, item, e) {
+      console.log(
+        "ColNum:",
+        this.colNum,
+        "index:",
+        index,
+        "item:",
+        item,
+        "fldItem",
+        e
+      );
+      return item[this.colNum][e];
+    }
+    fieldName(e) {
+      console.log("ColNum:", this.colNum);
+      this.colNum = this.colNum + 1;
+      console.log("ColNum:", this.colNum);
+      return e;
+    }
+    static get properties() {
+      return {
+        imagePath: {
+          type: String,
+          value: "../images/app-login/LabPLANET_Atom54x42.png",
+        },
+        colNum: { type: Number, value: 0 },
+        myFieldsNames: {
+          type: Array,
+          value: ["name", "image", "value", "colExtra"],
+        },
+        myTestFieldsNames: { type: Array, value: ["test_id", "status"] },
+        myResultFieldsNames: { type: Array, value: ["result_id", "status"] },
+        myGridData: {
+          type: Array,
+          value: [
+            {
+              name: "row 1",
+              value: "value 1",
+              colExtra: "colExtra in 1",
+              image: "./images/header/personNoFace.jpg",
+              hasChildren: !0,
+              children: [
+                { name: "Breaking Bad", icon: "theaters" },
+                { name: "Game of Thrones", icon: "theaters" },
+              ],
+              tests: [
+                {
+                  test_id: "tst_1_1",
+                  status: "In Progress",
+                  results: [
+                    { result_id: "result_1_1_1", status: "In Progress" },
+                    { result_id: "result_1_1_2", status: "In Progress" },
+                  ],
+                },
+                {
+                  test_id: "tst_1_2",
+                  status: "In Progress",
+                  results: [
+                    { result_id: "result_1_2_1", status: "In Progress" },
+                    { result_id: "result_1_2_2", status: "In Progress" },
+                  ],
+                },
+              ],
+            },
+            {
+              name: "row 2",
+              value: "value 2",
+              colExtra: "colExtra in 2",
+              image: "../images/app-login/LabPLANET.png",
+              hasChildren: !1,
+              tests: [
+                { test_id: "tst_2_1", status: "In Progress" },
+                { test_id: "tst_2_2", status: "In Progress" },
+              ],
+            },
+            {
+              name: "row 3",
+              value: "value 3",
+              colExtra: "colExtra in 3",
+              image: "./images/header/personNoFace.jpg",
+              hasChildren: !0,
+            },
+          ],
+        },
+        myGridDataExpanded: {
+          type: Array,
+          value: [
+            {
+              sampleId: "1",
+              sampleName: "S1",
+              objectLevel: "SAMPLE",
+              hasChildren: !0,
+              expanded: !0,
+              level: 1,
+              children: [
+                {
+                  sampleId: "1",
+                  testId: 1,
+                  testName: "S1-T1",
+                  hasChildren: !0,
+                  expanded: !1,
+                  level: 2,
+                },
+                {
+                  sampleId: "1",
+                  testId: 2,
+                  testName: "S1-T2",
+                  hasChildren: !0,
+                  expanded: !1,
+                  level: 2,
+                },
+              ],
+            },
+            {
+              sampleId: "2",
+              sampleName: "S2",
+              objectLevel: "SAMPLE",
+              hasChildren: !1,
+              expanded: !1,
+              level: 1,
+            },
+            {
+              sampleId: "3",
+              sampleName: "S3",
+              objectLevel: "SAMPLE",
+              hasChildren: !0,
+              expanded: !1,
+              level: 1,
+            },
+          ],
+        },
+      };
+    }
+  }
+  window.customElements.define("vaadin-grid-expand", VaadinGridExpand);
+});

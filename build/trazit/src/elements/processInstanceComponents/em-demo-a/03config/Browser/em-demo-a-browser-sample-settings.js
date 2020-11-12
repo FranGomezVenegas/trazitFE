@@ -1,4 +1,47 @@
-import{schema_name}from"../config-process.js";export const windowContent={fields:[{name:"SampleId",label_en:"Sample",label_es:"Muestra",type:"text",password:"false",value:"979",read_only:!1},{name:"RunReport",label_en:"Report",label_es:"Informe",type:"button",value:"",read_only:!1}],goToStageTabButton:{name:"buttonAccess",label_en:"Go",label_es:"Ir",type:"button",value:"",read_only:!1}};export const browserSampleFields={schemaName:"data",tableName:"Sample",fieldToRetrieve:"ALL",fieldsToDisplay:"current_stage|program_name|location_name|product_lot|shift"};const documentContainerEmDemoABrowserSampleStyle=document.createElement("em-demo-a-browser-sample-style");documentContainerEmDemoABrowserSampleStyle.setAttribute("style","display: none;");documentContainerEmDemoABrowserSampleStyle.innerHTML=`
+import { schema_name } from "../config-process.js";
+export const windowContent = {
+  fields: [
+    {
+      name: "SampleId",
+      label_en: "Sample",
+      label_es: "Muestra",
+      type: "text",
+      password: "false",
+      value: "979",
+      read_only: !1,
+    },
+    {
+      name: "RunReport",
+      label_en: "Report",
+      label_es: "Informe",
+      type: "button",
+      value: "",
+      read_only: !1,
+    },
+  ],
+  goToStageTabButton: {
+    name: "buttonAccess",
+    label_en: "Go",
+    label_es: "Ir",
+    type: "button",
+    value: "",
+    read_only: !1,
+  },
+};
+export const browserSampleFields = {
+  schemaName: "data",
+  tableName: "Sample",
+  fieldToRetrieve: "ALL",
+  fieldsToDisplay: "current_stage|program_name|location_name|product_lot|shift",
+};
+const documentContainerEmDemoABrowserSampleStyle = document.createElement(
+  "em-demo-a-browser-sample-style"
+);
+documentContainerEmDemoABrowserSampleStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerEmDemoABrowserSampleStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-sample-style">
     <template>
     <style>
@@ -42,4 +85,5 @@ import{schema_name}from"../config-process.js";export const windowContent={fields
     }
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoABrowserSampleStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerEmDemoABrowserSampleStyle);

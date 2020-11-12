@@ -1,5 +1,7 @@
-const documentContainerAppLoginStyle = document.createElement('platform-login-style');
-documentContainerAppLoginStyle.setAttribute('style', 'display: none;');
+const documentContainerAppLoginStyle = document.createElement(
+  "platform-login-style"
+);
+documentContainerAppLoginStyle.setAttribute("style", "display: none;");
 
 documentContainerAppLoginStyle.innerHTML = `
   <dom-module id="platform-login-style">

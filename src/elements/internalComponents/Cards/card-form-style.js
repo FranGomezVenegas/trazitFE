@@ -1,5 +1,7 @@
-const documentContainerCardFormStyle = document.createElement('card-form-style');
-documentContainerCardFormStyle.setAttribute('style', 'display: none;');
+const documentContainerCardFormStyle = document.createElement(
+  "card-form-style"
+);
+documentContainerCardFormStyle.setAttribute("style", "display: none;");
 
 documentContainerCardFormStyle.innerHTML = `
   <dom-module id="card-form-style">

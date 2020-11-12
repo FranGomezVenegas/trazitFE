@@ -1,12 +1,17 @@
-export const tabsDefinition={
-  configCalendar:{
+export const tabsDefinition = {
+  configCalendar: {
     displayCalendar: true,
     displayTable: true,
-  }
+  },
 };
 
-const documentContainerEmDemoASampleLoginStyle = document.createElement('em-demo-a-sample-login-style');
-documentContainerEmDemoASampleLoginStyle.setAttribute('style', 'display: none;');
+const documentContainerEmDemoASampleLoginStyle = document.createElement(
+  "em-demo-a-sample-login-style"
+);
+documentContainerEmDemoASampleLoginStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoASampleLoginStyle.innerHTML = `
   <dom-module id="em-demo-a-sample-login-style">

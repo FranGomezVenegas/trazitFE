@@ -1,4 +1,45 @@
-import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../../store.js";import"../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js";import"../../../../internalComponents/Charts/chart-controller.js";import{windowDefinition}from"../../03config/Project/genoma-instancia1-projtab-samples-set-settings.js";import"../../03config/Project/genoma-instancia1-projtab-samples-set-settings.js";import{FieldsMethods}from"../../../../../platform-mixins/functions/fields-methods.js";import{ModuleFunctionsGenoma}from"../../01moduleFunctionality/0module-functions-genoma.js";import"../../../../internalComponents/Elements/table-with-buttons.js";import"../../../../platformComponents/Tabs/SOP/MyPendingSOPs/my-pending-sops-style.js";import"../../../../platformComponents/Tabs/SOP/pdf-link.js";class GenomaInstancia1ProjStudyFiles extends FieldsMethods(ModuleFunctionsGenoma(connect(store)(PolymerElement))){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.genomaInstancia1){this.selectedStudy=state.genomaInstancia1.selectedStudy}}static get properties(){return{windowDefinition:{type:Object,value:windowDefinition},selectedLanguage:{type:String},selectedProject:{type:Object},sopMyPendingSops_cardContent:{type:Object,value:{display_pdf_link:!0,display_certification_status_icon:!1,sopFieldsToDisplay:["owner_table","owner_id","doc_name","brief_summary"]}}/*            displayButtons: true,
+import {
+  PolymerElement,
+  html,
+} from "../../../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { connect } from "../../../../../../node_modules/pwa-helpers/connect-mixin.js";
+import { store } from "../../../../../store.js";
+import "../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js";
+import "../../../../internalComponents/Charts/chart-controller.js";
+import { windowDefinition } from "../../03config/Project/genoma-instancia1-projtab-samples-set-settings.js";
+import "../../03config/Project/genoma-instancia1-projtab-samples-set-settings.js";
+import { FieldsMethods } from "../../../../../platform-mixins/functions/fields-methods.js";
+import { ModuleFunctionsGenoma } from "../../01moduleFunctionality/0module-functions-genoma.js";
+import "../../../../internalComponents/Elements/table-with-buttons.js";
+import "../../../../platformComponents/Tabs/SOP/MyPendingSOPs/my-pending-sops-style.js";
+import "../../../../platformComponents/Tabs/SOP/pdf-link.js";
+class GenomaInstancia1ProjStudyFiles extends FieldsMethods(
+  ModuleFunctionsGenoma(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (null != state.genomaInstancia1) {
+      this.selectedStudy = state.genomaInstancia1.selectedStudy;
+    }
+  }
+  static get properties() {
+    return {
+      windowDefinition: { type: Object, value: windowDefinition },
+      selectedLanguage: { type: String },
+      selectedProject: { type: Object },
+      sopMyPendingSops_cardContent: {
+        type: Object,
+        value: {
+          display_pdf_link: !0,
+          display_certification_status_icon: !1,
+          sopFieldsToDisplay: [
+            "owner_table",
+            "owner_id",
+            "doc_name",
+            "brief_summary",
+          ],
+        },
+      } /*            displayButtons: true,
             buttons: {type: Array, value:[
                 {
                   "name": "SOP_MARK_AS_COMPLETED",
@@ -9,7 +50,11 @@ import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/
                   "read_only": false,
                 }
             ]},        
-*/}}static get template(){return html`        
+*/,
+    };
+  }
+  static get template() {
+    return html`        
         <style include="my-pending-sops-style"></style>        
         <div name="windowDefinitionButtons" class="buttonGroup">
             <template is="dom-if" if="[[displayButtons]]"> 
@@ -47,4 +92,10 @@ import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/
                 </div>                                                                         
             </template>
         </div>                           
-        `}}customElements.define("genoma-instancia1-proj-study-files",GenomaInstancia1ProjStudyFiles);
+        `;
+  }
+}
+customElements.define(
+  "genoma-instancia1-proj-study-files",
+  GenomaInstancia1ProjStudyFiles
+);

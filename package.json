@@ -49,6 +49,8 @@
     "@babel/plugin-transform-modules-amd": "^7.12.1",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.0",
+    "husky": "^4.3.0",
+    "prettier": "2.1.2",
     "wct-browser-legacy": "^1.0.1"
   },
   "description": "LabPLANET Platform",
@@ -58,8 +60,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint-staged": "prettier --write --ignore-unknown"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write '**/*.js'"
+    }
+  }
 }

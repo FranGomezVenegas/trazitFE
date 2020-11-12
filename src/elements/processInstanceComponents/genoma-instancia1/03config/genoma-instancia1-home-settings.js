@@ -1,9 +1,21 @@
-export const programHome_sampleSummaryGaugeOptions={"width": 400, "height": 120, "redFrom": 90, "redTo": 100, "yellowFrom":75,
-                                                    "yellowTo": 90, "minorTicks": 5};
-export const programHome_sampleSummaryPieOptions={"title": "Samples Progress"};
+export const programHome_sampleSummaryGaugeOptions = {
+  width: 400,
+  height: 120,
+  redFrom: 90,
+  redTo: 100,
+  yellowFrom: 75,
+  yellowTo: 90,
+  minorTicks: 5,
+};
+export const programHome_sampleSummaryPieOptions = {
+  title: "Samples Progress",
+};
 
-export const windowDefinition={
-  windowTitle:{label_en:'Home page for Genome Instance1 ', label_es:'Página de inicio para el proceso Genoma Instancia 1'},
+export const windowDefinition = {
+  windowTitle: {
+    label_en: "Home page for Genome Instance1 ",
+    label_es: "Página de inicio para el proceso Genoma Instancia 1",
+  },
   // kpiCharts:[
   //   {
   //     display_chart: true,
@@ -56,7 +68,7 @@ export const windowDefinition={
   //       max_allowed:100,
   //       max_allowed_included:100,
   //       value:0,
-  //     },     
+  //     },
   //     grouper_field_name:'sample_id',
   //     grouper_exclude_items:['Samplingzz','Incubationzz','PlateReadingzz','MicroorganismIdentificationzz','zz','END'],
   //     label_item:{label_en:'Statussss', label_es:'Estado'},
@@ -64,8 +76,13 @@ export const windowDefinition={
   //   },
   // ],
 };
-const documentContainerGenomaInstancia1HomeStyle = document.createElement('genoma-instancia1-home-style');
-documentContainerGenomaInstancia1HomeStyle.setAttribute('style', 'display: none;');
+const documentContainerGenomaInstancia1HomeStyle = document.createElement(
+  "genoma-instancia1-home-style"
+);
+documentContainerGenomaInstancia1HomeStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerGenomaInstancia1HomeStyle.innerHTML = `
   <dom-module id="genoma-instancia1-home-style">

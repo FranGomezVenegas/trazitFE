@@ -1,38 +1,48 @@
-import {schema_name} from '../config-process';
+import { schema_name } from "../config-process";
 
-export const windowContent={
-  fields:[{
-    "name": "SampleId",
-    "label_en": "Sample", "label_es": "Muestra",
-    "type": "text",
-    "password": "false",
-    "value": "979",
-    "read_only": false
-    },    
+export const windowContent = {
+  fields: [
     {
-    "name": "RunReport",
-    "label_en": "Report", "label_es": "Informe",
-    "type": "button",              
-    "value": "",
-    "read_only": false
-    }],
-    goToStageTabButton:{
-      "name": "buttonAccess",
-      "label_en": "Go", "label_es": "Ir",
-      "type": "button",              
-      "value": "",
-      "read_only": false
-    }
+      name: "SampleId",
+      label_en: "Sample",
+      label_es: "Muestra",
+      type: "text",
+      password: "false",
+      value: "979",
+      read_only: false,
+    },
+    {
+      name: "RunReport",
+      label_en: "Report",
+      label_es: "Informe",
+      type: "button",
+      value: "",
+      read_only: false,
+    },
+  ],
+  goToStageTabButton: {
+    name: "buttonAccess",
+    label_en: "Go",
+    label_es: "Ir",
+    type: "button",
+    value: "",
+    read_only: false,
+  },
 };
-export const browserSampleFields={
-  schemaName: 'data',
-  tableName: 'Sample',
-  fieldToRetrieve:'ALL',
-  fieldsToDisplay:'current_stage|program_name|location_name|product_lot|shift',
+export const browserSampleFields = {
+  schemaName: "data",
+  tableName: "Sample",
+  fieldToRetrieve: "ALL",
+  fieldsToDisplay: "current_stage|program_name|location_name|product_lot|shift",
 };
 
-const documentContainerEmDemoABrowserSampleStyle = document.createElement('em-demo-a-browser-sample-style');
-documentContainerEmDemoABrowserSampleStyle.setAttribute('style', 'display: none;');
+const documentContainerEmDemoABrowserSampleStyle = document.createElement(
+  "em-demo-a-browser-sample-style"
+);
+documentContainerEmDemoABrowserSampleStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoABrowserSampleStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-sample-style">

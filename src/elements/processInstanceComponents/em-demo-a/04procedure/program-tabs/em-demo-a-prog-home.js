@@ -1,34 +1,38 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../../store.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../../store.js";
 // import '@polymer/paper-tabs/paper-tabs';
 // import '@polymer/paper-tabs/paper-tab';
 // import '@polymer/iron-pages/iron-pages';
 
-import '../../../../internalComponents/Charts/chart-controller';
-import {windowDefinition, em_home_tab_subTabs, programHome_defaultTab, 
-    hometab_area} from '../../03config/Programs/em-demo-a-progtab-home-settings';
- import '../../03config/Programs/em-demo-a-progtab-home-settings';
-import {FieldsMethods} from '../../../../../platform-mixins/functions/fields-methods';
-class EmDemoAProgHome extends FieldsMethods((connect(store)(PolymerElement))) {
-    stateChanged(state) {
-        this.selectedLanguage = state.app.user.appLanguage; 
-        if (state.emDemoA!=null){
-            this.selectedProgram=state.emDemoA.selectedProgram;
-        }
-    }        
-    static get properties() {
-        return {
-            windowDefinition:{type: Object, value: windowDefinition},
-            selectedLanguage: {type:String},
-            selectedProgram:{type: Object},
-            homeTabSubTabs:{type: Object, value: em_home_tab_subTabs},
-            currentSubTab: {type: String, value:programHome_defaultTab},
-            hometab_area: {type: Object, value: hometab_area},
-        }
+import "../../../../internalComponents/Charts/chart-controller";
+import {
+  windowDefinition,
+  em_home_tab_subTabs,
+  programHome_defaultTab,
+  hometab_area,
+} from "../../03config/Programs/em-demo-a-progtab-home-settings";
+import "../../03config/Programs/em-demo-a-progtab-home-settings";
+import { FieldsMethods } from "../../../../../platform-mixins/functions/fields-methods";
+class EmDemoAProgHome extends FieldsMethods(connect(store)(PolymerElement)) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.emDemoA != null) {
+      this.selectedProgram = state.emDemoA.selectedProgram;
     }
-    static get template() {
-        return html`
+  }
+  static get properties() {
+    return {
+      windowDefinition: { type: Object, value: windowDefinition },
+      selectedLanguage: { type: String },
+      selectedProgram: { type: Object },
+      homeTabSubTabs: { type: Object, value: em_home_tab_subTabs },
+      currentSubTab: { type: String, value: programHome_defaultTab },
+      hometab_area: { type: Object, value: hometab_area },
+    };
+  }
+  static get template() {
+    return html`
         <style include="em-demo-a-progtab-home-style"></style>   
         <div id="program_definition" class="programTabs">           
             <paper-tabs selected="{{currentSubTab}}" attr-for-selected="name" noink scrollable>
@@ -65,6 +69,6 @@ class EmDemoAProgHome extends FieldsMethods((connect(store)(PolymerElement))) {
 
 
         `;
-    }
+  }
 }
-customElements.define('em-demo-a-prog-home', EmDemoAProgHome);
+customElements.define("em-demo-a-prog-home", EmDemoAProgHome);

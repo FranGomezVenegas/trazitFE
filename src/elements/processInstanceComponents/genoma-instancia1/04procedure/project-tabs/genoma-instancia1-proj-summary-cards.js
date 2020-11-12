@@ -1,50 +1,52 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../../store.js';
-import '@polymer/paper-checkbox/paper-checkbox.js';
-import {ModuleFunctionsGenoma} from '../../01moduleFunctionality/0module-functions-genoma';
-import {windowDefinition} from '../../03config/Project/genoma-instancia1-projtab-summary-cards-settings';
-import '../../03config/Project/genoma-instancia1-projtab-summary-cards-settings';
-import {FieldsMethods} from '../../../../../platform-mixins/functions/fields-methods';
-import '../../01moduleFunctionality/genoma-instancia1-webcomponent-project';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../../store.js";
+import "@polymer/paper-checkbox/paper-checkbox.js";
+import { ModuleFunctionsGenoma } from "../../01moduleFunctionality/0module-functions-genoma";
+import { windowDefinition } from "../../03config/Project/genoma-instancia1-projtab-summary-cards-settings";
+import "../../03config/Project/genoma-instancia1-projtab-summary-cards-settings";
+import { FieldsMethods } from "../../../../../platform-mixins/functions/fields-methods";
+import "../../01moduleFunctionality/genoma-instancia1-webcomponent-project";
 
-class GenomaInstancia1ProjSummaryCards extends FieldsMethods(ModuleFunctionsGenoma(connect(store)(PolymerElement))) {
-    stateChanged(state) {
-        this.selectedLanguage = state.app.user.appLanguage; 
-        if (state.genomaInstancia1!=null){
-            this.selectedStudy=state.genomaInstancia1.selectedStudy;
-        }
-    }      
-    selCheckObject(e){
-        //console.log('selCurStudyFamily', 'curStudyFamily', curStudyFamily, e);
-        var curObjectType=e.currentTarget.curObjectType;
-        var curObject=e.currentTarget.curObject;
-        switch(curObjectType.toUpperCase()){
-            case 'STUDY_FAMILY':
-                this.selectedStudyFamily=curObject;
-                break;
-            case 'STUDY_INDIVIDUAL':
-                this.selectedStudyIndividual=curObject;
-                break;
-            default:
-                console.log('curObjectType '+curObjectType+' no recognized.');
-                return;
-        }
-        console.log('curObjectType', curObjectType, 'curObject', curObject);
+class GenomaInstancia1ProjSummaryCards extends FieldsMethods(
+  ModuleFunctionsGenoma(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.genomaInstancia1 != null) {
+      this.selectedStudy = state.genomaInstancia1.selectedStudy;
     }
-    static get properties() {
-        return {
-            windowDefinition:{type: Object, value: windowDefinition},
-            selectedLanguage: {type:String},
-            selectedProject:{type: Object},
-            selectedObject:{type: Object},// value:this.selectedProject},
-            selectedStudy: {type: Object},
-            selectedStudyIndividual:{type: Object},
-            selectedStudyFamily:{type: Object},
-        }
+  }
+  selCheckObject(e) {
+    //console.log('selCurStudyFamily', 'curStudyFamily', curStudyFamily, e);
+    var curObjectType = e.currentTarget.curObjectType;
+    var curObject = e.currentTarget.curObject;
+    switch (curObjectType.toUpperCase()) {
+      case "STUDY_FAMILY":
+        this.selectedStudyFamily = curObject;
+        break;
+      case "STUDY_INDIVIDUAL":
+        this.selectedStudyIndividual = curObject;
+        break;
+      default:
+        console.log("curObjectType " + curObjectType + " no recognized.");
+        return;
     }
-    static get template() {
-        return html`
+    console.log("curObjectType", curObjectType, "curObject", curObject);
+  }
+  static get properties() {
+    return {
+      windowDefinition: { type: Object, value: windowDefinition },
+      selectedLanguage: { type: String },
+      selectedProject: { type: Object },
+      selectedObject: { type: Object }, // value:this.selectedProject},
+      selectedStudy: { type: Object },
+      selectedStudyIndividual: { type: Object },
+      selectedStudyFamily: { type: Object },
+    };
+  }
+  static get template() {
+    return html`
         <style include="genoma-instancia1-projtab-summary-cards-style"></style>  
         <genoma-instancia1-webcomponent-project id="myElementsProject"></genoma-instancia1-webcomponent-project>  
         <div class="main">
@@ -138,18 +140,27 @@ class GenomaInstancia1ProjSummaryCards extends FieldsMethods(ModuleFunctionsGeno
             </div>            
         </div>
         `;
+  }
+  isStudyFamily(itemName) {
+    if (itemName.toUpperCase() == "STUDY_FAMILY") {
+      return true;
     }
-    isStudyFamily(itemName){
-        if (itemName.toUpperCase()=="STUDY_FAMILY"){return true;}
-        return false;
+    return false;
+  }
+  isStudyIndividual(itemName) {
+    if (itemName.toUpperCase() == "STUDY_INDIVIDUAL") {
+      return true;
     }
-    isStudyIndividual(itemName){
-        if (itemName.toUpperCase()=="STUDY_INDIVIDUAL"){return true;}
-        return false;
+    return false;
+  }
+  isStudyIndividualSample(itemName) {
+    if (itemName.toUpperCase() == "STUDY_INDIVIDUAL_SAMPLE") {
+      return true;
     }
-    isStudyIndividualSample(itemName){
-        if (itemName.toUpperCase()=="STUDY_INDIVIDUAL_SAMPLE"){return true;}
-        return false;
-    }    
+    return false;
+  }
 }
-customElements.define('genoma-instancia1-proj-summary-cards', GenomaInstancia1ProjSummaryCards);
+customElements.define(
+  "genoma-instancia1-proj-summary-cards",
+  GenomaInstancia1ProjSummaryCards
+);

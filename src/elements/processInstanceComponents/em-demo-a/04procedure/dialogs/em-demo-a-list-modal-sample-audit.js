@@ -1,13 +1,12 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../../store.js';
-import './em-demo-a-dialogmodal-buttons.js';
-import '../../03config/Dialogs/em-demo-a-list-modal-sample-audit-settings';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../../store.js";
+import "./em-demo-a-dialogmodal-buttons.js";
+import "../../03config/Dialogs/em-demo-a-list-modal-sample-audit-settings";
 
-import {sampleAudit} from '../../03config/Dialogs/em-demo-a-list-modal-sample-audit-settings';
-import {FrontendEndpointsEnvMonitSamples} from  '../../01moduleFunctionality/endpoints-frontend-env-monit-samples';
-import {FunctionsEnvMonitSamples} from '../../01moduleFunctionality/functions-env-monit-samples';
-
+import { sampleAudit } from "../../03config/Dialogs/em-demo-a-list-modal-sample-audit-settings";
+import { FrontendEndpointsEnvMonitSamples } from "../../01moduleFunctionality/endpoints-frontend-env-monit-samples";
+import { FunctionsEnvMonitSamples } from "../../01moduleFunctionality/functions-env-monit-samples";
 
 /**
  * `em-demo-a-list-modal-sample-audit` Description
@@ -15,23 +14,24 @@ import {FunctionsEnvMonitSamples} from '../../01moduleFunctionality/functions-en
  * @customElement
  * @polymer
  * @demo
- * 
+ *
  */
-class EmDemoAListModalSampleAudit extends FunctionsEnvMonitSamples(FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))) {
-    static get properties() {
-        return {
-            tableDefinition: {type: Object, value:sampleAudit},
+class EmDemoAListModalSampleAudit extends FunctionsEnvMonitSamples(
+  FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))
+) {
+  static get properties() {
+    return {
+      tableDefinition: { type: Object, value: sampleAudit },
 
-            listRows: Array,
-            listHeader: Array,
-            sampleId: Number,
-            selectedObject: {type: Object, notify: true},  
-                      
-        }
-    }
+      listRows: Array,
+      listHeader: Array,
+      sampleId: Number,
+      selectedObject: { type: Object, notify: true },
+    };
+  }
 
-    static get template() {
-        return html`
+  static get template() {
+    return html`
         <style include="em-demo-a-dialog-sample-audit-settings""></style>              
         <div class="modal-content bgimg">
             <template is="dom-if" if="[[tableDefinition.tableTitle.display]]"> 
@@ -77,73 +77,80 @@ class EmDemoAListModalSampleAudit extends FunctionsEnvMonitSamples(FrontendEndpo
             </vaadin-grid>                     
         </div>
         `;
+  }
+  itemSelected(e) {
+    const item = e.detail.value;
+    this.selectedObject = item;
+    //console.log(' em-demo-a-list-modal-sample-audit >> itemSelected', this.selectedObject);
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogConfirmed() {
+    //console.log('clicked', this.$.mygrid.getSelectedRows());
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "confirmed",
+          selectedItems: this.$.mygridid.selectedItems,
+        },
+      })
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogCanceled() {
+    //console.log('clicked', this.value);
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "canceled",
+        },
+      })
+    );
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.emDemoA != null) {
+      this.listRows = state.emDemoA.sampleAudit;
     }
-    itemSelected(e) {        
-        const item = e.detail.value;
-        this.selectedObject=item;
-        //console.log(' em-demo-a-list-modal-sample-audit >> itemSelected', this.selectedObject); 
-        this.$.mygridid.selectedItems =[];
-    }       
-    dialogConfirmed(){
-        //console.log('clicked', this.$.mygrid.getSelectedRows());        
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'confirmed',
-            'selectedItems': this.$.mygridid.selectedItems   
-            }
-        })); 
-        this.$.mygridid.selectedItems=[];  
-    }        
-    dialogCanceled(){
-        //console.log('clicked', this.value);
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'canceled'
-            }
-        }));    
-    }     
-    stateChanged(state) {
-        this.selectedLanguage = state.app.user.appLanguage;
-        if (state.emDemoA!=null){ 
-            this.listRows= state.emDemoA.sampleAudit;}
-    }        
-    refreshWindow() {
-        this.loadData();
-    }
-    loadData(){
-console.log('loadData', 'sampleId', this.sampleId);
-        var datas=[];
-        datas.sampleId=this.sampleId;
-        datas.sampleAuditFieldToRetrieve=this.tableDefinition.fieldToRetrieve;
-        this.getSampleAudit(datas);
-    }
-    /**
-     * Instance of the element is created/upgraded. Use: initializing state,
-     * set up event listeners, create shadow dom.
-     * @constructor
-     */
-    constructor() {
-        super();
-    }
+  }
+  refreshWindow() {
+    this.loadData();
+  }
+  loadData() {
+    console.log("loadData", "sampleId", this.sampleId);
+    var datas = [];
+    datas.sampleId = this.sampleId;
+    datas.sampleAuditFieldToRetrieve = this.tableDefinition.fieldToRetrieve;
+    this.getSampleAudit(datas);
+  }
+  /**
+   * Instance of the element is created/upgraded. Use: initializing state,
+   * set up event listeners, create shadow dom.
+   * @constructor
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Use for one-time configuration of your component after local
-     * DOM is initialized.
-     */
-    ready() {
-        super.ready();
-
-    }
+  /**
+   * Use for one-time configuration of your component after local
+   * DOM is initialized.
+   */
+  ready() {
+    super.ready();
+  }
 }
 
-customElements.define('em-demo-a-list-modal-sample-audit', EmDemoAListModalSampleAudit);
+customElements.define(
+  "em-demo-a-list-modal-sample-audit",
+  EmDemoAListModalSampleAudit
+);

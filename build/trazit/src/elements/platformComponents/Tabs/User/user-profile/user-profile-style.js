@@ -1,4 +1,8 @@
-const documentContainerUserProfile=document.createElement("user-profile-style");documentContainerUserProfile.setAttribute("style","display: none;");documentContainerUserProfile.innerHTML=`
+const documentContainerUserProfile = document.createElement(
+  "user-profile-style"
+);
+documentContainerUserProfile.setAttribute("style", "display: none;");
+documentContainerUserProfile.innerHTML = `
   <dom-module id="user-profile-style">
     <template>
       <style>
@@ -34,4 +38,5 @@ const documentContainerUserProfile=document.createElement("user-profile-style");
         }  */
         </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerUserProfile);
+  </dom-module>`;
+document.head.appendChild(documentContainerUserProfile);

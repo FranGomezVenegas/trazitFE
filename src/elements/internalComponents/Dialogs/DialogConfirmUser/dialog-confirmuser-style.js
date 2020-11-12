@@ -1,5 +1,7 @@
-const documentContainerDialogConfirmUser = document.createElement('dialog-confirmuser-style');
-documentContainerDialogConfirmUser.setAttribute('style', 'display: none;');
+const documentContainerDialogConfirmUser = document.createElement(
+  "dialog-confirmuser-style"
+);
+documentContainerDialogConfirmUser.setAttribute("style", "display: none;");
 
 documentContainerDialogConfirmUser.innerHTML = `
     <dom-module id="dialog-confirmuser-style">

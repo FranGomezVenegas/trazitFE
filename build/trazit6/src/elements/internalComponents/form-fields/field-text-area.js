@@ -1,4 +1,74 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../node_modules/pwa-helpers/connect-mixin.js","../../../store.js","../../../../node_modules/@vaadin/vaadin-text-field/vaadin-text-field.js","../../../../node_modules/@vaadin/vaadin-text-field/vaadin-text-area.js","../../../../node_modules/@vaadin/vaadin-text-field/vaadin-password-field.js","../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_vaadinTextField,_vaadinTextArea,_vaadinPasswordField,_fieldsMethods){"use strict";class FieldTextArea extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{field:{type:Object,observer:"fieldChange",notify:!0},type:{type:String,notify:!0},value:{type:String,notify:!0},fieldClass:String,iAm:{type:Object,value:function(){return{button:!1,checkBox:!1}}}}}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}textClass(langApp){if("en"==langApp){this.fieldClass="x-field.myCustomFieldRed";return}this.fieldClass="x-field.myCustomFieldBlue";return}textType(){var isPwd=this.textTypePassword();if(isPwd)return!1;var isConfid=this.textTypeConfidential();if(isConfid)return!1;return!0}textTypePassword(){return"true"==this.field.password}textTypeConfidential(){return"confidential"==this.field.password}fieldChange(newField){switch(newField.showDisplayPasswordType){case"Button":this.set("iAm.button",!0);break;case"CheckBox":this.set("iAm.checkBox",!0);break;}}static get template(){return _polymerElement.html`    
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../store.js",
+  "../../../../node_modules/@vaadin/vaadin-text-field/vaadin-text-field.js",
+  "../../../../node_modules/@vaadin/vaadin-text-field/vaadin-text-area.js",
+  "../../../../node_modules/@vaadin/vaadin-text-field/vaadin-password-field.js",
+  "../../../platform-mixins/functions/fields-methods.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _vaadinTextField,
+  _vaadinTextArea,
+  _vaadinPasswordField,
+  _fieldsMethods
+) {
+  "use strict";
+  class FieldTextArea extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get properties() {
+      return {
+        field: { type: Object, observer: "fieldChange", notify: !0 },
+        type: { type: String, notify: !0 },
+        value: { type: String, notify: !0 },
+        fieldClass: String,
+        iAm: {
+          type: Object,
+          value: function () {
+            return { button: !1, checkBox: !1 };
+          },
+        },
+      };
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+    textClass(langApp) {
+      if ("en" == langApp) {
+        this.fieldClass = "x-field.myCustomFieldRed";
+        return;
+      }
+      this.fieldClass = "x-field.myCustomFieldBlue";
+      return;
+    }
+    textType() {
+      var isPwd = this.textTypePassword();
+      if (isPwd) return !1;
+      var isConfid = this.textTypeConfidential();
+      if (isConfid) return !1;
+      return !0;
+    }
+    textTypePassword() {
+      return "true" == this.field.password;
+    }
+    textTypeConfidential() {
+      return "confidential" == this.field.password;
+    }
+    fieldChange(newField) {
+      switch (newField.showDisplayPasswordType) {
+        case "Button":
+          this.set("iAm.button", !0);
+          break;
+        case "CheckBox":
+          this.set("iAm.checkBox", !0);
+          break;
+      }
+    }
+    static get template() {
+      return _polymerElement.html`    
     <style>
       <link rel='stylesheet' href='ttp://fonts.googleapis.com/css?family=Roboto' type='text/css'>   
       <link rel='stylesheet' href='ttp://fonts.googleapis.com/css?family=Handlee' type='text/css'>   
@@ -93,4 +163,8 @@ define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../..
     <template  is="dom-if" if="{{textTypeConfidential()}}">  
     <textarea type="{{type}}" name="{{field.name}}" readonly label="{{labelValue(selectedLanguage, field)}}" value="{{confidentialMaskValue(selectedLanguage)}}" required="{{field.required}}" auto-validate tip="You are not authorized to see this information"></textarea>
     </template>    
-    `}}customElements.define("field-text-area",FieldTextArea)});
+    `;
+    }
+  }
+  customElements.define("field-text-area", FieldTextArea);
+});

@@ -1,5 +1,7 @@
-const documentContainerAppHeaderStyle = document.createElement('platform-header-style');
-documentContainerAppHeaderStyle.setAttribute('style', 'display: none;');
+const documentContainerAppHeaderStyle = document.createElement(
+  "platform-header-style"
+);
+documentContainerAppHeaderStyle.setAttribute("style", "display: none;");
 
 documentContainerAppHeaderStyle.innerHTML = `
   <dom-module id="platform-header-style">

@@ -1,45 +1,63 @@
-export const sampleAudit={
-    fieldToRetrieve:'',
-    //samplesWhereFieldsName:'current_stage|sample_config_code in*',
-    //samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
-    //addSampleAnalysis: true,
-    //addSampleAnalysisFieldToRetrieve:'',
-    //addSampleAnalysisResult: true,
-    //addSampleAnalysisResultFieldToRetrieve:'',
-    fieldToSort:'test_id desc',
-    fieldToDisplay:[
-        {name:'audit_id', label_en:'ID', label_es:'ID'}
-        ,{name:'action_name', label_en:'Action', label_es:'Acción'}
-        ,{name:'fields_updated', label_en:'Fields Updated', label_es:'Campos Modificados'}
-        ,{name:'reviewed', label_en:'Reviewed', label_es:'Revisado'}
-        ,{name:'reviewed_on', label_en:'Revision Date', label_es:'Fecha Revisión'}
-    ],
-    displayRefreshButton: false,
-    autorefreshWindow: false,
-    tableTitle:{
-      display: true,
-      label:{label_en:'Personnel Samples Pending Microorganism Identification', label_es:'Muestras de personal pendientes de la identificación de microorganismos'}
+export const sampleAudit = {
+  fieldToRetrieve: "",
+  //samplesWhereFieldsName:'current_stage|sample_config_code in*',
+  //samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
+  //addSampleAnalysis: true,
+  //addSampleAnalysisFieldToRetrieve:'',
+  //addSampleAnalysisResult: true,
+  //addSampleAnalysisResultFieldToRetrieve:'',
+  fieldToSort: "test_id desc",
+  fieldToDisplay: [
+    { name: "audit_id", label_en: "ID", label_es: "ID" },
+    { name: "action_name", label_en: "Action", label_es: "Acción" },
+    {
+      name: "fields_updated",
+      label_en: "Fields Updated",
+      label_es: "Campos Modificados",
     },
-    dialogButtons:{
-      displayCancelButton: false,
-      displayConfirmButton: false,
-      displayCloseButton: true,
+    { name: "reviewed", label_en: "Reviewed", label_es: "Revisado" },
+    {
+      name: "reviewed_on",
+      label_en: "Revision Date",
+      label_es: "Fecha Revisión",
     },
-    displayButtons: true,
-    buttons:[          
-        {
-            "name": "SAMPLEAUDIT_SET_AUDIT_ID_REVIEWED", //"SIGNSAMPLEAUDIT",
-            "label_en": "Sign", "label_es": "Firmar",
-            "type": "button",
-            "read_only": false,
-            "confirmuser_required": false,
-            "esign_required": true,
-        },   
-    ]  
-  };
+  ],
+  displayRefreshButton: false,
+  autorefreshWindow: false,
+  tableTitle: {
+    display: true,
+    label: {
+      label_en: "Personnel Samples Pending Microorganism Identification",
+      label_es:
+        "Muestras de personal pendientes de la identificación de microorganismos",
+    },
+  },
+  dialogButtons: {
+    displayCancelButton: false,
+    displayConfirmButton: false,
+    displayCloseButton: true,
+  },
+  displayButtons: true,
+  buttons: [
+    {
+      name: "SAMPLEAUDIT_SET_AUDIT_ID_REVIEWED", //"SIGNSAMPLEAUDIT",
+      label_en: "Sign",
+      label_es: "Firmar",
+      type: "button",
+      read_only: false,
+      confirmuser_required: false,
+      esign_required: true,
+    },
+  ],
+};
 
-const documentContainerprocDeployDialogSampleAuditSettings = document.createElement('proc-deploy-dialog-sample-audit-settings');
-documentContainerprocDeployDialogSampleAuditSettings.setAttribute('style', 'display: none;');
+const documentContainerprocDeployDialogSampleAuditSettings = document.createElement(
+  "proc-deploy-dialog-sample-audit-settings"
+);
+documentContainerprocDeployDialogSampleAuditSettings.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerprocDeployDialogSampleAuditSettings.innerHTML = `
   <dom-module id="proc-deploy-dialog-sample-audit-settings">

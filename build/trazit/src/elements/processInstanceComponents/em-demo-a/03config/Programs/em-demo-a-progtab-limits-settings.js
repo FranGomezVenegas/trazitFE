@@ -1,4 +1,8 @@
-export const programLimitsTab_sectionsTitle={analysis:{label_en:"Analysis",label_es:"An\xE1lisis"},variations:{label_en:"Variations",label_es:"Variaciones"},limits:{label_en:"Limits",label_es:"L\xEDmites"}};// export const windowDefinition={
+export const programLimitsTab_sectionsTitle = {
+  analysis: { label_en: "Analysis", label_es: "An\xE1lisis" },
+  variations: { label_en: "Variations", label_es: "Variaciones" },
+  limits: { label_en: "Limits", label_es: "L\xEDmites" },
+}; // export const windowDefinition={
 //   windowTitle:{label_en:'Home page for the program ', label_es:'Página de inicio para el programa'},
 //   sampleStagePie:{
 //     chartTitle:{label_en:'In-Progress Sample Percentage ', label_es:'Porcentaje en Muestras En-Progreso'},
@@ -24,7 +28,7 @@ export const programLimitsTab_sectionsTitle={analysis:{label_en:"Analysis",label
 //       , {name: 'spec_variation_name', label_en:'Variation', label_es: 'Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'spec_analysis_variation', label_en:'Analysis Variation', label_es: 'Análisis de Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'person_ana_definition', label_en:'Person Sampling Areas', label_es: 'Areas a analizar de Personal', sort:false, filter:true, width:"40%"}
-//     ],  
+//     ],
 //     displayRefreshButton: true,
 //     autorefreshWindow: false,
 //     tableTitle:{
@@ -38,7 +42,7 @@ export const programLimitsTab_sectionsTitle={analysis:{label_en:"Analysis",label
 //         "label_en": "Log Sample", "label_es": "Registrar Muestra",
 //         "type": "button",
 //         "read_only": false,
-//       },  
+//       },
 //       {
 //         "name": "shift",
 //         "label_en": "Shift", "label_es": "Turno",
@@ -56,10 +60,17 @@ export const programLimitsTab_sectionsTitle={analysis:{label_en:"Analysis",label
 //         "value": "",
 //         "read_only": false,
 //         "items" : ""//this.productionLotsList
-//       }          
-//     ]    
+//       }
+//     ]
 //   };
-const documentContainerEmDemoAProgtabLimitsStyle=document.createElement("em-demo-a-progtab-limits-style");documentContainerEmDemoAProgtabLimitsStyle.setAttribute("style","display: none;");documentContainerEmDemoAProgtabLimitsStyle.innerHTML=`
+const documentContainerEmDemoAProgtabLimitsStyle = document.createElement(
+  "em-demo-a-progtab-limits-style"
+);
+documentContainerEmDemoAProgtabLimitsStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerEmDemoAProgtabLimitsStyle.innerHTML = `
   <dom-module id="em-demo-a-progtab-limits-style">
     <template>
     <style>
@@ -79,4 +90,5 @@ const documentContainerEmDemoAProgtabLimitsStyle=document.createElement("em-demo
         width:95%;
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoAProgtabLimitsStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerEmDemoAProgtabLimitsStyle);

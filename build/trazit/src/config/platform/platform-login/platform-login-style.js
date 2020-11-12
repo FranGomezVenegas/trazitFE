@@ -1,4 +1,8 @@
-const documentContainerAppLoginStyle=document.createElement("platform-login-style");documentContainerAppLoginStyle.setAttribute("style","display: none;");documentContainerAppLoginStyle.innerHTML=`
+const documentContainerAppLoginStyle = document.createElement(
+  "platform-login-style"
+);
+documentContainerAppLoginStyle.setAttribute("style", "display: none;");
+documentContainerAppLoginStyle.innerHTML = `
   <dom-module id="platform-login-style">
     <template>
       <style>
@@ -128,4 +132,5 @@ const documentContainerAppLoginStyle=document.createElement("platform-login-styl
 
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerAppLoginStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerAppLoginStyle);

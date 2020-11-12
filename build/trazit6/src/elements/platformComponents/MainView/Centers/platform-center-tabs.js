@@ -1,11 +1,71 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","../../../../config/platform/main-layout/two-headers-settings.js","../../../../config/platform/main-layout/two-headers.js","../../Redux/actions/tabs_actions.js","../../../../platform-mixins/functions/fields-methods.js","../../../../platform-mixins/platform-functions/tabs-functions.js","../../../../platform-mixins/platform-functions/platform-elements.js","./platform-center-tabs-settings.js","./platform-center-tabs-style.js","../../../internalComponents/others/store-consola.js","../../../internalComponents/others/language-selectortwoflags.js","../Components/Notifications/notifications-pane.js","../Components/ProceduresList/procedures-list-pane.js","../Components/SOP/sop-icon-and-badge.js","../../../../../node_modules/@thuoe/mp4-video-player/mp4-video-player.js"],function(_polymerElement,_connectMixin,_store,_twoHeadersSettings,_twoHeaders,_tabs_actions,_fieldsMethods,_tabsFunctions,_platformElements,_platformCenterTabsSettings,_platformCenterTabsStyle,_storeConsola,_languageSelectortwoflags,_notificationsPane,_proceduresListPane,_sopIconAndBadge,_mp4VideoPlayer){"use strict";/**
- * `platform-center-tabs` Description
- *
- * @customElement
- * @polymer
- * @demo
- * 
- */class PlatformCenterTabs extends(0,_tabsFunctions.TabsMethods)((0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement))){static get properties(){return{selectedLanguage:String,tabs:Array,layoutSettings:{type:String,value:_twoHeadersSettings.center_layout},currentTab:Array,tabIndex:Number,videoUrl:{type:String,value:"http://51.75.202.142:8888/myvideos/LP.mp4"}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../store.js",
+  "../../../../config/platform/main-layout/two-headers-settings.js",
+  "../../../../config/platform/main-layout/two-headers.js",
+  "../../Redux/actions/tabs_actions.js",
+  "../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../platform-mixins/platform-functions/tabs-functions.js",
+  "../../../../platform-mixins/platform-functions/platform-elements.js",
+  "./platform-center-tabs-settings.js",
+  "./platform-center-tabs-style.js",
+  "../../../internalComponents/others/store-consola.js",
+  "../../../internalComponents/others/language-selectortwoflags.js",
+  "../Components/Notifications/notifications-pane.js",
+  "../Components/ProceduresList/procedures-list-pane.js",
+  "../Components/SOP/sop-icon-and-badge.js",
+  "../../../../../node_modules/@thuoe/mp4-video-player/mp4-video-player.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _twoHeadersSettings,
+  _twoHeaders,
+  _tabs_actions,
+  _fieldsMethods,
+  _tabsFunctions,
+  _platformElements,
+  _platformCenterTabsSettings,
+  _platformCenterTabsStyle,
+  _storeConsola,
+  _languageSelectortwoflags,
+  _notificationsPane,
+  _proceduresListPane,
+  _sopIconAndBadge,
+  _mp4VideoPlayer
+) {
+  "use strict";
+  /**
+   * `platform-center-tabs` Description
+   *
+   * @customElement
+   * @polymer
+   * @demo
+   *
+   */ class PlatformCenterTabs extends (0, _tabsFunctions.TabsMethods)(
+    (0, _fieldsMethods.FieldsMethods)(
+      (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+    )
+  ) {
+    static get properties() {
+      return {
+        selectedLanguage: String,
+        tabs: Array,
+        layoutSettings: {
+          type: String,
+          value: _twoHeadersSettings.center_layout,
+        },
+        currentTab: Array,
+        tabIndex: Number,
+        videoUrl: {
+          type: String,
+          value: "http://51.75.202.142:8888/myvideos/LP.mp4",
+        },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <style include="platform-center-tabs-style"></style>
         <style>
         mp4-video-player {
@@ -119,8 +179,31 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
 
                 </iron-pages>
             </template>        
-        `}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;this.tabs=state.tabs.tabs;this.currentTab=state.tabs.currentTab;//console.log('tabs', this.tabs,'currentTab', this.currentTab);      
-}closeTab(e){//console.log('platform-center-tabs', 'closeTab', this.currentTab);
-_store.store.dispatch((0,_tabs_actions.closeTab)(this.currentTab))}tabSelected(e){//console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
-_store.store.dispatch((0,_tabs_actions.setCurrentTab)(e.currentTarget.name));return}ready(){super.ready();var elem=this.shadowRoot.getElementById("videowindowdialog");if(elem){elem.open()}//this.$.videowindowdialog.open();    
-}}customElements.define("platform-center-tabs",PlatformCenterTabs)});
+        `;
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      this.tabs = state.tabs.tabs;
+      this.currentTab = state.tabs.currentTab; //console.log('tabs', this.tabs,'currentTab', this.currentTab);
+    }
+    closeTab(e) {
+      //console.log('platform-center-tabs', 'closeTab', this.currentTab);
+      _store.store.dispatch((0, _tabs_actions.closeTab)(this.currentTab));
+    }
+    tabSelected(e) {
+      //console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
+      _store.store.dispatch(
+        (0, _tabs_actions.setCurrentTab)(e.currentTarget.name)
+      );
+      return;
+    }
+    ready() {
+      super.ready();
+      var elem = this.shadowRoot.getElementById("videowindowdialog");
+      if (elem) {
+        elem.open();
+      } //this.$.videowindowdialog.open();
+    }
+  }
+  customElements.define("platform-center-tabs", PlatformCenterTabs);
+});

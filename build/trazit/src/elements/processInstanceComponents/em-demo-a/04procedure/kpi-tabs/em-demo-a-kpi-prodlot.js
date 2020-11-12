@@ -1,5 +1,67 @@
-import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../../store.js";import"../../../../../../node_modules/@polymer/polymer/lib/elements/dom-if.js";import{FrontendEndpointsEnvMonitBrowser}from"../../01moduleFunctionality/endpoints-frontend-env-monit-browser.js";import{tableFieldLabel}from"../../03config/tablefield_labels.js";import"../../01moduleFunctionality/em-demo-a-webcomponent-env-monit.js";//import {schema_name, browserBatchFieldToRetrieve, browserBatchFieldsToDisplay, browserBatchNoContent } from '../../03config/config-process.js';
-import"../../03config/Browser/em-demo-a-browser-batch-settings.js";import{windowContent,browserBatchFields}from"../../03config/Browser/em-demo-a-browser-batch-settings.js";class emDemoABrBatch extends tableFieldLabel(FrontendEndpointsEnvMonitBrowser(connect(store)(PolymerElement))){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){if(null!=state.emDemoA.browserSelectedBatch){this.selBatch=state.emDemoA.browserSelectedBatch;if(null!=this.selBatch.lastTemperatureReadings){var i;this.selBatchTempReadings=[["Time","Temperature"]];if(!this.selBatch.lastTemperatureReadings){this.displayChart=!1;return}if(this.selBatch.lastTemperatureReadings[0].error){this.displayChart=!1;return}this.displayChart=!0;for(i=0;i<this.selBatch.lastTemperatureReadings.length;i++){if(!this.selBatch.lastTemperatureReadings[i].error){this.selBatchTempReadings.push([this.selBatch.lastTemperatureReadings[i].created_on,this.selBatch.lastTemperatureReadings[i].temperature])}}this.selectedObject=this.selBatch.batchFieldToRetrieve.name}}}}static get properties(){return{windowContent:{type:Array,notify:!0,value:windowContent},browserBatchFields:{type:Object,notify:!0,value:browserBatchFields},displayChart:Boolean,selectedLanguage:String,selBatchTempReadings:{type:Array},selBatch:{type:Object}}}static get template(){return html`
+import {
+  PolymerElement,
+  html,
+} from "../../../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { connect } from "../../../../../../node_modules/pwa-helpers/connect-mixin.js";
+import { store } from "../../../../../store.js";
+import "../../../../../../node_modules/@polymer/polymer/lib/elements/dom-if.js";
+import { FrontendEndpointsEnvMonitBrowser } from "../../01moduleFunctionality/endpoints-frontend-env-monit-browser.js";
+import { tableFieldLabel } from "../../03config/tablefield_labels.js";
+import "../../01moduleFunctionality/em-demo-a-webcomponent-env-monit.js"; //import {schema_name, browserBatchFieldToRetrieve, browserBatchFieldsToDisplay, browserBatchNoContent } from '../../03config/config-process.js';
+import "../../03config/Browser/em-demo-a-browser-batch-settings.js";
+import {
+  windowContent,
+  browserBatchFields,
+} from "../../03config/Browser/em-demo-a-browser-batch-settings.js";
+class emDemoABrBatch extends tableFieldLabel(
+  FrontendEndpointsEnvMonitBrowser(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (null != state.emDemoA) {
+      if (null != state.emDemoA.browserSelectedBatch) {
+        this.selBatch = state.emDemoA.browserSelectedBatch;
+        if (null != this.selBatch.lastTemperatureReadings) {
+          var i;
+          this.selBatchTempReadings = [["Time", "Temperature"]];
+          if (!this.selBatch.lastTemperatureReadings) {
+            this.displayChart = !1;
+            return;
+          }
+          if (this.selBatch.lastTemperatureReadings[0].error) {
+            this.displayChart = !1;
+            return;
+          }
+          this.displayChart = !0;
+          for (i = 0; i < this.selBatch.lastTemperatureReadings.length; i++) {
+            if (!this.selBatch.lastTemperatureReadings[i].error) {
+              this.selBatchTempReadings.push([
+                this.selBatch.lastTemperatureReadings[i].created_on,
+                this.selBatch.lastTemperatureReadings[i].temperature,
+              ]);
+            }
+          }
+          this.selectedObject = this.selBatch.batchFieldToRetrieve.name;
+        }
+      }
+    }
+  }
+  static get properties() {
+    return {
+      windowContent: { type: Array, notify: !0, value: windowContent },
+      browserBatchFields: {
+        type: Object,
+        notify: !0,
+        value: browserBatchFields,
+      },
+      displayChart: Boolean,
+      selectedLanguage: String,
+      selBatchTempReadings: { type: Array },
+      selBatch: { type: Object },
+    };
+  }
+  static get template() {
+    return html`
         <style include="em-demo-a-browser-batch-style"></style>
         <em-demo-a-webcomponent-env-monit id="myElements"></em-demo-a-webcomponent-env-monit> 
         <div class="mainDiv"> <!--This is the Div 1 in the picture-->        
@@ -35,5 +97,20 @@ import"../../03config/Browser/em-demo-a-browser-batch-settings.js";import{window
                     </template>    
                 </div>     
             </div>     
-        `}keyPressed(e){if(e.code.includes("Enter")){this.RunReport();return}}RunReport(){var data=[];data.BatchName=this.windowContent.fields[0].value;data.browserBatchFieldToRetrieve=this.browserBatchFields.fieldToRetrieve;data.browserBatchFieldsToDisplay=this.browserBatchFields.fieldsToDisplay;this.getBrowserSelectedBatchData(data);//console.log('RunReport', 'browserBatchFields', this.browserBatchFields);
-}}customElements.define("em-demo-a-br-batch",emDemoABrBatch);
+        `;
+  }
+  keyPressed(e) {
+    if (e.code.includes("Enter")) {
+      this.RunReport();
+      return;
+    }
+  }
+  RunReport() {
+    var data = [];
+    data.BatchName = this.windowContent.fields[0].value;
+    data.browserBatchFieldToRetrieve = this.browserBatchFields.fieldToRetrieve;
+    data.browserBatchFieldsToDisplay = this.browserBatchFields.fieldsToDisplay;
+    this.getBrowserSelectedBatchData(data); //console.log('RunReport', 'browserBatchFields', this.browserBatchFields);
+  }
+}
+customElements.define("em-demo-a-br-batch", emDemoABrBatch);

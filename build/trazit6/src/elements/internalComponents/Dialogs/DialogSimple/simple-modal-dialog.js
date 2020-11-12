@@ -1,13 +1,28 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/@polymer/paper-button/paper-button.js","../dialogmodal-buttons.js"],function(_polymerElement,_paperButton,_dialogmodalButtons){"use strict";//import './../../../config/styles/div-style.js'; 
-//import '../../03config/css/Theme01/modal-dialogs.js';
-/**
- * `simple-modal-dialog` Description
- *
- * @customElement
- * @polymer
- * @demo
- * 
- */class SimpleModalDialog extends _polymerElement.PolymerElement{static get properties(){return{displayCancelButton:{type:Boolean,notify:!0},displayConfirmButton:{type:Boolean,notify:!0},displayCloseButton:{type:Boolean,notify:!0},formFields:{type:Array}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../node_modules/@polymer/paper-button/paper-button.js",
+  "../dialogmodal-buttons.js",
+], function (_polymerElement, _paperButton, _dialogmodalButtons) {
+  "use strict"; //import './../../../config/styles/div-style.js';
+  //import '../../03config/css/Theme01/modal-dialogs.js';
+  /**
+   * `simple-modal-dialog` Description
+   *
+   * @customElement
+   * @polymer
+   * @demo
+   *
+   */ class SimpleModalDialog extends _polymerElement.PolymerElement {
+    static get properties() {
+      return {
+        displayCancelButton: { type: Boolean, notify: !0 },
+        displayConfirmButton: { type: Boolean, notify: !0 },
+        displayCloseButton: { type: Boolean, notify: !0 },
+        formFields: { type: Array },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <!-- <style include="modal-dialogs"></style> 
         <style include="div-style"></style> -->
         
@@ -54,44 +69,100 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
         </template>      
       </div>
       
-        `}keyPressed(e){//console.log('key pressed');
-if("Enter"==e.key){this.dialogConfirmed();return}}dialogConfirmed(){//console.log('dialogConfirmed', this.value);
-this.value="confirmed";var butDetail={buttonName:this.name,dialogState:"confirmed"};if(this.value){butDetail.value=this.value};if(this.formElements){butDetail.formElements=this.formElements};if(this.$.simplemodaldialoggrid&&this.$.simplemodaldialoggrid.selectedObject){butDetail.selectedItems=this.$.simplemodaldialoggrid.selectedObject};this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:butDetail// {
-// 'buttonName': this.name,
-// 'value': this.value,
-// 'dialogState': 'confirmed',
-// 'formElements':this.formElements,
-// 'selectedItems': this.$.simplemodaldialoggrid.selectedObject 
-// }
-}));//this.resetValue; 
-}dialogCanceled(){//console.log('dialogCanceled', this.value);
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"canceled"}}));//this.resetValue;    
-}dialogClosed(){//console.log('dialogClosed', this.value);
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"closed"}}));//this.resetValue;    
-}// dialogConfirmed(){
-//     //console.log('clicked', this.value);
-//     this.value='confirmed';
-//     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-//         bubbles: true,
-//         composed: true,
-//         detail: {
-//         'buttonName': this.name,
-//         'value': this.value,
-//         'dialogState': 'confirmed'
-//         }
-//     }));    
-// }        
-// dialogCanceled(){
-//     //console.log('clicked', this.value);
-//     this.value='confirmed';
-//     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-//         bubbles: true,
-//         composed: true,
-//         detail: {
-//         'buttonName': this.name,
-//         'value': this.value,
-//         'dialogState': 'canceled'
-//         }
-//     }));    
-// }        
-}customElements.define("simple-modal-dialog",SimpleModalDialog)});
+        `;
+    }
+    keyPressed(e) {
+      //console.log('key pressed');
+      if ("Enter" == e.key) {
+        this.dialogConfirmed();
+        return;
+      }
+    }
+    dialogConfirmed() {
+      //console.log('dialogConfirmed', this.value);
+      this.value = "confirmed";
+      var butDetail = { buttonName: this.name, dialogState: "confirmed" };
+      if (this.value) {
+        butDetail.value = this.value;
+      }
+      if (this.formElements) {
+        butDetail.formElements = this.formElements;
+      }
+      if (
+        this.$.simplemodaldialoggrid &&
+        this.$.simplemodaldialoggrid.selectedObject
+      ) {
+        butDetail.selectedItems = this.$.simplemodaldialoggrid.selectedObject;
+      }
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: butDetail, // {
+          // 'buttonName': this.name,
+          // 'value': this.value,
+          // 'dialogState': 'confirmed',
+          // 'formElements':this.formElements,
+          // 'selectedItems': this.$.simplemodaldialoggrid.selectedObject
+          // }
+        })
+      ); //this.resetValue;
+    }
+    dialogCanceled() {
+      //console.log('dialogCanceled', this.value);
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "canceled",
+          },
+        })
+      ); //this.resetValue;
+    }
+    dialogClosed() {
+      //console.log('dialogClosed', this.value);
+      this.value = "confirmed";
+      this.dispatchEvent(
+        new CustomEvent("dialog-button-clicked", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            buttonName: this.name,
+            value: this.value,
+            dialogState: "closed",
+          },
+        })
+      ); //this.resetValue;
+    } // dialogConfirmed(){
+    //     //console.log('clicked', this.value);
+    //     this.value='confirmed';
+    //     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
+    //         bubbles: true,
+    //         composed: true,
+    //         detail: {
+    //         'buttonName': this.name,
+    //         'value': this.value,
+    //         'dialogState': 'confirmed'
+    //         }
+    //     }));
+    // }
+    // dialogCanceled(){
+    //     //console.log('clicked', this.value);
+    //     this.value='confirmed';
+    //     this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
+    //         bubbles: true,
+    //         composed: true,
+    //         detail: {
+    //         'buttonName': this.name,
+    //         'value': this.value,
+    //         'dialogState': 'canceled'
+    //         }
+    //     }));
+    // }
+  }
+  customElements.define("simple-modal-dialog", SimpleModalDialog);
+});

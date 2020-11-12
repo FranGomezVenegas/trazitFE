@@ -1,4 +1,135 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","./field-boolean.js","./field-list.js","./field-date.js","./field-text.js","./field-text-area.js","./field-textconfirmuser.js","./field-logo-circle.js","./field-avatar.js","./field-google-fonts.js","./field-tree-list.js","./field-button.js","./field-title.js","./field-button-group.js","./field-integer.js","./field-icon-button.js"],function(_polymerElement,_fieldBoolean,_fieldList,_fieldDate,_fieldText,_fieldTextArea,_fieldTextconfirmuser,_fieldLogoCircle,_fieldAvatar,_fieldGoogleFonts,_fieldTreeList,_fieldButton,_fieldTitle,_fieldButtonGroup,_fieldInteger,_fieldIconButton){"use strict";class FieldController extends _polymerElement.PolymerElement{static get properties(){return{id:{type:String},field:{type:Object,observer:"fieldChange",notify:!0},title:{type:Object},selectedLanguage:{type:String,notify:!0},iAm:{type:Object,value:function(){return{boolean:!1,date:!1,list:!1,text:!1,textArea:!1,logoCircle:!1,avatar:!1,googleFonts:!1,treeList:!1,iconButton:!1,button:!1,buttonGroup:!1,integer:!1,badge:!1}}}}}resetValue(){var elem=this.shadowRoot.getElementById(this.field.name);if(elem){elem.resetValue()}else{console.log("field-controller.resetValue","no field with name ",this.field.name)}}focus(){var elem=this.shadowRoot.getElementById(this.field.name);if(elem){elem.focus()}else{console.log("field-controller.focus","no field with name ",this.field.name)}}enable(){var elem=this.shadowRoot.getElementById(this.field.name);if(elem){elem.enable()}else{console.log("field-controller.enable","no field with name ",this.field.name)}}disable(){var elem=this.shadowRoot.getElementById(this.field.name);if(elem){elem.disable()}else{console.log("field-controller.disable","no field with name ",this.field.name)}}resetIAms(){this.set("iAm.boolean",!1);this.set("iAm.date",!1);this.set("iAm.list",!1);this.set("iAm.text",!1);this.set("iAm.textArea",!1);this.set("iAm.logoCircle",!1);this.set("iAm.avatar",!1);this.set("iAm.googleFonts",!1);this.set("iAm.treeList",!1);this.set("iAm.iconButton",!1);this.set("iAm.button",!1);this.set("iAm.buttonGroup",!1);this.set("iAm.integer",!1);this.set("iAm.badge",!1)}static get template(){return _polymerElement.html`
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "./field-boolean.js",
+  "./field-list.js",
+  "./field-date.js",
+  "./field-text.js",
+  "./field-text-area.js",
+  "./field-textconfirmuser.js",
+  "./field-logo-circle.js",
+  "./field-avatar.js",
+  "./field-google-fonts.js",
+  "./field-tree-list.js",
+  "./field-button.js",
+  "./field-title.js",
+  "./field-button-group.js",
+  "./field-integer.js",
+  "./field-icon-button.js",
+], function (
+  _polymerElement,
+  _fieldBoolean,
+  _fieldList,
+  _fieldDate,
+  _fieldText,
+  _fieldTextArea,
+  _fieldTextconfirmuser,
+  _fieldLogoCircle,
+  _fieldAvatar,
+  _fieldGoogleFonts,
+  _fieldTreeList,
+  _fieldButton,
+  _fieldTitle,
+  _fieldButtonGroup,
+  _fieldInteger,
+  _fieldIconButton
+) {
+  "use strict";
+  class FieldController extends _polymerElement.PolymerElement {
+    static get properties() {
+      return {
+        id: { type: String },
+        field: { type: Object, observer: "fieldChange", notify: !0 },
+        title: { type: Object },
+        selectedLanguage: { type: String, notify: !0 },
+        iAm: {
+          type: Object,
+          value: function () {
+            return {
+              boolean: !1,
+              date: !1,
+              list: !1,
+              text: !1,
+              textArea: !1,
+              logoCircle: !1,
+              avatar: !1,
+              googleFonts: !1,
+              treeList: !1,
+              iconButton: !1,
+              button: !1,
+              buttonGroup: !1,
+              integer: !1,
+              badge: !1,
+            };
+          },
+        },
+      };
+    }
+    resetValue() {
+      var elem = this.shadowRoot.getElementById(this.field.name);
+      if (elem) {
+        elem.resetValue();
+      } else {
+        console.log(
+          "field-controller.resetValue",
+          "no field with name ",
+          this.field.name
+        );
+      }
+    }
+    focus() {
+      var elem = this.shadowRoot.getElementById(this.field.name);
+      if (elem) {
+        elem.focus();
+      } else {
+        console.log(
+          "field-controller.focus",
+          "no field with name ",
+          this.field.name
+        );
+      }
+    }
+    enable() {
+      var elem = this.shadowRoot.getElementById(this.field.name);
+      if (elem) {
+        elem.enable();
+      } else {
+        console.log(
+          "field-controller.enable",
+          "no field with name ",
+          this.field.name
+        );
+      }
+    }
+    disable() {
+      var elem = this.shadowRoot.getElementById(this.field.name);
+      if (elem) {
+        elem.disable();
+      } else {
+        console.log(
+          "field-controller.disable",
+          "no field with name ",
+          this.field.name
+        );
+      }
+    }
+    resetIAms() {
+      this.set("iAm.boolean", !1);
+      this.set("iAm.date", !1);
+      this.set("iAm.list", !1);
+      this.set("iAm.text", !1);
+      this.set("iAm.textArea", !1);
+      this.set("iAm.logoCircle", !1);
+      this.set("iAm.avatar", !1);
+      this.set("iAm.googleFonts", !1);
+      this.set("iAm.treeList", !1);
+      this.set("iAm.iconButton", !1);
+      this.set("iAm.button", !1);
+      this.set("iAm.buttonGroup", !1);
+      this.set("iAm.integer", !1);
+      this.set("iAm.badge", !1);
+    }
+    static get template() {
+      return _polymerElement.html`
 <!--      {{field.name}} -->
       <div class="card">      
       <template is="dom-if" if="{{iAm.boolean}}" >
@@ -50,11 +181,68 @@ define(["../../../../node_modules/@polymer/polymer/polymer-element.js","./field-
         <field-icon-button procedure="[[procedure]]" type="{{field.type}}" id="{{field.name}}" field="{{field}}" value="{{field.value}}" ></field-icon-button>
       </template>
       </div>
-    `}// listChange(newList) {
-//   this.field-list
-// }
-fieldChange(newField){this.resetIAms();//if (this.id=='proceduresList'){    
-//  console.log('field-controller', newField.name, this.id);
-//}
-switch(newField.type){case"boolean":this.set("iAm.boolean",!0);break;case"list":this.set("iAm.list",!0);//this.set('iAm.text', false);
-break;case"date":this.set("iAm.date",!0);break;case"text":this.set("iAm.text",!0);break;case"text-area":this.set("iAm.textArea",!0);break;case"password":this.set("iAm.text",!0);break;case"logo-circle":this.set("iAm.logoCircle",!0);break;case"avatar":this.set("iAm.avatar",!0);break;case"google-fonts":this.set("iAm.googleFonts",!0);break;case"tree-list":this.set("iAm.treeList",!0);break;case"button":this.set("iAm.button",!0);break;case"title":this.set("iAm.title",!0);break;case"button-group":this.set("iAm.buttonGroup",!0);break;case"integer":this.set("iAm.integer",!0);break;case"badge":this.set("iAm.badge",!0);break;case"textconfirmuser":this.set("iAm.textconfirmuser",!0);break;case"icon-button":this.set("iAm.iconButton",!0);break;}}}customElements.define("field-controller",FieldController)});
+    `;
+    } // listChange(newList) {
+    //   this.field-list
+    // }
+    fieldChange(newField) {
+      this.resetIAms(); //if (this.id=='proceduresList'){
+      //  console.log('field-controller', newField.name, this.id);
+      //}
+      switch (newField.type) {
+        case "boolean":
+          this.set("iAm.boolean", !0);
+          break;
+        case "list":
+          this.set("iAm.list", !0); //this.set('iAm.text', false);
+          break;
+        case "date":
+          this.set("iAm.date", !0);
+          break;
+        case "text":
+          this.set("iAm.text", !0);
+          break;
+        case "text-area":
+          this.set("iAm.textArea", !0);
+          break;
+        case "password":
+          this.set("iAm.text", !0);
+          break;
+        case "logo-circle":
+          this.set("iAm.logoCircle", !0);
+          break;
+        case "avatar":
+          this.set("iAm.avatar", !0);
+          break;
+        case "google-fonts":
+          this.set("iAm.googleFonts", !0);
+          break;
+        case "tree-list":
+          this.set("iAm.treeList", !0);
+          break;
+        case "button":
+          this.set("iAm.button", !0);
+          break;
+        case "title":
+          this.set("iAm.title", !0);
+          break;
+        case "button-group":
+          this.set("iAm.buttonGroup", !0);
+          break;
+        case "integer":
+          this.set("iAm.integer", !0);
+          break;
+        case "badge":
+          this.set("iAm.badge", !0);
+          break;
+        case "textconfirmuser":
+          this.set("iAm.textconfirmuser", !0);
+          break;
+        case "icon-button":
+          this.set("iAm.iconButton", !0);
+          break;
+      }
+    }
+  }
+  customElements.define("field-controller", FieldController);
+});

@@ -1,61 +1,77 @@
-import {schema_name} from '../config-process';
-export const windowContent={
-  fields:[
+import { schema_name } from "../config-process";
+export const windowContent = {
+  fields: [
     {
-      "name": "incubName",
-      "label_en": "Incubator", "label_es": "Incubadora",
-      "type": "text",
-      "password": "false",
-      "value": "INC_1",
-      "read_only": false
-    },{
-      "name": "dateFrom",
-      "label_en": "Date From", "label_es": "De Fecha",
-      "type": "date",
-      "password": "False",
-      "value": "",
-      "read_only": false
-    },{
-      "name": "dateTo",
-      "label_en": "Date To", "label_es": "A Fecha",
-      "type": "date",
-      "password": "false",
-      "value": "",
-      "read_only": false
-    },{
-      "name": "RunReport",
-      "label_en": "Report", "label_es": "Informe",
-      "type": "button",              
-      "value": "",
-      "read_only": false
-    }     
+      name: "incubName",
+      label_en: "Incubator",
+      label_es: "Incubadora",
+      type: "text",
+      password: "false",
+      value: "INC_1",
+      read_only: false,
+    },
+    {
+      name: "dateFrom",
+      label_en: "Date From",
+      label_es: "De Fecha",
+      type: "date",
+      password: "False",
+      value: "",
+      read_only: false,
+    },
+    {
+      name: "dateTo",
+      label_en: "Date To",
+      label_es: "A Fecha",
+      type: "date",
+      password: "false",
+      value: "",
+      read_only: false,
+    },
+    {
+      name: "RunReport",
+      label_en: "Report",
+      label_es: "Informe",
+      type: "button",
+      value: "",
+      read_only: false,
+    },
   ],
-  buttons:[          
+  buttons: [
     {
-      "name": "EM_INCUBATION_ADD_TEMP_READING",
-      "label_en": "New Temp Reading", "label_es": "Nueva lectura de Temperatura",
-      "type": "icon-button",
-      "icon_name": "icons:add-box",
-      "read_only": false,
-    }
-  ], 
-  temperatureReadingsNotFound:[{
-    "name": "title",
-    "label_en": "No temperature readings found", "label_es": "No encontradas lecturas de temperatura",
-    "type": "title",
-    "size": 'h3',
-    "style": "color: var(--paper-light-blue-500);",
-    "read_only": true
-  }],
+      name: "EM_INCUBATION_ADD_TEMP_READING",
+      label_en: "New Temp Reading",
+      label_es: "Nueva lectura de Temperatura",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: false,
+    },
+  ],
+  temperatureReadingsNotFound: [
+    {
+      name: "title",
+      label_en: "No temperature readings found",
+      label_es: "No encontradas lecturas de temperatura",
+      type: "title",
+      size: "h3",
+      style: "color: var(--paper-light-blue-500);",
+      read_only: true,
+    },
+  ],
 };
-export const browserIncubatorFields={
-  schemaName: 'config',
-  tableName: 'Incubator',
-  fieldToRetrieve:'current_stage',
-  fieldsToDisplay:'ALL',
+export const browserIncubatorFields = {
+  schemaName: "config",
+  tableName: "Incubator",
+  fieldToRetrieve: "current_stage",
+  fieldsToDisplay: "ALL",
 };
-const documentContainerEmDemoABrowserIncubatorStyle = document.createElement('em-demo-a-browser-incubator-style');
-documentContainerEmDemoABrowserIncubatorStyle.setAttribute('style', 'display: none;');
+const documentContainerEmDemoABrowserIncubatorStyle = document.createElement(
+  "em-demo-a-browser-incubator-style"
+);
+documentContainerEmDemoABrowserIncubatorStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoABrowserIncubatorStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-incubator-style">

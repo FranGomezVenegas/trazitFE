@@ -1,61 +1,124 @@
-export const enterResult={
-    fieldToRetrieve:'result_id|analysis|method_name|method_version|param_name|param_type|raw_value|uom|spec_eval|spec_eval_detail|status|min_val_allowed|min_allowed_strict|max_val_allowed|max_allowed_strict',
-    //samplesWhereFieldsName:'current_stage|sample_config_code in*',
-    //samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
-    //addSampleAnalysis: true,
-    //addSampleAnalysisFieldToRetrieve:'',
-    //addSampleAnalysisResult: true,
-    //addSampleAnalysisResultFieldToRetrieve:'',
-    fieldToSort:'test_id|result_id',
-    fieldToDisplay:[
-       {name:'spec_eval', label_en:'spec_eval', label_es:'Eval Espec', is_icon: true, editable: false, hidden:false}
-      ,{name:'result_id', label_en:'Result Id', label_es:'Id Resultado', editable: false, hidden:false}
-      ,{name:'analysis', label_en:'Analysis', label_es:'Análísis', editable: false, hidden:false}
-      ,{name:'param_name', label_en:'Parameter', label_es:'Parámetro', editable: false, hidden:false}
-      ,{name:'raw_value', label_en:'Value', label_es:'Valor', editable: true, hidden:false}
-      //,{name:'uom', label_en:'Measurement', label_es:'Medida', editable: false, hidden:false}
-      ,{name:'param_type', label_en:'param_type', label_es:'param_type', editable: false, hidden:true}
-    ],
-    detailsFieldToDisplay:[
-      {name:'spec_eval', label_en:'Range Evaluation', label_es:'Evaluación Rango', has_icon: false},
-      {name:'spec_rule', label_en:'Range Rule', label_es:'Regla del Rango', has_icon: false},
-      {name:'locking_reason', label_en:'Lock Reason', label_es:'Razón del bloqueo', has_icon: false},
-    ],
-    displayRefreshButton: false,
-    autorefreshWindow: false,
-    tableTitle:{
-      display: true,
-      label:{label_en:'Personnel Samples Pending Microorganism Identification', label_es:'Muestras de personal pendientes de la identificación de microorganismos'}
+export const enterResult = {
+  fieldToRetrieve:
+    "result_id|analysis|method_name|method_version|param_name|param_type|raw_value|uom|spec_eval|spec_eval_detail|status|min_val_allowed|min_allowed_strict|max_val_allowed|max_allowed_strict",
+  //samplesWhereFieldsName:'current_stage|sample_config_code in*',
+  //samplesWhereFieldsValue:'MicroorganismIdentification|'+personal_smp_template,
+  //addSampleAnalysis: true,
+  //addSampleAnalysisFieldToRetrieve:'',
+  //addSampleAnalysisResult: true,
+  //addSampleAnalysisResultFieldToRetrieve:'',
+  fieldToSort: "test_id|result_id",
+  fieldToDisplay: [
+    {
+      name: "spec_eval",
+      label_en: "spec_eval",
+      label_es: "Eval Espec",
+      is_icon: true,
+      editable: false,
+      hidden: false,
     },
-    dialogButtons:{
-      displayCancelButton: false,
-      displayConfirmButton: false,
-      displayCloseButton: true,
-    },    
-    displayButtons: false,
-    buttons:[          
-        {
-            "name": "", 
-            "label_en": "", "label_es": "",
-            "type": "",
-            "read_only": false,
-            "confirmuser_required": false,
-            "esign_required": false,
-        },   
-    ]  
+    {
+      name: "result_id",
+      label_en: "Result Id",
+      label_es: "Id Resultado",
+      editable: false,
+      hidden: false,
+    },
+    {
+      name: "analysis",
+      label_en: "Analysis",
+      label_es: "Análísis",
+      editable: false,
+      hidden: false,
+    },
+    {
+      name: "param_name",
+      label_en: "Parameter",
+      label_es: "Parámetro",
+      editable: false,
+      hidden: false,
+    },
+    {
+      name: "raw_value",
+      label_en: "Value",
+      label_es: "Valor",
+      editable: true,
+      hidden: false,
+    },
+    //,{name:'uom', label_en:'Measurement', label_es:'Medida', editable: false, hidden:false}
+    {
+      name: "param_type",
+      label_en: "param_type",
+      label_es: "param_type",
+      editable: false,
+      hidden: true,
+    },
+  ],
+  detailsFieldToDisplay: [
+    {
+      name: "spec_eval",
+      label_en: "Range Evaluation",
+      label_es: "Evaluación Rango",
+      has_icon: false,
+    },
+    {
+      name: "spec_rule",
+      label_en: "Range Rule",
+      label_es: "Regla del Rango",
+      has_icon: false,
+    },
+    {
+      name: "locking_reason",
+      label_en: "Lock Reason",
+      label_es: "Razón del bloqueo",
+      has_icon: false,
+    },
+  ],
+  displayRefreshButton: false,
+  autorefreshWindow: false,
+  tableTitle: {
+    display: true,
+    label: {
+      label_en: "Personnel Samples Pending Microorganism Identification",
+      label_es:
+        "Muestras de personal pendientes de la identificación de microorganismos",
+    },
+  },
+  dialogButtons: {
+    displayCancelButton: false,
+    displayConfirmButton: false,
+    displayCloseButton: true,
+  },
+  displayButtons: false,
+  buttons: [
+    {
+      name: "",
+      label_en: "",
+      label_es: "",
+      type: "",
+      read_only: false,
+      confirmuser_required: false,
+      esign_required: false,
+    },
+  ],
 };
-export const resultCheckerMessages={
-  valueLessThanMinAllowed:{
-    message_en:'The result <*1*> is less than the minimum allowed <*2*>', 
-    message_es:'El valor <*1*> es menor que el menor permitido <*2*>'
-  },  
-  valueGreaterThanMaxAllowed:{
-    message_en:'The result <*1*> is greater than the maximum allowed <*2*>', 
-    message_es:'El valor <*1*> es mayor que el mayor permitido <*2*>'
+export const resultCheckerMessages = {
+  valueLessThanMinAllowed: {
+    message_en: "The result <*1*> is less than the minimum allowed <*2*>",
+    message_es: "El valor <*1*> es menor que el menor permitido <*2*>",
+  },
+  valueGreaterThanMaxAllowed: {
+    message_en: "The result <*1*> is greater than the maximum allowed <*2*>",
+    message_es: "El valor <*1*> es mayor que el mayor permitido <*2*>",
   },
 };
-const documentContainerEmDemoADialogEnterResultsSettings = document.createElement('em-demo-a-dialog-enterresults-settings');
-documentContainerEmDemoADialogEnterResultsSettings.setAttribute('style', 'display: none;');
+const documentContainerEmDemoADialogEnterResultsSettings = document.createElement(
+  "em-demo-a-dialog-enterresults-settings"
+);
+documentContainerEmDemoADialogEnterResultsSettings.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoADialogEnterResultsSettings.innerHTML = `
   <dom-module id="em-demo-a-dialog-enterresults-settings">

@@ -1,25 +1,23 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import '@polymer/paper-button/paper-button';
-import '../../03config/css/Theme01/modal-dialogs.js';
-import '@vaadin/vaadin-grid';
-import '@vaadin/vaadin-grid/vaadin-grid-selection-column';
-import '@vaadin/vaadin-grid/vaadin-grid-sort-column';
-import '@vaadin/vaadin-grid/vaadin-grid-filter'; 
-import '@vaadin/vaadin-grid/vaadin-grid-filter-column'; 
-import '../../../../internalComponents/Dialogs/dialogmodal-buttons.js';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import "@polymer/paper-button/paper-button";
+import "../../03config/css/Theme01/modal-dialogs.js";
+import "@vaadin/vaadin-grid";
+import "@vaadin/vaadin-grid/vaadin-grid-selection-column";
+import "@vaadin/vaadin-grid/vaadin-grid-sort-column";
+import "@vaadin/vaadin-grid/vaadin-grid-filter";
+import "@vaadin/vaadin-grid/vaadin-grid-filter-column";
+import "../../../../internalComponents/Dialogs/dialogmodal-buttons.js";
 class emDemoAListModalAddsampleanalysis extends PolymerElement {
-    static get properties() {
-        return {
-            listRows: {
-                type:Array
-                ,
-                value: [
-                {code: 'LOD', method_name: 'LOD Method', method_version: 1}]
-            },
-        }
-    }
-    static get template() {
-        return html`  
+  static get properties() {
+    return {
+      listRows: {
+        type: Array,
+        value: [{ code: "LOD", method_name: "LOD Method", method_version: 1 }],
+      },
+    };
+  }
+  static get template() {
+    return html`  
         <style include="modal-dialogs">
             .modal-content {
                 width: 450px;
@@ -38,38 +36,45 @@ class emDemoAListModalAddsampleanalysis extends PolymerElement {
         </div>  
         </div>  
         `;
-    } 
-    actionOnSel(){
-        //console.log('actionOnSel');
-    }   
-    dialogConfirmed(){
-        //console.log('clicked', this.$.mygrid.getSelectedRows());        
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'confirmed',
-            'selectedItems': this.$.mygridid.selectedItems   
-            }
-        })); 
-        this.$.mygridid.selectedItems=[];  
-    }        
-    dialogCanceled(){
-        //console.log('clicked', this.value);
-        this.value='confirmed';
-        this.dispatchEvent(new CustomEvent('dialog-button-clicked', {
-            bubbles: true,
-            composed: true,
-            detail: {
-            'buttonName': this.name,
-            'value': this.value,
-            'dialogState': 'canceled'
-            }
-        }));    
-    } 
+  }
+  actionOnSel() {
+    //console.log('actionOnSel');
+  }
+  dialogConfirmed() {
+    //console.log('clicked', this.$.mygrid.getSelectedRows());
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "confirmed",
+          selectedItems: this.$.mygridid.selectedItems,
+        },
+      })
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogCanceled() {
+    //console.log('clicked', this.value);
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "canceled",
+        },
+      })
+    );
+  }
 }
 
-customElements.define('em-demo-a-list-modal-addsampleanalysis', emDemoAListModalAddsampleanalysis);
+customElements.define(
+  "em-demo-a-list-modal-addsampleanalysis",
+  emDemoAListModalAddsampleanalysis
+);

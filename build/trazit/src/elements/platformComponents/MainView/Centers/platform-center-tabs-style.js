@@ -1,4 +1,8 @@
-const documentContainerCenterTabsStyle=document.createElement("platform-center-tabs-style");documentContainerCenterTabsStyle.setAttribute("style","display: none;");documentContainerCenterTabsStyle.innerHTML=`
+const documentContainerCenterTabsStyle = document.createElement(
+  "platform-center-tabs-style"
+);
+documentContainerCenterTabsStyle.setAttribute("style", "display: none;");
+documentContainerCenterTabsStyle.innerHTML = `
   <dom-module id="platform-center-tabs-style">
     <template>
       <style>
@@ -47,4 +51,5 @@ const documentContainerCenterTabsStyle=document.createElement("platform-center-t
       }
       /style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerCenterTabsStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerCenterTabsStyle);

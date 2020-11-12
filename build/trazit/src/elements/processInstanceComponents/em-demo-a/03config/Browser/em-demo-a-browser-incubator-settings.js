@@ -1,4 +1,78 @@
-import{schema_name}from"../config-process.js";export const windowContent={fields:[{name:"incubName",label_en:"Incubator",label_es:"Incubadora",type:"text",password:"false",value:"INC_1",read_only:!1},{name:"dateFrom",label_en:"Date From",label_es:"De Fecha",type:"date",password:"False",value:"",read_only:!1},{name:"dateTo",label_en:"Date To",label_es:"A Fecha",type:"date",password:"false",value:"",read_only:!1},{name:"RunReport",label_en:"Report",label_es:"Informe",type:"button",value:"",read_only:!1}],buttons:[{name:"EM_INCUBATION_ADD_TEMP_READING",label_en:"New Temp Reading",label_es:"Nueva lectura de Temperatura",type:"icon-button",icon_name:"icons:add-box",read_only:!1}],temperatureReadingsNotFound:[{name:"title",label_en:"No temperature readings found",label_es:"No encontradas lecturas de temperatura",type:"title",size:"h3",style:"color: var(--paper-light-blue-500);",read_only:!0}]};export const browserIncubatorFields={schemaName:"config",tableName:"Incubator",fieldToRetrieve:"current_stage",fieldsToDisplay:"ALL"};const documentContainerEmDemoABrowserIncubatorStyle=document.createElement("em-demo-a-browser-incubator-style");documentContainerEmDemoABrowserIncubatorStyle.setAttribute("style","display: none;");documentContainerEmDemoABrowserIncubatorStyle.innerHTML=`
+import { schema_name } from "../config-process.js";
+export const windowContent = {
+  fields: [
+    {
+      name: "incubName",
+      label_en: "Incubator",
+      label_es: "Incubadora",
+      type: "text",
+      password: "false",
+      value: "INC_1",
+      read_only: !1,
+    },
+    {
+      name: "dateFrom",
+      label_en: "Date From",
+      label_es: "De Fecha",
+      type: "date",
+      password: "False",
+      value: "",
+      read_only: !1,
+    },
+    {
+      name: "dateTo",
+      label_en: "Date To",
+      label_es: "A Fecha",
+      type: "date",
+      password: "false",
+      value: "",
+      read_only: !1,
+    },
+    {
+      name: "RunReport",
+      label_en: "Report",
+      label_es: "Informe",
+      type: "button",
+      value: "",
+      read_only: !1,
+    },
+  ],
+  buttons: [
+    {
+      name: "EM_INCUBATION_ADD_TEMP_READING",
+      label_en: "New Temp Reading",
+      label_es: "Nueva lectura de Temperatura",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+  ],
+  temperatureReadingsNotFound: [
+    {
+      name: "title",
+      label_en: "No temperature readings found",
+      label_es: "No encontradas lecturas de temperatura",
+      type: "title",
+      size: "h3",
+      style: "color: var(--paper-light-blue-500);",
+      read_only: !0,
+    },
+  ],
+};
+export const browserIncubatorFields = {
+  schemaName: "config",
+  tableName: "Incubator",
+  fieldToRetrieve: "current_stage",
+  fieldsToDisplay: "ALL",
+};
+const documentContainerEmDemoABrowserIncubatorStyle = document.createElement(
+  "em-demo-a-browser-incubator-style"
+);
+documentContainerEmDemoABrowserIncubatorStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerEmDemoABrowserIncubatorStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-incubator-style">
     <template>
     <style>
@@ -42,4 +116,5 @@ import{schema_name}from"../config-process.js";export const windowContent={fields
     }
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoABrowserIncubatorStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerEmDemoABrowserIncubatorStyle);

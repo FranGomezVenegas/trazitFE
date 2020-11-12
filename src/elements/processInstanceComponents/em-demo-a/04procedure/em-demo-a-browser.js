@@ -1,36 +1,41 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../store.js';
-import '@polymer/paper-tabs/paper-tabs';
-import '@polymer/paper-tabs/paper-tab';
-import '@polymer/iron-pages/iron-pages';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../store.js";
+import "@polymer/paper-tabs/paper-tabs";
+import "@polymer/paper-tabs/paper-tab";
+import "@polymer/iron-pages/iron-pages";
 
-import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
-import {FunctionsEnvMonit} from '../01moduleFunctionality/functions-env-monit';
-import {em_browser_tabs, browserHome_defaultTab} from '../03config/Browser/em-demo-a-browser-settings';
-import '../03config/Browser/em-demo-a-browser-settings';
+import { FieldsMethods } from "../../../../platform-mixins/functions/fields-methods";
+import { FunctionsEnvMonit } from "../01moduleFunctionality/functions-env-monit";
+import {
+  em_browser_tabs,
+  browserHome_defaultTab,
+} from "../03config/Browser/em-demo-a-browser-settings";
+import "../03config/Browser/em-demo-a-browser-settings";
 
-import './browser-tabs/em-demo-a-br-sample.js';
-import './browser-tabs/em-demo-a-br-incubator.js';
-import './browser-tabs/em-demo-a-br-batch.js';
-import './browser-tabs/em-demo-a-br-prodlot.js';
-import './browser-tabs/em-demo-a-datamining.js';
+import "./browser-tabs/em-demo-a-br-sample.js";
+import "./browser-tabs/em-demo-a-br-incubator.js";
+import "./browser-tabs/em-demo-a-br-batch.js";
+import "./browser-tabs/em-demo-a-br-prodlot.js";
+import "./browser-tabs/em-demo-a-datamining.js";
 
-class emDemoABrowser extends FieldsMethods(FunctionsEnvMonit(connect(store)(PolymerElement))) {
-    stateChanged(state) {
-        this.selectedLanguage=state.app.user.appLanguage;
-    }            
-    static get properties() {
-        return {            
-            thisTabName: {type:String, value:'em-demo-a-browser'},
-            tabs: {type:Object, value:em_browser_tabs}
-            ,currentTab: []
-            , currentSubTab: {type: String, value: browserHome_defaultTab}
-            ,selectedLanguage: String            
-        }
-    }
-    static get template() {
-        return html`
+class emDemoABrowser extends FieldsMethods(
+  FunctionsEnvMonit(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+  }
+  static get properties() {
+    return {
+      thisTabName: { type: String, value: "em-demo-a-browser" },
+      tabs: { type: Object, value: em_browser_tabs },
+      currentTab: [],
+      currentSubTab: { type: String, value: browserHome_defaultTab },
+      selectedLanguage: String,
+    };
+  }
+  static get template() {
+    return html`
         <style include="em-demo-a-browser-style"></style>
         <!--        <div class="wrapper">
             <div id="program_definition" class="programTabs">        -->
@@ -53,17 +58,17 @@ class emDemoABrowser extends FieldsMethods(FunctionsEnvMonit(connect(store)(Poly
 <!--            </div>  -->
         </div> 
         `;
-    }
-    
-    tabSelected(e){
-        var curTab = [];
-        curTab.tabName = e.currentTarget.name;
-        curTab.name = e.currentTarget.name;
-        // Las funcionalidad de esign y/o confirmar usuario no funciona para subpestañas aún, por eso envian falso.
-        curTab.currTabEsignRequired=false; 
-        curTab.currTabConfirmUserRequired=false; 
-        this.currentTab=curTab;
-        return;        
-    }
+  }
+
+  tabSelected(e) {
+    var curTab = [];
+    curTab.tabName = e.currentTarget.name;
+    curTab.name = e.currentTarget.name;
+    // Las funcionalidad de esign y/o confirmar usuario no funciona para subpestañas aún, por eso envian falso.
+    curTab.currTabEsignRequired = false;
+    curTab.currTabConfirmUserRequired = false;
+    this.currentTab = curTab;
+    return;
+  }
 }
-customElements.define('em-demo-a-browser', emDemoABrowser);
+customElements.define("em-demo-a-browser", emDemoABrowser);

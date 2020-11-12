@@ -1,24 +1,24 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../store';
-import '@polymer/iron-selector/iron-selector';
-import './field-badge';
-import {FieldsMethods} from '../../../platform-mixins/functions/fields-methods';
-//import './../../../config/styles/form-fields-style'  
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../store";
+import "@polymer/iron-selector/iron-selector";
+import "./field-badge";
+import { FieldsMethods } from "../../../platform-mixins/functions/fields-methods";
+//import './../../../config/styles/form-fields-style'
 class FieldTreeListIron extends FieldsMethods(connect(store)(PolymerElement)) {
-    static get properties() {
-        return {
-            value: {
-                type: String,
-                notify: true        
-              },
-        }
-    }
-    stateChanged(state) {        
-        this.selectedLanguage = state.app.user.appLanguage;     
-    }       
-    static get template() {
-        return html`
+  static get properties() {
+    return {
+      value: {
+        type: String,
+        notify: true,
+      },
+    };
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+  }
+  static get template() {
+    return html`
             <!-- <style include="form-fields-style"></style> -->
             <style>
                 div.element {
@@ -114,34 +114,42 @@ class FieldTreeListIron extends FieldsMethods(connect(store)(PolymerElement)) {
                 
             </div>                                     
         `;
+  }
+  hasBadge(bdg) {
+    if (bdg > 0) {
+      return true;
     }
-    hasBadge(bdg) {
-        if (bdg>0) {return true;}
-        return false;
+    return false;
+  }
+  sopsPassed(s) {
+    // if field.sops_passed property is not defined then it is not relevant for Sops, considered as completed/passed.
+    if (s == null) {
+      return true;
     }
-    sopsPassed(s){
-        // if field.sops_passed property is not defined then it is not relevant for Sops, considered as completed/passed.        
-        if (s==null){return true;}
-        return s;
-    }
-    openSopsSummary() {        
-        this.dispatchEvent(new CustomEvent('toast-message', {
-            bubbles: true,
-            composed: true,
-            detail: 'openSopddd'
-        }));         
-    }
-    clicked(){
-        this.dispatchEvent(new CustomEvent('field-tree-listiron-clicked', {
-          bubbles: true,
-          composed: true,
-          detail: {
-            'procedure': this.procedure,
-            'tabName_en': this.procedure.label_en+'-'+this.field.label_en,
-            'procEvent': this.field,
-            'sopPassed': this.procedure.sops_passed
-          }
-        }));    
-      }    
+    return s;
+  }
+  openSopsSummary() {
+    this.dispatchEvent(
+      new CustomEvent("toast-message", {
+        bubbles: true,
+        composed: true,
+        detail: "openSopddd",
+      })
+    );
+  }
+  clicked() {
+    this.dispatchEvent(
+      new CustomEvent("field-tree-listiron-clicked", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          procedure: this.procedure,
+          tabName_en: this.procedure.label_en + "-" + this.field.label_en,
+          procEvent: this.field,
+          sopPassed: this.procedure.sops_passed,
+        },
+      })
+    );
+  }
 }
-customElements.define('field-tree-listiron', FieldTreeListIron);
+customElements.define("field-tree-listiron", FieldTreeListIron);

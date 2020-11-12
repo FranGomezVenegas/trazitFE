@@ -1,9 +1,56 @@
-export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom:90,redTo:100,yellowFrom:75,yellowTo:90,minorTicks:5};export const programHome_sampleSummaryPieOptions={title:"Samples Progress"};export const programHome_lastResults_infoGrouped={grouped:!0};import{elementTableSamplesSet,elementTableSample,elementTableSampleVariable}from"./genoma-instancia1-projectmainview-settings.js";export const windowDefinition={elementTable1:elementTableSamplesSet,elementTable2:elementTableSample,elementTable3:elementTableSampleVariable,zcharts:[{display_chart:!0,chart_type:"pie",chart_name:"samples_summary_by_stage",chart_title:{label_en:"In-Progress Sample Percentage ",label_es:"Porcentaje en Muestras En-Progreso"},counter_field_name:"COUNTER",counterLimits:{// min_allowed: 3,
-// min_allowed_included:3,
-// max_allowed:100,
-// max_allowed_included:100,
-// value:0,
-},grouper_field_name:"current_stage",grouper_exclude_items:["Samplingzz","Incubationzz","PlateReadingzz","MicroorganismIdentificationzz","zz","END"],label_item:{label_en:"Statussss",label_es:"Estado"},label_value:{label_en:"#",label_es:"#"}}]};//import {personal_smp_template} from './config-process';
+export const programHome_sampleSummaryGaugeOptions = {
+  width: 400,
+  height: 120,
+  redFrom: 90,
+  redTo: 100,
+  yellowFrom: 75,
+  yellowTo: 90,
+  minorTicks: 5,
+};
+export const programHome_sampleSummaryPieOptions = {
+  title: "Samples Progress",
+};
+export const programHome_lastResults_infoGrouped = { grouped: !0 };
+import {
+  elementTableSamplesSet,
+  elementTableSample,
+  elementTableSampleVariable,
+} from "./genoma-instancia1-projectmainview-settings.js";
+export const windowDefinition = {
+  elementTable1: elementTableSamplesSet,
+  elementTable2: elementTableSample,
+  elementTable3: elementTableSampleVariable,
+  zcharts: [
+    {
+      display_chart: !0,
+      chart_type: "pie",
+      chart_name: "samples_summary_by_stage",
+      chart_title: {
+        label_en: "In-Progress Sample Percentage ",
+        label_es: "Porcentaje en Muestras En-Progreso",
+      },
+      counter_field_name: "COUNTER",
+      counterLimits: {
+        // min_allowed: 3,
+        // min_allowed_included:3,
+        // max_allowed:100,
+        // max_allowed_included:100,
+        // value:0,
+      },
+      grouper_field_name: "current_stage",
+      grouper_exclude_items: [
+        "Samplingzz",
+        "Incubationzz",
+        "PlateReadingzz",
+        "MicroorganismIdentificationzz",
+        "zz",
+        "END",
+      ],
+      label_item: { label_en: "Statussss", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
+    },
+  ],
+}; //import {personal_smp_template} from './config-process';
 // export const shifts=[
 //   {keyName:"M1", keyValue_en:"M1", keyValue_es:"M1"},
 //   {keyName:"M2", keyValue_en:"M2", keyValue_es:"M2"}
@@ -20,7 +67,7 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //       , {name: 'spec_variation_name', label_en:'Variation', label_es: 'Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'spec_analysis_variation', label_en:'Analysis Variation', label_es: 'Análisis de Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'person_ana_definition', label_en:'Person Sampling Areas', label_es: 'Areas a analizar de Personal', sort:false, filter:true, width:"40%"}
-//     ],  
+//     ],
 //     displayRefreshButton: true,
 //     autorefreshWindow: false,
 //     tableTitle:{
@@ -34,7 +81,7 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //         "label_en": "Log Sample", "label_es": "Registrar Muestra",
 //         "type": "button",
 //         "read_only": false,
-//       },  
+//       },
 //       {
 //         "name": "shift",
 //         "label_en": "Shift", "label_es": "Turno",
@@ -52,10 +99,17 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //         "value": "",
 //         "read_only": false,
 //         "items" : ""//this.productionLotsList
-//       }          
-//     ]    
+//       }
+//     ]
 //   };
-const documentContainerGenomaInstancia1ProjtabHomeStyle=document.createElement("genoma-instancia1-projtab-samples-set-style");documentContainerGenomaInstancia1ProjtabHomeStyle.setAttribute("style","display: none;");documentContainerGenomaInstancia1ProjtabHomeStyle.innerHTML=`
+const documentContainerGenomaInstancia1ProjtabHomeStyle = document.createElement(
+  "genoma-instancia1-projtab-samples-set-style"
+);
+documentContainerGenomaInstancia1ProjtabHomeStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerGenomaInstancia1ProjtabHomeStyle.innerHTML = `
   <dom-module id="genoma-instancia1-projtab-samples-set-style">
     <template>
     <style>
@@ -79,4 +133,5 @@ const documentContainerGenomaInstancia1ProjtabHomeStyle=document.createElement("
       }
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerGenomaInstancia1ProjtabHomeStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerGenomaInstancia1ProjtabHomeStyle);

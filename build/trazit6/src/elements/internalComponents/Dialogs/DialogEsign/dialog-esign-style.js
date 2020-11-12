@@ -1,4 +1,8 @@
-const documentContainerDialogEsign=document.createElement("dialog-esign-style");documentContainerDialogEsign.setAttribute("style","display: none;");documentContainerDialogEsign.innerHTML=`
+const documentContainerDialogEsign = document.createElement(
+  "dialog-esign-style"
+);
+documentContainerDialogEsign.setAttribute("style", "display: none;");
+documentContainerDialogEsign.innerHTML = `
     <dom-module id="dialog-esign-style">
         <template>
             <style>
@@ -42,4 +46,5 @@ const documentContainerDialogEsign=document.createElement("dialog-esign-style");
           
             </style>
         </template>
-    </dom-module>`;document.head.appendChild(documentContainerDialogEsign);
+    </dom-module>`;
+document.head.appendChild(documentContainerDialogEsign);

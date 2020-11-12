@@ -1,4 +1,8 @@
-const documentContainerDialogConfirmUser=document.createElement("dialog-confirmuser-style");documentContainerDialogConfirmUser.setAttribute("style","display: none;");documentContainerDialogConfirmUser.innerHTML=`
+const documentContainerDialogConfirmUser = document.createElement(
+  "dialog-confirmuser-style"
+);
+documentContainerDialogConfirmUser.setAttribute("style", "display: none;");
+documentContainerDialogConfirmUser.innerHTML = `
     <dom-module id="dialog-confirmuser-style">
         <template>
             <style>
@@ -41,4 +45,5 @@ const documentContainerDialogConfirmUser=document.createElement("dialog-confirmu
                 }                
             </style>
         </template>
-    </dom-module>`;document.head.appendChild(documentContainerDialogConfirmUser);
+    </dom-module>`;
+document.head.appendChild(documentContainerDialogConfirmUser);

@@ -1,9 +1,233 @@
-export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom:90,redTo:100,yellowFrom:75,yellowTo:90,minorTicks:5};export const programHome_sampleSummaryPieOptions={title:"Samples Progress"};export const programHome_lastResults_infoGrouped={grouped:!0};export const windowDefinition={windowTitle:{label_en:"Manager for the project",label_es:"P\xE1gina de gesti\xF3n para el proyecto"},displayRefreshButton:!0,autorefreshWindow:!1,project_displayButtons:!0,project_dialogButtons:[{name:"PROJECT_NEW",requires_selected_object:!1,label_en:"Create new project",label_es:"Crear Proyecto",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"PROJECT_UPDATE",label_en:"Update project info",label_es:"Modificar informaci\xF3n Proyecto",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"PROJECT_ACTIVATE",label_en:"Activate project",label_es:"Activar Proyecto",type:"icon-button",icon_name:"icons:alarm-add",read_only:!1},{name:"PROJECT_DEACTIVATE",label_en:"Deactivate project",label_es:"Desactivar Proyecto",type:"icon-button",icon_name:"alarm-off",read_only:!1},{name:"STUDY_NEW",requires_selected_object:!1,label_en:"Create new study",label_es:"Crear Estudio",type:"icon-button",icon_name:"icons:add-box",read_only:!1}],study_displayButtons:!0,study_dialogButtons:[{name:"STUDY_UPDATE",label_en:"Update study info",label_es:"Modificar informaci\xF3n Estudio",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"STUDY_ACTIVATE",label_en:"Activate study",label_es:"Activar Estudio",type:"icon-button",icon_name:"icons:alarm-add",read_only:!1},{name:"STUDY_DEACTIVATE",label_en:"Deactivate study",label_es:"Desactivar Estudio",type:"icon-button",icon_name:"icons:add-box",type:"icon-button",icon_name:"alarm-off",read_only:!1}],study_card_elements:[{name:"STUDY_FAMILY"},{name:"STUDY_INDIVIDUAL"},{name:"STUDY_INDIVIDUAL_SAMPLE"}],study_family_displayButtons:!0,study_family_dialogButtons:[{name:"STUDY_CREATE_FAMILY",requires_selected_object:!1,label_en:"Create new Family",label_es:"Crear Familia",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"STUDY_FAMILY_ACTIVATE",label_en:"Activate Family",label_es:"Activar Familia",type:"icon-button",icon_name:"icons:alarm-add",read_only:!1},{name:"STUDY_FAMILY_DEACTIVATE",label_en:"Deactivate Family",label_es:"Desactivar Familia",type:"icon-button",icon_name:"alarm-off",read_only:!1},{name:"STUDY_FAMILY_ADD_INDIVIDUAL",label_en:"Add individual to family",label_es:"A\xF1adir invididuo a familia",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"STUDY_FAMILY_REMOVE_INDIVIDUAL",label_en:"Remove Individual from Family",label_es:"Quitar individuo de familia",type:"icon-button",icon_name:"icons:remove",read_only:!1}],study_individual_displayButtons:!0,study_individual_dialogButtons:[{name:"STUDY_CREATE_INDIVIDUAL",requires_selected_object:!1,label_en:"Create new Individual",label_es:"Crear Individuo",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"STUDY_INDIVIDUAL_ACTIVATE",label_en:"Activate Individual",label_es:"Activar Individuo",type:"icon-button",icon_name:"icons:alarm-add",read_only:!1},{name:"STUDY_INDIVIDUAL_DEACTIVATE",label_en:"Deactivate Individual",label_es:"Desactivar Individuo",type:"icon-button",icon_name:"alarm-off",read_only:!1}],study_individual_sample_displayButtons:!0,study_individual_sample_dialogButtons:[{name:"STUDY_CREATE_INDIVIDUAL_SAMPLE",requires_selected_object:!1,label_en:"Create new Individual Sample",label_es:"Crear Muestra de Individuo",type:"icon-button",icon_name:"icons:add-box",read_only:!1},{name:"STUDY_INDIVIDUAL_SAMPLE_ACTIVATE",label_en:"Activate Individual Sample",label_es:"Activar Muestra de Individuo",type:"icon-button",icon_name:"icons:alarm-add",read_only:!1},{name:"STUDY_INDIVIDUAL_SAMPLE_DEACTIVATE",label_en:"Deactivate Individual Sample",label_es:"Desactivar Muestra de Individuo",type:"icon-button",icon_name:"alarm-off",read_only:!1}],charts:[{display_chart:!0,chart_type:"pie",chart_name:"samples_summary_by_stage",chart_title:{label_en:"In-Progress Sample Percentage ",label_es:"Porcentaje en Muestras En-Progreso"},counter_field_name:"COUNTER",counterLimits:{// min_allowed: 3,
-// min_allowed_included:3,
-// max_allowed:100,
-// max_allowed_included:100,
-// value:0,
-},grouper_field_name:"current_stage",grouper_exclude_items:["Samplingzz","Incubationzz","PlateReadingzz","MicroorganismIdentificationzz","zz","END"],label_item:{label_en:"Statussss",label_es:"Estado"},label_value:{label_en:"#",label_es:"#"}}]};//import {personal_smp_template} from './config-process';
+export const programHome_sampleSummaryGaugeOptions = {
+  width: 400,
+  height: 120,
+  redFrom: 90,
+  redTo: 100,
+  yellowFrom: 75,
+  yellowTo: 90,
+  minorTicks: 5,
+};
+export const programHome_sampleSummaryPieOptions = {
+  title: "Samples Progress",
+};
+export const programHome_lastResults_infoGrouped = { grouped: !0 };
+export const windowDefinition = {
+  windowTitle: {
+    label_en: "Manager for the project",
+    label_es: "P\xE1gina de gesti\xF3n para el proyecto",
+  },
+  displayRefreshButton: !0,
+  autorefreshWindow: !1,
+  project_displayButtons: !0,
+  project_dialogButtons: [
+    {
+      name: "PROJECT_NEW",
+      requires_selected_object: !1,
+      label_en: "Create new project",
+      label_es: "Crear Proyecto",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "PROJECT_UPDATE",
+      label_en: "Update project info",
+      label_es: "Modificar informaci\xF3n Proyecto",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "PROJECT_ACTIVATE",
+      label_en: "Activate project",
+      label_es: "Activar Proyecto",
+      type: "icon-button",
+      icon_name: "icons:alarm-add",
+      read_only: !1,
+    },
+    {
+      name: "PROJECT_DEACTIVATE",
+      label_en: "Deactivate project",
+      label_es: "Desactivar Proyecto",
+      type: "icon-button",
+      icon_name: "alarm-off",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_NEW",
+      requires_selected_object: !1,
+      label_en: "Create new study",
+      label_es: "Crear Estudio",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+  ],
+  study_displayButtons: !0,
+  study_dialogButtons: [
+    {
+      name: "STUDY_UPDATE",
+      label_en: "Update study info",
+      label_es: "Modificar informaci\xF3n Estudio",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_ACTIVATE",
+      label_en: "Activate study",
+      label_es: "Activar Estudio",
+      type: "icon-button",
+      icon_name: "icons:alarm-add",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_DEACTIVATE",
+      label_en: "Deactivate study",
+      label_es: "Desactivar Estudio",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      type: "icon-button",
+      icon_name: "alarm-off",
+      read_only: !1,
+    },
+  ],
+  study_card_elements: [
+    { name: "STUDY_FAMILY" },
+    { name: "STUDY_INDIVIDUAL" },
+    { name: "STUDY_INDIVIDUAL_SAMPLE" },
+  ],
+  study_family_displayButtons: !0,
+  study_family_dialogButtons: [
+    {
+      name: "STUDY_CREATE_FAMILY",
+      requires_selected_object: !1,
+      label_en: "Create new Family",
+      label_es: "Crear Familia",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_FAMILY_ACTIVATE",
+      label_en: "Activate Family",
+      label_es: "Activar Familia",
+      type: "icon-button",
+      icon_name: "icons:alarm-add",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_FAMILY_DEACTIVATE",
+      label_en: "Deactivate Family",
+      label_es: "Desactivar Familia",
+      type: "icon-button",
+      icon_name: "alarm-off",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_FAMILY_ADD_INDIVIDUAL",
+      label_en: "Add individual to family",
+      label_es: "A\xF1adir invididuo a familia",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_FAMILY_REMOVE_INDIVIDUAL",
+      label_en: "Remove Individual from Family",
+      label_es: "Quitar individuo de familia",
+      type: "icon-button",
+      icon_name: "icons:remove",
+      read_only: !1,
+    },
+  ],
+  study_individual_displayButtons: !0,
+  study_individual_dialogButtons: [
+    {
+      name: "STUDY_CREATE_INDIVIDUAL",
+      requires_selected_object: !1,
+      label_en: "Create new Individual",
+      label_es: "Crear Individuo",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_INDIVIDUAL_ACTIVATE",
+      label_en: "Activate Individual",
+      label_es: "Activar Individuo",
+      type: "icon-button",
+      icon_name: "icons:alarm-add",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_INDIVIDUAL_DEACTIVATE",
+      label_en: "Deactivate Individual",
+      label_es: "Desactivar Individuo",
+      type: "icon-button",
+      icon_name: "alarm-off",
+      read_only: !1,
+    },
+  ],
+  study_individual_sample_displayButtons: !0,
+  study_individual_sample_dialogButtons: [
+    {
+      name: "STUDY_CREATE_INDIVIDUAL_SAMPLE",
+      requires_selected_object: !1,
+      label_en: "Create new Individual Sample",
+      label_es: "Crear Muestra de Individuo",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_INDIVIDUAL_SAMPLE_ACTIVATE",
+      label_en: "Activate Individual Sample",
+      label_es: "Activar Muestra de Individuo",
+      type: "icon-button",
+      icon_name: "icons:alarm-add",
+      read_only: !1,
+    },
+    {
+      name: "STUDY_INDIVIDUAL_SAMPLE_DEACTIVATE",
+      label_en: "Deactivate Individual Sample",
+      label_es: "Desactivar Muestra de Individuo",
+      type: "icon-button",
+      icon_name: "alarm-off",
+      read_only: !1,
+    },
+  ],
+  charts: [
+    {
+      display_chart: !0,
+      chart_type: "pie",
+      chart_name: "samples_summary_by_stage",
+      chart_title: {
+        label_en: "In-Progress Sample Percentage ",
+        label_es: "Porcentaje en Muestras En-Progreso",
+      },
+      counter_field_name: "COUNTER",
+      counterLimits: {
+        // min_allowed: 3,
+        // min_allowed_included:3,
+        // max_allowed:100,
+        // max_allowed_included:100,
+        // value:0,
+      },
+      grouper_field_name: "current_stage",
+      grouper_exclude_items: [
+        "Samplingzz",
+        "Incubationzz",
+        "PlateReadingzz",
+        "MicroorganismIdentificationzz",
+        "zz",
+        "END",
+      ],
+      label_item: { label_en: "Statussss", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
+    },
+  ],
+}; //import {personal_smp_template} from './config-process';
 // export const shifts=[
 //   {keyName:"M1", keyValue_en:"M1", keyValue_es:"M1"},
 //   {keyName:"M2", keyValue_en:"M2", keyValue_es:"M2"}
@@ -20,7 +244,7 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //       , {name: 'spec_variation_name', label_en:'Variation', label_es: 'Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'spec_analysis_variation', label_en:'Analysis Variation', label_es: 'Análisis de Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'person_ana_definition', label_en:'Person Sampling Areas', label_es: 'Areas a analizar de Personal', sort:false, filter:true, width:"40%"}
-//     ],  
+//     ],
 //     displayRefreshButton: true,
 //     autorefreshWindow: false,
 //     tableTitle:{
@@ -34,7 +258,7 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //         "label_en": "Log Sample", "label_es": "Registrar Muestra",
 //         "type": "button",
 //         "read_only": false,
-//       },  
+//       },
 //       {
 //         "name": "shift",
 //         "label_en": "Shift", "label_es": "Turno",
@@ -52,10 +276,17 @@ export const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom
 //         "value": "",
 //         "read_only": false,
 //         "items" : ""//this.productionLotsList
-//       }          
-//     ]    
+//       }
+//     ]
 //   };
-const documentContainerGenomaInstancia1ProjtabSummaryCardsStyle=document.createElement("genoma-instancia1-projtab-summary-cards-style");documentContainerGenomaInstancia1ProjtabSummaryCardsStyle.setAttribute("style","display: none;");documentContainerGenomaInstancia1ProjtabSummaryCardsStyle.innerHTML=`
+const documentContainerGenomaInstancia1ProjtabSummaryCardsStyle = document.createElement(
+  "genoma-instancia1-projtab-summary-cards-style"
+);
+documentContainerGenomaInstancia1ProjtabSummaryCardsStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerGenomaInstancia1ProjtabSummaryCardsStyle.innerHTML = `
   <dom-module id="genoma-instancia1-projtab-summary-cards-style">
     <template>
     <style>
@@ -113,4 +344,7 @@ const documentContainerGenomaInstancia1ProjtabSummaryCardsStyle=document.createE
 
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerGenomaInstancia1ProjtabSummaryCardsStyle);
+  </dom-module>`;
+document.head.appendChild(
+  documentContainerGenomaInstancia1ProjtabSummaryCardsStyle
+);

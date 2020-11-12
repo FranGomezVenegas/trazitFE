@@ -1,5 +1,7 @@
-const documentContainerSopIconAndBadgeStyle = document.createElement('sop-icon-and-badge-style');
-documentContainerSopIconAndBadgeStyle.setAttribute('style', 'display: none;');
+const documentContainerSopIconAndBadgeStyle = document.createElement(
+  "sop-icon-and-badge-style"
+);
+documentContainerSopIconAndBadgeStyle.setAttribute("style", "display: none;");
 
 documentContainerSopIconAndBadgeStyle.innerHTML = `
   <dom-module id="sop-icon-and-badge-style">

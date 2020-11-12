@@ -1,5 +1,7 @@
-const documentContainerNotificationsPaneStyle = document.createElement('notifications-pane-style');
-documentContainerNotificationsPaneStyle.setAttribute('style', 'display: none;');
+const documentContainerNotificationsPaneStyle = document.createElement(
+  "notifications-pane-style"
+);
+documentContainerNotificationsPaneStyle.setAttribute("style", "display: none;");
 
 documentContainerNotificationsPaneStyle.innerHTML = `
   <dom-module id="notifications-pane-style">

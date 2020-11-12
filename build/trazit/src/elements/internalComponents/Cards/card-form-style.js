@@ -1,4 +1,8 @@
-const documentContainerCardFormStyle=document.createElement("card-form-style");documentContainerCardFormStyle.setAttribute("style","display: none;");documentContainerCardFormStyle.innerHTML=`
+const documentContainerCardFormStyle = document.createElement(
+  "card-form-style"
+);
+documentContainerCardFormStyle.setAttribute("style", "display: none;");
+documentContainerCardFormStyle.innerHTML = `
   <dom-module id="card-form-style">
     <template>
       <style>
@@ -20,4 +24,5 @@ const documentContainerCardFormStyle=document.createElement("card-form-style");d
         }
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerCardFormStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerCardFormStyle);

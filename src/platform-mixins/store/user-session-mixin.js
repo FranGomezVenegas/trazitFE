@@ -1,20 +1,21 @@
-import {store} from '../../store';
+import { store } from "../../store";
 
-export const userSessionMixin = (superClass) => class extends superClass {
-    getStoreTabs(){
-        var state=store.getState();
-        return state.app.user.tabsOpenOnLogin;
+export const userSessionMixin = (superClass) =>
+  class extends superClass {
+    getStoreTabs() {
+      var state = store.getState();
+      return state.app.user.tabsOpenOnLogin;
     }
-    getPersonId(){
-        var state=store.getState();
-        return state.app.user.personId;
+    getPersonId() {
+      var state = store.getState();
+      return state.app.user.personId;
     }
-    getUserName(){
-        var state=store.getState();
-        return state.app.user.userName;
+    getUserName() {
+      var state = store.getState();
+      return state.app.user.userName;
     }
-    getTabsOpenOnLogin(){
-        var state=store.getState();
-        return state.app.user.tabsOpenOnLogin;
-    }    
-}
+    getTabsOpenOnLogin() {
+      var state = store.getState();
+      return state.app.user.tabsOpenOnLogin;
+    }
+  };

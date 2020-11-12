@@ -1,8 +1,83 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../node_modules/pwa-helpers/connect-mixin.js","../../../store.js","../../../../node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js","../../../../node_modules/@polymer/paper-item/paper-item.js","../../../../node_modules/@polymer/paper-listbox/paper-listbox.js","../../../../node_modules/@polymer/polymer/lib/elements/dom-repeat.js","../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_paperDropdownMenu,_paperItem,_paperListbox,_domRepeat,_fieldsMethods){"use strict";class FieldList extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get observers(){return["changeListValueObserver(field.value)"]}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}changeListValueObserver(newVal){var findSeparator=newVal.search("-");//console.log('changeListValueObserver', 'newVal', newVal, 'this.field', this.field, 'findSeparator', findSeparator);
-if(-1<findSeparator){var newValStr=newVal.substring(0,findSeparator),indexVal=newVal.substring(findSeparator+1,newVal.length);indexVal=indexVal.trim();var newValInt=parseInt(indexVal,10)}else{var newValStr=newVal,newValInt=-1}var newValNoIndex="";console.log("changeListValueObserver","newValStr",newValStr,"newValInt",newValInt,"indexVal",indexVal);this.dispatchEvent(new CustomEvent("field-list-value-changed",{bubbles:!0,composed:!0,detail:{name:this.field.name,value_no_index:newValNoIndex,value:newValStr,//newVal,
-index:newValInt//index,
-//'thisindex': this.field.index
-}}));this.value=newVal;this.value_no_index=newValStr}static get properties(){return{field:{type:Object,notify:!0},value:{type:String,notify:!0},value_no_index:{type:String,notify:!0},index:Number,fieldIndex:Number}}changeList(newList){this.set("field.items",newList)}static get template(){return _polymerElement.html`      
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../store.js",
+  "../../../../node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js",
+  "../../../../node_modules/@polymer/paper-item/paper-item.js",
+  "../../../../node_modules/@polymer/paper-listbox/paper-listbox.js",
+  "../../../../node_modules/@polymer/polymer/lib/elements/dom-repeat.js",
+  "../../../platform-mixins/functions/fields-methods.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _paperDropdownMenu,
+  _paperItem,
+  _paperListbox,
+  _domRepeat,
+  _fieldsMethods
+) {
+  "use strict";
+  class FieldList extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get observers() {
+      return ["changeListValueObserver(field.value)"];
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+    changeListValueObserver(newVal) {
+      var findSeparator = newVal.search("-"); //console.log('changeListValueObserver', 'newVal', newVal, 'this.field', this.field, 'findSeparator', findSeparator);
+      if (-1 < findSeparator) {
+        var newValStr = newVal.substring(0, findSeparator),
+          indexVal = newVal.substring(findSeparator + 1, newVal.length);
+        indexVal = indexVal.trim();
+        var newValInt = parseInt(indexVal, 10);
+      } else {
+        var newValStr = newVal,
+          newValInt = -1;
+      }
+      var newValNoIndex = "";
+      console.log(
+        "changeListValueObserver",
+        "newValStr",
+        newValStr,
+        "newValInt",
+        newValInt,
+        "indexVal",
+        indexVal
+      );
+      this.dispatchEvent(
+        new CustomEvent("field-list-value-changed", {
+          bubbles: !0,
+          composed: !0,
+          detail: {
+            name: this.field.name,
+            value_no_index: newValNoIndex,
+            value: newValStr, //newVal,
+            index: newValInt, //index,
+            //'thisindex': this.field.index
+          },
+        })
+      );
+      this.value = newVal;
+      this.value_no_index = newValStr;
+    }
+    static get properties() {
+      return {
+        field: { type: Object, notify: !0 },
+        value: { type: String, notify: !0 },
+        value_no_index: { type: String, notify: !0 },
+        index: Number,
+        fieldIndex: Number,
+      };
+    }
+    changeList(newList) {
+      this.set("field.items", newList);
+    }
+    static get template() {
+      return _polymerElement.html`      
     <style>
     div.dropdown-trigger:{
       color: #03a9f4;
@@ -24,4 +99,8 @@ index:newValInt//index,
           </template>
         </paper-listbox>
       </paper-dropdown-menu>         
-    `}}customElements.define("field-list",FieldList)});
+    `;
+    }
+  }
+  customElements.define("field-list", FieldList);
+});

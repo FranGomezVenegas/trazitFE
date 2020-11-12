@@ -1,4 +1,57 @@
-define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../store.js","../../../../../node_modules/@polymer/paper-tabs/paper-tabs.js","../../../../../node_modules/@polymer/paper-tabs/paper-tab.js","../../../../../node_modules/@polymer/iron-pages/iron-pages.js","../../../../platform-mixins/functions/fields-methods.js","../01moduleFunctionality/functions-env-monit.js","../03config/Browser/em-demo-a-browser-settings.js","./browser-tabs/em-demo-a-br-sample.js","./browser-tabs/em-demo-a-br-incubator.js","./browser-tabs/em-demo-a-br-batch.js","./browser-tabs/em-demo-a-br-prodlot.js","./browser-tabs/em-demo-a-datamining.js"],function(_polymerElement,_connectMixin,_store,_paperTabs,_paperTab,_ironPages,_fieldsMethods,_functionsEnvMonit,_emDemoABrowserSettings,_emDemoABrSample,_emDemoABrIncubator,_emDemoABrBatch,_emDemoABrProdlot,_emDemoADatamining){"use strict";class emDemoABrowser extends(0,_fieldsMethods.FieldsMethods)((0,_functionsEnvMonit.FunctionsEnvMonit)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement))){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}static get properties(){return{thisTabName:{type:String,value:"em-demo-a-browser"},tabs:{type:Object,value:_emDemoABrowserSettings.em_browser_tabs},currentTab:[],currentSubTab:{type:String,value:_emDemoABrowserSettings.browserHome_defaultTab},selectedLanguage:String}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../store.js",
+  "../../../../../node_modules/@polymer/paper-tabs/paper-tabs.js",
+  "../../../../../node_modules/@polymer/paper-tabs/paper-tab.js",
+  "../../../../../node_modules/@polymer/iron-pages/iron-pages.js",
+  "../../../../platform-mixins/functions/fields-methods.js",
+  "../01moduleFunctionality/functions-env-monit.js",
+  "../03config/Browser/em-demo-a-browser-settings.js",
+  "./browser-tabs/em-demo-a-br-sample.js",
+  "./browser-tabs/em-demo-a-br-incubator.js",
+  "./browser-tabs/em-demo-a-br-batch.js",
+  "./browser-tabs/em-demo-a-br-prodlot.js",
+  "./browser-tabs/em-demo-a-datamining.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _paperTabs,
+  _paperTab,
+  _ironPages,
+  _fieldsMethods,
+  _functionsEnvMonit,
+  _emDemoABrowserSettings,
+  _emDemoABrSample,
+  _emDemoABrIncubator,
+  _emDemoABrBatch,
+  _emDemoABrProdlot,
+  _emDemoADatamining
+) {
+  "use strict";
+  class emDemoABrowser extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _functionsEnvMonit.FunctionsEnvMonit)(
+      (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+    )
+  ) {
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+    static get properties() {
+      return {
+        thisTabName: { type: String, value: "em-demo-a-browser" },
+        tabs: { type: Object, value: _emDemoABrowserSettings.em_browser_tabs },
+        currentTab: [],
+        currentSubTab: {
+          type: String,
+          value: _emDemoABrowserSettings.browserHome_defaultTab,
+        },
+        selectedLanguage: String,
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <style include="em-demo-a-browser-style"></style>
         <!--        <div class="wrapper">
             <div id="program_definition" class="programTabs">        -->
@@ -20,5 +73,17 @@ define(["../../../../../node_modules/@polymer/polymer/polymer-element.js","../..
                 </iron-pages>
 <!--            </div>  -->
         </div> 
-        `}tabSelected(e){var curTab=[];curTab.tabName=e.currentTarget.name;curTab.name=e.currentTarget.name;// Las funcionalidad de esign y/o confirmar usuario no funciona para subpestañas aún, por eso envian falso.
-curTab.currTabEsignRequired=!1;curTab.currTabConfirmUserRequired=!1;this.currentTab=curTab;return}}customElements.define("em-demo-a-browser",emDemoABrowser)});
+        `;
+    }
+    tabSelected(e) {
+      var curTab = [];
+      curTab.tabName = e.currentTarget.name;
+      curTab.name = e.currentTarget.name; // Las funcionalidad de esign y/o confirmar usuario no funciona para subpestañas aún, por eso envian falso.
+      curTab.currTabEsignRequired = !1;
+      curTab.currTabConfirmUserRequired = !1;
+      this.currentTab = curTab;
+      return;
+    }
+  }
+  customElements.define("em-demo-a-browser", emDemoABrowser);
+});

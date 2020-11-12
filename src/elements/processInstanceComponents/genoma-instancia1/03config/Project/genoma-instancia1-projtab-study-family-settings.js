@@ -1,34 +1,58 @@
-export const programHome_sampleSummaryGaugeOptions={"width": 400, "height": 120, "redFrom": 90, "redTo": 100, "yellowFrom":75,
-                                                    "yellowTo": 90, "minorTicks": 5};
-export const programHome_sampleSummaryPieOptions={"title": "Samples Progress"};
+export const programHome_sampleSummaryGaugeOptions = {
+  width: 400,
+  height: 120,
+  redFrom: 90,
+  redTo: 100,
+  yellowFrom: 75,
+  yellowTo: 90,
+  minorTicks: 5,
+};
+export const programHome_sampleSummaryPieOptions = {
+  title: "Samples Progress",
+};
 
-export const programHome_lastResults_infoGrouped={
-  'grouped':true,
-}
-import {elementTableFamily, elementTableIndividual, elementTableSample, elementTableSampleVariable} from './genoma-instancia1-projectmainview-settings';
-export const windowDefinition={
-  elementTable1:elementTableFamily,
-  elementTable2:elementTableIndividual,  
-  elementTable3:elementTableSample,
-  elementTable4:elementTableSampleVariable,
-  zcharts:[
+export const programHome_lastResults_infoGrouped = {
+  grouped: true,
+};
+import {
+  elementTableFamily,
+  elementTableIndividual,
+  elementTableSample,
+  elementTableSampleVariable,
+} from "./genoma-instancia1-projectmainview-settings";
+export const windowDefinition = {
+  elementTable1: elementTableFamily,
+  elementTable2: elementTableIndividual,
+  elementTable3: elementTableSample,
+  elementTable4: elementTableSampleVariable,
+  zcharts: [
     {
       display_chart: true,
-      chart_type:'pie',
-      chart_name:'samples_summary_by_stage',
-      chart_title:{label_en:'In-Progress Sample Percentage ', label_es:'Porcentaje en Muestras En-Progreso'},
-      counter_field_name:'COUNTER',
-      counterLimits:{
+      chart_type: "pie",
+      chart_name: "samples_summary_by_stage",
+      chart_title: {
+        label_en: "In-Progress Sample Percentage ",
+        label_es: "Porcentaje en Muestras En-Progreso",
+      },
+      counter_field_name: "COUNTER",
+      counterLimits: {
         // min_allowed: 3,
         // min_allowed_included:3,
         // max_allowed:100,
         // max_allowed_included:100,
         // value:0,
       },
-      grouper_field_name:'current_stage',
-      grouper_exclude_items:['Samplingzz','Incubationzz','PlateReadingzz','MicroorganismIdentificationzz','zz','END'],
-      label_item:{label_en:'Statussss', label_es:'Estado'},
-      label_value:{label_en:'#', label_es:'#'},
+      grouper_field_name: "current_stage",
+      grouper_exclude_items: [
+        "Samplingzz",
+        "Incubationzz",
+        "PlateReadingzz",
+        "MicroorganismIdentificationzz",
+        "zz",
+        "END",
+      ],
+      label_item: { label_en: "Statussss", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
     },
   ],
 };
@@ -50,7 +74,7 @@ export const windowDefinition={
 //       , {name: 'spec_variation_name', label_en:'Variation', label_es: 'Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'spec_analysis_variation', label_en:'Analysis Variation', label_es: 'Análisis de Variación', sort:false, filter:true, width:"20%"}
 //       , {name: 'person_ana_definition', label_en:'Person Sampling Areas', label_es: 'Areas a analizar de Personal', sort:false, filter:true, width:"40%"}
-//     ],  
+//     ],
 //     displayRefreshButton: true,
 //     autorefreshWindow: false,
 //     tableTitle:{
@@ -64,7 +88,7 @@ export const windowDefinition={
 //         "label_en": "Log Sample", "label_es": "Registrar Muestra",
 //         "type": "button",
 //         "read_only": false,
-//       },  
+//       },
 //       {
 //         "name": "shift",
 //         "label_en": "Shift", "label_es": "Turno",
@@ -82,12 +106,17 @@ export const windowDefinition={
 //         "value": "",
 //         "read_only": false,
 //         "items" : ""//this.productionLotsList
-//       }          
-//     ]    
+//       }
+//     ]
 //   };
 
-const documentContainerGenomaInstancia1ProjtabStudyFamilyStyle = document.createElement('genoma-instancia1-projtab-study-family-style');
-documentContainerGenomaInstancia1ProjtabStudyFamilyStyle.setAttribute('style', 'display: none;');
+const documentContainerGenomaInstancia1ProjtabStudyFamilyStyle = document.createElement(
+  "genoma-instancia1-projtab-study-family-style"
+);
+documentContainerGenomaInstancia1ProjtabStudyFamilyStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerGenomaInstancia1ProjtabStudyFamilyStyle.innerHTML = `
   <dom-module id="genoma-instancia1-projtab-study-family-style">
@@ -114,4 +143,6 @@ documentContainerGenomaInstancia1ProjtabStudyFamilyStyle.innerHTML = `
     </style>
     </template>
   </dom-module>`;
-document.head.appendChild(documentContainerGenomaInstancia1ProjtabStudyFamilyStyle);
+document.head.appendChild(
+  documentContainerGenomaInstancia1ProjtabStudyFamilyStyle
+);

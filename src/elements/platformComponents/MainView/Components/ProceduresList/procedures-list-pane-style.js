@@ -1,5 +1,7 @@
-const documentContainerPlaformProcedureList = document.createElement('procedures-list-pane-style');
-documentContainerPlaformProcedureList.setAttribute('style', 'display: none;');
+const documentContainerPlaformProcedureList = document.createElement(
+  "procedures-list-pane-style"
+);
+documentContainerPlaformProcedureList.setAttribute("style", "display: none;");
 
 documentContainerPlaformProcedureList.innerHTML = `
   <dom-module id="procedures-list-pane-style">

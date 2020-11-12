@@ -1,4 +1,86 @@
-define(["exports","../config-process.js"],function(_exports,_configProcess){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.browserBatchFields=_exports.windowContent=_exports.browserBatchNoContent=_exports.browserBatchFieldsToDisplay=_exports.browserBatchFieldToRetrieve=void 0;const browserBatchFieldToRetrieve="ALL";_exports.browserBatchFieldToRetrieve=browserBatchFieldToRetrieve;const browserBatchFieldsToDisplay="name|active|completed|incubation_incubator|incubation_start|incubation_end";_exports.browserBatchFieldsToDisplay=browserBatchFieldsToDisplay;const browserBatchNoContent=[{name:"title",label_en:"No temperature readings found",label_es:"No encontradas lecturas de temperatura",type:"title",size:"h3",style:"color: var(--paper-light-blue-500);",read_only:!0}];_exports.browserBatchNoContent=browserBatchNoContent;const windowContent={fields:[{name:"BatchName",label_en:"Batch",label_es:"Tanda",type:"text",password:"false",value:"Tanda4",read_only:!1},{name:"RunReport",label_en:"Report",label_es:"Informe",type:"button",value:"",read_only:!1}],buttons:[{name:"EM_INCUBATION_ADD_TEMP_READING",label_en:"New Temp Reading",label_es:"Nueva lectura de Temperatura",type:"icon-button",icon_name:"icons:add-box",read_only:!1}],batchNoContent:[{name:"title",label_en:"No temperature readings found",label_es:"No encontradas lecturas de temperatura",type:"title",size:"h3",style:"color: var(--paper-light-blue-500);",read_only:!0}]};_exports.windowContent=windowContent;const browserBatchFields={schemaName:"data",tableName:"Batch",fieldToRetrieve:"ALL",fieldsToDisplay:"name|active|completed|incubation_incubator|incubation_start|incubation_end"};_exports.browserBatchFields=browserBatchFields;const documentContainerEmDemoABrowserBatchStyle=document.createElement("em-demo-a-browser-batch-style");documentContainerEmDemoABrowserBatchStyle.setAttribute("style","display: none;");documentContainerEmDemoABrowserBatchStyle.innerHTML=`
+define(["exports", "../config-process.js"], function (
+  _exports,
+  _configProcess
+) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.browserBatchFields = _exports.windowContent = _exports.browserBatchNoContent = _exports.browserBatchFieldsToDisplay = _exports.browserBatchFieldToRetrieve = void 0;
+  const browserBatchFieldToRetrieve = "ALL";
+  _exports.browserBatchFieldToRetrieve = browserBatchFieldToRetrieve;
+  const browserBatchFieldsToDisplay =
+    "name|active|completed|incubation_incubator|incubation_start|incubation_end";
+  _exports.browserBatchFieldsToDisplay = browserBatchFieldsToDisplay;
+  const browserBatchNoContent = [
+    {
+      name: "title",
+      label_en: "No temperature readings found",
+      label_es: "No encontradas lecturas de temperatura",
+      type: "title",
+      size: "h3",
+      style: "color: var(--paper-light-blue-500);",
+      read_only: !0,
+    },
+  ];
+  _exports.browserBatchNoContent = browserBatchNoContent;
+  const windowContent = {
+    fields: [
+      {
+        name: "BatchName",
+        label_en: "Batch",
+        label_es: "Tanda",
+        type: "text",
+        password: "false",
+        value: "Tanda4",
+        read_only: !1,
+      },
+      {
+        name: "RunReport",
+        label_en: "Report",
+        label_es: "Informe",
+        type: "button",
+        value: "",
+        read_only: !1,
+      },
+    ],
+    buttons: [
+      {
+        name: "EM_INCUBATION_ADD_TEMP_READING",
+        label_en: "New Temp Reading",
+        label_es: "Nueva lectura de Temperatura",
+        type: "icon-button",
+        icon_name: "icons:add-box",
+        read_only: !1,
+      },
+    ],
+    batchNoContent: [
+      {
+        name: "title",
+        label_en: "No temperature readings found",
+        label_es: "No encontradas lecturas de temperatura",
+        type: "title",
+        size: "h3",
+        style: "color: var(--paper-light-blue-500);",
+        read_only: !0,
+      },
+    ],
+  };
+  _exports.windowContent = windowContent;
+  const browserBatchFields = {
+    schemaName: "data",
+    tableName: "Batch",
+    fieldToRetrieve: "ALL",
+    fieldsToDisplay:
+      "name|active|completed|incubation_incubator|incubation_start|incubation_end",
+  };
+  _exports.browserBatchFields = browserBatchFields;
+  const documentContainerEmDemoABrowserBatchStyle = document.createElement(
+    "em-demo-a-browser-batch-style"
+  );
+  documentContainerEmDemoABrowserBatchStyle.setAttribute(
+    "style",
+    "display: none;"
+  );
+  documentContainerEmDemoABrowserBatchStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-batch-style">
     <template>
     <style>
@@ -43,4 +125,6 @@ define(["exports","../config-process.js"],function(_exports,_configProcess){"use
     }
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoABrowserBatchStyle)});
+  </dom-module>`;
+  document.head.appendChild(documentContainerEmDemoABrowserBatchStyle);
+});

@@ -1,4 +1,6 @@
-const documentContainerFormFields=document.createElement("form-fields");documentContainerFormFields.setAttribute("style","display: none;");documentContainerFormFields.innerHTML=`
+const documentContainerFormFields = document.createElement("form-fields");
+documentContainerFormFields.setAttribute("style", "display: none;");
+documentContainerFormFields.innerHTML = `
   <dom-module id="form-fields-style">
     <template>
       <style>
@@ -76,7 +78,7 @@ const documentContainerFormFields=document.createElement("form-fields");document
         } 
       </style>
     </template>
-  </dom-module>`;// field-button-group sigue teniendo sus estilos en el componente
+  </dom-module>`; // field-button-group sigue teniendo sus estilos en el componente
 // field-text sigue teniendo sus estilos en el componente
 // field-title si tiene migrados los estilos pero el componente es un <h2> a la fija.
 document.head.appendChild(documentContainerFormFields);

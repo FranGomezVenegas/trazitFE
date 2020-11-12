@@ -1,94 +1,118 @@
-import {schema_name} from '../config-process';
-export const windowContent={
-  fields:[
+import { schema_name } from "../config-process";
+export const windowContent = {
+  fields: [
     {
-      "name": "lotName",
-      "label_en": "Production Lot", "label_es": "Lote de Producción",
-      "type": "text",
-      "password": "false",
-      "value": "lote4",
-      "read_only": false
-    },{
-      "name": "dateFrom",
-      "label_en": "Date From", "label_es": "De Fecha",
-      "type": "date",
-      "password": "False",
-      "value": "",
-      "read_only": false
-    },{
-      "name": "dateTo",
-      "label_en": "Date To", "label_es": "A Fecha",
-      "type": "date",
-      "password": "false",
-      "value": "",
-      "read_only": false
-    },{
-      "name": "RunReport",
-      "label_en": "Report", "label_es": "Informe",
-      "type": "button",              
-      "value": "",
-      "read_only": false
-    }     
-  ],
-  buttons:[          
-    {
-      "name": "EM_ACTIVATE_PRODUCTION_LOT",
-      "label_en": "Activate", "label_es": "Activar",
-      "type": "icon-button",
-      "icon_name": "icons:add-box",
-      "read_only": false,
+      name: "lotName",
+      label_en: "Production Lot",
+      label_es: "Lote de Producción",
+      type: "text",
+      password: "false",
+      value: "lote4",
+      read_only: false,
     },
     {
-      "name": "EM_DEACTIVATE_PRODUCTION_LOT",
-      "label_en": "Deactivate", "label_es": "Desactivar",
-      "type": "icon-button",
-      "icon_name": "icons:add-box",
-      "read_only": false,
-    }
-  ], 
-  charts:[
-      {
-        display_chart: true,
-        chart_type:'pie',
-        chart_name:'counter_by_status',
-        chart_title:{label_en:'Samples by status', label_es:'Muestras por estado'},
-        grouper_field_name:'grouper',
-        label_item:{label_en:'Statussss', label_es:'Estado'},
-        label_value:{label_en:'#', label_es:'#'},
+      name: "dateFrom",
+      label_en: "Date From",
+      label_es: "De Fecha",
+      type: "date",
+      password: "False",
+      value: "",
+      read_only: false,
+    },
+    {
+      name: "dateTo",
+      label_en: "Date To",
+      label_es: "A Fecha",
+      type: "date",
+      password: "false",
+      value: "",
+      read_only: false,
+    },
+    {
+      name: "RunReport",
+      label_en: "Report",
+      label_es: "Informe",
+      type: "button",
+      value: "",
+      read_only: false,
+    },
+  ],
+  buttons: [
+    {
+      name: "EM_ACTIVATE_PRODUCTION_LOT",
+      label_en: "Activate",
+      label_es: "Activar",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: false,
+    },
+    {
+      name: "EM_DEACTIVATE_PRODUCTION_LOT",
+      label_en: "Deactivate",
+      label_es: "Desactivar",
+      type: "icon-button",
+      icon_name: "icons:add-box",
+      read_only: false,
+    },
+  ],
+  charts: [
+    {
+      display_chart: true,
+      chart_type: "pie",
+      chart_name: "counter_by_status",
+      chart_title: {
+        label_en: "Samples by status",
+        label_es: "Muestras por estado",
       },
-      {
-        display_chart: true,
-        chart_type:'column',
-        chart_name:'counter_by_status',
-        chart_title:{label_en:'Samples by status', label_es:'Muestras por estado'},
-        grouper_field_name:'grouper',
-        label_item:{label_en:'Statussss', label_es:'Estado'},
-        label_value:{label_en:'#', label_es:'#'},
-      },      
-      {
-        display_chart: true,
-        chart_type:'line',
-        chart_name:'counter_by_area_spec_tmp',
-        chart_title:{label_en:'Samples Per area and type', label_es:'Muestras por area y tipo'},
-        grouper_field_name:'grouper',
-        label_item:{label_en:'Status', label_es:'Estado'},
-        label_value:{label_en:'#', label_es:'#'},
-      }
-  ]
+      grouper_field_name: "grouper",
+      label_item: { label_en: "Statussss", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
+    },
+    {
+      display_chart: true,
+      chart_type: "column",
+      chart_name: "counter_by_status",
+      chart_title: {
+        label_en: "Samples by status",
+        label_es: "Muestras por estado",
+      },
+      grouper_field_name: "grouper",
+      label_item: { label_en: "Statussss", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
+    },
+    {
+      display_chart: true,
+      chart_type: "line",
+      chart_name: "counter_by_area_spec_tmp",
+      chart_title: {
+        label_en: "Samples Per area and type",
+        label_es: "Muestras por area y tipo",
+      },
+      grouper_field_name: "grouper",
+      label_item: { label_en: "Status", label_es: "Estado" },
+      label_value: { label_en: "#", label_es: "#" },
+    },
+  ],
 };
-export const browserProdLotFields={
-  schemaName: 'data',
-  tableName: 'production_lot',  
-  prodLotFieldToRetrieve:'ALL',
-  prodLotFieldsToDisplay:'ALL',
-  sampleFieldToRetrieve:'ALL',
-  sampleFieldsToDisplay:'ALL', 
+export const browserProdLotFields = {
+  schemaName: "data",
+  tableName: "production_lot",
+  prodLotFieldToRetrieve: "ALL",
+  prodLotFieldsToDisplay: "ALL",
+  sampleFieldToRetrieve: "ALL",
+  sampleFieldsToDisplay: "ALL",
   //sampleWhereFieldsName:
-  //sampleWhereFieldsValue:   
-  sampleGroups:'area, spec_code,sample_config_code*counter_by_area_spec_tmp|area*counter_by_status',
+  //sampleWhereFieldsValue:
+  sampleGroups:
+    "area, spec_code,sample_config_code*counter_by_area_spec_tmp|area*counter_by_status",
 };
-const documentContainerEmDemoABrowserProdlotStyle = document.createElement('em-demo-a-browser-prodlot-style');
-documentContainerEmDemoABrowserProdlotStyle.setAttribute('style', 'display: none;');
+const documentContainerEmDemoABrowserProdlotStyle = document.createElement(
+  "em-demo-a-browser-prodlot-style"
+);
+documentContainerEmDemoABrowserProdlotStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoABrowserProdlotStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-prodlot-style">

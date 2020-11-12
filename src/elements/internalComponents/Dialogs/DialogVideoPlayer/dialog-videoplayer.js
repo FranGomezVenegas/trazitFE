@@ -1,28 +1,43 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
-import '@thuoe/mp4-video-player';
-import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import "@thuoe/mp4-video-player";
+import { FieldsMethods } from "../../../../platform-mixins/functions/fields-methods";
 /**
  * `dialog-videoplayer` Description
  *
  * @customElement
  * @polymer
  * @demo
- * 
+ *
  */
 class DialogVideoplayer extends FieldsMethods(PolymerElement) {
-    static get properties() {
-        return {
-            videoPoster:{type: String, value:'./images/header/trazit-logo-animado.gif'},
-            videoUrl:{type: String, value:'https://www.youtube.com/watch?v=iOdsAE8Mq7I&ab_channel=NPRMusic'},//http://51.75.202.142:8888/myvideos/LP.mp4'},
-            classModal: {type: String, computed: 'changeClass(opened)', notify:true}, 
-            displayIndex:{type: Boolean,value:false},
-            indexDisplay: {type: String, computed: 'indexDisplayClass()', notify:true}, 
-            indexContent: {type: Array},
-            selectedLanguage:{type: String, value: 'es'},
-        }
-    }
-    static get template() {
-        return html`
+  static get properties() {
+    return {
+      videoPoster: {
+        type: String,
+        value: "./images/header/trazit-logo-animado.gif",
+      },
+      videoUrl: {
+        type: String,
+        value:
+          "https://www.youtube.com/watch?v=iOdsAE8Mq7I&ab_channel=NPRMusic",
+      }, //http://51.75.202.142:8888/myvideos/LP.mp4'},
+      classModal: {
+        type: String,
+        computed: "changeClass(opened)",
+        notify: true,
+      },
+      displayIndex: { type: Boolean, value: false },
+      indexDisplay: {
+        type: String,
+        computed: "indexDisplayClass()",
+        notify: true,
+      },
+      indexContent: { type: Array },
+      selectedLanguage: { type: String, value: "es" },
+    };
+  }
+  static get template() {
+    return html`
                 <style>
                 .closed {
                     display: none;
@@ -51,60 +66,70 @@ class DialogVideoplayer extends FieldsMethods(PolymerElement) {
                 </div>
         
         `;
+  }
+  selectVideo(e) {
+    console.log("selectVideo", e);
+    if (e.currentTarget.videoinfo == undefined) {
+      return;
     }
-    selectVideo(e){
-        console.log('selectVideo', e);
-        if (e.currentTarget.videoinfo==undefined){return;}
-        var indexEntryVideo=e.currentTarget.videoinfo.src;
-        if (indexEntryVideo!=undefined){
-            var elem=this.shadowRoot.getElementById("videoplayer");
-            if (elem){elem.src=indexEntryVideo;}
-        }
-    }
-    closeVideoWindow(){
-        console.log('closeVideoWindow');
-        this.changeClass(false);
-        //return;
-        if (indexEntryVideo!=undefined){
-            var elem=this.shadowRoot.getElementById("videoplayer");
-            if (elem){elem.stop=true;}
-        }
-        var elem=this.shadowRoot.getElementById("videowindowdialog");
-        if (elem){elem.close();}
-        var elem2=this.shadowRoot.getElementById("videoplayer");
-        if (elem2){elem2.stop();}
-    }
-    changeClass(opened) {
-        if(opened) {
-          return 'open';
-        }
-        return 'closed'
+    var indexEntryVideo = e.currentTarget.videoinfo.src;
+    if (indexEntryVideo != undefined) {
+      var elem = this.shadowRoot.getElementById("videoplayer");
+      if (elem) {
+        elem.src = indexEntryVideo;
       }
-    indexDisplayClass() {
-        if(this.indexContent!=undefined && this.indexContent.length>0) {
-            return 'open';
-        }
-        return 'closed'
     }
-    /**
-     * Instance of the element is created/upgraded. Use: initializing state,
-     * set up event listeners, create shadow dom.
-     * @constructor
-     */
-    constructor() {
-        super();
+  }
+  closeVideoWindow() {
+    console.log("closeVideoWindow");
+    this.changeClass(false);
+    //return;
+    if (indexEntryVideo != undefined) {
+      var elem = this.shadowRoot.getElementById("videoplayer");
+      if (elem) {
+        elem.stop = true;
+      }
     }
+    var elem = this.shadowRoot.getElementById("videowindowdialog");
+    if (elem) {
+      elem.close();
+    }
+    var elem2 = this.shadowRoot.getElementById("videoplayer");
+    if (elem2) {
+      elem2.stop();
+    }
+  }
+  changeClass(opened) {
+    if (opened) {
+      return "open";
+    }
+    return "closed";
+  }
+  indexDisplayClass() {
+    if (this.indexContent != undefined && this.indexContent.length > 0) {
+      return "open";
+    }
+    return "closed";
+  }
+  /**
+   * Instance of the element is created/upgraded. Use: initializing state,
+   * set up event listeners, create shadow dom.
+   * @constructor
+   */
+  constructor() {
+    super();
+  }
 
-    /**
-     * Use for one-time configuration of your component after local
-     * DOM is initialized.
-     */
-    ready() {
-        super.ready();
-    }
+  /**
+   * Use for one-time configuration of your component after local
+   * DOM is initialized.
+   */
+  ready() {
+    super.ready();
+  }
 }
 
-customElements.define('dialog-videoplayer', DialogVideoplayer);
+customElements.define("dialog-videoplayer", DialogVideoplayer);
 
 // import {LitElement, html} from 'lit-element';
 // import '@thuoe/mp4-video-player';
@@ -114,7 +139,7 @@ customElements.define('dialog-videoplayer', DialogVideoplayer);
 //  * @customElement
 //  * @polymer
 //  * @demo
-//  * 
+//  *
 //  */
 // class DialogVideoplayer extends LitElement {
 //     static get properties() {
@@ -152,8 +177,8 @@ customElements.define('dialog-videoplayer', DialogVideoplayer);
 //         <style>
 //         .closed {
 //             display: none;
-//         }  
-//         </style>        
+//         }
+//         </style>
 //         <div class="${this.classModal}" id="videoPlayerDiv" style="display:flex; width:50%; height:50%;">
 //         <div style="display:block; padding-right:10px;" >
 //           <input type="button" @click="${this.closeVideoWindow}">video</input>
@@ -163,12 +188,12 @@ customElements.define('dialog-videoplayer', DialogVideoplayer);
 //           <li>Cabecera</li>
 //           <li>Pestañas</li>
 //           </ul>
-//           </nav>            
-//         `: ``}  
+//           </nav>
+//         `: ``}
 //         </div>
-        
-//         <mp4-video-player id="videoplayer" src="${this.videoUrl}" auto-play></mp4-video-player>  
-            
+
+//         <mp4-video-player id="videoplayer" src="${this.videoUrl}" auto-play></mp4-video-player>
+
 //         </div>
 //         `;
 //     }
@@ -186,7 +211,7 @@ customElements.define('dialog-videoplayer', DialogVideoplayer);
 //         }
 //         this.classModal='closed';
 //         return 'closed'
-//     }        
+//     }
 // }
 
 // customElements.define('dialog-videoplayer', DialogVideoplayer);

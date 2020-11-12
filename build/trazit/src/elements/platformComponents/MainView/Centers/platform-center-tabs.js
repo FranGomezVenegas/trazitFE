@@ -1,11 +1,48 @@
-import{PolymerElement,html}from"../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../store.js";import{center_layout}from"../../../../config/platform/main-layout/two-headers-settings.js";import"../../../../config/platform/main-layout/two-headers.js";import{setCurrentTab,closeTab}from"../../Redux/actions/tabs_actions.js";import{FieldsMethods}from"../../../../platform-mixins/functions/fields-methods.js";import{TabsMethods}from"../../../../platform-mixins/platform-functions/tabs-functions.js";import"../../../../platform-mixins/platform-functions/platform-elements.js";import"./platform-center-tabs-settings.js";import"./platform-center-tabs-style.js";import"../../../internalComponents/others/store-consola.js";import"../../../internalComponents/others/language-selectortwoflags.js";import"../Components/Notifications/notifications-pane.js";import"../Components/ProceduresList/procedures-list-pane.js";import"../Components/SOP/sop-icon-and-badge.js";import"../../../../../node_modules/@thuoe/mp4-video-player/mp4-video-player.js";/**
+import {
+  PolymerElement,
+  html,
+} from "../../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { connect } from "../../../../../node_modules/pwa-helpers/connect-mixin.js";
+import { store } from "../../../../store.js";
+import { center_layout } from "../../../../config/platform/main-layout/two-headers-settings.js";
+import "../../../../config/platform/main-layout/two-headers.js";
+import { setCurrentTab, closeTab } from "../../Redux/actions/tabs_actions.js";
+import { FieldsMethods } from "../../../../platform-mixins/functions/fields-methods.js";
+import { TabsMethods } from "../../../../platform-mixins/platform-functions/tabs-functions.js";
+import "../../../../platform-mixins/platform-functions/platform-elements.js";
+import "./platform-center-tabs-settings.js";
+import "./platform-center-tabs-style.js";
+import "../../../internalComponents/others/store-consola.js";
+import "../../../internalComponents/others/language-selectortwoflags.js";
+import "../Components/Notifications/notifications-pane.js";
+import "../Components/ProceduresList/procedures-list-pane.js";
+import "../Components/SOP/sop-icon-and-badge.js";
+import "../../../../../node_modules/@thuoe/mp4-video-player/mp4-video-player.js";
+/**
  * `platform-center-tabs` Description
  *
  * @customElement
  * @polymer
  * @demo
- * 
- */class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(PolymerElement))){static get properties(){return{selectedLanguage:String,tabs:Array,layoutSettings:{type:String,value:center_layout},currentTab:Array,tabIndex:Number,videoUrl:{type:String,value:"http://51.75.202.142:8888/myvideos/LP.mp4"}}}static get template(){return html`
+ *
+ */ class PlatformCenterTabs extends TabsMethods(
+  FieldsMethods(connect(store)(PolymerElement))
+) {
+  static get properties() {
+    return {
+      selectedLanguage: String,
+      tabs: Array,
+      layoutSettings: { type: String, value: center_layout },
+      currentTab: Array,
+      tabIndex: Number,
+      videoUrl: {
+        type: String,
+        value: "http://51.75.202.142:8888/myvideos/LP.mp4",
+      },
+    };
+  }
+  static get template() {
+    return html`
         <style include="platform-center-tabs-style"></style>
         <style>
         mp4-video-player {
@@ -119,8 +156,28 @@ import{PolymerElement,html}from"../../../../../node_modules/@polymer/polymer/pol
 
                 </iron-pages>
             </template>        
-        `}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;this.tabs=state.tabs.tabs;this.currentTab=state.tabs.currentTab;//console.log('tabs', this.tabs,'currentTab', this.currentTab);      
-}closeTab(e){//console.log('platform-center-tabs', 'closeTab', this.currentTab);
-store.dispatch(closeTab(this.currentTab))}tabSelected(e){//console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
-store.dispatch(setCurrentTab(e.currentTarget.name));return}ready(){super.ready();var elem=this.shadowRoot.getElementById("videowindowdialog");if(elem){elem.open()}//this.$.videowindowdialog.open();    
-}}customElements.define("platform-center-tabs",PlatformCenterTabs);
+        `;
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    this.tabs = state.tabs.tabs;
+    this.currentTab = state.tabs.currentTab; //console.log('tabs', this.tabs,'currentTab', this.currentTab);
+  }
+  closeTab(e) {
+    //console.log('platform-center-tabs', 'closeTab', this.currentTab);
+    store.dispatch(closeTab(this.currentTab));
+  }
+  tabSelected(e) {
+    //console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
+    store.dispatch(setCurrentTab(e.currentTarget.name));
+    return;
+  }
+  ready() {
+    super.ready();
+    var elem = this.shadowRoot.getElementById("videowindowdialog");
+    if (elem) {
+      elem.open();
+    } //this.$.videowindowdialog.open();
+  }
+}
+customElements.define("platform-center-tabs", PlatformCenterTabs);

@@ -1,39 +1,52 @@
-import {schema_name} from '../config-process';
-export const programHome_defaultTab = schema_name+"-pending-decision";
-export const shifts=[
-  {keyName:"M1", keyValue_en:"M1", keyValue_es:"M1"},
-  {keyName:"M2", keyValue_en:"M2", keyValue_es:"M2"}
+import { schema_name } from "../config-process";
+export const programHome_defaultTab = schema_name + "-pending-decision";
+export const shifts = [
+  { keyName: "M1", keyValue_en: "M1", keyValue_es: "M1" },
+  { keyName: "M2", keyValue_en: "M2", keyValue_es: "M2" },
 ];
-export const em_deviation_tabs=[
-  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
-    ,tabLabel_en: "Pending Decision", tabLabel_es: "Decisión pendiente"
-    ,tabName: schema_name+"-pending-decision", tabIndex:1
-  } ,
-  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
-    ,tabLabel_en: "Investigations" ,tabLabel_es: "Investigaciones"
-    ,tabName: schema_name+"-investigation"  ,tabIndex:1
-  } ,
+export const em_deviation_tabs = [
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Pending Decision",
+    tabLabel_es: "Decisión pendiente",
+    tabName: schema_name + "-pending-decision",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Investigations",
+    tabLabel_es: "Investigaciones",
+    tabName: schema_name + "-investigation",
+    tabIndex: 1,
+  },
 ];
-export const tabsDefinition={
-  configCalendar:{
+export const tabsDefinition = {
+  configCalendar: {
     displayCalendar: true,
     displayTable: true,
-  }
+  },
 };
 
-export const programMain_programSelectionForm=
-[
-    {                    
-      "name": "programsList",
-      "label_en": "Programs", "label_es": "Programas",
-      "type": "list",
-      "value": "",
-      "read_only": false,
-      "items" : [{
-          "keyName":"",                        
-          "keyValue_en":"", "keyValue_es":""              
-      }]
-    },
+export const programMain_programSelectionForm = [
+  {
+    name: "programsList",
+    label_en: "Programs",
+    label_es: "Programas",
+    type: "list",
+    value: "",
+    read_only: false,
+    items: [
+      {
+        keyName: "",
+        keyValue_en: "",
+        keyValue_es: "",
+      },
+    ],
+  },
 ];
 // export const incubActiveBatches={
 //   fieldToDisplay:[
@@ -49,7 +62,7 @@ export const programMain_programSelectionForm=
 //     label:{label_en:'Active Batches', label_es:'Tandas en activo'}
 //   },
 //   displayButtons: true,
-//   buttons:[          
+//   buttons:[
 //     {
 //       "name": "EM_BATCH_INCUB_CREATE",
 //       "label_en": "New Batch", "label_es": "Crear Tanda",
@@ -77,10 +90,10 @@ export const programMain_programSelectionForm=
 //       "type": "button",
 //       "icon_name": "icons:assignment-return",
 //       "read_only": false,
-//     },    
-//   ]  
-// }; 
-// export const selectedBatchEmpty={  
+//     },
+//   ]
+// };
+// export const selectedBatchEmpty={
 //   "label_en": "No Batch selected", "label_es": "Seleccione una tanda",
 //   "icon_name": "vaadin:chevron-circle-up"
 // };
@@ -92,11 +105,16 @@ export const programMain_programSelectionForm=
 //       "password": "false",
 //       "value": "",
 //       "read_only": false
-//     }, 
+//     },
 //   ];
-  
-const documentContainerEmDemoAProgrammainviewStyle = document.createElement('em-demo-a-programmainview-style');
-documentContainerEmDemoAProgrammainviewStyle.setAttribute('style', 'display: none;');
+
+const documentContainerEmDemoAProgrammainviewStyle = document.createElement(
+  "em-demo-a-programmainview-style"
+);
+documentContainerEmDemoAProgrammainviewStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoAProgrammainviewStyle.innerHTML = `
   <dom-module id="em-demo-a-programmainview-style">

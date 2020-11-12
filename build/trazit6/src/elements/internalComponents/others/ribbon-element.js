@@ -1,4 +1,18 @@
-define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../node_modules/pwa-helpers/connect-mixin.js","../../../store.js","../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_fieldsMethods){"use strict";class RibbonElement extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){static get properties(){return{field:{type:Object,notify:!0}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../store.js",
+  "../../../platform-mixins/functions/fields-methods.js",
+], function (_polymerElement, _connectMixin, _store, _fieldsMethods) {
+  "use strict";
+  class RibbonElement extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    static get properties() {
+      return { field: { type: Object, notify: !0 } };
+    }
+    static get template() {
+      return _polymerElement.html`
 
         <style>
             .draft-ribbon {
@@ -35,6 +49,21 @@ define(["../../../../node_modules/@polymer/polymer/polymer-element.js","../../..
         <div name="ribbon" class="draft-ribbon" style="{{styleDefinition()}}">
             <div class="draft-ribbon-text">{{labelValue(selectedLanguage, field)}}</div> 
         </div>                 
-        `}styleDefinition(){//if (this.field.read_only){return 'color:var(--lumo-disabled-text-color);'}
-var color=!this.field.icon_color?"color: darkred;":"color:"+this.field.text_color+";",bkGroundColor=!this.field.icon_color?"background-color: #fd5e60;;":"background-color:"+this.field.background_color+";";return color;//+' '+bkGroundColor;
-}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}}customElements.define("ribbon-element",RibbonElement)});
+        `;
+    }
+    styleDefinition() {
+      //if (this.field.read_only){return 'color:var(--lumo-disabled-text-color);'}
+      var color = !this.field.icon_color
+          ? "color: darkred;"
+          : "color:" + this.field.text_color + ";",
+        bkGroundColor = !this.field.icon_color
+          ? "background-color: #fd5e60;;"
+          : "background-color:" + this.field.background_color + ";";
+      return color; //+' '+bkGroundColor;
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+    }
+  }
+  customElements.define("ribbon-element", RibbonElement);
+});

@@ -1,7 +1,66 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../platform-mixins/functions/fields-methods.js","../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js","../../01moduleFunctionality/endpoints-frontend-env-monit.js","../../01moduleFunctionality/functions-env-monit.js","../../01moduleFunctionality/em-demo-a-webcomponent-env-monit.js","../../03config/ResultDeviation/em-demo-a-investigation-settings.js"],function(_polymerElement,_connectMixin,_store,_fieldsMethods,_vaadingridLitSingleselect,_endpointsFrontendEnvMonit,_functionsEnvMonit,_emDemoAWebcomponentEnvMonit,_emDemoAInvestigationSettings){"use strict";// import '../../../internalComponents/grid-components/vaadingrid-singleselectrunaction.js'; borrado por refactoring
-//'../03config/config-process.js';
-class emDemoAInvestigation extends(0,_fieldsMethods.FieldsMethods)((0,_functionsEnvMonit.FunctionsEnvMonit)((0,_endpointsFrontendEnvMonit.FrontendEndpointsEnvMonitForInvestigation)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)))){static get properties(){return{tableDefinition:{type:Object,value:_emDemoAInvestigationSettings.windowDefinition},openInvestigations:{type:Array,notify:!0},selectedObject:Object,selectedObject2:Object,callBackRefreshWindow:Object,selectedLanguage:{type:String}}}dataminingfiledownload(){var apiUrl="http://localhost:8080/LabPLANET-API/moduleenvmon/EnvMonAPIstats?schemaPrefix=em-demo-a&actionName=QUERY_SAMPLING_HISTORY&finalToken=eyJ1c2VyREIiOiJsYWJwbGFuZXQiLCJlU2lnbiI6InZhbGUiLCJ1c2VyREJQYXNzd29yZCI6InZhbGUiLCJ1c2VyX3Byb2NlZHVyZXMiOiJbZ2Vub21hLTEsIHByb2MtZGVwbG95XSIsInR5cCI6IkpXVCIsImFwcFNlc3Npb25JZCI6IjExNDAzIiwiYXBwU2Vzc2lvblN0YXJ0ZWREYXRlIjoiTW9uIEF1ZyAyNCAxNTo0ODozOCBDRVNUIDIwMjAiLCJ1c2VyUm9sZSI6ImNvb3JkaW5hdG9yIiwiYWxnIjoiSFMyNTYiLCJpbnRlcm5hbFVzZXJJRCI6IjEifQ.eyJpc3MiOiJMYWJQTEFORVRkZXN0cmFuZ2lzSW5UaGVOaWdodCJ9.b0fVxUL8pny1cfHQfIgQjvhP_ItDh49uNvJPD6UHnh8&sampleGroups=area%2C+spec_code%2Csample_config_code*counter_by_area_spec_tmp%7Carea*counter_by_area%7Chas_pre_invest*counter_out%7Cspec_eval*counter_range_eval%7Chas_invest*counter_investigations%7Chas_pre_invest%2C+has_invest*counter_pre_and_invest&includeSamplerSamples=true&samplingDayStart&samplingDayEnd&includeSamples=true&excludeReadingNotEntered=true&fileName=cambioNombre.csv&outputIsFile=true";console.log("dataminingfiledownload",apiUrl);axios.get(apiUrl,{params:{}}).then(response=>{if(200==response.status){//console.log(response.data);
-return}return}).catch(function(error){console.log(error.message)}).then(function(){})}static get template(){return _polymerElement.html`            
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js",
+  "../../01moduleFunctionality/endpoints-frontend-env-monit.js",
+  "../../01moduleFunctionality/functions-env-monit.js",
+  "../../01moduleFunctionality/em-demo-a-webcomponent-env-monit.js",
+  "../../03config/ResultDeviation/em-demo-a-investigation-settings.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _fieldsMethods,
+  _vaadingridLitSingleselect,
+  _endpointsFrontendEnvMonit,
+  _functionsEnvMonit,
+  _emDemoAWebcomponentEnvMonit,
+  _emDemoAInvestigationSettings
+) {
+  "use strict"; // import '../../../internalComponents/grid-components/vaadingrid-singleselectrunaction.js'; borrado por refactoring
+  //'../03config/config-process.js';
+  class emDemoAInvestigation extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _functionsEnvMonit.FunctionsEnvMonit)(
+      (0, _endpointsFrontendEnvMonit.FrontendEndpointsEnvMonitForInvestigation)(
+        (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+      )
+    )
+  ) {
+    static get properties() {
+      return {
+        tableDefinition: {
+          type: Object,
+          value: _emDemoAInvestigationSettings.windowDefinition,
+        },
+        openInvestigations: { type: Array, notify: !0 },
+        selectedObject: Object,
+        selectedObject2: Object,
+        callBackRefreshWindow: Object,
+        selectedLanguage: { type: String },
+      };
+    }
+    dataminingfiledownload() {
+      var apiUrl =
+        "http://localhost:8080/LabPLANET-API/moduleenvmon/EnvMonAPIstats?schemaPrefix=em-demo-a&actionName=QUERY_SAMPLING_HISTORY&finalToken=eyJ1c2VyREIiOiJsYWJwbGFuZXQiLCJlU2lnbiI6InZhbGUiLCJ1c2VyREJQYXNzd29yZCI6InZhbGUiLCJ1c2VyX3Byb2NlZHVyZXMiOiJbZ2Vub21hLTEsIHByb2MtZGVwbG95XSIsInR5cCI6IkpXVCIsImFwcFNlc3Npb25JZCI6IjExNDAzIiwiYXBwU2Vzc2lvblN0YXJ0ZWREYXRlIjoiTW9uIEF1ZyAyNCAxNTo0ODozOCBDRVNUIDIwMjAiLCJ1c2VyUm9sZSI6ImNvb3JkaW5hdG9yIiwiYWxnIjoiSFMyNTYiLCJpbnRlcm5hbFVzZXJJRCI6IjEifQ.eyJpc3MiOiJMYWJQTEFORVRkZXN0cmFuZ2lzSW5UaGVOaWdodCJ9.b0fVxUL8pny1cfHQfIgQjvhP_ItDh49uNvJPD6UHnh8&sampleGroups=area%2C+spec_code%2Csample_config_code*counter_by_area_spec_tmp%7Carea*counter_by_area%7Chas_pre_invest*counter_out%7Cspec_eval*counter_range_eval%7Chas_invest*counter_investigations%7Chas_pre_invest%2C+has_invest*counter_pre_and_invest&includeSamplerSamples=true&samplingDayStart&samplingDayEnd&includeSamples=true&excludeReadingNotEntered=true&fileName=cambioNombre.csv&outputIsFile=true";
+      console.log("dataminingfiledownload", apiUrl);
+      axios
+        .get(apiUrl, { params: {} })
+        .then((response) => {
+          if (200 == response.status) {
+            //console.log(response.data);
+            return;
+          }
+          return;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        })
+        .then(function () {});
+    }
+    static get template() {
+      return _polymerElement.html`            
             <style include="em-demo-a-investigation-style"></style> 
             <em-demo-a-webcomponent-env-monit id="myelements"></em-demo-a-webcomponent-env-monit>
             <env-monit-elements id="myElements" refresh-window-method="{{callBackRefreshWindow}}"></env-monit-elements>  
@@ -51,4 +110,25 @@ return}return}).catch(function(error){console.log(error.message)}).then(function
                     rowcontainer="{{selectedObject.invest_objects}}" selected-object="{{selectedObject2}}">
                 </vaadingrid-lit-singleselect>
             </div>       
-        `}refreshWindow(){this.tableContentRows()}tableContentRows(){this.callBackRefreshWindow=this.refreshWindow.bind(this);this.getOpenInvestigationsList([])}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){this.openInvestigations=state.emDemoA.openInvestigations}}ready(){super.ready();this.tableContentRows()}}customElements.define("em-demo-a-investigation",emDemoAInvestigation)});
+        `;
+    }
+    refreshWindow() {
+      this.tableContentRows();
+    }
+    tableContentRows() {
+      this.callBackRefreshWindow = this.refreshWindow.bind(this);
+      this.getOpenInvestigationsList([]);
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.emDemoA) {
+        this.openInvestigations = state.emDemoA.openInvestigations;
+      }
+    }
+    ready() {
+      super.ready();
+      this.tableContentRows();
+    }
+  }
+  customElements.define("em-demo-a-investigation", emDemoAInvestigation);
+});

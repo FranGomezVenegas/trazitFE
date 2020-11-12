@@ -1,4 +1,11 @@
-define(["exports","../../../../node_modules/lit-element/lit-element.js"],function(_exports,_litElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.tableWithButtonsStyle=void 0;const tableWithButtonsStyle=_litElement.css`
+define([
+  "exports",
+  "../../../../node_modules/lit-element/lit-element.js",
+], function (_exports, _litElement) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.tableWithButtonsStyle = void 0;
+  const tableWithButtonsStyle = _litElement.css`
     :root{
     }
         p.tableTitle{
@@ -36,4 +43,6 @@ define(["exports","../../../../node_modules/lit-element/lit-element.js"],functio
             padding-right:1em;
           }
     
-`;_exports.tableWithButtonsStyle=tableWithButtonsStyle});
+`;
+  _exports.tableWithButtonsStyle = tableWithButtonsStyle;
+});

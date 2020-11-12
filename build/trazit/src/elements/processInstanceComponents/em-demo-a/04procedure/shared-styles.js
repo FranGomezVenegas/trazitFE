@@ -6,7 +6,9 @@
  * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */import"../../../../../node_modules/@polymer/polymer/polymer-element.js";const $_documentContainer=document.createElement("template");$_documentContainer.innerHTML=`<dom-module id="shared-styles">
+ */ import "../../../../../node_modules/@polymer/polymer/polymer-element.js";
+const $_documentContainer = document.createElement("template");
+$_documentContainer.innerHTML = `<dom-module id="shared-styles">
   <template>
     <style>
     .table-checkbox {
@@ -210,4 +212,5 @@
       }
     </style>
   </template>
-</dom-module>`;document.head.appendChild($_documentContainer.content);
+</dom-module>`;
+document.head.appendChild($_documentContainer.content);

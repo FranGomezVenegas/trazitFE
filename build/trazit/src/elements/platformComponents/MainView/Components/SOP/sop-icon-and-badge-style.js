@@ -1,4 +1,8 @@
-const documentContainerSopIconAndBadgeStyle=document.createElement("sop-icon-and-badge-style");documentContainerSopIconAndBadgeStyle.setAttribute("style","display: none;");documentContainerSopIconAndBadgeStyle.innerHTML=`
+const documentContainerSopIconAndBadgeStyle = document.createElement(
+  "sop-icon-and-badge-style"
+);
+documentContainerSopIconAndBadgeStyle.setAttribute("style", "display: none;");
+documentContainerSopIconAndBadgeStyle.innerHTML = `
   <dom-module id="sop-icon-and-badge-style">
     <template>
       <style>
@@ -49,4 +53,5 @@ const documentContainerSopIconAndBadgeStyle=document.createElement("sop-icon-and
         }        
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerSopIconAndBadgeStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerSopIconAndBadgeStyle);

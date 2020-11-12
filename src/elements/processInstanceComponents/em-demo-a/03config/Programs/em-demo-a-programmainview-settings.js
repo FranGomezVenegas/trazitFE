@@ -1,55 +1,88 @@
-import {schema_name} from '../../03config/config-process';
-export const programHome_defaultTab = schema_name+"-home";
-export const shifts=[
-  {keyName:"M1", keyValue_en:"M1", keyValue_es:"M1"},
-  {keyName:"M2", keyValue_en:"M2", keyValue_es:"M2"}
+import { schema_name } from "../../03config/config-process";
+export const programHome_defaultTab = schema_name + "-home";
+export const shifts = [
+  { keyName: "M1", keyValue_en: "M1", keyValue_es: "M1" },
+  { keyName: "M2", keyValue_en: "M2", keyValue_es: "M2" },
 ];
-export const em_programs_tabs=[
-  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
-    ,tabLabel_en: "Home", tabLabel_es: "Inicio"
-    ,tabName: schema_name+"-home", tabIndex:1
-  } ,
-  {procedure: schema_name ,tabConfirmUserRequired: false,tabEsignRequired: false
-    ,tabLabel_en: "Config Calendar" ,tabLabel_es: "Calendario Config"
-    ,tabName: schema_name+"-config-calendar"  ,tabIndex:1
-  } ,
-  {procedure: schema_name ,tabConfirmUserRequired: false ,tabEsignRequired: false
-    ,tabLabel_en: "Parameter Limits" ,tabLabel_es: "Límites"
-    ,tabName: schema_name+"-limits"  ,tabIndex:1
-  } ,    
-  {procedure: schema_name ,tabConfirmUserRequired: false ,tabEsignRequired: false
-    ,tabLabel_en: "Sampling Points" ,tabLabel_es: "Puntos de Muestreo"
-    ,tabName: schema_name+"-sampling-points"  ,tabIndex:0
-  },  
-  {procedure: schema_name ,tabConfirmUserRequired: false ,tabEsignRequired: false
-    ,tabLabel_en: "Sampling Points Map" ,tabLabel_es: "Puntos de Muestreo Mapa"
-    ,tabName: schema_name+"-sampling-points-map" ,tabIndex:0
-  },          
-  {procedure: schema_name ,tabConfirmUserRequired: false ,tabEsignRequired: false
-    ,tabLabel_en: "Corrective Actions" ,tabLabel_es: "Acciones Correctivas"
-    ,tabName: schema_name+"-corrective-actions"  ,tabIndex:0
-  },          
+export const em_programs_tabs = [
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Home",
+    tabLabel_es: "Inicio",
+    tabName: schema_name + "-home",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Config Calendar",
+    tabLabel_es: "Calendario Config",
+    tabName: schema_name + "-config-calendar",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Parameter Limits",
+    tabLabel_es: "Límites",
+    tabName: schema_name + "-limits",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Sampling Points",
+    tabLabel_es: "Puntos de Muestreo",
+    tabName: schema_name + "-sampling-points",
+    tabIndex: 0,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Sampling Points Map",
+    tabLabel_es: "Puntos de Muestreo Mapa",
+    tabName: schema_name + "-sampling-points-map",
+    tabIndex: 0,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: false,
+    tabEsignRequired: false,
+    tabLabel_en: "Corrective Actions",
+    tabLabel_es: "Acciones Correctivas",
+    tabName: schema_name + "-corrective-actions",
+    tabIndex: 0,
+  },
 ];
-export const tabsDefinition={
-  configCalendar:{
+export const tabsDefinition = {
+  configCalendar: {
     displayCalendar: true,
     displayTable: true,
-  }
+  },
 };
 
-export const programMain_programSelectionForm=
-[
-    {                    
-      "name": "programsList",
-      "label_en": "Programs", "label_es": "Programas",
-      "type": "list",
-      "value": "",
-      "read_only": false,
-      "items" : [{
-          "keyName":"",                        
-          "keyValue_en":"", "keyValue_es":""              
-      }]
-    },
+export const programMain_programSelectionForm = [
+  {
+    name: "programsList",
+    label_en: "Programs",
+    label_es: "Programas",
+    type: "list",
+    value: "",
+    read_only: false,
+    items: [
+      {
+        keyName: "",
+        keyValue_en: "",
+        keyValue_es: "",
+      },
+    ],
+  },
 ];
 // export const incubActiveBatches={
 //   fieldToDisplay:[
@@ -65,7 +98,7 @@ export const programMain_programSelectionForm=
 //     label:{label_en:'Active Batches', label_es:'Tandas en activo'}
 //   },
 //   displayButtons: true,
-//   buttons:[          
+//   buttons:[
 //     {
 //       "name": "EM_BATCH_INCUB_CREATE",
 //       "label_en": "New Batch", "label_es": "Crear Tanda",
@@ -93,10 +126,10 @@ export const programMain_programSelectionForm=
 //       "type": "button",
 //       "icon_name": "icons:assignment-return",
 //       "read_only": false,
-//     },    
-//   ]  
-// }; 
-// export const selectedBatchEmpty={  
+//     },
+//   ]
+// };
+// export const selectedBatchEmpty={
 //   "label_en": "No Batch selected", "label_es": "Seleccione una tanda",
 //   "icon_name": "vaadin:chevron-circle-up"
 // };
@@ -108,11 +141,16 @@ export const programMain_programSelectionForm=
 //       "password": "false",
 //       "value": "",
 //       "read_only": false
-//     }, 
+//     },
 //   ];
-  
-const documentContainerEmDemoAProgrammainviewStyle = document.createElement('em-demo-a-programmainview-style');
-documentContainerEmDemoAProgrammainviewStyle.setAttribute('style', 'display: none;');
+
+const documentContainerEmDemoAProgrammainviewStyle = document.createElement(
+  "em-demo-a-programmainview-style"
+);
+documentContainerEmDemoAProgrammainviewStyle.setAttribute(
+  "style",
+  "display: none;"
+);
 
 documentContainerEmDemoAProgrammainviewStyle.innerHTML = `
   <dom-module id="em-demo-a-programmainview-style">

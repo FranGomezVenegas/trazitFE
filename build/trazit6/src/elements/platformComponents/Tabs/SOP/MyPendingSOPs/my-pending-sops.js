@@ -1,4 +1,58 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../platform-mixins/apis/api-and-frontend-sopuser.js","../../../../../config/platform/tablefield_labels.js","../../../../../platform-mixins/functions/fields-methods.js","../../../../../config/platform/logic/sop-config.js","../pdf-link.js","./my-pending-sops-style.js"],function(_polymerElement,_connectMixin,_store,_apiAndFrontendSopuser,_tablefield_labels,_fieldsMethods,_sopConfig,_pdfLink,_myPendingSopsStyle){"use strict";class MyPendingSops extends(0,_tablefield_labels.tableFieldLabel)((0,_fieldsMethods.FieldsMethods)((0,_apiAndFrontendSopuser.ApiAndFrontendSopUser)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)))){static get properties(){return{allMyPendingSops:Object,dialogButtons:{type:Array,value:_sopConfig.sopMyPendingSops_buttons},sopStatusLabel:{type:Object,value:_sopConfig.sopStatusLabel},sopMyPendingSops_cardContent:{type:Object,value:_sopConfig.sopMyPendingSops_cardContent}}}stateChanged(state){this.allMyPendingSops=state.SOPS.userPendingSop}onFinalTokenFilled(){var paramsUrl="sopFieldsToRetrieve="+_sopConfig.sopUserPendingSop_fieldToRetrieve,datas=[];datas.paramsUrl=paramsUrl;this.frontEndSopUserAPI(datas)}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../platform-mixins/apis/api-and-frontend-sopuser.js",
+  "../../../../../config/platform/tablefield_labels.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../../config/platform/logic/sop-config.js",
+  "../pdf-link.js",
+  "./my-pending-sops-style.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _apiAndFrontendSopuser,
+  _tablefield_labels,
+  _fieldsMethods,
+  _sopConfig,
+  _pdfLink,
+  _myPendingSopsStyle
+) {
+  "use strict";
+  class MyPendingSops extends (0, _tablefield_labels.tableFieldLabel)(
+    (0, _fieldsMethods.FieldsMethods)(
+      (0, _apiAndFrontendSopuser.ApiAndFrontendSopUser)(
+        (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+      )
+    )
+  ) {
+    static get properties() {
+      return {
+        allMyPendingSops: Object,
+        dialogButtons: {
+          type: Array,
+          value: _sopConfig.sopMyPendingSops_buttons,
+        },
+        sopStatusLabel: { type: Object, value: _sopConfig.sopStatusLabel },
+        sopMyPendingSops_cardContent: {
+          type: Object,
+          value: _sopConfig.sopMyPendingSops_cardContent,
+        },
+      };
+    }
+    stateChanged(state) {
+      this.allMyPendingSops = state.SOPS.userPendingSop;
+    }
+    onFinalTokenFilled() {
+      var paramsUrl =
+          "sopFieldsToRetrieve=" + _sopConfig.sopUserPendingSop_fieldToRetrieve,
+        datas = [];
+      datas.paramsUrl = paramsUrl;
+      this.frontEndSopUserAPI(datas);
+    }
+    static get template() {
+      return _polymerElement.html`
             <style include="my-pending-sops-style"></style>
             <template is="dom-repeat" items="[[allMyPendingSops]]" as="procedures">  
                 <div class="cardPendingSops"> 
@@ -33,4 +87,8 @@ define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","..
                     </template>
                 </div>
             </template>            
-        `}}customElements.define("my-pending-sops",MyPendingSops)});
+        `;
+    }
+  }
+  customElements.define("my-pending-sops", MyPendingSops);
+});

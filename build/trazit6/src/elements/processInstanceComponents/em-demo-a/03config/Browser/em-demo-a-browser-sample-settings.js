@@ -1,4 +1,56 @@
-define(["exports","../config-process.js"],function(_exports,_configProcess){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.browserSampleFields=_exports.windowContent=void 0;const windowContent={fields:[{name:"SampleId",label_en:"Sample",label_es:"Muestra",type:"text",password:"false",value:"979",read_only:!1},{name:"RunReport",label_en:"Report",label_es:"Informe",type:"button",value:"",read_only:!1}],goToStageTabButton:{name:"buttonAccess",label_en:"Go",label_es:"Ir",type:"button",value:"",read_only:!1}};_exports.windowContent=windowContent;const browserSampleFields={schemaName:"data",tableName:"Sample",fieldToRetrieve:"ALL",fieldsToDisplay:"current_stage|program_name|location_name|product_lot|shift"};_exports.browserSampleFields=browserSampleFields;const documentContainerEmDemoABrowserSampleStyle=document.createElement("em-demo-a-browser-sample-style");documentContainerEmDemoABrowserSampleStyle.setAttribute("style","display: none;");documentContainerEmDemoABrowserSampleStyle.innerHTML=`
+define(["exports", "../config-process.js"], function (
+  _exports,
+  _configProcess
+) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.browserSampleFields = _exports.windowContent = void 0;
+  const windowContent = {
+    fields: [
+      {
+        name: "SampleId",
+        label_en: "Sample",
+        label_es: "Muestra",
+        type: "text",
+        password: "false",
+        value: "979",
+        read_only: !1,
+      },
+      {
+        name: "RunReport",
+        label_en: "Report",
+        label_es: "Informe",
+        type: "button",
+        value: "",
+        read_only: !1,
+      },
+    ],
+    goToStageTabButton: {
+      name: "buttonAccess",
+      label_en: "Go",
+      label_es: "Ir",
+      type: "button",
+      value: "",
+      read_only: !1,
+    },
+  };
+  _exports.windowContent = windowContent;
+  const browserSampleFields = {
+    schemaName: "data",
+    tableName: "Sample",
+    fieldToRetrieve: "ALL",
+    fieldsToDisplay:
+      "current_stage|program_name|location_name|product_lot|shift",
+  };
+  _exports.browserSampleFields = browserSampleFields;
+  const documentContainerEmDemoABrowserSampleStyle = document.createElement(
+    "em-demo-a-browser-sample-style"
+  );
+  documentContainerEmDemoABrowserSampleStyle.setAttribute(
+    "style",
+    "display: none;"
+  );
+  documentContainerEmDemoABrowserSampleStyle.innerHTML = `
   <dom-module id="em-demo-a-browser-sample-style">
     <template>
     <style>
@@ -42,4 +94,6 @@ define(["exports","../config-process.js"],function(_exports,_configProcess){"use
     }
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerEmDemoABrowserSampleStyle)});
+  </dom-module>`;
+  document.head.appendChild(documentContainerEmDemoABrowserSampleStyle);
+});

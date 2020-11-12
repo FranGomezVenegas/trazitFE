@@ -1,4 +1,18 @@
-define(["exports","../../../../node_modules/lit-element/lit-element.js"],function(_exports,_litElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.appMainLayoutTwoHeadersStyle=void 0;const documentContainerAppMainLayoutTwoHeaders=document.createElement("two-headers");documentContainerAppMainLayoutTwoHeaders.setAttribute("style","display: none;");const appMainLayoutTwoHeadersStyle=_litElement.css`
+define([
+  "exports",
+  "../../../../node_modules/lit-element/lit-element.js",
+], function (_exports, _litElement) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.appMainLayoutTwoHeadersStyle = void 0;
+  const documentContainerAppMainLayoutTwoHeaders = document.createElement(
+    "two-headers"
+  );
+  documentContainerAppMainLayoutTwoHeaders.setAttribute(
+    "style",
+    "display: none;"
+  );
+  const appMainLayoutTwoHeadersStyle = _litElement.css`
   host:{
     --action-success-background-color: #0085ffe6;
     --action-error-background-color: #a33;
@@ -77,7 +91,9 @@ platform-center-tabs.center-tab{
   opacity: .5;
   float: left;            
 }        
-`;_exports.appMainLayoutTwoHeadersStyle=appMainLayoutTwoHeadersStyle;documentContainerAppMainLayoutTwoHeaders.innerHTML=`
+`;
+  _exports.appMainLayoutTwoHeadersStyle = appMainLayoutTwoHeadersStyle;
+  documentContainerAppMainLayoutTwoHeaders.innerHTML = `
   <dom-module id="two-headers">
     <template>
       <style>
@@ -161,4 +177,6 @@ platform-center-tabs.center-tab{
         }                      
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerAppMainLayoutTwoHeaders)});
+  </dom-module>`;
+  document.head.appendChild(documentContainerAppMainLayoutTwoHeaders);
+});

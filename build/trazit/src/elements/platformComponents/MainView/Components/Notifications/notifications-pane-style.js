@@ -1,4 +1,8 @@
-const documentContainerNotificationsPaneStyle=document.createElement("notifications-pane-style");documentContainerNotificationsPaneStyle.setAttribute("style","display: none;");documentContainerNotificationsPaneStyle.innerHTML=`
+const documentContainerNotificationsPaneStyle = document.createElement(
+  "notifications-pane-style"
+);
+documentContainerNotificationsPaneStyle.setAttribute("style", "display: none;");
+documentContainerNotificationsPaneStyle.innerHTML = `
   <dom-module id="notifications-pane-style">
     <template>
       <style>
@@ -27,4 +31,5 @@ const documentContainerNotificationsPaneStyle=document.createElement("notificati
         }
       </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerNotificationsPaneStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerNotificationsPaneStyle);

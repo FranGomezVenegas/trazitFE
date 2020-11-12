@@ -1,43 +1,47 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../store';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element.js";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../store";
 
-import {center_layout} from '../../../../config/platform/main-layout/two-headers-settings';
-import '../../../../config/platform/main-layout/two-headers';
-import {setCurrentTab, closeTab } from '../../Redux/actions/tabs_actions';
-import {FieldsMethods} from '../../../../platform-mixins/functions/fields-methods';
-import {TabsMethods} from '../../../../platform-mixins/platform-functions/tabs-functions';
-import '../../../../platform-mixins/platform-functions/platform-elements';
-import './platform-center-tabs-settings';
-import './platform-center-tabs-style';
-import '../../../internalComponents/others/store-consola';
-import '../../../internalComponents/others/language-selectortwoflags';
-import '../Components/Notifications/notifications-pane';
-import '../Components/ProceduresList/procedures-list-pane.js';
-import '../Components/SOP/sop-icon-and-badge';
-import '@thuoe/mp4-video-player';
+import { center_layout } from "../../../../config/platform/main-layout/two-headers-settings";
+import "../../../../config/platform/main-layout/two-headers";
+import { setCurrentTab, closeTab } from "../../Redux/actions/tabs_actions";
+import { FieldsMethods } from "../../../../platform-mixins/functions/fields-methods";
+import { TabsMethods } from "../../../../platform-mixins/platform-functions/tabs-functions";
+import "../../../../platform-mixins/platform-functions/platform-elements";
+import "./platform-center-tabs-settings";
+import "./platform-center-tabs-style";
+import "../../../internalComponents/others/store-consola";
+import "../../../internalComponents/others/language-selectortwoflags";
+import "../Components/Notifications/notifications-pane";
+import "../Components/ProceduresList/procedures-list-pane.js";
+import "../Components/SOP/sop-icon-and-badge";
+import "@thuoe/mp4-video-player";
 /**
  * `platform-center-tabs` Description
  *
  * @customElement
  * @polymer
  * @demo
- * 
+ *
  */
-class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(PolymerElement))) {
-    static get properties() {
-        return {
-            selectedLanguage: String,
-            tabs: Array,
-            layoutSettings:{type: String, value: center_layout},
-            currentTab: Array,
-            tabIndex: Number,
-            videoUrl:{type: String, value:
-                'http://51.75.202.142:8888/myvideos/LP.mp4'},
-        }
-    }
-    static get template() {
-        return html`
+class PlatformCenterTabs extends TabsMethods(
+  FieldsMethods(connect(store)(PolymerElement))
+) {
+  static get properties() {
+    return {
+      selectedLanguage: String,
+      tabs: Array,
+      layoutSettings: { type: String, value: center_layout },
+      currentTab: Array,
+      tabIndex: Number,
+      videoUrl: {
+        type: String,
+        value: "http://51.75.202.142:8888/myvideos/LP.mp4",
+      },
+    };
+  }
+  static get template() {
+    return html`
         <style include="platform-center-tabs-style"></style>
         <style>
         mp4-video-player {
@@ -152,28 +156,30 @@ class PlatformCenterTabs extends TabsMethods(FieldsMethods(connect(store)(Polyme
                 </iron-pages>
             </template>        
         `;
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    this.tabs = state.tabs.tabs;
+    this.currentTab = state.tabs.currentTab;
+    //console.log('tabs', this.tabs,'currentTab', this.currentTab);
+  }
+  closeTab(e) {
+    //console.log('platform-center-tabs', 'closeTab', this.currentTab);
+    store.dispatch(closeTab(this.currentTab));
+  }
+  tabSelected(e) {
+    //console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
+    store.dispatch(setCurrentTab(e.currentTarget.name));
+    return;
+  }
+  ready() {
+    super.ready();
+    var elem = this.shadowRoot.getElementById("videowindowdialog");
+    if (elem) {
+      elem.open();
     }
-    stateChanged(state) {
-        this.selectedLanguage=state.app.user.appLanguage;
-        this.tabs = state.tabs.tabs;
-        this.currentTab = state.tabs.currentTab;  
-        //console.log('tabs', this.tabs,'currentTab', this.currentTab);      
-    } 
-    closeTab(e){
-        //console.log('platform-center-tabs', 'closeTab', this.currentTab);
-        store.dispatch(closeTab(this.currentTab));        
-    }
-    tabSelected(e){
-        //console.log('platform-center-tabs', 'tabSelected', e.currentTarget);
-        store.dispatch(setCurrentTab(e.currentTarget.name));  
-        return;
-    }
-    ready() {
-        super.ready();
-        var elem=this.shadowRoot.getElementById("videowindowdialog");
-        if (elem){elem.open();}
-        //this.$.videowindowdialog.open();    
-    }
+    //this.$.videowindowdialog.open();
+  }
 }
 
-customElements.define('platform-center-tabs', PlatformCenterTabs);
+customElements.define("platform-center-tabs", PlatformCenterTabs);

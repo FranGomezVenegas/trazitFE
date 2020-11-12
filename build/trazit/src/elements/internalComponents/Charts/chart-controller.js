@@ -1,11 +1,34 @@
-import{PolymerElement,html}from"../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../store.js";import{FieldsMethods}from"../../../platform-mixins/functions/fields-methods.js";/**
+import {
+  PolymerElement,
+  html,
+} from "../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { connect } from "../../../../node_modules/pwa-helpers/connect-mixin.js";
+import { store } from "../../../store.js";
+import { FieldsMethods } from "../../../platform-mixins/functions/fields-methods.js";
+/**
  * `chart-controller` Description
  *
  * @customElement
  * @polymer
  * @demo
- * 
- */class ChartController extends FieldsMethods(connect(store)(PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage}static get properties(){return{dataObject:{type:Object,observer:"getChartData",notify:!0},chartDefinition:{type:Object,notify:!0},chartType:{type:String},chartData:{type:Array},selectedLanguage:String}}static get template(){return html`
+ *
+ */ class ChartController extends FieldsMethods(
+  connect(store)(PolymerElement)
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+  }
+  static get properties() {
+    return {
+      dataObject: { type: Object, observer: "getChartData", notify: !0 },
+      chartDefinition: { type: Object, notify: !0 },
+      chartType: { type: String },
+      chartData: { type: Array },
+      selectedLanguage: String,
+    };
+  }
+  static get template() {
+    return html`
         <style>
         google-chart{
             background-color: transparent;
@@ -13,17 +36,138 @@ import{PolymerElement,html}from"../../../../node_modules/@polymer/polymer/polyme
         </style>
         <p><h2><b>{{labelValue(selectedLanguage, chartDefinition.chart_title)}}</h2></p>
         <google-chart id="pie" type={{chartDefinition.chart_type}} data={{chartData}}></google-chart>
-        `}/**
-     * Instance of the element is created/upgraded. Use: initializing state,
-     * set up event listeners, create shadow dom.
-     * @constructor
-     */constructor(){super()}/**
-     * Use for one-time configuration of your component after local
-     * DOM is initialized.
-     */ready(){super.ready()}getChartData(){var chartType="";chartType=this.chartDefinition.chart_type;if(this.chartDefinition!=void 0&&this.chartDefinition.chart_type!=void 0){switch(chartType.toUpperCase()){case"PIE":this.dataForPieAndLine();break;case"LINE":this.dataForPieAndLine();break;case"COLUMN":this.dataForPieAndLine();break;}}}dataForPieAndLine(){//console.log('dataForPieAndLine');
-if(this.dataObject==void 0){//console.log('chart-controller', 'dataForPieAndLine', 'dataObject is empty');
-return}if(this.chartDefinition){if(this.chartDefinition.display_chart){var chartData=[],itemLabel="item";if(this.chartDefinition.label_item){itemLabel=this.labelValue(this.selectedLanguage,this.chartDefinition.label_item)}var valueLabel="value";if(this.chartDefinition.label_value){valueLabel=this.labelValue(this.selectedLanguage,this.chartDefinition.label_value)}chartData=[[itemLabel,valueLabel]];var chartValues=[];chartValues=this.dataObject[this.chartDefinition.chart_name];var grpFldName="grouper";if(this.chartDefinition.grouper_field_name){grpFldName=this.chartDefinition.grouper_field_name}var cntFldName="count";if(this.chartDefinition.counter_field_name){cntFldName=this.chartDefinition.counter_field_name}if(chartValues!=void 0){var itemsToExclude=[];if(this.chartDefinition.grouper_exclude_items){itemsToExclude=this.chartDefinition.grouper_exclude_items}var j;for(j=0;j<chartValues.length;j++){var curchtval=[];curchtval=chartValues[j];if(!itemsToExclude.includes(curchtval[grpFldName])){var addValue=!0;if(this.chartDefinition.counterLimits){addValue=this.addNumericValue(this.chartDefinition.counterLimits,curchtval[cntFldName])}if(addValue){chartData.push([curchtval[grpFldName],curchtval[cntFldName]])}}}}//console.log('chartData', chartData);
-this.chartData=chartData}}}addNumericValue(rule,value){if(rule==void 0){return!0}if(value==void 0){return!1}if(rule.min_allowed!=void 0){if(value<=rule.min_allowed){return!1}}if(rule.min_allowed_included<void 0){if(value<rule.min_allowed_included){return!1}}if(rule.max_allowed!=void 0){if(value>=rule.max_allowed){return!1}}if(rule.max_allowed_included>void 0){if(value>rule.max_allowed_included){return!1}}if(rule.value!=void 0){if(rule.value==value){return!1}}return!0}}customElements.define("chart-controller",ChartController);// import {LitElement, html} from 'lit-element';
+        `;
+  }
+  /**
+   * Instance of the element is created/upgraded. Use: initializing state,
+   * set up event listeners, create shadow dom.
+   * @constructor
+   */ constructor() {
+    super();
+  }
+  /**
+   * Use for one-time configuration of your component after local
+   * DOM is initialized.
+   */ ready() {
+    super.ready();
+  }
+  getChartData() {
+    var chartType = "";
+    chartType = this.chartDefinition.chart_type;
+    if (
+      this.chartDefinition != void 0 &&
+      this.chartDefinition.chart_type != void 0
+    ) {
+      switch (chartType.toUpperCase()) {
+        case "PIE":
+          this.dataForPieAndLine();
+          break;
+        case "LINE":
+          this.dataForPieAndLine();
+          break;
+        case "COLUMN":
+          this.dataForPieAndLine();
+          break;
+      }
+    }
+  }
+  dataForPieAndLine() {
+    //console.log('dataForPieAndLine');
+    if (this.dataObject == void 0) {
+      //console.log('chart-controller', 'dataForPieAndLine', 'dataObject is empty');
+      return;
+    }
+    if (this.chartDefinition) {
+      if (this.chartDefinition.display_chart) {
+        var chartData = [],
+          itemLabel = "item";
+        if (this.chartDefinition.label_item) {
+          itemLabel = this.labelValue(
+            this.selectedLanguage,
+            this.chartDefinition.label_item
+          );
+        }
+        var valueLabel = "value";
+        if (this.chartDefinition.label_value) {
+          valueLabel = this.labelValue(
+            this.selectedLanguage,
+            this.chartDefinition.label_value
+          );
+        }
+        chartData = [[itemLabel, valueLabel]];
+        var chartValues = [];
+        chartValues = this.dataObject[this.chartDefinition.chart_name];
+        var grpFldName = "grouper";
+        if (this.chartDefinition.grouper_field_name) {
+          grpFldName = this.chartDefinition.grouper_field_name;
+        }
+        var cntFldName = "count";
+        if (this.chartDefinition.counter_field_name) {
+          cntFldName = this.chartDefinition.counter_field_name;
+        }
+        if (chartValues != void 0) {
+          var itemsToExclude = [];
+          if (this.chartDefinition.grouper_exclude_items) {
+            itemsToExclude = this.chartDefinition.grouper_exclude_items;
+          }
+          var j;
+          for (j = 0; j < chartValues.length; j++) {
+            var curchtval = [];
+            curchtval = chartValues[j];
+            if (!itemsToExclude.includes(curchtval[grpFldName])) {
+              var addValue = !0;
+              if (this.chartDefinition.counterLimits) {
+                addValue = this.addNumericValue(
+                  this.chartDefinition.counterLimits,
+                  curchtval[cntFldName]
+                );
+              }
+              if (addValue) {
+                chartData.push([curchtval[grpFldName], curchtval[cntFldName]]);
+              }
+            }
+          }
+        } //console.log('chartData', chartData);
+        this.chartData = chartData;
+      }
+    }
+  }
+  addNumericValue(rule, value) {
+    if (rule == void 0) {
+      return !0;
+    }
+    if (value == void 0) {
+      return !1;
+    }
+    if (rule.min_allowed != void 0) {
+      if (value <= rule.min_allowed) {
+        return !1;
+      }
+    }
+    if (rule.min_allowed_included < void 0) {
+      if (value < rule.min_allowed_included) {
+        return !1;
+      }
+    }
+    if (rule.max_allowed != void 0) {
+      if (value >= rule.max_allowed) {
+        return !1;
+      }
+    }
+    if (rule.max_allowed_included > void 0) {
+      if (value > rule.max_allowed_included) {
+        return !1;
+      }
+    }
+    if (rule.value != void 0) {
+      if (rule.value == value) {
+        return !1;
+      }
+    }
+    return !0;
+  }
+}
+customElements.define("chart-controller", ChartController); // import {LitElement, html} from 'lit-element';
 // import '@google-web-components/google-chart';
 // import { connect } from 'pwa-helpers/connect-mixin';
 // import { store } from '../../../store';
@@ -34,7 +178,7 @@ this.chartData=chartData}}}addNumericValue(rule,value){if(rule==void 0){return!0
 //  * @customElement
 //  * @polymer
 //  * @demo
-//  * 
+//  *
 //  */
 // class ChartController extends FieldsMethods(connect(store)(LitElement)) {
 //     static get properties() {
@@ -42,7 +186,7 @@ this.chartData=chartData}}}addNumericValue(rule,value){if(rule==void 0){return!0
 //             chartType:{type:String},
 //             dataa:{type: Array},
 //             chartTitle:{type: String},
-//             cols:{type: Array}, 
+//             cols:{type: Array},
 //             dataObject:{type:Object, observer:'getChartData', notify:true},
 //             chartDefinition:{type:Object, notify:true},
 //             chartType:{type:String},
@@ -106,7 +250,7 @@ this.chartData=chartData}}}addNumericValue(rule,value){if(rule==void 0){return!0
 //                     var chartData=[];
 //                     var itemLabel='item';
 //                     if (this.chartDefinition.label_item){
-//                         itemLabel=this.labelValue(this.selectedLanguage, this.chartDefinition.label_item);}                            
+//                         itemLabel=this.labelValue(this.selectedLanguage, this.chartDefinition.label_item);}
 //                     var valueLabel='value';
 //                     if (this.chartDefinition.label_value){
 //                         valueLabel=this.labelValue(this.selectedLanguage, this.chartDefinition.label_value);}
@@ -117,8 +261,8 @@ this.chartData=chartData}}}addNumericValue(rule,value){if(rule==void 0){return!0
 //                         var j;
 //                         for (j = 0; j < chartValues.length; j++) {
 //                             chartData.push(
-//                                 [chartValues[j].grouper, 
-//                                 chartValues[j].count]);                            
+//                                 [chartValues[j].grouper,
+//                                 chartValues[j].count]);
 //                         }
 //             //            var selChrt={title:'', chartType:'pie', data:[]};
 //                         // selChrt.title=this.labelValue(this.selectedLanguage, this.chartDefinition.chart_title);

@@ -1,4 +1,79 @@
-import{schema_name}from"../config-process.js";export const programHome_defaultTab=schema_name+"-home";export const shifts=[{keyName:"M1",keyValue_en:"M1",keyValue_es:"M1"},{keyName:"M2",keyValue_en:"M2",keyValue_es:"M2"}];export const em_programs_tabs=[{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Home",tabLabel_es:"Inicio",tabName:schema_name+"-home",tabIndex:1},{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Config Calendar",tabLabel_es:"Calendario Config",tabName:schema_name+"-config-calendar",tabIndex:1},{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Parameter Limits",tabLabel_es:"L\xEDmites",tabName:schema_name+"-limits",tabIndex:1},{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Sampling Points",tabLabel_es:"Puntos de Muestreo",tabName:schema_name+"-sampling-points",tabIndex:0},{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Sampling Points Map",tabLabel_es:"Puntos de Muestreo Mapa",tabName:schema_name+"-sampling-points-map",tabIndex:0},{procedure:schema_name,tabConfirmUserRequired:!1,tabEsignRequired:!1,tabLabel_en:"Corrective Actions",tabLabel_es:"Acciones Correctivas",tabName:schema_name+"-corrective-actions",tabIndex:0}];export const tabsDefinition={configCalendar:{displayCalendar:!0,displayTable:!0}};export const programMain_programSelectionForm=[{name:"programsList",label_en:"Programs",label_es:"Programas",type:"list",value:"",read_only:!1,items:[{keyName:"",keyValue_en:"",keyValue_es:""}]}];// export const incubActiveBatches={
+import { schema_name } from "../config-process.js";
+export const programHome_defaultTab = schema_name + "-home";
+export const shifts = [
+  { keyName: "M1", keyValue_en: "M1", keyValue_es: "M1" },
+  { keyName: "M2", keyValue_en: "M2", keyValue_es: "M2" },
+];
+export const em_programs_tabs = [
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Home",
+    tabLabel_es: "Inicio",
+    tabName: schema_name + "-home",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Config Calendar",
+    tabLabel_es: "Calendario Config",
+    tabName: schema_name + "-config-calendar",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Parameter Limits",
+    tabLabel_es: "L\xEDmites",
+    tabName: schema_name + "-limits",
+    tabIndex: 1,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Sampling Points",
+    tabLabel_es: "Puntos de Muestreo",
+    tabName: schema_name + "-sampling-points",
+    tabIndex: 0,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Sampling Points Map",
+    tabLabel_es: "Puntos de Muestreo Mapa",
+    tabName: schema_name + "-sampling-points-map",
+    tabIndex: 0,
+  },
+  {
+    procedure: schema_name,
+    tabConfirmUserRequired: !1,
+    tabEsignRequired: !1,
+    tabLabel_en: "Corrective Actions",
+    tabLabel_es: "Acciones Correctivas",
+    tabName: schema_name + "-corrective-actions",
+    tabIndex: 0,
+  },
+];
+export const tabsDefinition = {
+  configCalendar: { displayCalendar: !0, displayTable: !0 },
+};
+export const programMain_programSelectionForm = [
+  {
+    name: "programsList",
+    label_en: "Programs",
+    label_es: "Programas",
+    type: "list",
+    value: "",
+    read_only: !1,
+    items: [{ keyName: "", keyValue_en: "", keyValue_es: "" }],
+  },
+]; // export const incubActiveBatches={
 //   fieldToDisplay:[
 //     {name: 'name', label_en:'Name', label_es: 'Nombre', sort:true, filter:false, width:'30%'}
 //     , {name: 'incubation_incubator', label_en:'Incubator', label_es: 'Incubadora', sort:false, filter:true, width:'30%'}
@@ -12,7 +87,7 @@ import{schema_name}from"../config-process.js";export const programHome_defaultTa
 //     label:{label_en:'Active Batches', label_es:'Tandas en activo'}
 //   },
 //   displayButtons: true,
-//   buttons:[          
+//   buttons:[
 //     {
 //       "name": "EM_BATCH_INCUB_CREATE",
 //       "label_en": "New Batch", "label_es": "Crear Tanda",
@@ -40,10 +115,10 @@ import{schema_name}from"../config-process.js";export const programHome_defaultTa
 //       "type": "button",
 //       "icon_name": "icons:assignment-return",
 //       "read_only": false,
-//     },    
-//   ]  
-// }; 
-// export const selectedBatchEmpty={  
+//     },
+//   ]
+// };
+// export const selectedBatchEmpty={
 //   "label_en": "No Batch selected", "label_es": "Seleccione una tanda",
 //   "icon_name": "vaadin:chevron-circle-up"
 // };
@@ -55,9 +130,16 @@ import{schema_name}from"../config-process.js";export const programHome_defaultTa
 //       "password": "false",
 //       "value": "",
 //       "read_only": false
-//     }, 
+//     },
 //   ];
-const documentContainerprocDeployProgrammainviewStyle=document.createElement("proc-deploy-programmainview-style");documentContainerprocDeployProgrammainviewStyle.setAttribute("style","display: none;");documentContainerprocDeployProgrammainviewStyle.innerHTML=`
+const documentContainerprocDeployProgrammainviewStyle = document.createElement(
+  "proc-deploy-programmainview-style"
+);
+documentContainerprocDeployProgrammainviewStyle.setAttribute(
+  "style",
+  "display: none;"
+);
+documentContainerprocDeployProgrammainviewStyle.innerHTML = `
   <dom-module id="proc-deploy-programmainview-style">
     <template>
     <style>
@@ -101,4 +183,5 @@ const documentContainerprocDeployProgrammainviewStyle=document.createElement("pr
       }                                  
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerprocDeployProgrammainviewStyle);
+  </dom-module>`;
+document.head.appendChild(documentContainerprocDeployProgrammainviewStyle);

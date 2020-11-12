@@ -1,4 +1,6 @@
-const documentContainerMySops=document.createElement("my-sops-style");documentContainerMySops.setAttribute("style","display: none;");documentContainerMySops.innerHTML=`
+const documentContainerMySops = document.createElement("my-sops-style");
+documentContainerMySops.setAttribute("style", "display: none;");
+documentContainerMySops.innerHTML = `
   <dom-module id="my-sops-style">
     <template>
         <style>
@@ -23,4 +25,5 @@ const documentContainerMySops=document.createElement("my-sops-style");documentCo
             p{color: #36859a;} 
         </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerMySops);
+  </dom-module>`;
+document.head.appendChild(documentContainerMySops);

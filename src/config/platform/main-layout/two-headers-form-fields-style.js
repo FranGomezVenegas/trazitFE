@@ -1,5 +1,5 @@
-const documentContainerFormFields = document.createElement('form-fields');
-documentContainerFormFields.setAttribute('style', 'display: none;');
+const documentContainerFormFields = document.createElement("form-fields");
+documentContainerFormFields.setAttribute("style", "display: none;");
 
 documentContainerFormFields.innerHTML = `
   <dom-module id="form-fields-style">

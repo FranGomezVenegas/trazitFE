@@ -1,5 +1,5 @@
-const documentContainerMySops = document.createElement('my-sops-style');
-documentContainerMySops.setAttribute('style', 'display: none;');
+const documentContainerMySops = document.createElement("my-sops-style");
+documentContainerMySops.setAttribute("style", "display: none;");
 
 documentContainerMySops.innerHTML = `
   <dom-module id="my-sops-style">
@@ -27,4 +27,4 @@ documentContainerMySops.innerHTML = `
         </style>
     </template>
   </dom-module>`;
-document.head.appendChild(documentContainerMySops);      
+document.head.appendChild(documentContainerMySops);

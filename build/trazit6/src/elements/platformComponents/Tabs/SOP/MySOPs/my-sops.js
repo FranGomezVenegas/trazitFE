@@ -1,5 +1,55 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../platform-mixins/apis/api-and-frontend-sopuser.js","../../../../../config/platform/logic/sop-config.js","../../../../../platform-mixins/functions/fields-methods.js","../../../../../config/platform/tablefield_labels.js","../../../../internalComponents/form-fields/field-controller.js","../pdf-link.js","./my-sops-style.js"],function(_polymerElement,_connectMixin,_store,_apiAndFrontendSopuser,_sopConfig,_fieldsMethods,_tablefield_labels,_fieldController,_pdfLink,_mySopsStyle){"use strict";class MySops extends(0,_tablefield_labels.tableFieldLabel)((0,_fieldsMethods.FieldsMethods)((0,_apiAndFrontendSopuser.ApiAndFrontendSopUser)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)))){static get properties(){return{//            finalToken: {type: String, observer:'onFinalTokenFilled'},
-allMySops:Array,dialogButtons:{type:Array,value:_sopConfig.sopMySops_buttons},sopStatusLabel:{type:Object,value:_sopConfig.sopStatusLabel},selectedLanguage:String,tableFieldLabelSchemaName:{type:String,value:"config"},tableFieldLabelTableName:{type:String,value:"usersop"},sopMySops_cardContent:{type:Object,value:_sopConfig.sopMySops_cardContent}}}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;this.allMySops=state.SOPS.userAllSop}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../platform-mixins/apis/api-and-frontend-sopuser.js",
+  "../../../../../config/platform/logic/sop-config.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../../../../config/platform/tablefield_labels.js",
+  "../../../../internalComponents/form-fields/field-controller.js",
+  "../pdf-link.js",
+  "./my-sops-style.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _apiAndFrontendSopuser,
+  _sopConfig,
+  _fieldsMethods,
+  _tablefield_labels,
+  _fieldController,
+  _pdfLink,
+  _mySopsStyle
+) {
+  "use strict";
+  class MySops extends (0, _tablefield_labels.tableFieldLabel)(
+    (0, _fieldsMethods.FieldsMethods)(
+      (0, _apiAndFrontendSopuser.ApiAndFrontendSopUser)(
+        (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+      )
+    )
+  ) {
+    static get properties() {
+      return {
+        //            finalToken: {type: String, observer:'onFinalTokenFilled'},
+        allMySops: Array,
+        dialogButtons: { type: Array, value: _sopConfig.sopMySops_buttons },
+        sopStatusLabel: { type: Object, value: _sopConfig.sopStatusLabel },
+        selectedLanguage: String,
+        tableFieldLabelSchemaName: { type: String, value: "config" },
+        tableFieldLabelTableName: { type: String, value: "usersop" },
+        sopMySops_cardContent: {
+          type: Object,
+          value: _sopConfig.sopMySops_cardContent,
+        },
+      };
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      this.allMySops = state.SOPS.userAllSop;
+    }
+    static get template() {
+      return _polymerElement.html`
             <style include="my-sops-style"></style>
             <!-- allMySops.length: {{allMySops.0.length}} allMySops.my_sops.length: {{allMySops.0.my_sops.length}} -->
             <div class="wrapperMySops">
@@ -36,4 +86,8 @@ allMySops:Array,dialogButtons:{type:Array,value:_sopConfig.sopMySops_buttons},so
                 </div>
             </template>
             </div>
-        `}}customElements.define("my-sops",MySops)});
+        `;
+    }
+  }
+  customElements.define("my-sops", MySops);
+});

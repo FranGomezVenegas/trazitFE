@@ -1,6 +1,87 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../../node_modules/@polymer/paper-dialog/paper-dialog.js","../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js","../../../../internalComponents/cards/card-form.js","../../01moduleFunctionality/api-env-monit.js","../../01moduleFunctionality/env-monit-elements.js","../../01moduleFunctionality/frontend-env-monit.js","../../01moduleFunctionality/frontend-env-monit-sample.js","../../03config/config-process.js","../../02Redux/em-demo-a_actions.js","../../../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_paperDialog,_vaadingridLitSingleselect,_cardForm,_apiEnvMonit,_envMonitElements,_frontendEnvMonit,_frontendEnvMonitSample,_configProcess,_emDemoA_actions,_fieldsMethods){"use strict";//import '../../../../internalComponents/grid-components/vaadingrid-singleselect.js';
-class EmDemoAProgPoints extends(0,_fieldsMethods.FieldsMethods)((0,_frontendEnvMonitSample.FrontendEnvMonitSample)((0,_apiEnvMonit.EmDemoAapiEnvMonit)((0,_frontendEnvMonit.FrontendEnvMonit)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement))))){static get properties(){return{selectedLanguage:{type:String},selectedPointCardForm:{type:Object},//, value:appLogin_formFields},
-selectedProgram:{type:Object,value:[]},selectedSamplingPoint:{type:Array},cardFormButtons:{type:Object,value:_configProcess.progProintsCardFormButtons},formButtons:{type:Object,value:_configProcess.progProintsFormButtons},systemShifts:{type:Object,value:_configProcess.shifts},productionLotsList:{type:Array,value:[{keyName:"rutina",keyValue_en:"routine",keyValue_es:"rutina"}]},selectedObject:{type:Object,notify:!0},activeProductionLots:{type:Array,value:[]},samplePointsTableHeaderFields:{type:Array,value:_configProcess.programProgPoints_samplePointsTableHeaderFields},callBackRefreshWindow:Object,tableTitle:{type:Object,value:{label_en:"Defined program locations",label_es:"Tabla de ubicaciones definidas para el programa"}}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../../node_modules/@polymer/paper-dialog/paper-dialog.js",
+  "../../../../internalComponents/Grids/vaadingrid-lit-singleselect.js",
+  "../../../../internalComponents/cards/card-form.js",
+  "../../01moduleFunctionality/api-env-monit.js",
+  "../../01moduleFunctionality/env-monit-elements.js",
+  "../../01moduleFunctionality/frontend-env-monit.js",
+  "../../01moduleFunctionality/frontend-env-monit-sample.js",
+  "../../03config/config-process.js",
+  "../../02Redux/em-demo-a_actions.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _paperDialog,
+  _vaadingridLitSingleselect,
+  _cardForm,
+  _apiEnvMonit,
+  _envMonitElements,
+  _frontendEnvMonit,
+  _frontendEnvMonitSample,
+  _configProcess,
+  _emDemoA_actions,
+  _fieldsMethods
+) {
+  "use strict"; //import '../../../../internalComponents/grid-components/vaadingrid-singleselect.js';
+  class EmDemoAProgPoints extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _frontendEnvMonitSample.FrontendEnvMonitSample)(
+      (0, _apiEnvMonit.EmDemoAapiEnvMonit)(
+        (0, _frontendEnvMonit.FrontendEnvMonit)(
+          (0, _connectMixin.connect)(_store.store)(
+            _polymerElement.PolymerElement
+          )
+        )
+      )
+    )
+  ) {
+    static get properties() {
+      return {
+        selectedLanguage: { type: String },
+        selectedPointCardForm: { type: Object }, //, value:appLogin_formFields},
+        selectedProgram: { type: Object, value: [] },
+        selectedSamplingPoint: { type: Array },
+        cardFormButtons: {
+          type: Object,
+          value: _configProcess.progProintsCardFormButtons,
+        },
+        formButtons: {
+          type: Object,
+          value: _configProcess.progProintsFormButtons,
+        },
+        systemShifts: { type: Object, value: _configProcess.shifts },
+        productionLotsList: {
+          type: Array,
+          value: [
+            {
+              keyName: "rutina",
+              keyValue_en: "routine",
+              keyValue_es: "rutina",
+            },
+          ],
+        },
+        selectedObject: { type: Object, notify: !0 },
+        activeProductionLots: { type: Array, value: [] },
+        samplePointsTableHeaderFields: {
+          type: Array,
+          value: _configProcess.programProgPoints_samplePointsTableHeaderFields,
+        },
+        callBackRefreshWindow: Object,
+        tableTitle: {
+          type: Object,
+          value: {
+            label_en: "Defined program locations",
+            label_es: "Tabla de ubicaciones definidas para el programa",
+          },
+        },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
             <style>
             vaadin-button {
                 top: 0;
@@ -92,13 +173,83 @@ selectedProgram:{type:Object,value:[]},selectedSamplingPoint:{type:Array},cardFo
                 on-dialog-button-clicked="dialogClosedpointCard"> </card-form>
             </paper-dialog>
 
-        `}dialogClosedpointCard(e){}mapClick(e){console.log("mapClick","click",this.source);var posicXInit=e.offsetX,posicYInit=e.offsetY;console.log("posicXInit",posicXInit,"posicYInit",posicYInit);//this.shadowRoot.getElementById(e.currentTarget.posicIndex+'content').style.zIndex=1000;                       
-}itemSelected(){console.log("itemSelected xssss")}onListChange(){this.pointClicked()}pointClicked(e){if(!e.detail.value){return}//console.log(this.selectedSamplingPoint, 'init');
-//console.log('em-demo-a-prog-points >> pointClicked', 'this.selectedObject', this.selectedObject, 'this.selectedSamplingPoint', this.selectedSamplingPoint );        
-_store.store.dispatch((0,_emDemoA_actions.setSelectedSamplingPoint)(e.detail.value.card_info));//console.log(this.selectedSamplingPoint, 'before');        
-var selectedSamplingPointLen=this.selectedSamplingPoint.length;selectedSamplingPointLen=selectedSamplingPointLen++;var newElement=[{name:"shift",label_en:"Shift",label_es:"Turno",type:"list",dbType:"String",value:"",read_only:!1,items:this.systemShifts},{name:"production_lot",label_en:"Lot",label_es:"Lote",type:"list",dbType:"String",value:"",read_only:!1,items:this.productionLotsList}],i;for(i=0;i<this.selectedSamplingPoint.length;i++){newElement[i+2]=this.selectedSamplingPoint[i]}this.selectedSamplingPoint=newElement;this.$.pointCard.open()}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){this.selectedSamplingPoint=state.emDemoA.selectedSamplingPoint;this.selectedProgram=state.emDemoA.selectedProgram;this.activeProductionLots=state.emDemoA.activeProductionLots;if(null==this.selectedProgram)return;//console.log('this.activeProductionLots', this.activeProductionLots);
-if(null!=this.activeProductionLots){this.createProductionLotsList()}//this.unReceivedSamples= state.processUs.unReceivedSamples;
-}}createProductionLotsList(){var i;for(i=0;i<this.activeProductionLots.length;i++){//console.log('createProductionLotsList', 'this.productionLotsList', this.productionLotsList);
-var newElement=[{keyName:"",keyValue_en:"",keyValue_es:""}];newElement.keyName=this.activeProductionLots[i].lot_name;newElement.keyValue_en=this.activeProductionLots[i].lot_name;newElement.keyValue_es=this.activeProductionLots[i].lot_name;this.productionLotsList[i+1]=newElement;//{keyName:"M1", :"M1", keyValue_es:"M1"},
-}//console.log(this.productionLotsList);     
-}}customElements.define("em-demo-a-prog-points",EmDemoAProgPoints)});
+        `;
+    }
+    dialogClosedpointCard(e) {}
+    mapClick(e) {
+      console.log("mapClick", "click", this.source);
+      var posicXInit = e.offsetX,
+        posicYInit = e.offsetY;
+      console.log("posicXInit", posicXInit, "posicYInit", posicYInit); //this.shadowRoot.getElementById(e.currentTarget.posicIndex+'content').style.zIndex=1000;
+    }
+    itemSelected() {
+      console.log("itemSelected xssss");
+    }
+    onListChange() {
+      this.pointClicked();
+    }
+    pointClicked(e) {
+      if (!e.detail.value) {
+        return;
+      } //console.log(this.selectedSamplingPoint, 'init');
+      //console.log('em-demo-a-prog-points >> pointClicked', 'this.selectedObject', this.selectedObject, 'this.selectedSamplingPoint', this.selectedSamplingPoint );
+      _store.store.dispatch(
+        (0, _emDemoA_actions.setSelectedSamplingPoint)(e.detail.value.card_info)
+      ); //console.log(this.selectedSamplingPoint, 'before');
+      var selectedSamplingPointLen = this.selectedSamplingPoint.length;
+      selectedSamplingPointLen = selectedSamplingPointLen++;
+      var newElement = [
+          {
+            name: "shift",
+            label_en: "Shift",
+            label_es: "Turno",
+            type: "list",
+            dbType: "String",
+            value: "",
+            read_only: !1,
+            items: this.systemShifts,
+          },
+          {
+            name: "production_lot",
+            label_en: "Lot",
+            label_es: "Lote",
+            type: "list",
+            dbType: "String",
+            value: "",
+            read_only: !1,
+            items: this.productionLotsList,
+          },
+        ],
+        i;
+      for (i = 0; i < this.selectedSamplingPoint.length; i++) {
+        newElement[i + 2] = this.selectedSamplingPoint[i];
+      }
+      this.selectedSamplingPoint = newElement;
+      this.$.pointCard.open();
+    }
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.emDemoA) {
+        this.selectedSamplingPoint = state.emDemoA.selectedSamplingPoint;
+        this.selectedProgram = state.emDemoA.selectedProgram;
+        this.activeProductionLots = state.emDemoA.activeProductionLots;
+        if (null == this.selectedProgram) return; //console.log('this.activeProductionLots', this.activeProductionLots);
+        if (null != this.activeProductionLots) {
+          this.createProductionLotsList();
+        } //this.unReceivedSamples= state.processUs.unReceivedSamples;
+      }
+    }
+    createProductionLotsList() {
+      var i;
+      for (i = 0; i < this.activeProductionLots.length; i++) {
+        //console.log('createProductionLotsList', 'this.productionLotsList', this.productionLotsList);
+        var newElement = [{ keyName: "", keyValue_en: "", keyValue_es: "" }];
+        newElement.keyName = this.activeProductionLots[i].lot_name;
+        newElement.keyValue_en = this.activeProductionLots[i].lot_name;
+        newElement.keyValue_es = this.activeProductionLots[i].lot_name;
+        this.productionLotsList[i + 1] = newElement; //{keyName:"M1", :"M1", keyValue_es:"M1"},
+      } //console.log(this.productionLotsList);
+    }
+  }
+  customElements.define("em-demo-a-prog-points", EmDemoAProgPoints);
+});

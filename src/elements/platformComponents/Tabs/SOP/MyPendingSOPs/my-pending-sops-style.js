@@ -1,5 +1,7 @@
-const documentContainerMyPendingSops = document.createElement('my-pending-sops-style');
-documentContainerMyPendingSops.setAttribute('style', 'display: none;');
+const documentContainerMyPendingSops = document.createElement(
+  "my-pending-sops-style"
+);
+documentContainerMyPendingSops.setAttribute("style", "display: none;");
 
 documentContainerMyPendingSops.innerHTML = `
   <dom-module id="my-pending-sops-style">
@@ -27,4 +29,4 @@ documentContainerMyPendingSops.innerHTML = `
         </style>
     </template>
   </dom-module>`;
-  document.head.appendChild(documentContainerMyPendingSops);      
+document.head.appendChild(documentContainerMyPendingSops);

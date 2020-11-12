@@ -1,11 +1,77 @@
-import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/polymer-element.js";import{connect}from"../../../../../../node_modules/pwa-helpers/connect-mixin.js";import{store}from"../../../../../store.js";import"../../../../../../node_modules/@polymer/iron-collapse/iron-collapse.js";import"./em-demo-a-dialogmodal-buttons.js";import"../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";import{enterResult,resultCheckerMessages}from"../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";import{FrontendEndpointsEnvMonitSamples}from"../../01moduleFunctionality/endpoints-frontend-env-monit-samples";import{FunctionsEnvMonitSamples}from"../../01moduleFunctionality/functions-env-monit-samples";import{FieldsMethods}from"../../../../../platform-mixins/functions/fields-methods.js";import"../../../../internalComponents/form-fields/field-icon-button.js";import{iconsMethods}from"../../01moduleFunctionality/functions-icons.js";import{SampleIcons}from"../../03config/config-icons";/**
+import {
+  PolymerElement,
+  html,
+} from "../../../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { connect } from "../../../../../../node_modules/pwa-helpers/connect-mixin.js";
+import { store } from "../../../../../store.js";
+import "../../../../../../node_modules/@polymer/iron-collapse/iron-collapse.js";
+import "./em-demo-a-dialogmodal-buttons.js";
+import "../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";
+import {
+  enterResult,
+  resultCheckerMessages,
+} from "../../03config/Dialogs/em-demo-a-list-modal-enterresults-settings";
+import { FrontendEndpointsEnvMonitSamples } from "../../01moduleFunctionality/endpoints-frontend-env-monit-samples";
+import { FunctionsEnvMonitSamples } from "../../01moduleFunctionality/functions-env-monit-samples";
+import { FieldsMethods } from "../../../../../platform-mixins/functions/fields-methods.js";
+import "../../../../internalComponents/form-fields/field-icon-button.js";
+import { iconsMethods } from "../../01moduleFunctionality/functions-icons.js";
+import { SampleIcons } from "../../03config/config-icons";
+/**
  * `em-demo-a-list-modal-enterresults` Description
  *
  * @customElement
  * @polymer
  * @demo
- * 
- */class EmDemoAListModalEnterResults extends SampleIcons(iconsMethods(FieldsMethods(FunctionsEnvMonitSamples(FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement)))))){static get properties(){return{opened:{type:Boolean,value:!0,reflectToAttribute:!0},horizontal:{type:Boolean},displayCancelButton:{type:Boolean,notify:!0},displayConfirmButton:{type:Boolean,notify:!0},displayCloseButton:{type:Boolean,notify:!0},tableDefinition:{type:Object,value:enterResult},resultCheckerMessages:{type:Object,value:resultCheckerMessages},listRows:Array,listHeader:Array,sampleId:Number,selectedObject:{type:Object,notify:!0},selectedLanguage:{type:String},detailOpenStatus:{type:Boolean,value:!1}}}toggle(){this.$.collapse.toggle()}getSpecRule(item){return item.spec_eval_detail}getItemValue(flddetail,item){if("locking_reason"==flddetail.name){if("en"==this.selectedLanguage){return item.locking_reason.message_en}if("es"==this.selectedLanguage){return item.locking_reason.message_es}}if("spec_rule"==flddetail.name){return this.getSpecRule(item)}return item[flddetail.name]}static get template(){return html`        
+ *
+ */ class EmDemoAListModalEnterResults extends SampleIcons(
+  iconsMethods(
+    FieldsMethods(
+      FunctionsEnvMonitSamples(
+        FrontendEndpointsEnvMonitSamples(connect(store)(PolymerElement))
+      )
+    )
+  )
+) {
+  static get properties() {
+    return {
+      opened: { type: Boolean, value: !0, reflectToAttribute: !0 },
+      horizontal: { type: Boolean },
+      displayCancelButton: { type: Boolean, notify: !0 },
+      displayConfirmButton: { type: Boolean, notify: !0 },
+      displayCloseButton: { type: Boolean, notify: !0 },
+      tableDefinition: { type: Object, value: enterResult },
+      resultCheckerMessages: { type: Object, value: resultCheckerMessages },
+      listRows: Array,
+      listHeader: Array,
+      sampleId: Number,
+      selectedObject: { type: Object, notify: !0 },
+      selectedLanguage: { type: String },
+      detailOpenStatus: { type: Boolean, value: !1 },
+    };
+  }
+  toggle() {
+    this.$.collapse.toggle();
+  }
+  getSpecRule(item) {
+    return item.spec_eval_detail;
+  }
+  getItemValue(flddetail, item) {
+    if ("locking_reason" == flddetail.name) {
+      if ("en" == this.selectedLanguage) {
+        return item.locking_reason.message_en;
+      }
+      if ("es" == this.selectedLanguage) {
+        return item.locking_reason.message_es;
+      }
+    }
+    if ("spec_rule" == flddetail.name) {
+      return this.getSpecRule(item);
+    }
+    return item[flddetail.name];
+  }
+  static get template() {
+    return html`        
         <style include="em-demo-a-dialog-enterresults-settings""></style>      
         <div class="modal-content bgimg">
         <!-- [[tableDefinition.tableTitle.label.label_es]] -->
@@ -106,15 +172,109 @@ import{PolymerElement,html}from"../../../../../../node_modules/@polymer/polymer/
                 </template>
 -->                
         </div>
-        `}detailCheckToggle(){console.log("detailCheckToggle");this.detailOpenStatus=!this.detailOpenStatus}resultClass(islocked,specEval){//console.log('resultClass', 'e', e);
-if(islocked){return"resultLocked"}if(specEval="IN"){return"resultIn"}if(specEval.includes("OUT_SPEC")){return"resultOutRange"}return"resultInAlarm"}editableIsInteger(e){//console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
-if("INTEGER"==fld){return!0}if("FLOAT"==fld){return!0}return!0}itemSelected(e){const item=e.detail.value;this.selectedObject=item;console.log(" em-demo-a-list-modal-enterresults >> itemSelected",this.selectedObject);this.$.mygridid.selectedItems=[]}dialogConfirmed(){//console.log('clicked', this.$.mygrid.getSelectedRows());        
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"confirmed",selectedItems:this.$.mygridid.selectedItems}}));this.$.mygridid.selectedItems=[]}dialogCanceled(){//console.log('clicked', this.value);
-this.value="confirmed";this.dispatchEvent(new CustomEvent("dialog-button-clicked",{bubbles:!0,composed:!0,detail:{buttonName:this.name,value:this.value,dialogState:"canceled"}}))}stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){this.listRows=state.emDemoA.givenSampleAnalysisResultEntryList}}refreshWindow(){this.loadData()}loadData(){console.log("loadData","sampleId",this.sampleId);var datas=[];datas.sampleId=this.sampleId;datas.fieldToRetrieve=this.tableDefinition.fieldToRetrieve;datas.fieldToSort=this.tableDefinition.fieldToSort;datas.tableDefinition=this.tableDefinition;this.getGivenSampleAnalysisResultEntry(datas)}/**
-     * Instance of the element is created/upgraded. Use: initializing state,
-     * set up event listeners, create shadow dom.
-     * @constructor
-     */constructor(){super()}/**
-     * Use for one-time configuration of your component after local
-     * DOM is initialized.
-     */ready(){super.ready()}}customElements.define("em-demo-a-list-modal-enterresults",EmDemoAListModalEnterResults);
+        `;
+  }
+  detailCheckToggle() {
+    console.log("detailCheckToggle");
+    this.detailOpenStatus = !this.detailOpenStatus;
+  }
+  resultClass(islocked, specEval) {
+    //console.log('resultClass', 'e', e);
+    if (islocked) {
+      return "resultLocked";
+    }
+    if ((specEval = "IN")) {
+      return "resultIn";
+    }
+    if (specEval.includes("OUT_SPEC")) {
+      return "resultOutRange";
+    }
+    return "resultInAlarm";
+  }
+  editableIsInteger(e) {
+    //console.log('editableIsInteger', e); //this.$.mygridid.__data.items[e.currentTarget.id].param_type);
+    if ("INTEGER" == fld) {
+      return !0;
+    }
+    if ("FLOAT" == fld) {
+      return !0;
+    }
+    return !0;
+  }
+  itemSelected(e) {
+    const item = e.detail.value;
+    this.selectedObject = item;
+    console.log(
+      " em-demo-a-list-modal-enterresults >> itemSelected",
+      this.selectedObject
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogConfirmed() {
+    //console.log('clicked', this.$.mygrid.getSelectedRows());
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: !0,
+        composed: !0,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "confirmed",
+          selectedItems: this.$.mygridid.selectedItems,
+        },
+      })
+    );
+    this.$.mygridid.selectedItems = [];
+  }
+  dialogCanceled() {
+    //console.log('clicked', this.value);
+    this.value = "confirmed";
+    this.dispatchEvent(
+      new CustomEvent("dialog-button-clicked", {
+        bubbles: !0,
+        composed: !0,
+        detail: {
+          buttonName: this.name,
+          value: this.value,
+          dialogState: "canceled",
+        },
+      })
+    );
+  }
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (null != state.emDemoA) {
+      this.listRows = state.emDemoA.givenSampleAnalysisResultEntryList;
+    }
+  }
+  refreshWindow() {
+    this.loadData();
+  }
+  loadData() {
+    console.log("loadData", "sampleId", this.sampleId);
+    var datas = [];
+    datas.sampleId = this.sampleId;
+    datas.fieldToRetrieve = this.tableDefinition.fieldToRetrieve;
+    datas.fieldToSort = this.tableDefinition.fieldToSort;
+    datas.tableDefinition = this.tableDefinition;
+    this.getGivenSampleAnalysisResultEntry(datas);
+  }
+  /**
+   * Instance of the element is created/upgraded. Use: initializing state,
+   * set up event listeners, create shadow dom.
+   * @constructor
+   */ constructor() {
+    super();
+  }
+  /**
+   * Use for one-time configuration of your component after local
+   * DOM is initialized.
+   */ ready() {
+    super.ready();
+  }
+}
+customElements.define(
+  "em-demo-a-list-modal-enterresults",
+  EmDemoAListModalEnterResults
+);

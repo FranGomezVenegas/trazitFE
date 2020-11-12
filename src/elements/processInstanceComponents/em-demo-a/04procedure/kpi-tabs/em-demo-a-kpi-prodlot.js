@@ -1,53 +1,66 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import { connect } from 'pwa-helpers/connect-mixin';
-import { store } from '../../../../../store.js';
-import '@polymer/polymer/lib/elements/dom-if';
-import {FrontendEndpointsEnvMonitBrowser} from '../../01moduleFunctionality/endpoints-frontend-env-monit-browser';
-import {tableFieldLabel} from '../../03config/tablefield_labels';
-import '../../01moduleFunctionality/em-demo-a-webcomponent-env-monit';
+import { PolymerElement, html } from "@polymer/polymer/polymer-element";
+import { connect } from "pwa-helpers/connect-mixin";
+import { store } from "../../../../../store.js";
+import "@polymer/polymer/lib/elements/dom-if";
+import { FrontendEndpointsEnvMonitBrowser } from "../../01moduleFunctionality/endpoints-frontend-env-monit-browser";
+import { tableFieldLabel } from "../../03config/tablefield_labels";
+import "../../01moduleFunctionality/em-demo-a-webcomponent-env-monit";
 //import {schema_name, browserBatchFieldToRetrieve, browserBatchFieldsToDisplay, browserBatchNoContent } from '../../03config/config-process.js';
 
-import '../../03config/Browser/em-demo-a-browser-batch-settings';
-import {windowContent, browserBatchFields} from '../../03config/Browser/em-demo-a-browser-batch-settings';
-class emDemoABrBatch extends tableFieldLabel(FrontendEndpointsEnvMonitBrowser(connect(store)(PolymerElement))) {
-    stateChanged(state) {
-        this.selectedLanguage=state.app.user.appLanguage;
-        if (state.emDemoA!=null){            
-            if (state.emDemoA.browserSelectedBatch!=null){
-                this.selBatch=state.emDemoA.browserSelectedBatch;
-                if (this.selBatch.lastTemperatureReadings!=null){
-                    var i;
-                    this.selBatchTempReadings=[["Time", "Temperature"]];
-                    if (!this.selBatch.lastTemperatureReadings){
-                        this.displayChart=false;
-                        return;}
-                    if (this.selBatch.lastTemperatureReadings[0].error){
-                        this.displayChart=false;
-                        return;}
-                    this.displayChart=true;
-                    for (i = 0; i < this.selBatch.lastTemperatureReadings.length; i++) {
-                        if (!this.selBatch.lastTemperatureReadings[i].error){
-                            this.selBatchTempReadings.push([this.selBatch.lastTemperatureReadings[i].created_on, 
-                            this.selBatch.lastTemperatureReadings[i].temperature]);
-                        }
-                    }
-                    this.selectedObject=this.selBatch.batchFieldToRetrieve.name;
-                }                
-            }                      
-        }        
-    }        
-    static get properties() {
-        return {
-            windowContent:{type: Array, notify: true, value: windowContent},
-            browserBatchFields:{type: Object, notify: true, value: browserBatchFields},
-            displayChart: Boolean,
-            selectedLanguage: String,
-            selBatchTempReadings:{type: Array},
-            selBatch:{type: Object},
+import "../../03config/Browser/em-demo-a-browser-batch-settings";
+import {
+  windowContent,
+  browserBatchFields,
+} from "../../03config/Browser/em-demo-a-browser-batch-settings";
+class emDemoABrBatch extends tableFieldLabel(
+  FrontendEndpointsEnvMonitBrowser(connect(store)(PolymerElement))
+) {
+  stateChanged(state) {
+    this.selectedLanguage = state.app.user.appLanguage;
+    if (state.emDemoA != null) {
+      if (state.emDemoA.browserSelectedBatch != null) {
+        this.selBatch = state.emDemoA.browserSelectedBatch;
+        if (this.selBatch.lastTemperatureReadings != null) {
+          var i;
+          this.selBatchTempReadings = [["Time", "Temperature"]];
+          if (!this.selBatch.lastTemperatureReadings) {
+            this.displayChart = false;
+            return;
+          }
+          if (this.selBatch.lastTemperatureReadings[0].error) {
+            this.displayChart = false;
+            return;
+          }
+          this.displayChart = true;
+          for (i = 0; i < this.selBatch.lastTemperatureReadings.length; i++) {
+            if (!this.selBatch.lastTemperatureReadings[i].error) {
+              this.selBatchTempReadings.push([
+                this.selBatch.lastTemperatureReadings[i].created_on,
+                this.selBatch.lastTemperatureReadings[i].temperature,
+              ]);
+            }
+          }
+          this.selectedObject = this.selBatch.batchFieldToRetrieve.name;
         }
+      }
     }
-    static get template() {
-        return html`
+  }
+  static get properties() {
+    return {
+      windowContent: { type: Array, notify: true, value: windowContent },
+      browserBatchFields: {
+        type: Object,
+        notify: true,
+        value: browserBatchFields,
+      },
+      displayChart: Boolean,
+      selectedLanguage: String,
+      selBatchTempReadings: { type: Array },
+      selBatch: { type: Object },
+    };
+  }
+  static get template() {
+    return html`
         <style include="em-demo-a-browser-batch-style"></style>
         <em-demo-a-webcomponent-env-monit id="myElements"></em-demo-a-webcomponent-env-monit> 
         <div class="mainDiv"> <!--This is the Div 1 in the picture-->        
@@ -84,20 +97,20 @@ class emDemoABrBatch extends tableFieldLabel(FrontendEndpointsEnvMonitBrowser(co
                 </div>     
             </div>     
         `;
+  }
+  keyPressed(e) {
+    if (e.code.includes("Enter")) {
+      this.RunReport();
+      return;
     }
-    keyPressed(e){
-        if(e.code.includes("Enter")) {
-          this.RunReport();
-          return;
-        }
-    }    
-    RunReport(){
-        var data=[];
-        data.BatchName=this.windowContent.fields[0].value;
-        data.browserBatchFieldToRetrieve=this.browserBatchFields.fieldToRetrieve;
-        data.browserBatchFieldsToDisplay =this.browserBatchFields.fieldsToDisplay;
-        this.getBrowserSelectedBatchData(data);                
-        //console.log('RunReport', 'browserBatchFields', this.browserBatchFields);
-    }
+  }
+  RunReport() {
+    var data = [];
+    data.BatchName = this.windowContent.fields[0].value;
+    data.browserBatchFieldToRetrieve = this.browserBatchFields.fieldToRetrieve;
+    data.browserBatchFieldsToDisplay = this.browserBatchFields.fieldsToDisplay;
+    this.getBrowserSelectedBatchData(data);
+    //console.log('RunReport', 'browserBatchFields', this.browserBatchFields);
+  }
 }
-customElements.define('em-demo-a-br-batch', emDemoABrBatch);
+customElements.define("em-demo-a-br-batch", emDemoABrBatch);

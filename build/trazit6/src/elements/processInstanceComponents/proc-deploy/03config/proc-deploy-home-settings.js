@@ -1,7 +1,118 @@
-define(["exports"],function(_exports){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.windowDefinition=_exports.programHome_sampleSummaryPieOptions=_exports.programHome_sampleSummaryGaugeOptions=void 0;const programHome_sampleSummaryGaugeOptions={width:400,height:120,redFrom:90,redTo:100,yellowFrom:75,yellowTo:90,minorTicks:5};_exports.programHome_sampleSummaryGaugeOptions=programHome_sampleSummaryGaugeOptions;const programHome_sampleSummaryPieOptions={title:"Samples Progress"};_exports.programHome_sampleSummaryPieOptions=programHome_sampleSummaryPieOptions;const windowDefinition={windowTitle:{label_en:"Home page for Environmental Monitoring prcocess Demo A ",label_es:"P\xE1gina de inicio para el proceso de Monitoreo Medioambiental Demo A"},kpiCharts:[{display_chart:!0,chart_type:"line",chart_name:"group_by_area",chart_title:{label_en:"Samples by area ",label_es:"Muestreo por areas"},counter_field_name:"numeric_value",counterLimits:{min_allowed:0,//   min_allowed_included:3,
-max_allowed:200//   max_allowed_included:100,
-//   value:0,
-},grouper_field_name:"sampling_date",grouper_exclude_items:["Samplingzz","Incubationzz","PlateReadingzz","MicroorganismIdentificationzz","zz","END"],label_item:{label_en:"Area",label_es:"Area"},label_value:{label_en:"#",label_es:"#"}}],charts:[{display_chart:!0,chart_type:"pie",chart_name:"sampleStatCounterByStage",chart_title:{label_en:"In-Progress Sample Percentage ",label_es:"Porcentaje en Muestras En-Progreso"},counter_field_name:"COUNTER",counterLimits:{min_allowed:3,min_allowed_included:3,max_allowed:100,max_allowed_included:100,value:0},grouper_field_name:"current_stage",grouper_exclude_items:["Samplingzz","Incubationzz","PlateReadingzz","MicroorganismIdentificationzz","zz","END"],label_item:{label_en:"Statussss",label_es:"Estado"},label_value:{label_en:"#",label_es:"#"}},{display_chart:!0,chart_type:"line",chart_name:"sampleStatsLastNresults",chart_title:{label_en:"Last n-results",label_es:"\xDAltimos n-resultados"},counter_field_name:"raw_value",counterLimits:{min_allowed:3,min_allowed_included:3,max_allowed:100,max_allowed_included:100,value:0},grouper_field_name:"sample_id",grouper_exclude_items:["Samplingzz","Incubationzz","PlateReadingzz","MicroorganismIdentificationzz","zz","END"],label_item:{label_en:"Statussss",label_es:"Estado"},label_value:{label_en:"#",label_es:"#"}}]};_exports.windowDefinition=windowDefinition;const documentContainerprocDeployHomeStyle=document.createElement("proc-deploy-home-style");documentContainerprocDeployHomeStyle.setAttribute("style","display: none;");documentContainerprocDeployHomeStyle.innerHTML=`
+define(["exports"], function (_exports) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.windowDefinition = _exports.programHome_sampleSummaryPieOptions = _exports.programHome_sampleSummaryGaugeOptions = void 0;
+  const programHome_sampleSummaryGaugeOptions = {
+    width: 400,
+    height: 120,
+    redFrom: 90,
+    redTo: 100,
+    yellowFrom: 75,
+    yellowTo: 90,
+    minorTicks: 5,
+  };
+  _exports.programHome_sampleSummaryGaugeOptions = programHome_sampleSummaryGaugeOptions;
+  const programHome_sampleSummaryPieOptions = { title: "Samples Progress" };
+  _exports.programHome_sampleSummaryPieOptions = programHome_sampleSummaryPieOptions;
+  const windowDefinition = {
+    windowTitle: {
+      label_en: "Home page for Environmental Monitoring prcocess Demo A ",
+      label_es:
+        "P\xE1gina de inicio para el proceso de Monitoreo Medioambiental Demo A",
+    },
+    kpiCharts: [
+      {
+        display_chart: !0,
+        chart_type: "line",
+        chart_name: "group_by_area",
+        chart_title: {
+          label_en: "Samples by area ",
+          label_es: "Muestreo por areas",
+        },
+        counter_field_name: "numeric_value",
+        counterLimits: {
+          min_allowed: 0, //   min_allowed_included:3,
+          max_allowed: 200, //   max_allowed_included:100,
+          //   value:0,
+        },
+        grouper_field_name: "sampling_date",
+        grouper_exclude_items: [
+          "Samplingzz",
+          "Incubationzz",
+          "PlateReadingzz",
+          "MicroorganismIdentificationzz",
+          "zz",
+          "END",
+        ],
+        label_item: { label_en: "Area", label_es: "Area" },
+        label_value: { label_en: "#", label_es: "#" },
+      },
+    ],
+    charts: [
+      {
+        display_chart: !0,
+        chart_type: "pie",
+        chart_name: "sampleStatCounterByStage",
+        chart_title: {
+          label_en: "In-Progress Sample Percentage ",
+          label_es: "Porcentaje en Muestras En-Progreso",
+        },
+        counter_field_name: "COUNTER",
+        counterLimits: {
+          min_allowed: 3,
+          min_allowed_included: 3,
+          max_allowed: 100,
+          max_allowed_included: 100,
+          value: 0,
+        },
+        grouper_field_name: "current_stage",
+        grouper_exclude_items: [
+          "Samplingzz",
+          "Incubationzz",
+          "PlateReadingzz",
+          "MicroorganismIdentificationzz",
+          "zz",
+          "END",
+        ],
+        label_item: { label_en: "Statussss", label_es: "Estado" },
+        label_value: { label_en: "#", label_es: "#" },
+      },
+      {
+        display_chart: !0,
+        chart_type: "line",
+        chart_name: "sampleStatsLastNresults",
+        chart_title: {
+          label_en: "Last n-results",
+          label_es: "\xDAltimos n-resultados",
+        },
+        counter_field_name: "raw_value",
+        counterLimits: {
+          min_allowed: 3,
+          min_allowed_included: 3,
+          max_allowed: 100,
+          max_allowed_included: 100,
+          value: 0,
+        },
+        grouper_field_name: "sample_id",
+        grouper_exclude_items: [
+          "Samplingzz",
+          "Incubationzz",
+          "PlateReadingzz",
+          "MicroorganismIdentificationzz",
+          "zz",
+          "END",
+        ],
+        label_item: { label_en: "Statussss", label_es: "Estado" },
+        label_value: { label_en: "#", label_es: "#" },
+      },
+    ],
+  };
+  _exports.windowDefinition = windowDefinition;
+  const documentContainerprocDeployHomeStyle = document.createElement(
+    "proc-deploy-home-style"
+  );
+  documentContainerprocDeployHomeStyle.setAttribute("style", "display: none;");
+  documentContainerprocDeployHomeStyle.innerHTML = `
   <dom-module id="proc-deploy-home-style">
     <template>
     <style>
@@ -22,4 +133,6 @@ max_allowed:200//   max_allowed_included:100,
     }      
     </style>
     </template>
-  </dom-module>`;document.head.appendChild(documentContainerprocDeployHomeStyle)});
+  </dom-module>`;
+  document.head.appendChild(documentContainerprocDeployHomeStyle);
+});

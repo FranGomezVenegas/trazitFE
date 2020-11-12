@@ -1,7 +1,54 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../internalComponents/Charts/chart-controller.js","../../03config/Programs/proc-deploy-progtab-home-settings.js","../../../../../platform-mixins/functions/fields-methods.js"],function(_polymerElement,_connectMixin,_store,_chartController,_procDeployProgtabHomeSettings,_fieldsMethods){"use strict";// import '@polymer/paper-tabs/paper-tabs';
-// import '@polymer/paper-tabs/paper-tab';
-// import '@polymer/iron-pages/iron-pages';
-class procDeployProgHome extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.procDeploy){this.selectedProgram=state.procDeploy.selectedProgram}}static get properties(){return{windowDefinition:{type:Object,value:_procDeployProgtabHomeSettings.windowDefinition},selectedLanguage:{type:String},selectedProgram:{type:Object},homeTabSubTabs:{type:Object,value:_procDeployProgtabHomeSettings.em_home_tab_subTabs},currentSubTab:{type:String,value:_procDeployProgtabHomeSettings.programHome_defaultTab},hometab_area:{type:Object,value:_procDeployProgtabHomeSettings.hometab_area}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../internalComponents/Charts/chart-controller.js",
+  "../../03config/Programs/proc-deploy-progtab-home-settings.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _chartController,
+  _procDeployProgtabHomeSettings,
+  _fieldsMethods
+) {
+  "use strict"; // import '@polymer/paper-tabs/paper-tabs';
+  // import '@polymer/paper-tabs/paper-tab';
+  // import '@polymer/iron-pages/iron-pages';
+  class procDeployProgHome extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.procDeploy) {
+        this.selectedProgram = state.procDeploy.selectedProgram;
+      }
+    }
+    static get properties() {
+      return {
+        windowDefinition: {
+          type: Object,
+          value: _procDeployProgtabHomeSettings.windowDefinition,
+        },
+        selectedLanguage: { type: String },
+        selectedProgram: { type: Object },
+        homeTabSubTabs: {
+          type: Object,
+          value: _procDeployProgtabHomeSettings.em_home_tab_subTabs,
+        },
+        currentSubTab: {
+          type: String,
+          value: _procDeployProgtabHomeSettings.programHome_defaultTab,
+        },
+        hometab_area: {
+          type: Object,
+          value: _procDeployProgtabHomeSettings.hometab_area,
+        },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <style include="proc-deploy-progtab-home-style"></style>   
         <div id="program_definition" class="programTabs">           
             <paper-tabs selected="{{currentSubTab}}" attr-for-selected="name" noink scrollable>
@@ -32,4 +79,8 @@ class procDeployProgHome extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixi
 
 
 
-        `}}customElements.define("proc-deploy-prog-home",procDeployProgHome)});
+        `;
+    }
+  }
+  customElements.define("proc-deploy-prog-home", procDeployProgHome);
+});

@@ -1,11 +1,51 @@
-define(["../../../../../../node_modules/@polymer/polymer/polymer-element.js","../../../../../../node_modules/pwa-helpers/connect-mixin.js","../../../../../store.js","../../../../../platform-mixins/functions/fields-methods.js","../../03config/Programs/em-demo-a-progtab-limits-settings.js"],function(_polymerElement,_connectMixin,_store,_fieldsMethods,_emDemoAProgtabLimitsSettings){"use strict";class EmDemoAProgLimits extends(0,_fieldsMethods.FieldsMethods)((0,_connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)){stateChanged(state){this.selectedLanguage=state.app.user.appLanguage;if(null!=state.emDemoA){//this.selectedProgram=state.emDemoA.selectedProgram;
-// if (state.emDemoA.selectedProgram!=null && state.emDemoA.selectedProgram.spec_definition!=null){                
-//     this.selProgSpecInfo=state.emDemoA.selectedProgram.spec_definition.spec;
-//     this.selProgSpecLimits=state.emDemoA.selectedProgram.spec_definition.spec_limits;
-// }
-}}static get properties(){return{selectedLanguage:String,selectedProgram:{type:Object},// selProgSpecInfo:{type: Object},
-// selProgSpecLimits:{type: Object},
-programLimitsTab_sectionsTitle:{type:Object,value:_emDemoAProgtabLimitsSettings.programLimitsTab_sectionsTitle},tableTitle:{type:Object,value:{name:"tableTitle",label_en:"Program limits list",label_es:"Lista de rangos l\xEDmite para el programa"}}}}static get template(){return _polymerElement.html`
+define([
+  "../../../../../../node_modules/@polymer/polymer/polymer-element.js",
+  "../../../../../../node_modules/pwa-helpers/connect-mixin.js",
+  "../../../../../store.js",
+  "../../../../../platform-mixins/functions/fields-methods.js",
+  "../../03config/Programs/em-demo-a-progtab-limits-settings.js",
+], function (
+  _polymerElement,
+  _connectMixin,
+  _store,
+  _fieldsMethods,
+  _emDemoAProgtabLimitsSettings
+) {
+  "use strict";
+  class EmDemoAProgLimits extends (0, _fieldsMethods.FieldsMethods)(
+    (0, _connectMixin.connect)(_store.store)(_polymerElement.PolymerElement)
+  ) {
+    stateChanged(state) {
+      this.selectedLanguage = state.app.user.appLanguage;
+      if (null != state.emDemoA) {
+        //this.selectedProgram=state.emDemoA.selectedProgram;
+        // if (state.emDemoA.selectedProgram!=null && state.emDemoA.selectedProgram.spec_definition!=null){
+        //     this.selProgSpecInfo=state.emDemoA.selectedProgram.spec_definition.spec;
+        //     this.selProgSpecLimits=state.emDemoA.selectedProgram.spec_definition.spec_limits;
+        // }
+      }
+    }
+    static get properties() {
+      return {
+        selectedLanguage: String,
+        selectedProgram: { type: Object }, // selProgSpecInfo:{type: Object},
+        // selProgSpecLimits:{type: Object},
+        programLimitsTab_sectionsTitle: {
+          type: Object,
+          value: _emDemoAProgtabLimitsSettings.programLimitsTab_sectionsTitle,
+        },
+        tableTitle: {
+          type: Object,
+          value: {
+            name: "tableTitle",
+            label_en: "Program limits list",
+            label_es: "Lista de rangos l\xEDmite para el programa",
+          },
+        },
+      };
+    }
+    static get template() {
+      return _polymerElement.html`
         <style>
             div.wrapper{display:flex;}
             p {color: #032bbc;}
@@ -50,4 +90,8 @@ programLimitsTab_sectionsTitle:{type:Object,value:_emDemoAProgtabLimitsSettings.
                 </template>
             </div>
         </div>
-        `}}customElements.define("em-demo-a-prog-limits",EmDemoAProgLimits)});
+        `;
+    }
+  }
+  customElements.define("em-demo-a-prog-limits", EmDemoAProgLimits);
+});
