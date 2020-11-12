@@ -13,7 +13,7 @@ import { ModuleFunctionsGenoma } from "../../01moduleFunctionality/0module-funct
 import "../../01moduleFunctionality/genoma-instancia1-webcomponent-project.js";
 import "../../../../internalComponents/Elements/table-with-buttons.js";
 import { FrontendEndpointsModuleGenoma } from "../../01moduleFunctionality/endpoints-frontend-genoma.js";
-import { EndpointsActionsGenomaModule } from "../../01moduleFunctionality/0module-endpoints-actions-genoma.js";
+import { EndpointsActionsGenomaModule } from "../../01moduleFunctionality/0module-endpoints-actions-genoma.js"; //class GenomaInstancia1ProjSamplesSet extends EndpointsActionsGenomaModule(FrontendEndpointsModuleGenoma(FieldsMethods(ModuleFunctionsGenoma(connect(store)(LitElement))))) {
 /**
  * `genoma-instancia1-proj-samples-set` Description
  *
@@ -21,8 +21,7 @@ import { EndpointsActionsGenomaModule } from "../../01moduleFunctionality/0modul
  * @polymer
  * @demo
  *
- */ //class GenomaInstancia1ProjSamplesSet extends EndpointsActionsGenomaModule(FrontendEndpointsModuleGenoma(FieldsMethods(ModuleFunctionsGenoma(connect(store)(LitElement))))) {
-class GenomaInstancia1ProjSamplesSet extends EndpointsActionsGenomaModule(
+ */ class GenomaInstancia1ProjSamplesSet extends EndpointsActionsGenomaModule(
   FrontendEndpointsModuleGenoma(
     FieldsMethods(ModuleFunctionsGenoma(LitElement))
   )
