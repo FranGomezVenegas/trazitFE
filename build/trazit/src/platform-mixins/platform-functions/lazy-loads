@@ -1,5 +1,0 @@
-export const LazyLoads = (superClass) => class extends superClass {
-    importComponents(compArr){
-        
-    }
-}

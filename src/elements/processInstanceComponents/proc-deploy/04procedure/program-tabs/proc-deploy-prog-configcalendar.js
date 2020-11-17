@@ -46,14 +46,13 @@ class procDeployProgConfigcalendar extends FieldsMethods(
     return html`
       <style include="proc-deploy-progtab-calendar-style"></style>
       <style>
+        span.mp-cld-day.today {
+          background-color: aliceblue;
+        }
 
-                    span.mp-cld-day.today{
-                        background-color: aliceblue;
-        }           }
-
-                    mp-calendar{
-                        --today-boxshadow-color: #4caf5066;
-                    }
+        mp-calendar {
+          --today-boxshadow-color: #4caf5066;
+        }
       </style>
       <template is="dom-if" if="[[displayCalendar]]">
         <mp-calendar

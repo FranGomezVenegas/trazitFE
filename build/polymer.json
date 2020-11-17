@@ -1,6 +1,6 @@
 {
   "entrypoint": "index.html",
-  "shell": "src\\elements\\platform-main.js",
+  "shell": "src/elements/platform-main.js",
   "fragments": [],
   "sources": [
     "src/**/*",

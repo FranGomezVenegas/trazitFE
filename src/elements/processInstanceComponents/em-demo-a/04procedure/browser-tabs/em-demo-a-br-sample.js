@@ -18,6 +18,11 @@ import {
   schema_name,
   personal_smp_template,
 } from "../../03config/config-process";
+
+import * as htmlToImage from "html-to-image";
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+import { jsPDF } from "jspdf";
+
 class emDemoABrSample extends tableFieldLabel(
   FrontendEndpointsEnvMonitBrowser(connect(store)(PolymerElement))
 ) {
@@ -43,12 +48,14 @@ class emDemoABrSample extends tableFieldLabel(
     return html`
         <style include="em-demo-a-browser-sample-style"></style> 
 
-        <div id="mainDiv"> <!--This is the Div 1 in the picture-->        
-        <template is="dom-repeat" items="{{windowContent.fields}}" as="currentfield">       
-          <field-controller on-keydown="keyPressed" on-field-button-clicked="RunReport" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
-        </template>       
-            <div class="filter">            
-                <div class="detailDataSection"> 
+        <div id="mainDiv"> <!--This is the Div 1 in the picture-->   
+        <template is="dom-repeat" items="{{windowContent.fields}}" as="currentfield"> 
+            <field-controller on-keydown="keyPressed" on-field-button-clicked="formAction" on-field-list-value-changed="onListChange" id="{{currentfield.name}}"  field="{{currentfield}}"></field-controller>
+        </template>
+          <div id="printable_zone">
+            <div class="filter">
+                <div class="detailDataSection">
+                
                 <p><h2><b>{{getTableFieldLabel(browserFields.schemaName, browserFields.tableName, '*sample_info_title', selectedLanguage)}}</h2></p>
                 <template is="dom-repeat" items="[[selSample.sampleFieldsToDisplay]]">  
                     <p><b>{{getTableFieldLabel(browserFields.schemaName, browserFields.tableName, item.field_name, selectedLanguage)}}:</b> {{valueTranslation(browserFields.schemaName, browserFields.tableName, item.field_value, selectedLanguage)}}<p></p>
@@ -56,6 +63,7 @@ class emDemoABrSample extends tableFieldLabel(
                 </div>
             </div>
             <div class="detailMain"> 
+              <h1>PDF</h1>
                 <template is="dom-repeat" items="[[selSample.stages]]" as="stage">  
                     <div class="detailDataSection"> 
                         <p><h2><b>{{stageTitle(browserFields.schemaName, browserFields.tableName, stage, selectedLanguage)}}</h2> {{stage.started_on}} >> {{stage.ended_on}}   </b></p>                        
@@ -92,7 +100,8 @@ class emDemoABrSample extends tableFieldLabel(
                         </template>
                     </div>
                 </template>            
-            </div><!--Closing "central"-->            
+            </div><!--Closing "central"-->       
+          </div>             
         </div>
         `;
   }
@@ -138,15 +147,55 @@ class emDemoABrSample extends tableFieldLabel(
       return;
     }
   }
+  formAction(event) {
+    const {
+      detail: { buttonName },
+    } = event;
+
+    if (buttonName === "DownloadPDF") this.PrintReport();
+    if (buttonName === "DownloadPNG") this.PrintReportPNG();
+    if (buttonName === "RunReport") this.RunReport();
+  }
+  PrintReportPNG() {
+    const printable_zone = this.shadowRoot.getElementById("printable_zone");
+    return htmlToImage.toPng(printable_zone).then(function (dataUrl) {
+      const link = document.createElement("a");
+      link.download = "Muestras.jpg";
+      link.href = dataUrl;
+      link.click();
+    });
+  }
   RunReport() {
-    var data = [];
+    let data = [];
     data.sampleId = this.windowContent.fields[0].value;
     data.browserSampleFieldToRetrieve = this.browserFields.fieldToRetrieve;
     data.browserSampleFieldsToDisplay = this.browserFields.fieldsToDisplay;
     this.getBrowserSelectedSampleData(data);
   }
+  PrintReport() {
+    if (this.selSample.length === 0) {
+      alert("Usted necesita ejecutar el informe");
+      return false;
+    }
+    const printable_zone = this.shadowRoot.getElementById("printable_zone");
+    htmlToImage
+      .toPng(printable_zone)
+      .then(function (dataUrl) {
+        const img = new Image();
+        img.crossOrigin = "";
+        img.src = dataUrl;
+
+        img.onload = function () {
+          const pdf = new jsPDF("p", "mm", [215, +img.naturalHeight]);
+          pdf.addImage(this, 1, 0);
+          pdf.save("Muestras.pdf");
+        };
+      })
+      .catch(function (error) {
+        console.error("oops, something went wrong!", error);
+      });
+  }
   openTab() {
-    //console.log('openTab > '+this.schemaPrefix+ '-' + this.selSample.currentStage);
     var procObj = { name: this.schemaPrefix };
     var pageForStage = "";
     if (
