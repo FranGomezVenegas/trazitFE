@@ -27,7 +27,7 @@ import "../elements/internalComponents/others/language-selector.js";
  * @demo
  *
  */
-class LabplanetMain extends connect(store)(LitElement) {
+class PlatformMain extends connect(store)(LitElement) {
   static get properties() {
     return {
       selectedLanguage: { type: String, notify: true },
@@ -146,4 +146,4 @@ class LabplanetMain extends connect(store)(LitElement) {
     //         import('@material/mwc-switch/mwc-switch');
   }
 }
-customElements.define("labplanet-main", LabplanetMain);
+customElements.define("platform-main", PlatformMain);
