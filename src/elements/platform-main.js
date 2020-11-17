@@ -61,61 +61,40 @@ class LabplanetMain extends connect(store)(LitElement) {
   }
   render() {
     return html`
-      <!-- <link rel="stylesheet" href="../../config/platform/main-layout/two-headers"> -->
       ${!this.loggedIn
         ? html`<platform-login
             id="platf_login"
             @platform-login-loggedwithsuccess="${this.loggedSuccesfully}"
           ></platform-login>`
         : html`<div id="wrapper">
-              ${this.layoutSettings.display_headertwo
-                ? html`
-                                            
-                    <div class="split top bckimgtop"></div>
-                                               <platform-headertwo
-                      id="platf-headertwo"
-                    ></platform-headertwo
-                    > 
-                  `
-                : ``}
-              ${this.layoutSettings.display_header
-                ? html`
-                                            
-                    <div class="split top bckimgtop"></div>
-                                               <platform-header
-                      id="platf-header"
-                    ></platform-header
-                    > 
-                  `
-                : ``}
-              ${this.layoutSettings.display_left_pane
-                ? html`s
-                        <div id="wrapper_inner">
-                        <div class="split left bckimgleft">     
-                            <platform-leftpane-fix></platform-leftpane-fix>             
-                        </div->
-                        </div>
-                    `
-                : ``}
-              ${this.layoutSettings.display_center
-                ? html`
-                                            
-                    <div class="split right">
-                                              <platform-center-tabs
-                        class="center-tab"
-                      ></platform-center-tabs
-                      >                              
-                    </div>
-                             
-                  `
-                : ``}
-                              
-            </div>
-                       `}
-                  <lp-loading></lp-loading>             <paper-toast
-        id="toast"
-      ></paper-toast>
-                  <paper-toast id="toasterror"></paper-toast>      
+            ${this.layoutSettings.display_headertwo
+              ? html`<div class="split top bckimgtop"></div>
+                  <platform-headertwo
+                    id="platf-headertwo"
+                  ></platform-headertwo>`
+              : ``}
+            ${this.layoutSettings.display_header
+              ? html`<div class="split top bckimgtop"></div>
+                  <platform-header id="platf-header"></platform-header>`
+              : ``}
+            ${this.layoutSettings.display_left_pane
+              ? html`<div id="wrapper_inner">
+                  <div class="split left bckimgleft">
+                    <platform-leftpane-fix></platform-leftpane-fix>
+                  </div>
+                </div>`
+              : ``}
+            ${this.layoutSettings.display_center
+              ? html`<div class="split right">
+                  <platform-center-tabs
+                    class="center-tab"
+                  ></platform-center-tabs>
+                </div>`
+              : ``}
+          </div>`}
+      <lp-loading></lp-loading>
+      <paper-toast id="toast"></paper-toast>
+      <paper-toast id="toasterror"></paper-toast>      
     `;
   }
   loggedSuccesfully() {
