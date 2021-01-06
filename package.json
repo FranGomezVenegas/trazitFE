@@ -30,7 +30,7 @@
     "@vaadin/vaadin-grid": "^5.6.6",
     "@vaadin/vaadin-icons": "^4.3.1",
     "@vaadin/vaadin-text-field": "^2.6.2",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dile-spinner": "^2.0.3",
     "flag-icon-css": "^3.3.0",
     "google-chart-polymer-3": "^3.0.1",
