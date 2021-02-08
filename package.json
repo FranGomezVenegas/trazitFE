@@ -37,7 +37,7 @@
     "json3": "^3.3.3",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
-    "marked": "^1.1.0",
+    "marked": "^2.0.0",
     "material-design-icons": "^3.0.1",
     "minimist": "^1.2.5",
     "mkdirp": "^1.0.4",
